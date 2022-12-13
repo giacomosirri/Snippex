@@ -21,7 +21,7 @@ use snippex;
 
 create table COMMENT (
      CommentID int not null,
-     Content char(2000) not null,
+     Content longtext not null,
      DateAndTime date not null,
      User char(40) not null,
      Post int not null,
@@ -44,7 +44,7 @@ create table NOTIFICATION (
      NotificationID int not null,
      Comment int,
      Rating int,
-     `Read` char not null,
+     `Read` boolean not null,
      Notified_user char(40) not null,
      constraint IDNOTIFICATION primary key (NotificationID),
      constraint FKabout_ID unique (Comment),
@@ -59,7 +59,7 @@ create table POINTS (
 create table POST (
      PostID int not null,
      Title char(150) not null,
-     Content char(10000) not null,
+     Content longtext not null,
      DateAndTime date not null,
      NumberOfComments int not null,
      Writer int not null,
@@ -76,7 +76,7 @@ create table RATING (
 
 create table RATING_CATEGORY (
      Name char(50) not null,
-     Description char(1000) not null,
+     Description longtext not null,
      constraint IDRATING_TYPE primary key (Name));
 
 create table `USER` (
