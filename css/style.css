@@ -10,6 +10,9 @@ header {
     color: dodgerblue;
     font-weight: bolder;
 }
+nav ul li a img{
+    width: 50px;
+}
 header h2 {
     font-size: small;
 }

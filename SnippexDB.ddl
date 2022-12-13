@@ -12,8 +12,8 @@
 -- Database Section
 -- ________________ 
 
-create database snippex;
-use snippex;
+create database Logic;
+use Logic;
 
 
 -- Tables Section
@@ -21,7 +21,7 @@ use snippex;
 
 create table COMMENT (
      CommentID int not null,
-     Content longtext not null,
+     Content char(2000) not null,
      DateAndTime date not null,
      User char(40) not null,
      Post int not null,
@@ -44,7 +44,7 @@ create table NOTIFICATION (
      NotificationID int not null,
      Comment int,
      Rating int,
-     `Read` boolean not null,
+     Read char not null,
      Notified_user char(40) not null,
      constraint IDNOTIFICATION primary key (NotificationID),
      constraint FKabout_ID unique (Comment),
@@ -59,10 +59,10 @@ create table POINTS (
 create table POST (
      PostID int not null,
      Title char(150) not null,
-     Content longtext not null,
+     Content char(10000) not null,
      DateAndTime date not null,
      NumberOfComments int not null,
-     Writer char(40) not null,
+     Writer int not null,
      constraint IDPOST primary key (PostID));
 
 create table RATING (
@@ -76,10 +76,10 @@ create table RATING (
 
 create table RATING_CATEGORY (
      Name char(50) not null,
-     Description longtext not null,
+     Description char(1000) not null,
      constraint IDRATING_TYPE primary key (Name));
 
-create table `USER` (
+create table USER (
      Username char(40) not null,
      Password char(40) not null,
      Name char(80) not null,
@@ -156,7 +156,7 @@ alter table RATING add constraint FKof
      foreign key (Category)
      references RATING_CATEGORY (Name);
 
-alter table RATING add constraint FKposts_1
+alter table RATING add constraint FKposts
      foreign key (Rater)
      references USER (Username);
 
