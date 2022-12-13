@@ -17,6 +17,28 @@ header h2 {
     font-size: small;
 }
 
+nav {
+    position: absolute;
+    bottom: 5%;
+}
+
+nav ul {
+    text-align: center;
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+}
+
 footer {
     background-color: antiquewhite;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
