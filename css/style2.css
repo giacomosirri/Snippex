@@ -11,12 +11,7 @@ header h2 {
   font-size: small;
 }
 
-nav {
-  position: fixed;
-  bottom: 10px;
-}
 nav ul {
-  text-align: center;
   padding: 0;
 }
 nav ul li {
@@ -27,14 +22,6 @@ nav ul li a {
 }
 nav ul li a img {
   width: 50px;
-}
-
-footer {
-  background-color: antiquewhite;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
 }
 
 /*# sourceMappingURL=style2.css.map */
