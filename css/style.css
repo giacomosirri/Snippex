@@ -1,7 +1,4 @@
 
-html {
-}
-
 body{
     background: white;
 }
@@ -28,7 +25,6 @@ nav ul {
 
 nav ul li {
     list-style-type: none;
-    display: inline;
 }
 
 nav ul li a {
