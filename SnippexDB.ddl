@@ -62,7 +62,7 @@ create table POST (
      Content longtext not null,
      DateAndTime date not null,
      NumberOfComments int not null,
-     Writer int not null,
+     Writer char(40) not null,
      constraint IDPOST primary key (PostID));
 
 create table RATING (
@@ -156,7 +156,7 @@ alter table RATING add constraint FKof
      foreign key (Category)
      references RATING_CATEGORY (Name);
 
-alter table RATING add constraint FKposts
+alter table RATING add constraint FKposts_1
      foreign key (Rater)
      references USER (Username);
 
