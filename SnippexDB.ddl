@@ -12,8 +12,8 @@
 -- Database Section
 -- ________________ 
 
-create database Logic;
-use Logic;
+create database snippex;
+use snippex;
 
 
 -- Tables Section
@@ -44,7 +44,7 @@ create table NOTIFICATION (
      NotificationID int not null,
      Comment int,
      Rating int,
-     Read char not null,
+     `Read` char not null,
      Notified_user char(40) not null,
      constraint IDNOTIFICATION primary key (NotificationID),
      constraint FKabout_ID unique (Comment),
@@ -79,7 +79,7 @@ create table RATING_CATEGORY (
      Description char(1000) not null,
      constraint IDRATING_TYPE primary key (Name));
 
-create table USER (
+create table `USER` (
      Username char(40) not null,
      Password char(40) not null,
      Name char(80) not null,
