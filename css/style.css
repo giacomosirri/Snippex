@@ -1,0 +1,19 @@
+
+html {
+}
+
+body{
+    background: white;
+}
+
+header {
+    color: dodgerblue;
+    font-weight: bolder;
+}
+header h2 {
+    font-size: small;
+}
+
+footer {
+    background-color: antiquewhite;
+}
