@@ -1,44 +1,27 @@
-
-body{
-    background: white;
+body {
+  background: white;
 }
 
 header {
-    color: dodgerblue;
-    font-weight: bolder;
-    margin: 0;
+  color: dodgerblue;
+  font-weight: bolder;
+  margin: 0;
 }
-
 header h2 {
-    font-size: small;
-}
-
-nav {
-    position: fixed;
-    bottom: 10px;
+  font-size: small;
 }
 
 nav ul {
-    text-align: center;
-    padding: 0;
+  padding: 0;
 }
-
 nav ul li {
-    list-style-type: none;
+  list-style-type: none;
 }
-
 nav ul li a {
-    text-decoration: none;
+  text-decoration: none;
+}
+nav ul li a img {
+  width: 50px;
 }
 
-nav ul li a img{
-    width: 50px;
-}
-
-footer {
-    background-color: antiquewhite;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-}
+/*# sourceMappingURL=style.css.map */
