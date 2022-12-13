@@ -6,6 +6,10 @@ header {
   color: dodgerblue;
   font-weight: bolder;
   margin: 0;
+  padding: 10px;
+}
+header img {
+  width: 50px;
 }
 header h2 {
   font-size: small;
