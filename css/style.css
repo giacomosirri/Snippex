@@ -9,21 +9,21 @@ body{
 header {
     color: dodgerblue;
     font-weight: bolder;
+    margin: 0;
 }
-nav ul li a img{
-    width: 50px;
-}
+
 header h2 {
     font-size: small;
 }
 
 nav {
-    position: absolute;
-    bottom: 5%;
+    position: fixed;
+    bottom: 10px;
 }
 
 nav ul {
     text-align: center;
+    padding: 0;
 }
 
 nav ul li {
@@ -33,6 +33,10 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
+}
+
+nav ul li a img{
+    width: 50px;
 }
 
 footer {
