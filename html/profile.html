@@ -12,22 +12,23 @@
 </head>
 <body>
     <header class="container">
-        <div class="row">
-            <img class="col-1 responsive-img" src="../icons/burger_icon.png" alt="menu"/>
-            <h1 class="d-flex justify-content-center" style="color: black">Giacomo Sirri</h1>
+        <div class="d-flex justify-content-between">
+            <img id="menu" class="col-1 responsive-img" src="../icons/burger_icon.png" alt="menu"/>
+            <h1 class="col-4" style="color: black">Giacomo Sirri</h1>
+            <div class="col-1"></div>
         </div>
     </header>
 <main class="container">
-    <div class="row">
-        <img id="profile-pic" class="col-6 offset-3 responsive-img" src="../img/propic.jpg" alt="profile pic"/>
+    <div class="d-flex justify-content-center">
+        <img id="profile-pic" src="../img/propic.jpg" alt="profile pic"/>
     </div>
-    <div id="user-since" class="d-flex justify-content-center">
-        <p>Active user since 21 Dec 2022</p>
+    <div class="d-flex justify-content-center">
+        <p id="user-since">Active user since 21 Dec 2022</p>
     </div>
-    <div id="friends" class="d-flex justify-content-center">
-        <p>8 friends</p>
+    <div class="d-flex justify-content-center">
+        <p id="friends">8 friends</p>
     </div>
-    <table id="rating-statistics" class="table-bordered">
+    <table id="rating-statistics" class="table table-primary table-bordered table-striped table-hover">
         <caption>Statistics - 10 posts</caption>
         <thead>
             <tr>
@@ -54,6 +55,16 @@
             </tr>
         </tbody>
     </table>
+    <h2>
+        Most voted post ever
+    </h2>
+    <article class="post col-8">
+        <h3 class="post-title">Post #1</h3>
+        <section class="post-content">
+            <p class="post-text">Hi! This is the first post ever on this new social network.</p>
+            <p class="post-date">23 Nov 2022, 12:46</p>
+        </section>
+    </article>
     <footer>
         <nav>
             <ul class="row text-center">
