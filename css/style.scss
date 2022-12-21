@@ -1,10 +1,9 @@
-
 body{
   background: white;
 }
 
 header {
-  color: dodgerblue;
+  color: #1c77ce;
   font-weight: bolder;
   margin: 0;
   padding: 10px;
@@ -14,9 +13,23 @@ header {
   h2 {
     font-size: small;
   }
-
+  img {
+    margin-top: 2px;
+    height: 60%;
+    width: 40%;
+  }
+  button {
+    padding: 10px;
+    background-color: #1c77ce;
+    border-radius: 4px;
+    box-shadow: 3px 3px #6e6e6e;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 5px;
+  }
 }
-
 
 nav {
   ul {
