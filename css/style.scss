@@ -16,6 +16,7 @@ header {
     font-size: small;
   }
   img {
+    width: 100%;
     margin-top: 2px;
   }
 }
@@ -38,15 +39,6 @@ button:active {
   background-color: $templateColor;
 }
 
-.col-1-5 {
-  flex: 0 0 12.3%;
-  max-width: 12.3%;
-  position: relative;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
 section {
   p.notification-type {
     font-size: 130%;
@@ -55,6 +47,10 @@ section {
     font-size: 80%;
     color: #6e6e6e;
   }
+}
+
+table {
+  caption-side: top;
 }
 
 nav {
