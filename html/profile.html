@@ -23,7 +23,7 @@
             <div class="col-1"></div>
         </div>
     </header>
-<main class="container">
+    <main class="container">
     <div class="d-flex justify-content-center">
         <img id="profile-pic" src="../img/propic.jpg" alt="profile pic"/>
     </div>
@@ -114,15 +114,15 @@
             </div>
             <div class="post-interactions d-flex justify-content-between flex-column">
                 <img class="rate-post" style="  padding: 5px; border-radius: 20px;"
-                     src="../icons/plus_icon.png" alt="post menu" onclick="showRatingCategories(0)"/>
+                     src="../icons/plus_icon.png" alt="post menu" onclick="showRatingCategories(1)"/>
                 <img class="thoughtfulness" style="display: none" src="../icons/thoughts_icon.png"
-                     alt="rate as thoughtfulness" onclick="showPlus(0)">
+                     alt="rate as thoughtfulness" onclick="showPlus(1)">
                 <img class="idea" style="display: none" src="../icons/idea_icon.png"
-                     alt="rate as idea" onclick="showPlus(0)">
+                     alt="rate as idea" onclick="showPlus(1)">
                 <img class="advice" style="display: none" src="../icons/advice_icon.png"
-                     alt="rate as advice" onclick="showPlus(0)">
+                     alt="rate as advice" onclick="showPlus(1)">
                 <img class="laugh" style="display: none" src="../icons/laugh_icon.png"
-                     alt="rate as humour" onclick="showPlus(0)">
+                     alt="rate as humour" onclick="showPlus(1)">
                 <img class="comment-post" style="margin-bottom: 6px" src="../icons/comment_icon.png" alt="comment">
             </div>
         </div>
@@ -140,8 +140,9 @@
             </ul>
         </nav>
     </footer>
+
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Nuovo post</h5>
