@@ -5,7 +5,7 @@ function changeText(label){
     console.log(checkbox);
     console.log(paragraph);
     if(checkbox.checked){
-        paragraph.style.webkitLineClamp = "3";
+        paragraph.style.webkitLineClamp = "4";
     }else{
         paragraph.style.webkitLineClamp = "unset";
     }
