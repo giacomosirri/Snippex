@@ -94,9 +94,9 @@ nav ul li a img {
 
 article.post {
   background-color: #acd1f6;
-  padding: 6px 60px 6px 12px;
+  padding: 6px 56px 6px 12px;
   border-radius: 12px;
-  min-height: 173px;
+  min-height: 180px;
 }
 
 article > h3.post-title {
@@ -108,13 +108,17 @@ div.post-content {
   padding-right: 8px;
   font-size: 16px;
   background-color: #91bae3;
-  min-height: 120px;
+  min-height: 128px;
 }
 
 p.post-date {
   font-size: 11px;
   background-color: #acd1f6;
-  padding-left: 7px;
+  padding-left: 5px;
+}
+
+p.post-text {
+  min-height: 80px;
 }
 
 img#rate-post {
@@ -125,7 +129,16 @@ img#rate-post {
   width: auto;
   max-width: 36px;
   max-height: 36px;
-  margin-left: 8px;
+  margin-left: 9px;
+}
+
+img#comment-post {
+  height: auto;
+  width: auto;
+  max-width: 32px;
+  max-height: 32px;
+  margin-left: 11px;
+  margin-bottom: 6px;
 }
 
 footer {
