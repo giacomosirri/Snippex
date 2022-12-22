@@ -122,10 +122,8 @@ div.post-content {
 }
 div.post-content label {
   font-size: 13px;
-  background-color: #ACD1F6;
-  margin: 15px;
-  padding: 5px;
-  border-radius: 10px;
+  background-color: transparent;
+  width: 100%;
 }
 
 p.post-date {
@@ -140,10 +138,6 @@ p.post-text {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-.expanded:focus ~ label {
-  outline: -webkit-focus-ring-color auto 5px;
 }
 
 img.rate-post {
