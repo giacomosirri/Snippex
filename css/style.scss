@@ -1,4 +1,6 @@
 $templateColor: #226fbd;
+$primaryPost: #acd1f6;
+$secondaryPost: #91bae3;
 
 * {
   padding: 0;
@@ -97,22 +99,35 @@ nav {
 }
 
 article.post {
-  background-color: #5293d7;
+  background-color: $primaryPost;
   padding: 6px 60px 6px 12px;
   border-radius: 12px;
+  min-height: 173px;
 }
 article > h3.post-title {
   font-size: 24px;
 }
-section.post-content {
+div.post-content {
   padding-left: 8px;
   padding-right: 8px;
   font-size: 16px;
-  background-color: #2780d9;
+  background-color: $secondaryPost;
+  min-height: 120px;
 }
 p.post-date {
-  font-size: 12px;
-  background-color: #5293d7;
+  font-size: 11px;
+  background-color: $primaryPost;
+  padding-left: 7px;
+}
+img#rate-post {
+  padding: 5px;
+  background-color: $secondaryPost;
+  border-radius: 20px;
+  height: auto;
+  width: auto;
+  max-width: 36px;
+  max-height: 36px;
+  margin-left: 8px;
 }
 
 footer {
