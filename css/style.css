@@ -92,10 +92,14 @@ nav ul li a img {
   width: 50px;
 }
 
-#expanded {
+.expanded {
   opacity: 0;
   position: absolute;
   pointer-events: none;
+}
+
+article {
+  margin-bottom: 40px;
 }
 
 article.post {
@@ -138,15 +142,11 @@ p.post-text {
   overflow: hidden;
 }
 
-#expanded:focus ~ label {
+.expanded:focus ~ label {
   outline: -webkit-focus-ring-color auto 5px;
 }
 
-#expanded:checked + p {
-  -webkit-line-clamp: unset;
-}
-
-img#rate-post {
+img.rate-post {
   padding: 5px;
   background-color: #91bae3;
   border-radius: 20px;
@@ -157,7 +157,7 @@ img#rate-post {
   margin-left: 9px;
 }
 
-img#comment-post {
+img.comment-post {
   height: auto;
   width: auto;
   max-width: 32px;
