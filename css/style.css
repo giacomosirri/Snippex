@@ -105,12 +105,6 @@ nav ul li a img {
   width: 50px;
 }
 
-.expanded {
-  opacity: 0;
-  position: absolute;
-  pointer-events: none;
-}
-
 article {
   margin-bottom: 40px;
 }
@@ -120,6 +114,9 @@ article.post {
   padding: 6px 56px 6px 12px;
   border-radius: 12px;
   min-height: 180px;
+}
+article.post .rate-post:hover {
+  cursor: pointer;
 }
 
 article > h3.post-title {
@@ -151,6 +148,10 @@ p.post-text {
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.expanded {
+  -webkit-line-clamp: unset !important;
 }
 
 article > div > div > img {

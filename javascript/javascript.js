@@ -1,10 +1,21 @@
+function createPost(){
+        let title = document.querySelector("#recipient-title").value;
+        let content = document.querySelector("#message-text").value;
+        let close = document.querySelector("#close");
+        let date = new Date();
+        console.log(title);
+        console.log(content);
+        console.log(date);
+        close.click();
+}
+
+
 function changeText(label) {
     let paragraph = label.querySelector('p');
-    let checkbox = label.previousElementSibling;
-    if(checkbox.checked) {
-        paragraph.style.webkitLineClamp = "4";
+    if(paragraph.classList.contains('expanded')) {
+        paragraph.classList.remove('expanded');
     } else {
-        paragraph.style.webkitLineClamp = "unset";
+        paragraph.classList.add('expanded');
     }
 }
 
