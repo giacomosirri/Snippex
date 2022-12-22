@@ -8,6 +8,7 @@
     <!--CSS-->
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src="../javascript/javascript.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
@@ -62,7 +63,16 @@
         <h3 class="post-title col-10">Post #1</h3>
         <div class="d-flex justify-content-between">
             <div class="post-content col-12">
-                <p class="post-text">Hi! This is the first post ever on this new social network.</p>
+                <input type="checkbox" id="expanded">
+                <p class="post-text">Hi! This is the first post ever on this new social network.
+                </br> ciao
+                </br> ciao
+                </br> ciao
+                </br> ciao
+                </br> ciao
+                </br> ciao
+                </p>
+                <label for="expanded" role="button" onclick="changeText()">read more</label>
                 <p class="post-date col-12">23 Nov 2022, 12:46</p>
             </div>
             <div class="d-flex justify-content-between flex-column">
