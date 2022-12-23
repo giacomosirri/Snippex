@@ -11,8 +11,7 @@ html, body {
 body {
   background: white;
 }
-
-header {
+body header {
   text-align: center;
   color: #226fbd;
   font-weight: bolder;
@@ -20,87 +19,86 @@ header {
   padding: 10px;
 }
 @media screen and (max-width: 576px) {
-  header h1 {
+  body header h1 {
     font-size: 14px;
   }
 }
 @media screen and (max-width: 768px) {
-  header h1 {
+  body header h1 {
     font-size: 16px;
   }
 }
 @media screen and (max-width: 992px) {
-  header h1 {
+  body header h1 {
     font-size: 20px;
   }
 }
-header img {
+body header img {
   width: 50px;
   margin-top: 2px;
 }
-header h2 {
+body header h2 {
   font-size: small;
 }
-header div a img {
+body header div a img {
   height: auto;
   width: auto;
   max-width: 32px;
   max-height: 32px;
 }
-header div div img {
+body header div div img {
   height: auto;
   width: auto;
   max-width: 60px;
   max-height: 60px;
 }
-
-main {
+body main {
   font-size: 110%;
 }
-main div img {
+body main div img {
   height: auto;
   width: auto;
   max-width: 140px;
   max-height: 140px;
 }
-main section {
+body main section {
   margin-bottom: 8px;
 }
-main section div img {
+body main section div img {
   margin-left: 5px;
   height: auto;
   width: auto;
   max-width: 32px;
   max-height: 32px;
 }
-main article {
+body main article {
   margin-bottom: 40px;
   background-color: #acd1f6;
   padding: 6px 56px 6px 12px;
   border-radius: 12px;
   min-height: 180px;
 }
-main article h3 {
+body main article h3 {
   font-size: 24px;
 }
-main article div div > p {
+body main article div div > p {
   font-size: 11px;
   background-color: #acd1f6;
   padding-left: 5px;
 }
-main article div div label {
+body main article div div label {
   font-size: 13px;
   background-color: transparent;
   width: 100%;
 }
-main article div div label p {
+body main article div div label p {
   min-height: 80px;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-main article div div img {
+body main article div div img {
   height: auto;
   width: auto;
   max-width: 30px;
@@ -108,21 +106,20 @@ main article div div img {
   margin-left: 10px;
   margin-bottom: 3px;
 }
-main article div div img.rate-post {
+body main article div div img.rate-post {
   background-color: #91bae3;
 }
-main article div div img:hover {
+body main article div div img:hover {
   cursor: pointer;
 }
-main article div div.post-content {
+body main article div div.post-content {
   padding-left: 8px;
   padding-right: 8px;
   font-size: 16px;
   background-color: #91bae3;
   min-height: 128px;
 }
-
-button {
+body button {
   padding: 10px;
   background-color: #226fbd;
   border: none;
@@ -133,33 +130,28 @@ button {
   text-decoration: none;
   margin-top: 5px;
 }
-
-button:hover {
-  background-color: #3481d0;
-}
-
-button:active {
+body button:active {
   background-color: #226fbd;
 }
-
-table {
+body button:hover {
+  background-color: #3481d0;
+}
+body table {
   caption-side: top;
 }
-
-nav ul {
+body nav ul {
   padding: 0;
 }
-nav ul li {
+body nav ul li {
   list-style-type: none;
 }
-nav ul li a {
+body nav ul li a {
   text-decoration: none;
 }
-nav ul li a img {
+body nav ul li a img {
   width: 50px;
 }
-
-footer {
+body footer {
   margin-top: 40px;
 }
 

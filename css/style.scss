@@ -14,165 +14,161 @@ html, body {
 
 body {
   background: white;
-}
-
-header {
-  text-align: center;
-  color: $templateColor;
-  font-weight: bolder;
-  margin: 0;
-  padding: 10px;
-  h1 {
-    @media screen and (max-width: 576px) {
-      font-size: 14px;
-    }
-    @media screen and (max-width: 768px) {
-      font-size: 16px;
-    }
-    @media screen and (max-width: 992px) {
-      font-size: 20px;
-    }
-  }
-  img {
-    width: 50px;
-    margin-top: 2px;
-  }
-  h2 {
-    font-size: small;
-  }
-  div {
-    a {
-      img {
-        height: auto;
-        width: auto;
-        max-width: 32px;
-        max-height: 32px;
+  header {
+    text-align: center;
+    color: $templateColor;
+    font-weight: bolder;
+    margin: 0;
+    padding: 10px;
+    h1 {
+      @media screen and (max-width: 576px) {
+        font-size: 14px;
+      }
+      @media screen and (max-width: 768px) {
+        font-size: 16px;
+      }
+      @media screen and (max-width: 992px) {
+        font-size: 20px;
       }
     }
-    div {
-      img {
-        height: auto;
-        width: auto;
-        max-width: 60px;
-        max-height: 60px;
-      }
-    }
-  }
-}
-
-main {
-  font-size: 110%;
-  div {
     img {
-      height: auto;
-      width: auto;
-      max-width: 140px;
-      max-height: 140px;
+      width: 50px;
+      margin-top: 2px;
     }
-  }
-  section {
-    margin-bottom: 8px;
-    div {
-      img {
-        margin-left: 5px;
-        height: auto;
-        width: auto;
-        max-width: 32px;
-        max-height: 32px;
-      }
-    }
-  }
-  article {
-    margin-bottom: 40px;
-    background-color: $primaryPost;
-    padding: 6px 56px 6px 12px;
-    border-radius: 12px;
-    min-height: 180px;
-    h3 {
-      font-size: 24px;
+    h2 {
+      font-size: small;
     }
     div {
-      div > p {
-        font-size: 11px;
-        background-color: $primaryPost;
-        padding-left: 5px;
-      }
-      div {
-        label {
-          font-size: 13px;
-          background-color: transparent;
-          width: 100%;
-          p {
-            min-height: 80px;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-          }
-        }
+      a {
         img {
           height: auto;
           width: auto;
-          max-width: 30px;
-          max-height: 30px;
-          margin-left: 10px;
-          margin-bottom: 3px;
-        }
-        img.rate-post {
-          background-color: $secondaryPost;
-        }
-        img:hover {
-          cursor: pointer;
+          max-width: 32px;
+          max-height: 32px;
         }
       }
-      div.post-content {
-        padding-left: 8px;
-        padding-right: 8px;
-        font-size: 16px;
-        background-color: $secondaryPost;
-        min-height: 128px;
-      }
-    }
-  }
-}
-
-button {
-  padding: 10px;
-  background-color: $templateColor;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  text-align: center;
-  font-size: 16px;
-  text-decoration: none;
-  margin-top: 5px;
-}
-button:hover {
-  background-color: #3481d0;
-}
-button:active {
-  background-color: $templateColor;
-}
-
-table {
-  caption-side: top;
-}
-
-nav {
-  ul {
-    padding: 0;
-    li {
-      list-style-type: none;
-      a {
-        text-decoration: none;
+      div {
         img {
-          width: 50px;
+          height: auto;
+          width: auto;
+          max-width: 60px;
+          max-height: 60px;
         }
       }
     }
   }
+  main {
+    font-size: 110%;
+    div {
+      img {
+        height: auto;
+        width: auto;
+        max-width: 140px;
+        max-height: 140px;
+      }
+    }
+    section {
+      margin-bottom: 8px;
+      div {
+        img {
+          margin-left: 5px;
+          height: auto;
+          width: auto;
+          max-width: 32px;
+          max-height: 32px;
+        }
+      }
+    }
+    article {
+      margin-bottom: 40px;
+      background-color: $primaryPost;
+      padding: 6px 56px 6px 12px;
+      border-radius: 12px;
+      min-height: 180px;
+      h3 {
+        font-size: 24px;
+      }
+      div {
+        div > p {
+          font-size: 11px;
+          background-color: $primaryPost;
+          padding-left: 5px;
+        }
+        div {
+          label {
+            font-size: 13px;
+            background-color: transparent;
+            width: 100%;
+            p {
+              min-height: 80px;
+              display: -webkit-box;
+              -webkit-line-clamp: 4;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+            }
+          }
+          img {
+            height: auto;
+            width: auto;
+            max-width: 30px;
+            max-height: 30px;
+            margin-left: 10px;
+            margin-bottom: 3px;
+          }
+          img.rate-post {
+            background-color: $secondaryPost;
+          }
+          img:hover {
+            cursor: pointer;
+          }
+        }
+        div.post-content {
+          padding-left: 8px;
+          padding-right: 8px;
+          font-size: 16px;
+          background-color: $secondaryPost;
+          min-height: 128px;
+        }
+      }
+    }
+  }
+  button {
+    padding: 10px;
+    background-color: $templateColor;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 5px;
+    &:active {
+      background-color: $templateColor;
+    }
+    &:hover {
+      background-color: #3481d0;
+    }
+    }
+  table {
+    caption-side: top;
+  }
+  nav {
+    ul {
+      padding: 0;
+      li {
+        list-style-type: none;
+        a {
+          text-decoration: none;
+          img {
+            width: 50px;
+          }
+        }
+      }
+    }
+  }
+  footer {
+    margin-top: 40px;
+  }
 }
 
-footer {
-  margin-top: 40px;
-}
+
