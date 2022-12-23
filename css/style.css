@@ -84,6 +84,27 @@ body main section div img {
   max-width: 32px;
   max-height: 32px;
 }
+body main section div a {
+  text-decoration: none;
+  color: black;
+}
+body main section div a img {
+  height: auto;
+  width: auto;
+  max-width: 160px;
+  max-height: 160px;
+}
+@media screen and (max-width: 768px) {
+  body main section div a img {
+    height: auto;
+    width: auto;
+    max-width: 100px;
+    max-height: 100px;
+  }
+}
+body main section div div p {
+  margin-left: 4px;
+}
 body main article {
   margin-bottom: 20px;
   background-color: #acd1f6;

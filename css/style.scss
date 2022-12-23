@@ -96,6 +96,27 @@ body {
           max-width: 32px;
           max-height: 32px;
         }
+        a {
+          text-decoration: none;
+          color: black;
+          img {
+            height: auto;
+            width: auto;
+            max-width: 160px;
+            max-height: 160px;
+            @media screen and (max-width: 768px) {
+              height: auto;
+              width: auto;
+              max-width: 100px;
+              max-height: 100px;
+            }
+          }
+        }
+        div {
+          p {
+            margin-left: 4px;
+          }
+        }
       }
     }
     article {
