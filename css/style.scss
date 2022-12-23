@@ -70,6 +70,21 @@ body {
         max-width: 140px;
         max-height: 140px;
       }
+      div {
+        div {
+          div {
+            img {
+              height: auto;
+              width: auto;
+              max-width: 20px;
+              max-height: 20px;
+            }
+            img:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
     }
     section {
       margin-bottom: 8px;
@@ -84,7 +99,7 @@ body {
       }
     }
     article {
-      margin-bottom: 40px;
+      margin-bottom: 20px;
       background-color: $primaryPost;
       padding: 6px 56px 6px 12px;
       border-radius: 12px;
@@ -152,7 +167,7 @@ body {
     &:hover {
       background-color: #3481d0;
     }
-    }
+  }
   table {
     caption-side: top;
   }
@@ -169,9 +184,6 @@ body {
         }
       }
     }
-  }
-  footer {
-    margin-top: 40px;
   }
 }
 

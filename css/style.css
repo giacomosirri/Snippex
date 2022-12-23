@@ -65,6 +65,15 @@ body main div img {
   max-width: 140px;
   max-height: 140px;
 }
+body main div div div div img {
+  height: auto;
+  width: auto;
+  max-width: 20px;
+  max-height: 20px;
+}
+body main div div div div img:hover {
+  cursor: pointer;
+}
 body main section {
   margin-bottom: 8px;
 }
@@ -76,7 +85,7 @@ body main section div img {
   max-height: 32px;
 }
 body main article {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   background-color: #acd1f6;
   padding: 6px 56px 6px 12px;
   border-radius: 12px;
@@ -154,9 +163,6 @@ body nav ul li a {
 }
 body nav ul li a img {
   width: 50px;
-}
-body footer {
-  margin-top: 40px;
 }
 
 /*# sourceMappingURL=style.css.map */
