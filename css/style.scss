@@ -22,6 +22,17 @@ header {
   font-weight: bolder;
   margin: 0;
   padding: 10px;
+  h1 {
+    @media screen and (max-width: 576px) {
+      font-size: 14px;
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 16px;
+    }
+    @media screen and (max-width: 992px) {
+      font-size: 20px;
+    }
+  }
   img {
     width: 50px;
     margin-top: 2px;
@@ -30,6 +41,14 @@ header {
     font-size: small;
   }
   div {
+    a {
+      img {
+        height: auto;
+        width: auto;
+        max-width: 32px;
+        max-height: 32px;
+      }
+    }
     div {
       img {
         height: auto;
@@ -52,6 +71,7 @@ main {
     }
   }
   section {
+    margin-bottom: 8px;
     div {
       img {
         margin-left: 5px;
@@ -159,5 +179,4 @@ nav {
 
 footer {
   margin-top: 40px;
-  margin-bottom: 10px;
 }
