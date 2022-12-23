@@ -12,6 +12,7 @@ body {
   background: white;
 }
 body header {
+  max-width: 1500px !important;
   text-align: center;
   color: #226fbd;
   font-weight: bolder;
@@ -49,8 +50,8 @@ body header div a img {
 body header div div img {
   height: auto;
   width: auto;
-  max-width: 60px;
-  max-height: 60px;
+  max-width: 36px;
+  max-height: 36px;
 }
 body main {
   font-size: 110%;

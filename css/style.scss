@@ -15,6 +15,7 @@ html, body {
 body {
   background: white;
   header {
+    max-width: 1500px !important;
     text-align: center;
     color: $templateColor;
     font-weight: bolder;
@@ -51,8 +52,8 @@ body {
         img {
           height: auto;
           width: auto;
-          max-width: 60px;
-          max-height: 60px;
+          max-width: 36px;
+          max-height: 36px;
         }
       }
     }
