@@ -15,11 +15,10 @@ function createPost(){
 
 function changeText(label) {
     let paragraph = label.querySelector('p');
-    // if weblineclamp == 4  than change to unset else change to 4
-    if (paragraph.style.webkitLineClamp == 4) {
+    if (paragraph.style.webkitLineClamp == "4") {
         paragraph.style.webkitLineClamp = "unset";
     }else {
-        paragraph.style.webkitLineClamp = 4;
+        paragraph.style.webkitLineClamp = "4";
     }
 }
 
