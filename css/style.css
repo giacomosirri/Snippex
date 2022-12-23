@@ -21,13 +21,81 @@ header {
 }
 header img {
   width: 50px;
+  margin-top: 2px;
 }
 header h2 {
   font-size: small;
 }
-header img {
+header div div img {
+  height: auto;
+  width: auto;
+  max-width: 60px;
+  max-height: 60px;
+}
+
+main {
+  font-size: 110%;
+}
+main div img {
+  height: auto;
+  width: auto;
+  max-width: 140px;
+  max-height: 140px;
+}
+main section div img {
+  margin-left: 5px;
+  height: auto;
+  width: auto;
+  max-width: 32px;
+  max-height: 32px;
+}
+main article {
+  margin-bottom: 40px;
+  background-color: #acd1f6;
+  padding: 6px 56px 6px 12px;
+  border-radius: 12px;
+  min-height: 180px;
+}
+main article h3 {
+  font-size: 24px;
+}
+main article div div > p {
+  font-size: 11px;
+  background-color: #acd1f6;
+  padding-left: 5px;
+}
+main article div div label {
+  font-size: 13px;
+  background-color: transparent;
   width: 100%;
-  margin-top: 2px;
+}
+main article div div label p {
+  min-height: 80px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+main article div div img {
+  height: auto;
+  width: auto;
+  max-width: 30px;
+  max-height: 30px;
+  margin-left: 10px;
+  margin-bottom: 3px;
+}
+main article div div img.rate-post {
+  background-color: #91bae3;
+}
+main article div div img:hover {
+  cursor: pointer;
+}
+main article div div.post-content {
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 16px;
+  background-color: #91bae3;
+  min-height: 128px;
 }
 
 button {
@@ -42,50 +110,12 @@ button {
   margin-top: 5px;
 }
 
-button.accept-friendship, button.read-comment {
-  font-size: 12px;
-}
-
 button:hover {
   background-color: #3481d0;
 }
 
 button:active {
   background-color: #226fbd;
-}
-
-main {
-  font-size: 120%;
-}
-
-section p.notification-type {
-  font-size: 130%;
-}
-section p.notification-date {
-  font-size: 80%;
-  color: #6e6e6e;
-}
-
-img#profile-pic {
-  height: auto;
-  width: auto;
-  max-width: 140px;
-  max-height: 140px;
-}
-
-img#menu {
-  height: auto;
-  width: auto;
-  max-width: 60px;
-  max-height: 60px;
-}
-
-img.delete-notification {
-  margin-left: 5px;
-  height: auto;
-  width: auto;
-  max-width: 50px;
-  max-height: 50px;
 }
 
 table {
@@ -105,66 +135,8 @@ nav ul li a img {
   width: 50px;
 }
 
-article {
-  margin-bottom: 40px;
-}
-
-article.post {
-  background-color: #acd1f6;
-  padding: 6px 56px 6px 12px;
-  border-radius: 12px;
-  min-height: 180px;
-}
-article.post .rate-post:hover {
-  cursor: pointer;
-}
-
-article > h3.post-title {
-  font-size: 24px;
-}
-
-div.post-content {
-  padding-left: 8px;
-  padding-right: 8px;
-  font-size: 16px;
-  background-color: #91bae3;
-  min-height: 128px;
-}
-div.post-content label {
-  font-size: 13px;
-  background-color: transparent;
-  width: 100%;
-}
-
-p.post-date {
-  font-size: 11px;
-  background-color: #acd1f6;
-  padding-left: 5px;
-}
-
-p.post-text {
-  min-height: 80px;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
 .expanded {
   -webkit-line-clamp: unset !important;
-}
-
-article > div > div > img {
-  height: auto;
-  width: auto;
-  max-width: 30px;
-  max-height: 30px;
-  margin-left: 10px;
-  margin-bottom: 3px;
-}
-
-img.rate-post {
-  background-color: #91bae3;
 }
 
 footer {
