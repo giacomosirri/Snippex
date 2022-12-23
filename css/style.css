@@ -159,10 +159,6 @@ nav ul li a img {
   width: 50px;
 }
 
-.expanded {
-  -webkit-line-clamp: unset !important;
-}
-
 footer {
   margin-top: 40px;
 }

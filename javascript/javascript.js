@@ -1,3 +1,6 @@
+window.onload = function() {
+    document.querySelectorAll("article label").forEach(label => changeText(label));
+}
 function createPost(){
         let title = document.querySelector("#recipient-title").value;
         let content = document.querySelector("#message-text").value;
@@ -12,10 +15,11 @@ function createPost(){
 
 function changeText(label) {
     let paragraph = label.querySelector('p');
-    if(paragraph.classList.contains('expanded')) {
-        paragraph.classList.remove('expanded');
-    } else {
-        paragraph.classList.add('expanded');
+    // if weblineclamp == 4  than change to unset else change to 4
+    if (paragraph.style.webkitLineClamp == 4) {
+        paragraph.style.webkitLineClamp = "unset";
+    }else {
+        paragraph.style.webkitLineClamp = 4;
     }
 }
 
