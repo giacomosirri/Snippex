@@ -38,6 +38,9 @@ body header img {
   width: 50px;
   margin-top: 2px;
 }
+body header img:hover {
+  cursor: pointer;
+}
 body header h2 {
   font-size: small;
 }

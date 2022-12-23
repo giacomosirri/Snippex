@@ -35,6 +35,9 @@ body {
     img {
       width: 50px;
       margin-top: 2px;
+      &:hover {
+        cursor: pointer;
+      }
     }
     h2 {
       font-size: small;
