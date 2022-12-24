@@ -198,6 +198,12 @@ body {
         }
       }
     }
+    footer {
+      @media screen and (max-width: 768px) {
+        margin-top: 9px;
+      }
+      margin-top: 15px;
+    }
   }
   button {
     padding: 10px;

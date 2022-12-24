@@ -178,6 +178,14 @@ body main article div div.post-content {
   background-color: #91bae3;
   min-height: 128px;
 }
+body main footer {
+  margin-top: 15px;
+}
+@media screen and (max-width: 768px) {
+  body main footer {
+    margin-top: 9px;
+  }
+}
 body button {
   padding: 10px;
   background-color: #226fbd;
