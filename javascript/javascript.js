@@ -44,3 +44,12 @@ function showPlus(index) {
         }
     }
 }
+
+function setMenuVisibility() {
+    const menu = document.getElementById("options-menu");
+    if (menu.style.display === "none") {
+        menu.style.display = "inline";
+    } else {
+        menu.style.display = "none";
+    }
+}

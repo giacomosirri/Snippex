@@ -19,25 +19,39 @@
 <body>
     <header class="container" style="position: relative !important;">
         <div class="row">
-            <div class="col-1 d-flex justify-content-center flex-column" style="margin-top: -10px">
-                <img id="menu" class="responsive-img" src="../icons/burger_icon.png" alt="menu"/>
-            </div>
-            <div class="col-10 d-flex justify-content-center">
-                <div class="d-flex justify-content-start flex-column">
-                    <h1 style="color: black">Giacomo Sirri</h1>
-                    <h2 style="color: black; font-size: 20px">~jaaaack</h2>
-                    <h3></h3>
+            <div class="col-4 col-md-2 d-flex justify-content-center flex-column" style="margin-top: -10px;">
+                <div class="row">
+                    <div class="col-4 d-flex justify-content-center flex-column">
+                        <img id="menu" class="responsive-img" src="../icons/burger_icon.png" alt="menu"
+                             style="width: auto; height: auto; max-width: 28px; max-height: 28px"
+                             onclick="setMenuVisibility()"/>
+                    </div>
+                    <nav class="col-8" id="options-menu" style="display: none; margin-top: 20px">
+                        <ul>
+                            <li>Invite friends</li>
+                            <li>See insights</li>
+                            <li>Favorite posts</li>
+                            <li>Preferences</li>
+                            <li>Logout</li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
-            <div class="col-1 d-flex justify-content-center flex-column">
+            <div class="col-4 col-md-8 d-flex justify-content-center">
+                <div class="d-flex justify-content-start flex-column">
+                    <h1 style="color: black">Giacomo Sirri</h1>
+                    <h2 style="color: black; font-size: 18px; margin-top: -14px">~jaaaack</h2>
+                    <div style="margin-bottom: 5px">
+                        <img id="profile-pic" src="../img/propic.jpg" alt="profile pic"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 col-md-2 d-flex justify-content-center flex-column">
                 <p style="color: black">Edit profile</p>
             </div>
         </div>
     </header>
     <main class="container">
-        <div class="d-flex justify-content-center" style="margin-top: -20px; margin-bottom: 5px">
-            <img id="profile-pic" src="../img/propic.jpg" alt="profile pic"/>
-        </div>
         <div class="d-flex justify-content-center">
             <p id="user-since">Active user since 21 Dec 2022</p>
         </div>
