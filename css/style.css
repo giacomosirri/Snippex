@@ -72,6 +72,15 @@ body main div img {
   max-width: 140px;
   max-height: 140px;
 }
+body main div div div img {
+  height: auto;
+  width: auto;
+  max-width: 20px;
+  max-height: 20px;
+}
+body main div div div img:hover {
+  cursor: pointer;
+}
 body main div div div div img {
   height: auto;
   width: auto;
@@ -83,6 +92,15 @@ body main div div div div img:hover {
 }
 body main section {
   margin-bottom: 8px;
+}
+body main section div div div img {
+  height: auto;
+  width: auto;
+  max-width: 20px;
+  max-height: 20px;
+}
+body main section div div div img:hover {
+  cursor: pointer;
 }
 body main section div img {
   margin-left: 5px;

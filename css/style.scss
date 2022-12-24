@@ -77,6 +77,15 @@ body {
       }
       div {
         div {
+          img {
+            height: auto;
+            width: auto;
+            max-width: 20px;
+            max-height: 20px;
+          }
+          img:hover {
+            cursor: pointer;
+          }
           div {
             img {
               height: auto;
@@ -94,6 +103,19 @@ body {
     section {
       margin-bottom: 8px;
       div {
+        div {
+          div {
+            img {
+              height: auto;
+              width: auto;
+              max-width: 20px;
+              max-height: 20px;
+            }
+            img:hover {
+              cursor: pointer;
+            }
+          }
+        }
         img {
           margin-left: 5px;
           height: auto;
