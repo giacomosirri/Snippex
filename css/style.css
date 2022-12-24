@@ -93,6 +93,9 @@ body main div div div div img:hover {
 body main section {
   margin-bottom: 8px;
 }
+body main section div {
+  margin-bottom: 10px;
+}
 body main section div div div img {
   height: auto;
   width: auto;
