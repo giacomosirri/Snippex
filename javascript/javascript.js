@@ -12,7 +12,6 @@ function createPost(){
         close.click();
 }
 
-
 function changeText(label) {
     let paragraph = label.querySelector('p');
     if (paragraph.style.webkitLineClamp === "4") {
