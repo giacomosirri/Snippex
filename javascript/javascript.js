@@ -15,9 +15,9 @@ function createPost(){
 
 function changeText(label) {
     let paragraph = label.querySelector('p');
-    if (paragraph.style.webkitLineClamp == "4") {
+    if (paragraph.style.webkitLineClamp === "4") {
         paragraph.style.webkitLineClamp = "unset";
-    }else {
+    } else {
         paragraph.style.webkitLineClamp = "4";
     }
 }
