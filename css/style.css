@@ -83,6 +83,12 @@ body header div a img {
   max-width: 32px;
   max-height: 32px;
 }
+body header div div a img {
+  height: auto;
+  width: auto;
+  max-width: 32px;
+  max-height: 32px;
+}
 body header div div img {
   height: auto;
   width: auto;

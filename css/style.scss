@@ -79,6 +79,14 @@ body {
         }
       }
       div {
+        a {
+          img {
+            height: auto;
+            width: auto;
+            max-width: 32px;
+            max-height: 32px;
+          }
+        }
         img {
           height: auto;
           width: auto;
