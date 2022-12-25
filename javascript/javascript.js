@@ -1,6 +1,12 @@
 window.onload = function() {
     document.querySelectorAll("article label").forEach(label => changeText(label));
 }
+
+function activeMenu() {
+    const menu = document.querySelectorAll("header nav ul li");
+    menu.forEach(item => item.classList.remove("active"));
+    this.classList.add("active");
+}
 function createPost(){
         let title = document.querySelector("#recipient-title").value;
         let content = document.querySelector("#message-text").value;
