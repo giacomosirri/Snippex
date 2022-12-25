@@ -122,6 +122,23 @@ body main div div div div img {
 body main div div div div img:hover {
   cursor: pointer;
 }
+body main div button {
+  padding: 10px;
+  background-color: #226fbd;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  text-decoration: none;
+  margin-top: 5px;
+}
+body main div button:active {
+  background-color: #226fbd;
+}
+body main div button:hover {
+  background-color: #3481d0;
+}
 body main section {
   margin-bottom: 8px;
 }
@@ -221,23 +238,6 @@ body main footer {
   body main footer {
     margin-top: 9px;
   }
-}
-body button {
-  padding: 10px;
-  background-color: #226fbd;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  text-align: center;
-  font-size: 16px;
-  text-decoration: none;
-  margin-top: 5px;
-}
-body button:active {
-  background-color: #226fbd;
-}
-body button:hover {
-  background-color: #3481d0;
 }
 body table {
   caption-side: top;
