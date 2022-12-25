@@ -18,7 +18,7 @@
 <body>
     <header class="container" style="position: relative !important;">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" >
-            <a class="navbar-brand" href="#"><img src="../icons/logo.png" style="width: 40px"></a>
+            <a class="navbar-brand" href="./profile.html"><img src="../icons/logo.png" style="width: 40px"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -176,48 +176,48 @@
                 </div>
             </div>
         </section>
-        <footer>
-            <div class="d-flex justify-content-start flex-column">
-                <nav>
-                    <ul class="row text-center">
-                        <li class="col-md-1"></li>
-                        <li class="col-2 col-md-2"><a href="./explore.html"><img src="../icons/home_icon.png" alt="home"></a></li>
-                        <li class="col-3 col-md-2"><a href="./feed.html"><img src="../icons/search_icon.png" alt="explore"></a></li>
-                        <li class="col-2 col-md-2"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
-                        <li class="col-3 col-md-2"><a href="./notifications.html"><img src="../icons/notification_icon.png" alt="notifications"></a></li>
-                        <li class="col-2 col-md-2"><a href="#"><img src="../icons/users_icon.png" alt="search users"></a></li>
-                        <li class="col-md-1"></li>
-                    </ul>
-                </nav>
-                <div></div>
-            </div>
-        </footer>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New post</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="recipient-title" class="col-form-label">Title:</label>
-                                <input type="text" class="form-control" id="recipient-title">
-                            </div>
-                            <div class="mb-3">
-                                <label for="message-text" class="col-form-label">Content:</label>
-                                <textarea class="form-control" rows="4" id="message-text"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" id="post" class="btn btn-primary" onclick="createPost()">Post</button>
-                    </div>
+    </main>
+    <footer>
+        <div class="">
+            <nav>
+                <ul class="row text-center ">
+                    <li class="col-md-1"></li>
+                    <li class="col-2 col-md-2"><a href="./explore.html"><img src="../icons/home_icon.png" alt="home"></a></li>
+                    <li class="col-3 col-md-2"><a href="./feed.html"><img src="../icons/search_icon.png" alt="explore"></a></li>
+                    <li class="col-2 col-md-2"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
+                    <li class="col-3 col-md-2"><a href="./notifications.html"><img src="../icons/notification_icon.png" alt="notifications"></a></li>
+                    <li class="col-2 col-md-2"><a href="#"><img src="../icons/users_icon.png" alt="search users"></a></li>
+                    <li class="col-md-1"></li>
+                </ul>
+            </nav>
+            <div></div>
+        </div>
+    </footer>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="recipient-title" class="col-form-label">Title:</label>
+                            <input type="text" class="form-control" id="recipient-title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Content:</label>
+                            <textarea class="form-control" rows="4" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="post" class="btn btn-primary" onclick="createPost()">Post</button>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 </body>
 </html>
