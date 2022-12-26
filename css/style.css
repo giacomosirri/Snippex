@@ -67,16 +67,6 @@ body header img#profile-pic:hover {
 body header h2 {
   font-size: small;
 }
-body header nav {
-  text-align: left;
-  color: black;
-  font-size: 18px;
-}
-@media screen and (max-width: 768px) {
-  body header nav {
-    font-size: 12px;
-  }
-}
 body header div a img {
   height: auto;
   width: auto;

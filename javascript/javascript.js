@@ -3,7 +3,7 @@ window.onload = function() {
 }
 
 function activeMenu(link) {
-    const menu = document.querySelectorAll("header nav ul li");
+    const menu = document.querySelectorAll("header nav ul li a");
     menu.forEach(item => item.classList.remove("active"));
     link.classList.add("active");
 }

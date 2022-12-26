@@ -2,6 +2,7 @@ $templateColor: #226fbd;
 $primaryPost: #acd1f6;
 $secondaryPost: #91bae3;
 
+
 * {
   padding: 0;
   margin: 0;
@@ -60,14 +61,6 @@ body {
     }
     h2 {
       font-size: small;
-    }
-    nav {
-      text-align: left;
-      color: black;
-      font-size: 18px;
-      @media screen and (max-width: 768px) {
-        font-size: 12px;
-      }
     }
     div {
       a {
