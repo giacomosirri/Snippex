@@ -179,44 +179,44 @@
 
     </main>
     <footer>
-        <div class="">
             <nav>
-                <ul class="row text-center ">
+                <ul class="row text-center">
                     <li class="col-md-1"></li>
                     <li class="col-2 col-md-2"><a href="./profile.html"><img src="../icons/home_icon.png" alt="home"></a></li>
                     <li class="col-3 col-md-2"><a href="./explore.html"><img src="../icons/search_icon.png" alt="explore"></a></li>
-                    <li class="col-2 col-md-2"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
+                    <li class="col-2 col-md-2"><a href="#" data-toggle="modal" data-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
                     <li class="col-3 col-md-2"><a href="./notifications.html"><img src="../icons/notification_icon.png" alt="notifications"></a></li>
                     <li class="col-2 col-md-2"><a href="#"><img src="../icons/users_icon.png" alt="search users"></a></li>
                     <li class="col-md-1"></li>
                 </ul>
 
             </nav>
-            <div></div>
-        </div>
     </footer>
+
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New post</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="mb-3">
-                            <label for="recipient-title" class="col-form-label">Title:</label>
-                            <input type="text" class="form-control" id="recipient-title">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Title</label>
+                            <input type="text" class="form-control" id="recipient-name">
                         </div>
-                        <div class="mb-3">
+                        <div class="form-group">
                             <label for="message-text" class="col-form-label">Content:</label>
-                            <textarea class="form-control" rows="4" id="message-text"></textarea>
+                            <textarea class="form-control" id="message-text"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="post" class="btn btn-primary" onclick="createPost()">Post</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Create Post</button>
                 </div>
             </div>
         </div>
