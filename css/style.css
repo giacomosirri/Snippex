@@ -22,7 +22,6 @@ body header {
 @media screen and (max-width: 768px) {
   body header {
     width: 100%;
-    position: fixed;
     background: white;
   }
 }
