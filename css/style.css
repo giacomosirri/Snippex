@@ -230,7 +230,9 @@ body nav ul li a {
   text-decoration: none;
 }
 body nav ul li a img {
-  width: 50px;
+  max-width: 46px;
+  max-height: 46px;
+  border-radius: 6px;
 }
 
 button {

@@ -22,34 +22,75 @@
                 <button class="col-12" style="font-size: 90%">Don't show any again</button>
             </div>
         </header>
-        <main>
-            <section class="row align-items-center">
-                <div class="col-1"></div>
-                <p class="col-5 col-xl-5 notification-type"><img src="" alt="">~geeovannipau has just asked for you friendship!</p>
-                <p class="col-2 col-xl-2 align-self-center notification-date" style="font-size: 80%; color:#6e6e6e">21 Dec 2022, 15:50</p>
-                <button class="col-2 col-xl-1 accept-friendship" style="font-size: 12px">Accept friendship</button>
-                <div class="col-1 d-flex justify-content-start">
-                    <img class="delete-notification" src="../icons/bin_icon.png" alt="delete notification"/>
+    </div>
+    <main>
+        <section class="row align-items-center">
+            <div class="col-1"></div>
+            <p class="col-5 col-xl-5 notification-type"><img src="" alt="">~geeovannipau has just asked for you friendship!</p>
+            <p class="col-2 col-xl-2 align-self-center notification-date" style="font-size: 80%; color:#6e6e6e">21 Dec 2022, 15:50</p>
+            <button class="col-2 col-xl-1 accept-friendship" style="font-size: 12px">Accept friendship</button>
+            <div class="col-1 d-flex justify-content-start">
+                <img class="delete-notification" src="../icons/bin_icon.png" alt="delete notification"/>
+            </div>
+        </section>
+        <section class="row align-items-center">
+            <div class="col-1"></div>
+            <p class="col-5 col-xl-5 notification-type"><img src="" alt="">~seelviamirri has just asked for you friendship!</p>
+            <p class="col-2 col-xl-2 align-self-center notification-date" style="font-size: 80%; color:#6e6e6e">21 Dec 2022, 16:40</p>
+            <button class="col-2 col-xl-1 accept-friendship" style="font-size: 12px">Accept friendship</button>
+            <div class="col-1 d-flex justify-content-start">
+                <img class="delete-notification" src="../icons/bin_icon.png" alt="delete notification"/>
+            </div>
+        </section>
+        <section class="row align-items-center">
+            <div class="col-1"></div>
+            <p class="col-5 col-xl-5 notification-type"><img src="" alt="">~tremamunnnnno has just commented under your post!</p>
+            <p class="col-2 col-xl-2 align-self-center notification-date" style="font-size: 80%; color:#6e6e6e">22 Dec 2022, 13:07</p>
+            <button class="col-2 col-xl-1 read-comment" style="font-size: 12px">Read comment</button>
+            <div class="col-1 d-flex justify-content-start">
+                <img class="delete-notification" src="../icons/bin_icon.png" alt="delete notification"/>
+            </div>
+        </section>
+        <footer>
+            <div class="d-flex justify-content-start flex-column">
+                <nav>
+                    <ul class="row text-center">
+                        <li class="col-2"><a href="./feed.html"><img src="../icons/home_icon.png" alt="home"></a></li>
+                        <li class="col-2"><a href="./explore.html"><img src="../icons/search_icon.png" alt="explore"></a></li>
+                        <li class="col-2"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
+                        <li class="col-2"><a href="./notifications.html"><img src="../icons/notification_icon.png" alt="notifications"></a></li>
+                        <li class="col-2"><a href="./searchusers.html"><img src="../icons/users_icon.png" alt="search users"></a></li>
+                        <li class="col-2"><a href="./profile.html"><img src="../img/propic.jpg" alt="my profile"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-title" class="col-form-label">Title:</label>
+                                <input type="text" class="form-control" id="recipient-title">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Content:</label>
+                                <textarea class="form-control" rows="4" id="message-text"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="post" class="btn btn-primary" onclick="createPost()">Post</button>
+                    </div>
                 </div>
-            </section>
-            <section class="row align-items-center">
-                <div class="col-1"></div>
-                <p class="col-5 col-xl-5 notification-type"><img src="" alt="">~seelviamirri has just asked for you friendship!</p>
-                <p class="col-2 col-xl-2 align-self-center notification-date" style="font-size: 80%; color:#6e6e6e">21 Dec 2022, 16:40</p>
-                <button class="col-2 col-xl-1 accept-friendship" style="font-size: 12px">Accept friendship</button>
-                <div class="col-1 d-flex justify-content-start">
-                    <img class="delete-notification" src="../icons/bin_icon.png" alt="delete notification"/>
-                </div>
-            </section>
-            <section class="row align-items-center">
-                <div class="col-1"></div>
-                <p class="col-5 col-xl-5 notification-type"><img src="" alt="">~tremamunnnnno has just commented under your post!</p>
-                <p class="col-2 col-xl-2 align-self-center notification-date" style="font-size: 80%; color:#6e6e6e">22 Dec 2022, 13:07</p>
-                <button class="col-2 col-xl-1 read-comment" style="font-size: 12px">Read comment</button>
-                <div class="col-1 d-flex justify-content-start">
-                    <img class="delete-notification" src="../icons/bin_icon.png" alt="delete notification"/>
-                </div>
-            </section>
+            </div>
+        </div>
         </main>
     </div>
 </body>

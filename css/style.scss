@@ -224,7 +224,6 @@ body {
     }
   }
   footer {
-
     @media screen and (max-width: 768px) {
       margin-top: 9px;
     }
@@ -248,7 +247,9 @@ body {
         a {
           text-decoration: none;
           img {
-            width: 50px;
+            max-width: 46px;
+            max-height: 46px;
+            border-radius: 6px;
           }
         }
       }
