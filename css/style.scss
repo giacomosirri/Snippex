@@ -121,23 +121,6 @@ body {
           }
         }
       }
-      button {
-        padding: 10px;
-        background-color: $templateColor;
-        border: none;
-        border-radius: 4px;
-        color: white;
-        text-align: center;
-        font-size: 16px;
-        text-decoration: none;
-        margin-top: 5px;
-        &:active {
-          background-color: $templateColor;
-        }
-        &:hover {
-          background-color: #3481d0;
-        }
-      }
     }
     section {
       margin-bottom: 8px;
@@ -272,5 +255,21 @@ body {
     }
   }
 }
-
+button {
+  padding: 10px;
+  background-color: $templateColor;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  text-decoration: none;
+  margin-top: 5px;
+  &:active {
+    background-color: $templateColor;
+  }
+  &:hover {
+    background-color: #3481d0;
+  }
+}
 

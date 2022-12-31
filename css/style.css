@@ -111,23 +111,6 @@ body main div div div div img {
 body main div div div div img:hover {
   cursor: pointer;
 }
-body main div button {
-  padding: 10px;
-  background-color: #226fbd;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  text-align: center;
-  font-size: 16px;
-  text-decoration: none;
-  margin-top: 5px;
-}
-body main div button:active {
-  background-color: #226fbd;
-}
-body main div button:hover {
-  background-color: #3481d0;
-}
 body main section {
   margin-bottom: 8px;
 }
@@ -248,6 +231,24 @@ body nav ul li a {
 }
 body nav ul li a img {
   width: 50px;
+}
+
+button {
+  padding: 10px;
+  background-color: #226fbd;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  text-decoration: none;
+  margin-top: 5px;
+}
+button:active {
+  background-color: #226fbd;
+}
+button:hover {
+  background-color: #3481d0;
 }
 
 /*# sourceMappingURL=style.css.map */
