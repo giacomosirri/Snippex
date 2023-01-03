@@ -222,6 +222,25 @@ body {
         }
       }
     }
+    ul{
+      background: #F8F9FA;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      button{
+        float: right;
+        margin: 0px;
+        padding: 5px;
+      }
+      li{
+          padding: 10px;
+          border-bottom: 10px solid white;
+          a{
+              text-decoration: none;
+              color: #000;
+          }
+        }
+    }
   }
   footer {
     @media screen and (max-width: 768px) {
@@ -256,6 +275,7 @@ body {
     }
   }
 }
+
 button {
   padding: 10px;
   background-color: $templateColor;
@@ -273,4 +293,3 @@ button {
     background-color: #3481d0;
   }
 }
-

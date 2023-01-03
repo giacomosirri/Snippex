@@ -203,6 +203,25 @@ body main article div div.post-content {
   background-color: #91bae3;
   min-height: 128px;
 }
+body main ul {
+  background: #F8F9FA;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+body main ul button {
+  float: right;
+  margin: 0px;
+  padding: 5px;
+}
+body main ul li {
+  padding: 10px;
+  border-bottom: 10px solid white;
+}
+body main ul li a {
+  text-decoration: none;
+  color: #000;
+}
 body footer {
   margin-top: 15px;
   position: fixed;
