@@ -218,9 +218,14 @@ body main ul li {
   padding: 10px;
   border-bottom: 10px solid white;
 }
+body main ul li:hover {
+  background: #E9ECEF;
+  cursor: pointer;
+}
 body main ul li a {
   text-decoration: none;
   color: #000;
+  pointer-events: none;
 }
 body footer {
   margin-top: 15px;

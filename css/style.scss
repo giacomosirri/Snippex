@@ -233,11 +233,16 @@ body {
         padding: 5px;
       }
       li{
+          &:hover{
+            background: #E9ECEF;
+            cursor: pointer;
+          }
           padding: 10px;
           border-bottom: 10px solid white;
           a{
               text-decoration: none;
               color: #000;
+              pointer-events: none;
           }
         }
     }
@@ -254,7 +259,6 @@ body {
     padding-top: 0.7%;
     background-color: white;
   }
-
   table {
     caption-side: top;
   }
