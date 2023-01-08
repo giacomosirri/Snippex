@@ -14,7 +14,7 @@ function addBasicInfo(data) {
     `;
 }
 
-axios.get('php/profile-api.php').then(response => {
+axios.get('php/userprofile-api.php').then(response => {
     const profileHeader = addBasicInfo(response.data);
     const header = document.querySelector("main>header");
     header.innerHTML += profileHeader;
