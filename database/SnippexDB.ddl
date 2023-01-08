@@ -84,6 +84,7 @@ create table `USER` (
      Password char(40) not null,
      Name char(80) not null,
      Surname char(80) not null,
+     ProfilePic char(200) not null,
      Birthday date not null,
      SignupDate date not null,
      NumberOfPosts int not null,
