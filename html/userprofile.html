@@ -28,7 +28,7 @@
         <h1 style="color: black">Giacomo Sirri</h1>
         <h2 style="color: black; font-size: 18px; margin-top: -14px">~jaaaack</h2>
         <div style="margin-bottom: 5px">
-          <img id="profile-pic" src="../img/propic.jpg" alt="profile pic"/>
+          <img id="profile-pic" src="../img/jaaack.jpg" alt="profile pic"/>
         </div>
       </div>
       <div class="col-1"></div>
@@ -130,25 +130,25 @@
     <div class="col-12 col-lg-8 d-flex justify-content-between">
       <div class="text-center">
         <a href="#">
-          <img src="../img/propic.jpg" alt="profile pic">
+          <img src="../img/jaaack.jpg" alt="profile pic">
           <p>Giacomo Sirri 2</p>
         </a>
       </div>
       <div class="text-center">
         <a href="#">
-          <img src="../img/propic.jpg" alt="profile pic">
+          <img src="../img/jaaack.jpg" alt="profile pic">
           <p>Giacomo Sirri 3</p>
         </a>
       </div>
       <div class="text-center">
         <a href="#">
-          <img src="../img/propic.jpg" alt="profile pic">
+          <img src="../img/jaaack.jpg" alt="profile pic">
           <p>Giacomo Sirri 4</p>
         </a>
       </div>
       <div class="text-center">
         <a href="#">
-          <img src="../img/propic.jpg" alt="profile pic">
+          <img src="../img/jaaack.jpg" alt="profile pic">
           <p>Giacomo Sirri 5</p>
         </a>
       </div>
@@ -163,7 +163,7 @@
           <li class="col-2"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
           <li class="col-2"><a href="./notifications.html"><img src="../icons/notification_icon.png" alt="notifications"></a></li>
           <li class="col-2"><a href="./searchusers.html"><img src="../icons/users_icon.png" alt="search users"></a></li>
-          <li class="col-2"><a href="./profile.html"><img src="../img/propic.jpg" alt="my profile"></a></li>
+          <li class="col-2"><a href="./profile.html"><img src="../img/jaaack.jpg" alt="my profile"></a></li>
         </ul>
       </nav>
       <div></div>
@@ -197,4 +197,13 @@
   </div>
 </main>
 </body>
+<?php
+if(isset($templateParams["js"])):
+    foreach($templateParams["js"] as $script):
+        ?>
+        <script src="<?php echo $script; ?>"></script>
+    <?php
+    endforeach;
+endif;
+?>
 </html>
