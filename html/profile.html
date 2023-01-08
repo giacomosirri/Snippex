@@ -1,228 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Profile</title>
-    <link rel="icon" type="image/x-icon" href="../icons/logo.png">
-    <!--Bootstrap
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!--CSS-->
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <script type="text/javascript" src="../javascript/javascript.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-</head>
-<body>
-    <header class="container" style="position: relative !important;">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="./profile.html"><img src="../icons/logo.png" style="width: 40px"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item" >
-                            <a class="nav-link" href="#"  onclick="activeMenu(this)">invite friends</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"  onclick="activeMenu(this)">insights</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"  onclick="activeMenu(this)">favorite posts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"  onclick="activeMenu(this)">preferences</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"  onclick="activeMenu(this)">edit profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"  onclick="activeMenu(this)">logout</a>
-                        </li>
-                    </ul>
+    <head>
+        <meta charset="UTF-8">
+        <title>My Profile</title>
+        <link rel="icon" type="image/x-icon" href="../icons/logo.png">
+        <!--Bootstrap
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <!--CSS-->
+        <link rel="stylesheet" href="../css/normalize.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <script type="text/javascript" src="../javascript/javascript.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    </head>
+    <body>
+        <header class="container" style="position: relative !important;">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="./profile.html"><img src="../icons/logo.png" style="width: 40px"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item" >
+                                <a class="nav-link" href="#"  onclick="activeMenu(this)">invite friends</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"  onclick="activeMenu(this)">insights</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"  onclick="activeMenu(this)">favorite posts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"  onclick="activeMenu(this)">preferences</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"  onclick="activeMenu(this)">edit profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"  onclick="activeMenu(this)">logout</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-                <div class="d-flex justify-content-start flex-column">
-                    <h1 style="color: black">Giacomo Sirri</h1>
-                    <h2 style="color: black; font-size: 18px; margin-top: -14px">~jaaaack</h2>
-                    <div style="margin-bottom: 5px">
-                        <img id="profile-pic" src="../img/jaaack.jpg" alt="profile pic"/>
+            </nav>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="d-flex justify-content-start flex-column">
+                        <h1 style="color: black">Giacomo Sirri</h1>
+                        <h2 style="color: black; font-size: 18px; margin-top: -14px">~jaaaack</h2>
+                        <div style="margin-bottom: 5px">
+                            <img id="profile-pic" src="../img/jaaack.jpg" alt="profile pic"/>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
-    <main class="container">
-        <div class="d-flex justify-content-center">
-            <p id="user-since">Active user since 21 Dec 2022</p>
-        </div>
-        <div class="d-flex justify-content-center" style="margin-top: -15px; margin-bottom: 8px">
-            <p id="friends">8 friends</p>
-        </div>
-        <table id="rating-statistics" class="table table-primary table-bordered table-striped table-hover">
-            <caption>Statistics - 10 posts</caption>
-            <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Points</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Thoughtfulness</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td>Advice</td>
-                    <td>15</td>
-                </tr>
-                <tr>
-                    <td>Ideas</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>Humour</td>
-                    <td>60</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="col-12 col-md-8 d-flex justify-content-between">
-            <h2>
-                Most voted post ever
-            </h2>
-            <div>
-                <a href="posthistory.html" class="d-flex justify-content-start" style="padding-top: 1%;
-                    text-decoration: none; color: black">
-                    <p style="font-size: 12px;">Browse history</p>
-                    <div>
-                        <img src="../icons/goarrow_icon.png" alt="browse history">
-                    </div>
-                </a>
+        </header>
+        <main class="container">
+            <div class="d-flex justify-content-center">
+                <p id="user-since">Active user since 21 Dec 2022</p>
             </div>
-        </div>
-        <article class="post col-12 col-md-8">
-            <h3 class="post-title col-10">Post #1</h3>
-            <div class="d-flex justify-content-between">
-                <div class="post-content col-12">
-                    <label role="button" onclick="changeText(this)">
-                        <p class="post-text">
-                            Hi! This is the first post ever on this new social network.
-                            <br /> 1° row
-                            <br /> 2° row
-                            <br /> 3° row
-                            <br /> 4° row
-                            <br /> 5° row
-                            <br /> 6° row
-                        </p>
-                    </label>
-                    <p class="post-date col-12">23 Nov 2022, 12:46</p>
-                </div>
-                <div class="post-interactions d-flex justify-content-between flex-column">
-                    <img class="rate-post" style="padding: 5px; border-radius: 20px;"
-                         src="../icons/plus_icon.png" alt="post menu" onclick="showRatingCategories(0)"/>
-                    <img class="thoughtfulness" style="display: none" src="../icons/thoughts_icon.png"
-                         alt="rate as thoughtfulness" onclick="showPlus(0)">
-                    <img class="idea" style="display: none" src="../icons/idea_icon.png"
-                         alt="rate as idea" onclick="showPlus(0)">
-                    <img class="advice" style="display: none" src="../icons/advice_icon.png"
-                         alt="rate as advice" onclick="showPlus(0)">
-                    <img class="laugh" style="display: none" src="../icons/laugh_icon.png"
-                         alt="rate as humour" onclick="showPlus(0)">
-                    <img class="comment-post" style="margin-bottom: 6px" src="../icons/comment_icon.png" alt="comment">
-                </div>
+            <div class="d-flex justify-content-center" style="margin-top: -15px; margin-bottom: 8px">
+                <p id="friends">8 friends</p>
             </div>
-        </article>
-        <section>
-            <div class="col-12 col-lg-8 d-flex justify-content-between">
-                <h2>Friends</h2>
+            <table id="rating-statistics" class="table table-primary table-bordered table-striped table-hover">
+                <caption>Statistics - 10 posts</caption>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Thoughtfulness</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Advice</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>Ideas</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Humour</td>
+                        <td>60</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="col-12 col-md-8 d-flex justify-content-between">
+                <h2>
+                    Most voted post ever
+                </h2>
                 <div>
-                    <a href="friends.html" class="d-flex justify-content-start" style="padding-top: 1%">
-                        <p style="font-size: 12px;">See all friends</p>
+                    <a href="posthistory.html" class="d-flex justify-content-start" style="padding-top: 1%;
+                        text-decoration: none; color: black">
+                        <p style="font-size: 12px;">Browse history</p>
                         <div>
                             <img src="../icons/goarrow_icon.png" alt="browse history">
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-12 col-lg-8 d-flex justify-content-between">
-                <div class="text-center">
-                    <a href="./userprofile.html">
-                        <img src="../img/jaaack.jpg" alt="profile pic">
-                        <p>Giacomo Sirri 2</p>
-                    </a>
+            <article class="post col-12 col-md-8">
+                <h3 class="post-title col-10">Post #1</h3>
+                <div class="d-flex justify-content-between">
+                    <div class="post-content col-12">
+                        <label role="button" onclick="changeText(this)">
+                            <p class="post-text">
+                                Hi! This is the first post ever on this new social network.
+                                <br /> 1° row
+                                <br /> 2° row
+                                <br /> 3° row
+                                <br /> 4° row
+                                <br /> 5° row
+                                <br /> 6° row
+                            </p>
+                        </label>
+                        <p class="post-date col-12">23 Nov 2022, 12:46</p>
+                    </div>
+                    <div class="post-interactions d-flex justify-content-between flex-column">
+                        <img class="rate-post" style="padding: 5px; border-radius: 20px;"
+                             src="../icons/plus_icon.png" alt="post menu" onclick="showRatingCategories(0)"/>
+                        <img class="thoughtfulness" style="display: none" src="../icons/thoughts_icon.png"
+                             alt="rate as thoughtfulness" onclick="showPlus(0)">
+                        <img class="idea" style="display: none" src="../icons/idea_icon.png"
+                             alt="rate as idea" onclick="showPlus(0)">
+                        <img class="advice" style="display: none" src="../icons/advice_icon.png"
+                             alt="rate as advice" onclick="showPlus(0)">
+                        <img class="laugh" style="display: none" src="../icons/laugh_icon.png"
+                             alt="rate as humour" onclick="showPlus(0)">
+                        <img class="comment-post" style="margin-bottom: 6px" src="../icons/comment_icon.png" alt="comment">
+                    </div>
                 </div>
-                <div class="text-center">
-                    <a href="#">
-                        <img src="../img/jaaack.jpg" alt="profile pic">
-                        <p>Giacomo Sirri 3</p>
-                    </a>
+            </article>
+            <section>
+                <div class="col-12 col-lg-8 d-flex justify-content-between">
+                    <h2>Friends</h2>
+                    <div>
+                        <a href="friends.html" class="d-flex justify-content-start" style="padding-top: 1%">
+                            <p style="font-size: 12px;">See all friends</p>
+                            <div>
+                                <img src="../icons/goarrow_icon.png" alt="browse history">
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <a href="#">
-                        <img src="../img/jaaack.jpg" alt="profile pic">
-                        <p>Giacomo Sirri 4</p>
-                    </a>
+                <div class="col-12 col-lg-8 d-flex justify-content-between">
+                    <div class="text-center">
+                        <a href="./userprofile.html">
+                            <img src="../img/jaaack.jpg" alt="profile pic">
+                            <p>Giacomo Sirri 2</p>
+                        </a>
+                    </div>
+                    <div class="text-center">
+                        <a href="#">
+                            <img src="../img/jaaack.jpg" alt="profile pic">
+                            <p>Giacomo Sirri 3</p>
+                        </a>
+                    </div>
+                    <div class="text-center">
+                        <a href="#">
+                            <img src="../img/jaaack.jpg" alt="profile pic">
+                            <p>Giacomo Sirri 4</p>
+                        </a>
+                    </div>
+                    <div class="text-center">
+                        <a href="#">
+                            <img src="../img/jaaack.jpg" alt="profile pic">
+                            <p>Giacomo Sirri 5</p>
+                        </a>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <a href="#">
-                        <img src="../img/jaaack.jpg" alt="profile pic">
-                        <p>Giacomo Sirri 5</p>
-                    </a>
-                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="d-flex justify-content-start flex-column">
+                <nav>
+                    <ul class="row text-center">
+                        <li class="col-2"><a href="./feed.html"><img src="../icons/home_icon.png" alt="home"></a></li>
+                        <li class="col-2"><a href="./explore.html"><img src="../icons/search_icon.png" alt="explore"></a></li>
+                        <li class="col-2"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
+                        <li class="col-2"><a href="./notifications.html"><img src="../icons/notification_icon.png" alt="notifications"></a></li>
+                        <li class="col-2"><a href="./searchusers.html"><img src="../icons/users_icon.png" alt="search users"></a></li>
+                        <li class="col-2"><a href="./profile.html"><img src="../img/jaaack.jpg" alt="my profile"></a></li>
+                    </ul>
+                </nav>
+                <div></div>
             </div>
-        </section>
-
-    </main>
-    <footer>
-        <nav>
-            <ul class="row text-center">
-                <li class="col-2"><a href="./feed.html"><img src="../icons/home_icon.png" alt="home"></a></li>
-                <li class="col-2"><a href="./explore.html"><img src="../icons/search_icon.png" alt="explore"></a></li>
-                <li class="col-2"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
-                <li class="col-2"><a href="./notifications.html"><img src="../icons/notification_icon.png" alt="notifications"></a></li>
-                <li class="col-2"><a href="./searchusers.html"><img src="../icons/users_icon.png" alt="search users"></a></li>
-                <li class="col-2"><a href="./profile.html"><img src="../img/jaaack.jpg" alt="my profile"></a></li>
-            </ul>
-        </nav>
-    </footer>
-
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Title:</label>
-                            <input type="text" class="form-control" id="recipient-name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Content:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Create Post</button>
+        </footer>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Title:</label>
+                                <input type="text" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Content:</label>
+                                <textarea class="form-control" id="message-text"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Create Post</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-</body>
+    </body>
 </html>
