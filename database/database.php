@@ -12,7 +12,7 @@ class DatabaseHelper {
 
     public function getUserData($username) {
         $stmt = $this->db->prepare("SELECT * FROM user WHERE username = ?");
-        $stmt->bind_param('i',$username);
+        $stmt->bind_param('s',$username);
         $stmt->execute();
         $result = $stmt->get_result();
 
