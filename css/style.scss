@@ -14,6 +14,10 @@ html, body {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
   background: white;
   header {
     @media screen and (max-width: 768px) {
@@ -127,6 +131,9 @@ body {
       div {
         margin-bottom: 10px;
         div {
+          p {
+            margin-left: 4px;
+          }
           div {
             img {
               height: auto;
@@ -161,11 +168,6 @@ body {
               max-width: 100px;
               max-height: 100px;
             }
-          }
-        }
-        div {
-          p {
-            margin-left: 4px;
           }
         }
       }
@@ -229,7 +231,7 @@ body {
       list-style: none;
       button{
         float: right;
-        margin: 0px;
+        margin: 0;
         padding: 5px;
       }
       li{
@@ -252,8 +254,6 @@ body {
       margin-top: 9px;
     }
     margin-top: 15px;
-    position: fixed;
-    bottom: 0;
     width: 100%;
     height: 70px;
     padding-top: 0.7%;
