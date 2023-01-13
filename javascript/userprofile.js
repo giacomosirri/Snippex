@@ -8,11 +8,12 @@ function addBasicInfo(data) {
                     <img id="profile-pic" src="../profile_pics/${data[0]["ProfilePic"]}" alt="profile pic"/>
                 </div>
             </div>
+            <div class="col-1"></div>
         </div>
     `;
 }
 axios.get('../php/userprofile-api.php').then(response => {
     const profileHeader = addBasicInfo(response.data);
-    const header = document.getElementById("header");
+    const header = document.getElementById("userdata");
     header.innerHTML += profileHeader;
 });
