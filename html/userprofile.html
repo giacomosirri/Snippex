@@ -2,7 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Giacomo Sirri's profile</title>
+        <?php if(isset($templateParams["title"])) { ?>
+            <title><?php global $templateParams; echo $templateParams["title"] ?></title>
+        <?php } else { ?>
+            <title>Generic profile</title>
+        <?php } ?>
         <link rel="icon" type="image/x-icon" href="../icons/logo.png">
         <!--Bootstrap-->
         <!-- Latest compiled and minified CSS -->
