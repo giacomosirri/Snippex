@@ -51,6 +51,14 @@ function showPlus(index) {
     }
 }
 
+function showComment(index) {
+    window.open("comments.html", "_self");
+}
+
+function goBack() {
+    window.history.back();
+}
+
 function setMenuVisibility() {
     const menu = document.getElementById("options-menu");
     if (menu.style.display === "none") {
