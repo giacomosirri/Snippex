@@ -42,7 +42,7 @@ function showRatingCategories(index) {
 function showPlus(index) {
     const div = document.getElementsByClassName("post-interactions")[index];
     const icons = div.children;
-    for (let i=0; i<icons.length; i++) {
+    for (let i=0; i<icons.length-1; i++) {
         if(icons[i].className==="rate-post" || icons[i].className==="comment-post") {
             icons[i].style.display = "inline";
         } else {
