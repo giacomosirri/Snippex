@@ -98,7 +98,6 @@ function addRatingStats(stats, categories, numOfPosts) {
 }
 
 axios.get('../php/userprofile-api.php').then(response => {
-    console.log(response.data);
     const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];
     const userData = addBasicInfo(response.data["user-data"]);
     const ratingStats = addRatingStats(response.data["rating-stats"], response.data["categories"], numberOfPosts);
