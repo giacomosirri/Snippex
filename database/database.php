@@ -11,7 +11,7 @@ class DatabaseHelper {
     }
 
     public function getUserData($username) {
-        $stmt = $this->db->prepare("SELECT * FROM user WHERE username = ?");
+        $stmt = $this->db->prepare("SELECT * FROM user WHERE Username = ?");
         $stmt->bind_param('s',$username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -42,8 +42,18 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPointsFromUser($username){
-        $stmt = $this->db->prepare("SELECT * FROM points WHERE User = ?");
+    public function getMostVotedPostOfUser($username) {
+        $stmt = $this->db->prepare("SELECT p.PostID, p.Title, p.Content, p.DateAndTime, p.NumberOfComments, p.Writer, 
+                                    COUNT(*) AS c FROM post AS p, rating AS r WHERE p.PostID = r.Post AND p.Writer = ? 
+                                    GROUP BY r.Post ORDER BY c DESC limit 1");
+        $stmt->bind_param('s',$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getUserRatingStats($username) {
+        $stmt = $this->db->prepare("SELECT * FROM points WHERE `User` = ?");
         $stmt->bind_param('s',$username);
         $stmt->execute();
         $result = $stmt->get_result();

@@ -21,7 +21,7 @@
     </head>
     <body>
         <header class="container" style="position: relative !important;">
-            <div id="userdata" class="d-flex justify-content-center">
+            <div id="user-data" class="d-flex justify-content-center">
                 <div class="col-1">
                     <a href="./profile.html">
                         <img id="go-back" src="../icons/back_arrow.png" alt="go back" style="margin-top: 20px"/>
@@ -37,31 +37,6 @@
                 <p id="friends">8 friends</p>
             </div>
             <table id="rating-statistics" class="table table-primary table-bordered table-striped table-hover">
-                <caption>Statistics - 10 posts</caption>
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Points</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Thoughtfulness</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>Advice</td>
-                        <td>15</td>
-                    </tr>
-                    <tr>
-                        <td>Ideas</td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
-                        <td>Humour</td>
-                        <td>60</td>
-                    </tr>
-                </tbody>
             </table>
             <div class="col-12 col-md-8 d-flex justify-content-between">
                 <h2>
@@ -77,37 +52,7 @@
                     </a>
                 </div>
             </div>
-            <article class="post col-12 col-md-8">
-                <h3 class="post-title col-10">Post #1</h3>
-                <div class="d-flex justify-content-between">
-                <div class="post-content col-12">
-                    <label type="button" onclick="changeText(this)">
-                        <p class="post-text">
-                            Hi! This is the first post ever on this new social network.
-                            <br /> 1° row
-                            <br /> 2° row
-                            <br /> 3° row
-                            <br /> 4° row
-                            <br /> 5° row
-                            <br /> 6° row
-                        </p>
-                    </label>
-                    <p class="post-date col-12">23 Nov 2022, 12:46</p>
-                </div>
-                <div class="post-interactions d-flex justify-content-between flex-column">
-                    <img class="rate-post" style="padding: 5px; border-radius: 20px;"
-                        src="../icons/plus_icon.png" alt="post menu" onclick="showRatingCategories(0)"/>
-                    <img class="thoughtfulness" style="display: none" src="../icons/thoughts_icon.png"
-                        alt="rate as thoughtfulness" onclick="showPlus(0)">
-                    <img class="idea" style="display: none" src="../icons/idea_icon.png"
-                        alt="rate as idea" onclick="showPlus(0)">
-                    <img class="advice" style="display: none" src="../icons/advice_icon.png"
-                        alt="rate as advice" onclick="showPlus(0)">
-                    <img class="laugh" style="display: none" src="../icons/laugh_icon.png"
-                        alt="rate as humour" onclick="showPlus(0)">
-                    <img class="comment-post" style="margin-bottom: 6px" src="../icons/comment_icon.png" alt="comment">
-                </div>
-            </div>
+            <article id="most-voted-post" class="post col-12 col-md-8">
             </article>
             <section>
                 <div class="col-12 col-lg-8 d-flex justify-content-between">
@@ -148,32 +93,6 @@
                     </div>
                 </div>
             </section>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">New post</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="recipient-title" class="col-form-label">Title:</label>
-                                    <input type="text" class="form-control" id="recipient-title">
-                                </div>
-                               <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Content:</label>
-                                    <textarea class="form-control" rows="4" id="message-text"></textarea>
-                                </div>
-                            </form>
-                        </div>
-                    <div class="modal-footer">
-                        <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" id="post" class="btn btn-primary" onclick="createPost()">Post</button>
-                    </div>
-                </div>
-            </div>
-            </div>
         </main>
         <footer>
             <div class="d-flex justify-content-start flex-column">

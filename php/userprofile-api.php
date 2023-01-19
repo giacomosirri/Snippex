@@ -1,7 +1,9 @@
 <?php
 require_once "bootstrap.php";
 global $dbh;
-$user_data = $dbh->getUserData("jaaack");
+$json_data["user-data"] = $dbh->getUserData("jaaack");
+$json_data["most-voted-post"] = $dbh->getMostVotedPostOfUser("jaaack");
+$json_data["rating-stats"] = $dbh->getUserRatingStats("jaaack");
 header("Content-Type: application/json");
-echo json_encode($user_data);
+echo json_encode($json_data);
 ?>
