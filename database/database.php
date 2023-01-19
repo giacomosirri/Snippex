@@ -73,6 +73,16 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+
+    public function getFeedPosts($username) {
+        $stmt1 = $this->db->prepare("SELECT * FROM user JOIN friendship ON user.Username = friendship.User1 JOIN post ON friendship.User2 = post.Writer WHERE user.Username = ? ORDER BY post.DateAndTime DESC");
+        $stmt2 = $this->db->prepare("SELECT * FROM user JOIN friendship ON user.Username = friendship.User2 JOIN post ON friendship.User1 = post.Writer WHERE user.Username = ? ORDER BY post.DateAndTime DESC");
+        $stmt2->bind_param('s',$username);
+        $stmt1->bind_param('s',$username);
+        $stmt1->execute();
+        $stmt2->execute();
+        $result = $stmt1->get_result();
+        $result2 = $stmt2->get_result();
+        return array_merge($result->fetch_all(MYSQLI_ASSOC), $result2->fetch_all(MYSQLI_ASSOC));
     }
-}
 ?>
