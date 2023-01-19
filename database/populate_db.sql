@@ -1,29 +1,29 @@
-INSERT INTO `user` (`Username`, `Password`, `Name`, `Surname`, `ProfilePic`, `Birthday`, `SignupDate`, `NumberOfPosts`, `NumberOfFriends`) VALUES
-('jaaack', 'jack1', 'Giacomo', 'Sirri', 'jaaack.jpg', 2001-03-09, 2022-12-21, 1, 7),
-('zava', 'zavazavatta', 'Andrea', 'Zavatta', 'zava.jpg', 2001-03-31, 2023-01-18, 0, 4),
-('paso', 'pasopasini', 'Luca', 'Pasini', 'paso.jpg', 2001-09-12, 2023-01-18, 0, 5),
-('rob', 'bobrob', 'Roberto', 'Sopranzetti', 'rob.jpg', 2001-07-04, 2023-01-18, 0, 1),
-('sergio', 'sergiuu', 'Sergiu', 'Barba', 'sergio.jpg', 2001-10-06, 2023-01-18, 0, 7),
-('lollo', 'loooollo', 'Lorenzo', 'Cassinari', 'lollo.jpg', 2001-12-04, 2023-01-18, 0, 3),
-('giulio', 'giulione', 'Giulio', 'Ceccaroni', 'giulio.jpg', 2001-02-11, 2023-01-18, 0, 3),
-('m!shel', 'm?s*el1', 'Mishel', 'Nishku', 'm!shel.jpg', 2001-09-12, 2023-01-18, 1, 4),
-('jenna69', 'jennaortega', 'Jenna', 'Ortega', 'jenna69.jpg', 2002-09-27, 2023-01-18, 0, 1),
-('therock', 'laroccia10', 'Dwayne', 'Johnson', 'therock.jpg', 1972-05-02, 2023-01-18, 0, 1),
-('topg', 'atate', 'Andrew', 'Tate', 'topg.jpg', 1986-12-01, 2023-01-18, 1, 1),
-('greta', 'savetheplanet', 'Greta', 'Thunberg', 'greta.jpg', 2003-01-03, 2023-01-18, 0, 0),
-('mark', 'abbondiamolo', 'Marco', 'Antolini', 'mark.jpg', 2001-12-04, 2023-01-18, 0, 2),
-('lorytosi', 'lorenz', 'Lorenzo', 'Tosi', 'lorytosi.jpg', 2001-12-01, 2023-01-18, 1, 0),
-('sined', 'riminimerda', 'Denis', 'Caushaj', 'denny.jpg', 2000-09-08, 2023-01-18, 1, 0),
-('angelina', 'angieee', 'Angela', 'Speranza', 'angelina.jpg', 2002-02-13, 2023-01-18, 0, 1);
+INSERT INTO `users` (`Username`, `Password`, `Name`, `Surname`, `ProfilePic`, `Birthday`, `SignupDate`, `NumberOfPosts`, `NumberOfFriends`) VALUES
+('jaaack', 'jack1', 'Giacomo', 'Sirri', 'jaaack.jpg', '2001-03-09', '2022-12-21', 1, 7),
+('zava', 'zavazavatta', 'Andrea', 'Zavatta', 'zava.jpg', '2001-03-31', '2023-01-18', 0, 4),
+('paso', 'pasopasini', 'Luca', 'Pasini', 'paso.png', '2001-09-12', '2023-01-18', 0, 5),
+('rob', 'bobrob', 'Roberto', 'Sopranzetti', 'rob.png', '2001-07-04', '2023-01-18', 0, 1),
+('sergio', 'sergiuu', 'Sergiu', 'Barba', 'sergio.png', '2001-10-06', '2023-01-18', 0, 7),
+('lollo', 'loooollo', 'Lorenzo', 'Cassinari', 'lollo.png', '2001-12-04', '2023-01-18', 0, 3),
+('giulio', 'giulione', 'Giulio', 'Ceccaroni', 'giulio.jpg', '2001-02-11', '2023-01-18', 0, 3),
+('m!shel', 'm?s*el1', 'Mishel', 'Nishku', 'm!shel.png', '2001-09-12', '2023-01-18', 1, 4),
+('jenna69', 'jennaortega', 'Jenna', 'Ortega', 'jenna69.png', '2002-09-27', '2023-01-18', 0, 1),
+('therock', 'laroccia10', 'Dwayne', 'Johnson', 'therock.jpeg', '1972-05-02', '2023-01-18', 0, 1),
+('topg', 'atate', 'Andrew', 'Tate', 'topg.jpg', '1986-12-01', '2023-01-18', 1, 1),
+('greta', 'savetheplanet', 'Greta', 'Thunberg', 'greta.png', '2003-01-03', '2023-01-18', 0, 0),
+('mark', 'abbondiamolo', 'Marco', 'Antolini', 'mark.png', '2001-12-04', '2023-01-18', 0, 2),
+('lorytosi', 'lorenz', 'Lorenzo', 'Tosi', 'lorytosi.jpg', '2001-12-01', '2023-01-18', 1, 0),
+('sined', 'riminimerda', 'Denis', 'Caushaj', 'sined.png', '2000-09-08', '2023-01-18', 1, 0),
+('angelina', 'angieee', 'Angela', 'Speranza', 'angelina.png', '2002-02-13', '2023-01-18', 0, 1);
 
-INSERT INTO `post` (`PostID`, `Title`, `Content`, `DateAndTime`, `NumberOfComments`, `Writer`) VALUES
+INSERT INTO `posts` (`PostID`, `Title`, `Content`, `DateAndTime`, `NumberOfComments`, `Writer`) VALUES
 (1, 'you know', 'Fuck greta!', '2023-01-18 14:04:00', 1, 'topg'),
 (2, 'la mia storia', 'Il babbo di un mio amico si è suicidato', '2023-01-18 14:05:00', 3, 'm!shel'),
 (3, 'jenna ortega fa cagare', 'just speaking facts', '2023-01-18 14:15:00', 6, 'lorytosi'),
 (4, 'cani>gatti', 'qualcuno doveva pur dirlo', '2023-01-18 16:02:00', 2, 'jaaack'),
 (5, 'ho droppato', 'andate ad ascoltare la mia nuova hit brodies', '2023-01-20 08:25:00', 4, 'sined');
 
-INSERT INTO `comment` (`CommentID`, `Content`, `DateAndTime`, `User`, `Post`) VALUES
+INSERT INTO `comments` (`CommentID`, `Content`, `DateAndTime`, `User`, `Post`) VALUES
 (1, 'I agree bro you are the best', '2023-01-18 14:04:55', 'sergio', 1),
 (2, 'che cazzo di problemi ha questo qui', '2023-01-18 16:05:10', 'rob', 2),
 (3, 'ma chi te lo ha chiesto', '2023-01-18 18:16:10', 'mark', 2),
@@ -41,19 +41,19 @@ INSERT INTO `comment` (`CommentID`, `Content`, `DateAndTime`, `User`, `Post`) VA
 (15, 'tvb', '2023-01-20 08:57:01', 'angelina', 5),
 (16, 'ok', '2023-01-20 09:25:25', 'm!shel', 5);
 
-INSERT INTO `favorite` (`User`, `Post`, `DateAndTime`) VALUES
+INSERT INTO `favorites` (`User`, `Post`, `DateAndTime`) VALUES
 ('sergio', 1, '2023-01-18 14:04:58'),
 ('jaaack', 5, '2023-01-19 15:16:10'),
 ('zava', 5, '2023-01-19 16:12:52'),
 ('paso', 5, '2023-01-19 16:32:32');
 
-INSERT INTO `rating_category` (`Name`, `Description`) VALUES
+INSERT INTO `rating_categories` (`Name`, `Description`) VALUES
 ('thoughtfulness', 'Something that makes you think and see things under a different light'),
 ('advice', 'Something you can use in everyday life or that can be useful for the future'),
 ('ideas', 'Something that can spark a change and inspire people to create'),
 ('humour','Something funny or light-hearted');
 
-INSERT INTO `rating` (`RatingID`, `DateAndTime`, `Category`, `Rater`, `Post`) VALUES
+INSERT INTO `ratings` (`RatingID`, `DateAndTime`, `Category`, `Rater`, `Post`) VALUES
 (1, '2023-01-18 14:05:11', 'thoughtfulness', 'sergio', 1),
 (2, '2023-01-20 10:56:42', 'humour', 'paso', 3),
 (3, '2023-01-21 15:52:23', 'humour', 'rob', 3),
@@ -64,7 +64,7 @@ INSERT INTO `points` (`User`, `Category`, `Points`) VALUES
 ('lorytosi', 'thoughtfulness', 1),
 ('lorytosi', 'humour', 2);
 
-INSERT INTO `friendship` (`User1`, `User2`, `RequestDate`, `FriendshipDate`) VALUES
+INSERT INTO `friendships` (`User1`, `User2`, `RequestDate`, `FriendshipDate`) VALUES
 ('topg', 'sergio', '2023-01-18', '2023-01-18'),
 ('zava', 'sergio', '2023-01-18', '2023-01-18'),
 ('paso', 'sergio', '2023-01-18', '2023-01-18'),
@@ -86,7 +86,7 @@ INSERT INTO `friendship` (`User1`, `User2`, `RequestDate`, `FriendshipDate`) VAL
 ('therock', 'jenna69', '2023-01-18', '2023-01-18'),
 ('mark', 'giulio', '2023-01-18', '2023-01-18');
 
-INSERT INTO `notification` (`NotificationID`, `Comment`, `Rating`, `Read`, `Notified_user`) VALUES
+INSERT INTO `notifications` (`NotificationID`, `Comment`, `Rating`, `Read`, `Notified_user`) VALUES
 (1, 1, NULL, FALSE, 'topg'),
 (2, 2, NULL, FALSE, 'm!shel'),
 (3, 3, NULL, FALSE, 'm!shel'),
