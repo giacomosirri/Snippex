@@ -97,7 +97,7 @@ function addFriends(friends) {
     for (let i=0; i<5; i++) {
         list += `
             <div class="text-center">
-                <a href="#">
+                <a href="../php/userprofile.php?Username=${friends[i]["Username"]}">
                     <img src="../profile_pics/${friends[i]["ProfilePic"]}" alt="${friends[i]["Username"]} profile pic">
                     <p>${friends[i]["Name"]} ${friends[i]["Surname"]}</p>
                 </a>
@@ -107,7 +107,8 @@ function addFriends(friends) {
     return list;
 }
 
-axios.get('../php/userprofile-api.php').then(response => {
+const user = document.getElementById("page-user").innerHTML;
+axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(response => {
     console.log(response.data);
     const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];
     const userData = addBasicInfo(response.data["user-data"]);

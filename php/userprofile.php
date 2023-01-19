@@ -4,9 +4,10 @@ global $dbh;
 
 $templateParams["js"] = array("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js", "../javascript/userprofile.js");
 if (isset($_GET["Username"])) {
-    $templateParams["title"] = $_GET["Username"]."'s profile";
+    $templateParams["user"] = $_GET["Username"];
+    $templateParams["title"] = $templateParams["user"]."'s profile";
 } else {
-    $templateParams["title"] = "Generic title";
+    throw new Error("Something went wrong!");
 }
 
 require "../html/userprofile.html";

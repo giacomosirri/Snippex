@@ -4,8 +4,6 @@
         <meta charset="UTF-8">
         <?php if(isset($templateParams["title"])) { ?>
             <title><?php global $templateParams; echo $templateParams["title"] ?></title>
-        <?php } else { ?>
-            <title>Generic profile</title>
         <?php } ?>
         <link rel="icon" type="image/x-icon" href="../icons/logo.png">
         <!--Bootstrap-->
@@ -20,6 +18,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
     <body>
+    <?php if(isset($templateParams["user"])) { ?>
+        <div id="page-user" style="display: none"><?php echo $templateParams["user"] ?></div>
+    <?php } ?>
         <header class="container" style="position: relative !important;">
             <div id="user-data" class="d-flex justify-content-center">
                 <div class="col-1">
