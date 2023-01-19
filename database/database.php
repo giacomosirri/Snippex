@@ -66,5 +66,13 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getUserFriends($string) {
+        $stmt = $this->db->prepare("SELECT * FROM friendship WHERE User1 = ?");
+        $stmt->bind_param('s',$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
