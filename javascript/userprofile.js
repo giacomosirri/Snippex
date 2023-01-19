@@ -94,7 +94,7 @@ function addRatingStats(stats, categories, numOfPosts) {
 
 function addFriends(friends) {
     let list = ``;
-    for (let i=0; i<5; i++) {
+    for (let i=0; i<Math.min(5, friends.length); i++) {
         list += `
             <div class="text-center">
                 <a href="../php/userprofile.php?Username=${friends[i]["Username"]}">
