@@ -93,7 +93,20 @@ function addRatingStats(stats, categories, numOfPosts) {
 }
 
 function addFriends(friends) {
-    let list = ``;
+    let list = `
+        <div class="col-12 col-lg-8 d-flex justify-content-between">
+            <h2>Friends</h2>
+            <div>
+                <a href="/html/friends.html" class="d-flex justify-content-start" style="padding-top: 1%">
+                <p style="font-size: 12px;">See all friends</p>
+                <div>
+                    <img src="../icons/goarrow_icon.png" alt="browse history">
+                </div>
+                </a>
+            </div>
+        </div>
+        <div id="list-friends" class="col-12 col-lg-8 d-flex justify-content-between">
+    `;
     for (let i=0; i<Math.min(5, friends.length); i++) {
         list += `
             <div class="text-center">
@@ -104,6 +117,7 @@ function addFriends(friends) {
             </div>
         `;
     }
+    list += `</div>`
     return list;
 }
 
@@ -111,24 +125,27 @@ const user = document.getElementById("page-user").innerHTML;
 axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(response => {
     console.log(response.data);
     const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];
+    const numberOfFriends = response.data["user-data"][0]["NumberOfFriends"];
     const userData = addBasicInfo(response.data["user-data"]);
     const ratingStats = addRatingStats(response.data["rating-stats"], response.data["categories"], numberOfPosts);
-    const friendsNum = `${response.data["user-data"][0]["NumberOfFriends"]} friends`;
+    const friendsNum = `${numberOfFriends} friends`;
     const signupDate = `${response.data["user-data"][0]["SignupDate"]}`;
-    const friends = addFriends(response.data["friends"]);
     const header = document.getElementById("user-data");
     const table = document.getElementById("rating-statistics");
     const friends_paragraph = document.getElementById("friends");
     const date_paragraph = document.getElementById("user-since");
-    const friends_div = document.getElementById("list-friends");
     header.innerHTML += userData;
     table.innerHTML += ratingStats;
     friends_paragraph.innerHTML = friendsNum;
     date_paragraph.innerHTML = signupDate;
-    friends_div.innerHTML = friends;
     if (numberOfPosts !== 0) {
         const mostVotedPost = addMostVotedPost(response.data["most-voted-post"]);
         const main = document.querySelector("main");
         main.innerHTML += mostVotedPost;
+    }
+    if (numberOfFriends !== 0) {
+        const friends = addFriends(response.data["friends"]);
+        const friends_div = document.getElementById("list-friends");
+        friends_div.innerHTML = friends;
     }
 });
