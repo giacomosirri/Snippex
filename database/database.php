@@ -41,9 +41,9 @@ class DatabaseHelper {
     }
 
     public function getMostVotedPostOfUser($username): array {
-        $stmt = $this->db->prepare("SELECT p.PostID, p.Title, p.Content, p.DateAndTime, p.NumberOfComments, p.Writer, 
-                                    COUNT(*) AS c FROM posts AS p, ratings AS r WHERE p.PostID = r.Post AND p.Writer = ? 
-                                    GROUP BY r.Post ORDER BY c DESC limit 1");
+        $stmt = $this->db->prepare("SELECT p.PostID, p.Title, p.Content, p.DateAndTime, p.NumberOfComments, p.Writer, COUNT(r.RatingID) AS pts
+                                    FROM posts AS p LEFT OUTER JOIN ratings AS r ON p.PostID = r.Post 
+                                    WHERE p.Writer=? GROUP BY p.PostID ORDER BY pts DESC limit 1");
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();

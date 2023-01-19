@@ -33,11 +33,11 @@ function addMostVotedPost(data) {
             <h3 class="post-title col-10">${data[0]["Title"]}</h3>
             <div class="d-flex justify-content-between">
                 <div class="post-content col-12">
-                    <input type="button" onClick="changeText(this)">
+                    <label onClick="changeText(this)">
                         <p class="post-text">
                             ${data[0]["Content"]}
                         </p>
-                    </input>
+                    </label>
                     <p class="post-date col-12">${data[0]["DateAndTime"]}</p>
                 </div>
                 <div class="post-interactions d-flex justify-content-between flex-column">
@@ -105,7 +105,7 @@ function addFriends(friends) {
                 </a>
             </div>
         </div>
-        <div id="list-friends" class="col-12 col-lg-8 d-flex justify-content-between">
+        <div class="col-12 col-lg-8 d-flex justify-content-between">
     `;
     for (let i=0; i<Math.min(5, friends.length); i++) {
         list += `
@@ -140,12 +140,12 @@ axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(respons
     date_paragraph.innerHTML = signupDate;
     if (numberOfPosts !== 0) {
         const mostVotedPost = addMostVotedPost(response.data["most-voted-post"]);
-        const main = document.querySelector("main");
+        const main = document.getElementById("post");
         main.innerHTML += mostVotedPost;
     }
     if (numberOfFriends !== 0) {
         const friends = addFriends(response.data["friends"]);
-        const friends_div = document.getElementById("list-friends");
-        friends_div.innerHTML = friends;
+        const friends_section = document.getElementById("friends-list");
+        friends_section.innerHTML = friends;
     }
 });
