@@ -1,8 +1,13 @@
-export function createNewPost(data) {
+// creates a post - the writer of the post is shown if knownUser parameter is false, otherwise it is not displayed
+export function createNewPost(data, knownUser) {
     const post = document.createElement("article");
     post.class = "post col-12 col-md-8 mx-auto";
-    post.innerHTML = `
-        <h3 class="post-title col-10">${data["Title"]} ~ ${data["Writer"]}</h3>
+    if (knownUser) {
+        post.innerHTML = `<h3 class="post-title col-10">${data["Title"]}</h3>`;
+    } else {
+        post.innerHTML = `<h3 class="post-title col-10">${data["Title"]} ~ ${data["Writer"]}</h3>`;
+    }
+    post.innerHTML += `
         <div class="d-flex justify-content-between">
             <div class="post-content col-12">
                 <label role="button" onclick="changeText(this)">

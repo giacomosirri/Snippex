@@ -8,6 +8,6 @@ axios.get('../php/posthistory-api.php', {params: {Username: user}}).then(respons
     console.log(response.data[0]);
     const section = document.getElementById("all-posts");
     for (let i=0; i<response.data.length; i++) {
-        section.appendChild(createNewPost(response.data[i]));
+        section.appendChild(createNewPost(response.data[i], true));
     }
 });
