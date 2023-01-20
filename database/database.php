@@ -88,5 +88,13 @@ class DatabaseHelper {
         $result2 = $stmt2->get_result();
         return array_merge($result->fetch_all(MYSQLI_ASSOC), $result2->fetch_all(MYSQLI_ASSOC));
     }
+
+    public function getAllPostsWrittenByUser($username): array {
+        $stmt = $this->db->prepare("SELECT * FROM posts WHERE Writer = ?");
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
