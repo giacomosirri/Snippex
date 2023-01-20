@@ -20,7 +20,7 @@ function addMostVotedPost(data) {
                 Most voted post ever
             </h2>
             <div>
-                <a href="/html/posthistory.html" class="d-flex justify-content-start" style="padding-top: 1%;
+                <a href="/template/posthistory.html" class="d-flex justify-content-start" style="padding-top: 1%;
                                 text-decoration: none; color: black">
                     <p style="font-size: 12px;">Browse history</p>
                     <div>
@@ -97,7 +97,7 @@ function addFriends(friends) {
         <div class="col-12 col-lg-8 d-flex justify-content-between">
             <h2>Friends</h2>
             <div>
-                <a href="/html/friends.html" class="d-flex justify-content-start" style="padding-top: 1%">
+                <a href="/template/friends.html" class="d-flex justify-content-start" style="padding-top: 1%">
                 <p style="font-size: 12px;">See all friends</p>
                 <div>
                     <img src="../icons/goarrow_icon.png" alt="browse history">
