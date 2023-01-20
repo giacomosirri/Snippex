@@ -9,6 +9,7 @@ if (isset($_GET["Username"])) {
 } else {
     throw new Error("Something went wrong!");
 }
+$templateParams["page"] = "../html/userprofile.html";
 
-require "../html/userprofile.html";
+require "./base.php";
 ?>
