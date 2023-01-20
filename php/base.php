@@ -68,7 +68,7 @@
 if(isset($templateParams["js"])):
     foreach($templateParams["js"] as $script):
         ?>
-        <script src="<?php echo $script; ?>"></script>
+        <script type="module" src="<?php echo $script; ?>"></script>
     <?php
     endforeach;
 endif;
