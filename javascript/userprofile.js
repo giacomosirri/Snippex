@@ -118,12 +118,11 @@ function addFriends(friends) {
     return list;
 }
 
-function get(name){
-    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
-        return decodeURIComponent(name[1]);
-}
 
-const user = get("Username");
+var url_string = window.location.href;
+var url = new URL(url_string);
+var user = url.searchParams.get("Username");
+
 axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(response => {
     console.log(response.data);
     const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];
