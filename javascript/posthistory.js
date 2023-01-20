@@ -7,6 +7,8 @@ const user = url.searchParams.get("Username");
 axios.get('../php/posthistory-api.php', {params: {Username: user}}).then(response => {
     console.log(response.data[0]);
     const section = document.getElementById("all-posts");
+    const h1 = document.querySelector("header h1");
+    h1.innerHTML = user + "'s post history";
     for (let i=0; i<response.data.length; i++) {
         section.appendChild(createNewPost(response.data[i], true));
     }
