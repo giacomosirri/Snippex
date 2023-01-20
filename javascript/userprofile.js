@@ -124,7 +124,6 @@ const url = new URL(url_string);
 const user = url.searchParams.get("Username");
 
 axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(response => {
-    console.log(response.data);
     const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];
     const numberOfFriends = response.data["user-data"][0]["NumberOfFriends"];
     const userData = addBasicInfo(response.data["user-data"]);
