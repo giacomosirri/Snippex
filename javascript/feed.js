@@ -1,5 +1,5 @@
 function createNewPost(data) {
-    var post = document.createElement("article");
+    const post = document.createElement("article");
     post.class = "post col-12 col-md-8 mx-auto";
     post.innerHTML = `
         <h3 class="post-title col-10">${data["Title"]} ~ ${data["Writer"]}</h3>
@@ -30,7 +30,9 @@ function createNewPost(data) {
     return post;
 }
 
-const user = document.getElementById("page-user").innerHTML;
+const url_string = window.location.href;
+const url = new URL(url_string);
+const user = url.searchParams.get("Username");
 const feed = document.getElementById("feed-posts");
 axios.get('../php/feed-api.php', {params: {Username: user}}).then(response => {
     console.log(response.data);

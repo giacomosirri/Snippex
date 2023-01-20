@@ -119,9 +119,9 @@ function addFriends(friends) {
 }
 
 
-var url_string = window.location.href;
-var url = new URL(url_string);
-var user = url.searchParams.get("Username");
+const url_string = window.location.href;
+const url = new URL(url_string);
+const user = url.searchParams.get("Username");
 
 axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(response => {
     console.log(response.data);
