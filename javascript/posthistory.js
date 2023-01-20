@@ -5,7 +5,6 @@ const url = new URL(url_string);
 const user = url.searchParams.get("Username");
 
 axios.get('../php/posthistory-api.php', {params: {Username: user}}).then(response => {
-    console.log(response.data[0]);
     const section = document.getElementById("all-posts");
     const h1 = document.querySelector("header h1");
     h1.innerHTML = user + "'s post history";
