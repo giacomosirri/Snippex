@@ -2,6 +2,12 @@ window.onload = function() {
     document.querySelectorAll("article label").forEach(label => changeText(label));
 }
 
+function activeLogin(link) {
+    const links = document.querySelectorAll(".login-square .nav-item a");
+    links.forEach(item => item.classList.remove("active"));
+    link.classList.add("active");
+}
+
 function activeMenu(link) {
     const menu = document.querySelectorAll("header nav ul li a");
     menu.forEach(item => item.classList.remove("active"));

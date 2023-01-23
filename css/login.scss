@@ -1,0 +1,26 @@
+
+
+.login-square{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  border: solid 1px #000;
+}
+.nav-link{
+  color: #000;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px;
+}
+
+//create a media query for mobile devices to make the login square smaller
+@media screen and (max-width: 540px) {
+  .login-square{
+    width: 90%
+  }
+}
