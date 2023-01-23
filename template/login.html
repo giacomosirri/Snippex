@@ -17,57 +17,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
-<div class="login-square">
-    <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <button class="nav-link active" id="nav-home-tab" onclick="activeLogin(this)"data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Login</button>
-            <button class="nav-link" id="nav-profile-tab" onclick="activeLogin(this)" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Register</button>
-        </div>
-    </nav>
-    <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <form>
-                <div class="form-row">
-                    <div class="col w-50 mx-auto mt-3">
-                        <input type="text" class="form-control" placeholder="Username">
-                    </div>
-                    <div class="col w-50 mx-auto mt-3">
-                        <input type="password" class="form-control" placeholder="Password">
-                    </div>
+<div class="first-half">
+    <div class="login-square">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" onclick="activeLogin(this)"data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Login</button>
+                <button class="nav-link" id="nav-profile-tab" onclick="activeLogin(this)" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Register</button>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <form>
+                    <div class="form-row">
+                        <div class="col w-50 mx-auto mt-3">
+                            <input type="text" class="form-control" placeholder="Username">
+                        </div>
+                        <div class="col w-50 mx-auto mt-3">
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
 
-                    <div class="d-grid gap-2 col-6 mx-auto mt-3">
-                        <button class="btn btn-primary" type="button">Button</button>
+                        <div class="d-grid gap-2 col-6 mx-auto mt-3">
+                            <button class="btn btn-primary" type="button">Button</button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <form>
-                <div class="form-row">
-                    <div class="col w-50 mx-auto mt-3">
-                        <input type="text" class="form-control" placeholder="Name">
-                    </div>
-                    <div class="col w-50 mx-auto mt-3">
-                        <input type="text" class="form-control" placeholder="Surname">
-                    </div>
-                    <div class="col w-50 mx-auto mt-3">
-                        <input type="text" class="form-control" placeholder="Username">
-                    </div>
-                    <div class="col w-50 mx-auto mt-3">
-                        <input type="password" class="form-control" placeholder="Password">
-                    </div>
-                    <div class="col w-50 mx-auto mt-3">
-                        <input type="password" class="form-control" placeholder="Password confirmation">
-                    </div>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <form>
+                    <div class="form-row">
+                        <div class="col w-50 mx-auto mt-3">
+                            <input type="text" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="col w-50 mx-auto mt-3">
+                            <input type="text" class="form-control" placeholder="Surname">
+                        </div>
+                        <div class="col w-50 mx-auto mt-3">
+                            <input type="text" class="form-control" placeholder="Username">
+                        </div>
+                        <div class="col w-50 mx-auto mt-3">
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="col w-50 mx-auto mt-3">
+                            <input type="password" class="form-control" placeholder="Password confirmation">
+                        </div>
 
-                    <div class="d-grid gap-2 col-6 mx-auto mt-3">
-                        <button class="btn btn-primary" type="button">Button</button>
+                        <div class="d-grid gap-2 col-6 mx-auto mt-3">
+                            <button class="btn btn-primary" type="button">Button</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+<div class="second-half">
+    <img src="../sources/world.png" alt="world">
+</div>
+
 <footer>
     <div class="d-flex justify-content-start flex-column">
         <nav>
