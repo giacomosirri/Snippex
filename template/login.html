@@ -18,14 +18,16 @@
 </head>
 <body>
 <div class="login-square">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" onclick="activeLogin(this)">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" onclick="activeLogin(this)">Register</a>
-        </li>
-    </ul>
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-home-tab" onclick="activeLogin(this)"data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Login</button>
+            <button class="nav-link" id="nav-profile-tab" onclick="activeLogin(this)" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Register</button>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">login</div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">register</div>
+    </div>
 </div>
 <footer>
     <div class="d-flex justify-content-start flex-column">
