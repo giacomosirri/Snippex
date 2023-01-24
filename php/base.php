@@ -33,7 +33,7 @@
                 <li class="col-2"><a href="/template/searchusers.html"><img src="../icons/users_icon.png" alt="search users"></a></li>
                 <li class="col-2">
                     <a href="/template/profile.html">
-                        <img src="../profile_pics/<?php global $templateParams; echo $templateParams["user"]?>.jpg" alt="my profile">
+                        <img src="../profile_pics/<?php global $templateParams; echo $templateParams["user"]?>.png" alt="my profile">
                     </a>
                 </li>
             </ul>

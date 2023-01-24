@@ -6,7 +6,7 @@ const user = url.searchParams.get("Username");
 const feed = document.getElementById("feed-posts");
 
 axios.get('../php/feed-api.php', {params: {Username: user}}).then(response => {
-    for (let i=0; i<response.data["posts"].length; i++) {
-        feed.appendChild(createNewPost(response.data["posts"][i], false));
+    for (let i=0; i<response.data.length; i++) {
+        feed.appendChild(createNewPost(response.data[i], false));
     }
 });

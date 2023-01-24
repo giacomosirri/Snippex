@@ -103,7 +103,7 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
-    public function login($username, $password): array
+    public function checkLogin($username, $password): array
     {
         $stmt = $this->db->prepare("SELECT * FROM users WHERE Username = ? AND Password = ?");
         $stmt->bind_param('ss', $username, $password);
