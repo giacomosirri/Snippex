@@ -97,16 +97,23 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function subscribeUser($username, $name, $surname, $password){
+    public function subscribeUser($username, $name, $surname, $password) {
         $stmt = $this->db->prepare("INSERT INTO users (Username, Name, Surname, Password) VALUES (?, ?, ?, ?)");
         $stmt->bind_param('ssss', $username, $name, $surname, $password);
         $stmt->execute();
     }
 
-    public function checkLogin($username, $password): array
-    {
+    public function checkLogin($username, $password): array {
         $stmt = $this->db->prepare("SELECT * FROM users WHERE Username = ? AND Password = ?");
         $stmt->bind_param('ss', $username, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getProfilePic($username): array {
+        $stmt = $this->db->prepare("SELECT ProfilePic FROM users WHERE Username = ?");
+        $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
