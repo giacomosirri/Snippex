@@ -31,7 +31,11 @@
                 <li class="col-2"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
                 <li class="col-2"><a href="/template/notifications.html"><img src="../icons/notification_icon.png" alt="notifications"></a></li>
                 <li class="col-2"><a href="/template/searchusers.html"><img src="../icons/users_icon.png" alt="search users"></a></li>
-                <li class="col-2"><a href="/template/profile.html"><img src="../profile_pics/<?php echo $_GET["Username"]?>.jpg" alt="my profile"></a></li>
+                <li class="col-2">
+                    <a href="/template/profile.html">
+                        <img src="../profile_pics/<?php global $templateParams; echo $templateParams["user"]?>.jpg" alt="my profile">
+                    </a>
+                </li>
             </ul>
         </nav>
         <div></div>
