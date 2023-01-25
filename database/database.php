@@ -118,5 +118,11 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function registerUser($name, $surname, $username, $password, $signup_date) {
+        $stmt = $this->db->prepare("INSERT INTO users (Name, Surname, Username, Password, SignupDate) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param('sssss', $name, $surname, $username, $password, $signup_date);
+        $stmt->execute();
+    }
 }
 ?>
