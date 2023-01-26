@@ -1,8 +1,8 @@
 <?php
 require_once "bootstrap.php";
 global $dbh;
-if (isset($_GET["Username"])) {
-    $user = $_GET["Username"];
+if (isset($_SESSION["LoggedUser"])) {
+    $user = $_SESSION["LoggedUser"];
     $json_data["user-data"] = $dbh->getUserData($user);
     $json_data["most-voted-post"] = $dbh->getMostVotedPostOfUser($user);
     $json_data["rating-stats"] = $dbh->getUserRatingStats($user);

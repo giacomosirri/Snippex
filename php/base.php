@@ -30,8 +30,8 @@
                 <li class="col-2"><a href="./explore.php"><img src="../icons/search_icon.png" alt="explore"></a></li>
                 <li class="col-2"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
                 <li class="col-2"><a href="/template/notifications.html"><img src="../icons/notification_icon.png" alt="notifications"></a></li>
-                <li class="col-2"><a href="/template/searchusers?.html"><img src="../icons/users_icon.png" alt="search users"></a></li>
-                <li class="col-2"><a href="/template/profile.html"><img id="profile-pic" src="" alt="my profile"></a></li>
+                <li class="col-2"><a href="/template/searchusers.html"><img src="../icons/users_icon.png" alt="search users"></a></li>
+                <li class="col-2"><a href="./profile.php"><img id="profile-pic" src="" alt="my profile"></a></li>
             </ul>
         </nav>
         <div></div>
@@ -66,8 +66,7 @@
 </body>
 <?php
 if(isset($templateParams["js"])):
-    foreach($templateParams["js"] as $script):
-        ?>
+    foreach($templateParams["js"] as $script):?>
         <script type="module" src="<?php echo $script; ?>"></script>
     <?php
     endforeach;
