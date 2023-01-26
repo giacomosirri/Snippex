@@ -12,7 +12,7 @@ if($password != $passwordConfirm) {
     throw new Error("Passwords do not match!");
 }
 if(count($dbh->getUserData($username)) == 0){
-    $dbh->registerUser($name, $surname, $username, $password, $signup_date);
+    $dbh->registerUser($name, $surname, $username, md5($password), $signup_date);
     $_SESSION["LoggedUser"] = $username;
     header("Location: ./feed.php?Username=$username");
     exit;
