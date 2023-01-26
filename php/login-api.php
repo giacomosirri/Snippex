@@ -4,7 +4,9 @@ global $dbh;
 if (isset($_POST["username"]) && isset($_POST["password"])) {
     $user = $_POST["username"];
     $password = $_POST["password"];
-    if (count($dbh->checkLogin($user, md5($password))) != 0) {
+    $password_hash = $dbh->getHashPasswordFromUsername($user);
+
+    if (count($password_hash) > 0 && password_verify($password, $password_hash[0]["Password"])) {
         $_SESSION["LoggedUser"] = $user;
         header("Location: ./feed.php?Username=$user");
         exit;

@@ -124,5 +124,13 @@ class DatabaseHelper {
         $stmt->bind_param('sssss', $name, $surname, $username, $password, $signup_date);
         $stmt->execute();
     }
+
+    public function getHashPasswordFromUsername($username): array {
+        $stmt = $this->db->prepare("SELECT Password FROM users WHERE Username = ?");
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
