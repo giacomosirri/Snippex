@@ -35,8 +35,8 @@ function changeText(label) {
     }
 }
 
-function showRatingCategories(index) {
-    const div = document.getElementsByClassName("post-interactions")[index];
+function showRatingCategories(button) {
+    const div = button.parentElement;
     const icons = div.children;
     for (let i=0; i<icons.length; i++) {
         if(icons[i].className==="rate-post") {
@@ -47,8 +47,8 @@ function showRatingCategories(index) {
     }
 }
 
-function showPlus(index) {
-    const div = document.getElementsByClassName("post-interactions")[index];
+function showPlus(button) {
+    const div = button.parentElement;
     const icons = div.children;
     for (let i=0; i<icons.length-1; i++) {
         if(icons[i].className==="rate-post" || icons[i].className==="comment-post") {
@@ -57,9 +57,10 @@ function showPlus(index) {
             icons[i].style.display = "none";
         }
     }
+    showUsername(button.parentElement.parentElement.parentElement);
 }
 
-function showComment(index) {
+function showComment() {
     window.open("comments.html", "_self");
 }
 
@@ -74,4 +75,10 @@ function setMenuVisibility() {
     } else {
         menu.style.display = "none";
     }
+}
+
+function showUsername(post) {
+    const username = post.querySelector("#user-username").innerText;
+    const postTitle = post.querySelector("#post-header");
+    postTitle.innerText = postTitle.innerText.split(" ~ ")[0] + " ~ " + username;
 }
