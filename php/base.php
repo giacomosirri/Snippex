@@ -26,11 +26,11 @@
     <div class="d-flex justify-content-start flex-column">
         <nav>
             <ul class="row text-center">
-                <li class="col-2"><a href="/template/feed.html"><img src="../icons/home_icon.png" alt="home"></a></li>
+                <li class="col-2"><a href="./feed.php"><img src="../icons/home_icon.png" alt="home"></a></li>
                 <li class="col-2"><a href="/template/explore.html"><img src="../icons/search_icon.png" alt="explore"></a></li>
                 <li class="col-2"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
                 <li class="col-2"><a href="/template/notifications.html"><img src="../icons/notification_icon.png" alt="notifications"></a></li>
-                <li class="col-2"><a href="/template/searchusers.html"><img src="../icons/users_icon.png" alt="search users"></a></li>
+                <li class="col-2"><a href="/template/searchusers?.html"><img src="../icons/users_icon.png" alt="search users"></a></li>
                 <li class="col-2"><a href="/template/profile.html"><img id="profile-pic" src="" alt="my profile"></a></li>
             </ul>
         </nav>

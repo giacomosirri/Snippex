@@ -11,7 +11,9 @@ $signup_date = date("Y-m-d");
 if($password != $passwordConfirm) {
     throw new Error("Passwords do not match!");
 }
+var_dump(password_hash($password, PASSWORD_DEFAULT));
 if(count($dbh->getUserData($username)) == 0){
+
     $dbh->registerUser($name, $surname, $username, password_hash($password, PASSWORD_DEFAULT), $signup_date);
     $_SESSION["LoggedUser"] = $username;
     header("Location: ./feed.php?Username=$username");
