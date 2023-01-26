@@ -132,5 +132,13 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getNotifications($username): array {
+        $stmt = $this->db->prepare("SELECT * FROM notifications WHERE Notified_user = ?");
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
