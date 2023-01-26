@@ -1,9 +1,9 @@
 <?php
 require_once "bootstrap.php";
 global $dbh;
-if (isset($_GET["Username"])) {
-    $user = $_GET["Username"];
-    $json_data = $dbh->getFeedPosts($user);
+if (isset($_SESSION["LoggedUser"])) {
+    $user = $_SESSION["LoggedUser"];
+    $json_data = $dbh->getExplorePosts($user);
     header("Content-Type: application/json");
     echo json_encode($json_data);
 } else {

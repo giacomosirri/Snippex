@@ -89,6 +89,18 @@ class DatabaseHelper {
         return array_merge($result->fetch_all(MYSQLI_ASSOC), $result2->fetch_all(MYSQLI_ASSOC));
     }
 
+    public function getExplorePosts($username) {
+        $stmt = $this->db->prepare("SELECT posts.* FROM posts WHERE posts.Writer NOT IN (
+            SELECT friendships.User2 FROM users JOIN friendships ON users.Username = friendships.User1 WHERE users.Username = ?
+        ) AND posts.Writer NOT IN (
+            SELECT friendships.User1 FROM users JOIN friendships ON users.Username = friendships.User2 WHERE users.Username = ?
+        ) ORDER BY posts.DateAndTime DESC");
+        $stmt->bind_param('ss',$username, $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getAllPostsWrittenByUser($username): array {
         $stmt = $this->db->prepare("SELECT * FROM posts WHERE Writer = ?");
         $stmt->bind_param('s', $username);
