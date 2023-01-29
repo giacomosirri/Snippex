@@ -38,7 +38,8 @@ create table FRIENDSHIPS (
      User1 char(40) not null,
      User2 char(40) not null,
      RequestDate date not null,
-     FriendshipDate date,
+     FriendsSince date,
+     FriendsUntil date,
      constraint IDfriendship primary key (FriendshipID));
 
 create table NOTIFICATIONS (
