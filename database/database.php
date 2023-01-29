@@ -66,11 +66,13 @@ class DatabaseHelper {
     }
 
     public function getUserFriends($username) {
-        $stmt1 = $this->db->prepare("SELECT u.* FROM friendships AS f, users AS u WHERE f.User2 = u.Username AND f.User1 = ?");
+        $stmt1 = $this->db->prepare("SELECT u.* FROM friendships AS f, users AS u WHERE f.User2 = u.Username AND f.User1 = ?
+                                     AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NULL");
         $stmt1->bind_param('s', $username);
         $stmt1->execute();
         $result = $stmt1->get_result();
-        $stmt2 = $this->db->prepare("SELECT u.* FROM friendships AS f, users AS u WHERE f.User1 = u.Username AND f.User2 = ?");
+        $stmt2 = $this->db->prepare("SELECT u.* FROM friendships AS f, users AS u WHERE f.User1 = u.Username AND f.User2 = ?
+                                     AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NULL");
         $stmt2->bind_param('s', $username);
         $stmt2->execute();
         $result2 = $stmt2->get_result();
