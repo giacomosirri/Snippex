@@ -34,7 +34,7 @@ create table FAVORITES (
      constraint IDFAVORITE primary key (User, Post));
 
 create table FRIENDSHIPS (
-     FriendshipID int not null
+     FriendshipID int not null,
      User1 char(40) not null,
      User2 char(40) not null,
      RequestDate date not null,
@@ -142,7 +142,7 @@ alter table NOTIFICATIONS add constraint FKabout_1_FK
 
 alter table NOTIFICATIONS add constraint FKabout_2_FK
      foreign key (Friend)
-     references FRIENDSHIP (FriendshipID);
+     references FRIENDSHIPS (FriendshipID);
 
 alter table POINTS add constraint FKpoi_RAT
      foreign key (Category)
