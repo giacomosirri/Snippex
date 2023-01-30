@@ -60,8 +60,10 @@ function showPlus(button) {
     showUsername(button.parentElement.parentElement.parentElement);
 }
 
-function showComment() {
-    window.open("comments.html", "_self");
+function showComments(postId) {
+    console.log(postId);
+    window.open("comments.php?PostID=" + postId.innerText, "_self");
+    console.log(postId.innerText);
 }
 
 function goBack() {
