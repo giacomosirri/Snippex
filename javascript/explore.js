@@ -7,6 +7,6 @@ const explore = document.getElementById("explore-posts");
 
 axios.get('../php/explore-api.php', {params: {Username: user}}).then(response => {
     for (let i=0; i<response.data.length; i++) {
-        explore.appendChild(createNewPost(response.data[i], false));
+        explore.appendChild(createNewPost(response.data[i], i));
     }
 });

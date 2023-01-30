@@ -35,8 +35,8 @@ function changeText(label) {
     }
 }
 
-function showRatingCategories(button) {
-    const div = button.parentElement;
+function showRatingCategories(post) {
+    const div = post.getElementsByClassName("post-interactions")[0];
     const icons = div.children;
     for (let i=0; i<icons.length; i++) {
         if(icons[i].className==="rate-post") {
@@ -47,8 +47,8 @@ function showRatingCategories(button) {
     }
 }
 
-function showPlus(button) {
-    const div = button.parentElement;
+function showPlus(post) {
+    const div = post.getElementsByClassName("post-interactions")[0];
     const icons = div.children;
     for (let i=0; i<icons.length-1; i++) {
         if(icons[i].className==="rate-post" || icons[i].className==="comment-post") {
@@ -57,11 +57,11 @@ function showPlus(button) {
             icons[i].style.display = "none";
         }
     }
-    showUsername(button.parentElement.parentElement.parentElement);
+    showUsername(post);
 }
 
-function showComments(postId) {
-    console.log(postId);
+function showComments(post) {
+    const postId = post.getElementsByClassName("post-id")[0];
     window.open("comments.php?PostID=" + postId.innerText, "_self");
     console.log(postId.innerText);
 }
@@ -80,7 +80,7 @@ function setMenuVisibility() {
 }
 
 function showUsername(post) {
-    const username = post.querySelector("#user-username").innerText;
-    const postTitle = post.querySelector("#post-header");
+    const username = post.getElementsByClassName("user-username")[0].innerText;
+    const postTitle = post.getElementsByClassName("post-title")[0];
     postTitle.innerText = postTitle.innerText.split(" ~ ")[0] + " ~ " + username;
 }
