@@ -105,7 +105,7 @@ class DatabaseHelper {
 
     public function getPostComments($post_id) {
         $stmt = $this->db->prepare("SELECT * FROM comments WHERE Post = ?");
-        $stmt->bind_param('s', $post_id);
+        $stmt->bind_param('i', $post_id);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
