@@ -1,12 +1,10 @@
 <?php
 require_once "bootstrap.php";
 global $dbh;
-if (isset($_GET["Username"])) {
-    $user = $_GET["Username"];
-    $json_data = $dbh->getNotifications($user);
-    header("Content-Type: application/json");
-    echo json_encode($json_data);
-} else {
-    throw new Error("Something went wrong!");
-}
+$user = $_SESSION["LoggedUser"];
+$json_data["comments"] = $dbh->getNotificationsOfComments($user);
+$json_data["ratings"] = $dbh->getNotificationsOfRatings($user);
+$json_data["friendships"] = $dbh->getNotificationsOfFriendships($user);
+header("Content-Type: application/json");
+echo json_encode($json_data);
 ?>

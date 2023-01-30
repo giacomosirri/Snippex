@@ -1,5 +1,3 @@
-import {createNewPost} from "./commons";
-
 function addNotification(data) {
     return `
     <div class="row align-items-center">
@@ -16,13 +14,8 @@ function addNotification(data) {
         ;
 }
 
-const url_string = window.location.href;
-const url = new URL(url_string);
-const user = url.searchParams.get("Username");
-
-axios.get('../php/notifications-api.php', {params: {Username: user}}).then(response => {
+axios.get('../php/notifications-api.php').then(response => {
     const section = document.getElementById("all-notifications");
     for (let i=0; i<response.data.length; i++) {
-        section.appendChild(addNotification(response.data[i]));
     }
 });
