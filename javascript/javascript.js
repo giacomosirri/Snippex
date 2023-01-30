@@ -84,3 +84,4 @@ function showUsername(post) {
     const postTitle = post.getElementsByClassName("post-title")[0];
     postTitle.innerText = postTitle.innerText.split(" ~ ")[0] + " ~ " + username;
 }
+

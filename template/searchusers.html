@@ -1,100 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Search Users</title>
-        <link rel="icon" type="image/x-icon" href="../icons/logo.png">
-        <!--Bootstrap-->
-        <!-- Latest compiled and minified CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!--CSS-->
-        <link rel="stylesheet" href="../css/style.css">
-        <script type="text/javascript" src="../javascript/javascript.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    </head>
-    <body>
-        <header>
-            <nav class="navbar navbar-expand-lg">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">~</span>
-                    </div>
-                    <input type="text" class="form-control col-sm-12 col-md-8" placeholder="Search for username or real name" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-            </nav>
-            <nav class="navbar">
-                <form class="form-inline">
-                </form>
-            </nav>
-        </header>
-        <main class="container">
-            <h3>Recent searches</h3>
-            <ul>
-                <li>
-                    <a href="./searchusers.html">Giacomo Sirri</a>
-                    <button class="delete-recent-search">X</button>
-                </li>
-                <li>
-                    <a href="./searchusers.html">Giacomo Sirri</a>
-                    <button class="delete-recent-search">X</button>
-                </li>
-                <li>
-                    <a href="./searchusers.html">Giacomo Sirri</a>
-                    <button class="delete-recent-search">X</button>
-                </li>
-                <li>
-                    <a href="./searchusers.html">Giacomo Sirri</a>
-                    <button class="delete-recent-search">X</button>
-                </li>
-                <li>
-                    <a href="./searchusers.html">Giacomo Sirri</a>
-                    <button class="delete-recent-search">X</button>
-                </li>
-            </ul>
-        </main>
-        <footer>
-            <div class="d-flex justify-content-start flex-column">
-                <nav>
-                    <ul class="row text-center">
-                        <li class="col-2"><a href="./feed.html"><img src="../icons/home_icon.png" alt="home"></a></li>
-                        <li class="col-2"><a href="./explore.html"><img src="../icons/search_icon.png" alt="explore"></a></li>
-                        <li class="col-2"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
-                        <li class="col-2"><a href="./notifications.html"><img src="../icons/notification_icon.png" alt="notifications"></a></li>
-                        <li class="col-2"><a href="./searchusers.html"><img src="../icons/users_icon.png" alt="search users"></a></li>
-                        <li class="col-2"><a href="./profile.html"><img src="../profile_pics/jaaack.jpg" alt="my profile"></a></li>
-                    </ul>
-                </nav>
-                <div></div>
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text h-100" id="basic-addon1">~</span>
             </div>
-        </footer>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Title:</label>
-                                <input type="text" class="form-control" id="recipient-name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="message-text" class="col-form-label">Content:</label>
-                                <textarea class="form-control" id="message-text"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Create Post</button>
-                    </div>
-                </div>
-            </div>
+            <input type="text" id="username" class="form-control col-sm-8 col-md-8" placeholder="Search for username or real name" aria-label="Username" aria-describedby="basic-addon1">
+            <button type="button" class="btn btn-primary col-sm-2 sol-ms-2 m-0" onclick=""> search </button>
         </div>
-    </body>
-</html>
+    </nav>
+    <nav class="navbar">
+        <form class="form-inline">
+        </form>
+    </nav>
+</header>
+<main class="container">
+    <h3>Recent searches</h3>
+    <ul>
+    </ul>
+</main>
