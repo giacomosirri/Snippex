@@ -4,6 +4,5 @@ $templateParams["js"] = array("https://cdn.jsdelivr.net/npm/axios/dist/axios.min
 $templateParams["user"] = $_SESSION["LoggedUser"];
 $templateParams["title"] = "Your profile";
 $templateParams["page"] = "../template/profile.html";
-
 require "./base.php";
 ?>

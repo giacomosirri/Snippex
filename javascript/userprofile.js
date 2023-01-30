@@ -118,7 +118,6 @@ function addFriends(friends) {
     return list;
 }
 
-
 const url_string = window.location.href;
 const url = new URL(url_string);
 const user = url.searchParams.get("Username");
