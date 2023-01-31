@@ -22,20 +22,18 @@
     if(isset($templateParams["page"])) {
     require $templateParams["page"];
 } ?>
-<footer>
-    <div class="d-flex justify-content-start flex-column">
-        <nav>
-            <ul class="row text-center">
-                <li class="col-2"><a href="./feed.php"><img src="../icons/home_icon.png" alt="home"></a></li>
-                <li class="col-2"><a href="./explore.php"><img src="../icons/search_icon.png" alt="explore"></a></li>
-                <li class="col-2"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
-                <li class="col-2"><a href="/template/notifications.html"><img src="../icons/notification_icon.png" alt="notifications"></a></li>
-                <li class="col-2"><a href="./searchusers.php"><img src="../icons/users_icon.png" alt="search users"></a></li>
-                <li class="col-2"><a href="./profile.php"><img id="menu-profile-pic" src="" alt="my profile"></a></li>
-            </ul>
-        </nav>
-        <div></div>
-    </div>
+<footer class="d-flex justify-content-start flex-column">
+    <div></div>
+    <nav>
+        <ul class="d-flex justify-content-around text-center">
+            <li><a href="./feed.php"><img src="../icons/home_icon.png" alt="home"></a></li>
+            <li><a href="./explore.php"><img src="../icons/search_icon.png" alt="explore"></a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
+            <li><a href="./searchusers.php"><img src="../icons/users_icon.png" alt="search users"></a></li>
+            <li><a href="./profile.php"><img id="menu-profile-pic" src="" alt="my profile"></a></li>
+        </ul>
+    </nav>
+    <div></div>
 </footer>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
