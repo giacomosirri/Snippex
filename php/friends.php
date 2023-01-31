@@ -1,5 +1,5 @@
 <?php
-require_once "session.php";
+require_once "session-check.php";
 $templateParams["js"] = array("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js", "../javascript/friends.js", "../javascript/image.js");
 if (isset($_GET["Username"])) {
     $templateParams["user"] = $_GET["Username"];

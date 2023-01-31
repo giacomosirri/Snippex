@@ -4,3 +4,4 @@ if (!isset($_SESSION["LoggedUser"])) {
     header("Location: ../template/login.html");
     exit();
 }
+?>
