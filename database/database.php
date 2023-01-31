@@ -181,5 +181,11 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function markNotificationAsRead($notificationID) {
+        $stmt = $this->db->prepare("UPDATE notifications AS n SET n.Read = 1 WHERE n.NotificationID = ?");
+        $stmt->bind_param('s', $notificationID);
+        $stmt->execute();
+    }
 }
 ?>
