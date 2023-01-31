@@ -7,8 +7,8 @@ function createCommentNotification(data) {
     return `
         <div class="notification row align-items-center">
             <div class="col-md-1"></div>
-            <p class="col-5 col-xl-5 notification-content" style="font-size: 15px">
-                ${data["User"]} has commented your post ''
+            <p class="col-5 col-xl-5 notification-content" style="font-size: 15px; word-spacing: 1px">
+                <strong>~${data["User"]}</strong> has commented your post <em>${data["PostTitle"]}</em>
             </p>
             <p class="col-3 col-xl-2 align-self-center notification-date" style="font-size: 80%; color:#6e6e6e">
                 ${data["DateAndTime"]}
@@ -27,10 +27,10 @@ function createRatingNotification(data) {
     return `
         <div class="notification row align-items-center">
             <div class="col-md-1"></div>
-            <p class="col-5 col-xl-5 notification-content" style="font-size: 15px">
-                ${data["Rater"]} has rated your post
+            <p class="col-5 col-xl-5 notification-content" style="font-size: 15px; word-spacing: 1px">
+                <strong>~${data["Rater"]}</strong> has rated your post <em>${data["PostTitle"]}</em> with <em>${data["Category"]}</em>
             </p>
-            <p class="col-3 col-xl-2 align-self-center notification-date" style="font-size: 80%; color:#6e6e6e">
+            <p class="col-5 col-xl-3 align-self-center notification-date" style="font-size: 80%; color:#6e6e6e">
                 ${data["DateAndTime"]}
             </p>
             <div class="col-1 d-flex justify-content-start" style="margin-left: 15px" onclick="markNotificationAsRead(${data["NotificationID"]})">
@@ -44,7 +44,7 @@ function createFriendNotification(data) {
     return `
         <div class="notification row align-items-center">
             <div class="col-md-1"></div>
-            <p class="col-5 col-xl-5 notification-content" style="font-size: 15px">
+            <p class="col-5 col-xl-5 notification-content" style="font-size: 15px; word-spacing: 1px">
                 ${data["User"]} has requested to become your friend
             </p>
             <p class="col-3 col-xl-2 align-self-center notification-date" style="font-size: 80%; color:#6e6e6e">
@@ -77,6 +77,7 @@ function countNotifications(data) {
 }
 
 axios.get('../php/notifications-api.php').then(response => {
+    console.log(response.data);
     const h1 = document.querySelector("header h1");
     const n = countNotifications(response.data);
     h1.innerHTML = `You have ${n} notifications to read`;

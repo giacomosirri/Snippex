@@ -156,8 +156,11 @@ class DatabaseHelper {
     }
 
     public function getNotificationsOfComments($username): array {
-        $stmt = $this->db->prepare("SELECT n.NotificationID, n.Comment, n.Read, c.Content, c.DateAndTime, c.User, c.Post 
-            FROM notifications AS n JOIN comments AS c ON n.Comment = c.CommentID WHERE n.Notified_user = ?");
+        $stmt = $this->db->prepare("SELECT n.NotificationID, n.Comment, n.Read, c.Content, c.DateAndTime, c.User, 
+                                    c.Post AS PostID, p.Title AS PostTitle FROM notifications AS n 
+                                    JOIN comments AS c ON n.Comment = c.CommentID 
+                                    JOIN posts AS p ON c.Post = p.PostID 
+                                    WHERE n.Notified_user = ?");
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -165,8 +168,11 @@ class DatabaseHelper {
     }
 
     public function getNotificationsOfRatings($username): array {
-        $stmt = $this->db->prepare("SELECT n.NotificationID, n.Rating, n.Read, r.DateAndTime, r.Category, r.Rater, r.Post 
-            FROM notifications AS n JOIN ratings AS r ON n.Rating = r.RatingID WHERE n.Notified_user = ?");
+        $stmt = $this->db->prepare("SELECT n.NotificationID, n.Rating, n.Read, r.DateAndTime, r.Category, r.Rater, 
+                                    r.Post AS PostID, p.Title AS PostTitle FROM notifications AS n 
+                                    JOIN ratings AS r ON n.Rating = r.RatingID 
+                                    JOIN posts AS p ON r.Post = p.PostID 
+                                    WHERE n.Notified_user = ?");
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
