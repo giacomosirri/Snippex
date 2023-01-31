@@ -17,7 +17,7 @@ function addMostVotedPost(data) {
                 Most voted post ever
             </h2>
             <div>
-                <a href="/template/posthistory.html" class="d-flex justify-content-start" style="padding-top: 1%;
+                <a href="../php/posthistory.php?Username=${user}" class="d-flex justify-content-start" style="padding-top: 1%;
                                 text-decoration: none; color: black">
                     <p style="font-size: 12px;">Browse history</p>
                     <div>
@@ -94,7 +94,7 @@ function addFriends(friends) {
         <div class="col-12 col-lg-8 d-flex justify-content-between">
             <h2>Friends</h2>
             <div>
-                <a href="/template/friends.html" class="d-flex justify-content-start" style="padding-top: 1%">
+                <a href="../php/friends.php?Username=${user}" class="d-flex justify-content-start" style="padding-top: 1%">
                 <p style="font-size: 12px;">See all friends</p>
                 <div>
                     <img src="../icons/goarrow_icon.png" alt="browse history">
@@ -118,9 +118,7 @@ function addFriends(friends) {
     return list;
 }
 
-const url_string = window.location.href;
-const url = new URL(url_string);
-const user = url.searchParams.get("Username");
+let user = session_user ?? new URL(window.location.href).searchParams.get("Username");
 
 axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(response => {
     const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];
