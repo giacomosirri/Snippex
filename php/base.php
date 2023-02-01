@@ -56,7 +56,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" id="post" class="btn btn-primary" onclick="createPost()">Post</button>
+                <button type="button" id="post" class="btn btn-primary">Post</button>
             </div>
         </div>
     </div>
