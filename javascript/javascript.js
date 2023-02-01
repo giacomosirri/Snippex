@@ -1,5 +1,6 @@
 window.onload = function() {
     document.querySelectorAll("article label").forEach(label => changeText(label));
+    document.getElementById("go-back").addEventListener("click", () => goBack());
 }
 
 function activeLogin(link) {
