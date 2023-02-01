@@ -11,7 +11,7 @@ function createNewComment(data) {
         <h3 class="post-title col-10">~ ${data["User"]}</h3>
         <div class="d-flex justify-content-between">
             <div class="post-content col-12">
-                <button onClick="changeText(this)">
+                <button class="change-text-button">
                     <p class="post-text">
                         ${data["Content"]}
                     </p>
@@ -20,6 +20,8 @@ function createNewComment(data) {
             </div>
         </div>
     </article>`;
+    comment.getElementsByClassName("change-text-button")[0]
+        .addEventListener("click", () => changeText(this));
     return comment;
 }
 
