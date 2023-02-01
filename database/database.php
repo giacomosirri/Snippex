@@ -96,8 +96,9 @@ class DatabaseHelper {
             SELECT friendships.User2 FROM users JOIN friendships ON users.Username = friendships.User1 WHERE users.Username = ?
         ) AND posts.Writer NOT IN (
             SELECT friendships.User1 FROM users JOIN friendships ON users.Username = friendships.User2 WHERE users.Username = ?
-        ) ORDER BY posts.DateAndTime DESC");
-        $stmt->bind_param('ss',$username, $username);
+        ) AND posts.Writer != ?
+        ORDER BY posts.DateAndTime DESC");
+        $stmt->bind_param('sss',$username, $username,$username);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
