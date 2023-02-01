@@ -4,6 +4,7 @@ window.onload = function() {
     if (goBackButton !== null) {
         goBackButton.addEventListener("click", goBack);
     }
+    document.getElementById("post").addEventListener("click", createPost);
 }
 
 function createPost(){

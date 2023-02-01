@@ -13,7 +13,6 @@ export function createNewPost(data, index) {
         post.innerHTML = `<h3 class="post-title col-10" id="post-header">${data["Title"]} ~ *****</h3>
                             <div class="user-username d-none"> ${data["Writer"]} </div>`;
     }
-    console.log(data["PostID"]);
     post.innerHTML += `
         <div class="post-id d-none"> ${data["PostID"]} </div>
         <div class="d-flex justify-content-between">

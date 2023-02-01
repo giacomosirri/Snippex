@@ -1,4 +1,4 @@
-import {createNewPost} from "./commons";
+import {createNewPost} from "./commons.js";
 
 let navItems = Array.from(document.getElementsByClassName("nav-item"));
 navItems.forEach(item => item.addEventListener("click", function() {
@@ -41,8 +41,8 @@ function addMostVotedPost(data) {
             </div>
         </div>
     `;
-    let post = createNewPost(data, 0);
-    return postFrame + post;
+    let post = createNewPost(data[0], 0);
+    return postFrame.outerHTML + post.outerHTML;
 }
 
 // returns the number of points the user has obtained in the given category
