@@ -1,3 +1,14 @@
+let navItems = Array.from(document.getElementsByClassName("nav-item"));
+navItems.forEach(item => item.addEventListener("click", function() {
+    item.addEventListener("click", () => activeMenu(item));
+}));
+
+function activeMenu(link) {
+    const menu = document.querySelectorAll("header nav ul li a");
+    menu.forEach(item => item.classList.remove("active"));
+    link.classList.add("active");
+}
+
 function addBasicInfo(data) {
     return `
         <div class="d-flex justify-content-start flex-column">
