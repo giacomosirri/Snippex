@@ -18,27 +18,36 @@ export function createNewPost(data, index) {
         <div class="post-id d-none"> ${data["PostID"]} </div>
         <div class="d-flex justify-content-between">
             <div class="post-content col-12">
-                <label role="button" onclick="changeText(this)">
+                <button class="change-text-button">
                     <p class="post-text">
                         ${data["Content"]}
                     </p>
-                </label>
+                </button>
                 <p class="post-date col-12">${data["DateAndTime"]}</p>
             </div>
             <div class="post-interactions d-flex justify-content-between flex-column">
                 <img class="rate-post" style="padding: 5px; border-radius: 20px;"
-                     src="../icons/plus_icon.png" alt="post menu" onclick="showRatingCategories(document.getElementById('post-${index}'))"/>
-                <img class="thoughtfulness" style="display: none" src="../icons/thoughts_icon.png"
-                     alt="rate as thoughtfulness" onclick="showPlus(document.getElementById('post-${index}'))">
-                <img class="idea" style="display: none" src="../icons/idea_icon.png"
-                     alt="rate as idea" onclick="showPlus(document.getElementById('post-${index}'))">
-                <img class="advice" style="display: none" src="../icons/advice_icon.png"
-                     alt="rate as advice" onclick="showPlus(document.getElementById('post-${index}'))">
-                <img class="laugh" style="display: none" src="../icons/laugh_icon.png"
-                     alt="rate as humour" onclick="showPlus(document.getElementById('post-${index}'))">
+                     src="../icons/plus_icon.png" alt="post menu"/>
+                <img class="rating thoughtfulness" style="display: none" src="../icons/thoughts_icon.png"
+                     alt="rate as thoughtfulness">
+                <img class="rating idea" style="display: none" src="../icons/idea_icon.png"
+                     alt="rate as idea">
+                <img class="rating advice" style="display: none" src="../icons/advice_icon.png"
+                     alt="rate as advice">
+                <img class="rating laugh" style="display: none" src="../icons/laugh_icon.png"
+                     alt="rate as humour">
                 <img class="comment-post" style="margin-bottom: 6px" src="../icons/comment_icon.png"
-                     alt="comment" onclick="showComments(document.getElementById('post-${index}'))">
+                     alt="comment">
             </div>
         </div>`;
+    post.getElementsByClassName("change-text-button")[0]
+        .addEventListener("click", () => changeText(this));
+    post.getElementsByClassName("rate-post")[0]
+        .addEventListener("click", () => showRatingCategories(post));
+    let ratingCategories = Array.from(post.getElementsByClassName("rating"));
+    ratingCategories.forEach(item =>
+        item.addEventListener("click", () => showPlus(post)));
+    post.getElementsByClassName("comment-post")[0]
+        .addEventListener("click", () => showComments(post));
     return post;
 }
