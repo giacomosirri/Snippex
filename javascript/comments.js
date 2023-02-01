@@ -10,16 +10,16 @@ function createNewComment(data) {
         <h3 class="post-title col-10">~ ${data["User"]}</h3>
         <div class="d-flex justify-content-between">
             <div class="post-content col-12">
-                <button class="change-text-button">
+                <label class="change-text-button">
                     <p class="post-text">
                         ${data["Content"]}
                     </p>
-                </button>
+                </label>
                 <p class="post-date col-12">${data["DateAndTime"]}</p>
             </div>
         </div>`;
     comment.getElementsByClassName("change-text-button")[0]
-        .addEventListener("click", () => changeText(this));
+        .addEventListener("click", () => changeText(comment));
     return comment;
 }
 
@@ -33,16 +33,16 @@ function createHeaderPost(data) {
         <div class="post-id d-none"> ${data["PostID"]} </div>
         <div class="d-flex justify-content-between">
             <div class="post-content col-12">
-                <button class="change-text-button">
+                <label class="change-text-button">
                     <p class="post-text">
                         ${data["Content"]}
                     </p>
-                </button>
+                </label>
                 <p class="post-date col-12">${data["DateAndTime"]}</p>
             </div>
         </div>`;
     post.getElementsByClassName("change-text-button")[0]
-        .addEventListener("click", () => changeText(this));
+        .addEventListener("click", () => changeText(post));
     return post;
 }
 

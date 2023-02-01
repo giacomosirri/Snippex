@@ -17,11 +17,11 @@ export function createNewPost(data, index) {
         <div class="post-id d-none"> ${data["PostID"]} </div>
         <div class="d-flex justify-content-between">
             <div class="post-content col-12">
-                <button class="change-text-button">
+                <label class="change-text-button">
                     <p class="post-text">
                         ${data["Content"]}
                     </p>
-                </button>
+                </label>
                 <p class="post-date col-12">${data["DateAndTime"]}</p>
             </div>
             <div class="post-interactions d-flex justify-content-between flex-column">
@@ -40,7 +40,7 @@ export function createNewPost(data, index) {
             </div>
         </div>`;
     post.getElementsByClassName("change-text-button")[0]
-        .addEventListener("click", () => changeText(this));
+        .addEventListener("click", () => changeText(post));
     post.getElementsByClassName("rate-post")[0]
         .addEventListener("click", () => showRatingCategories(post));
     let ratingCategories = Array.from(post.getElementsByClassName("rating"));
