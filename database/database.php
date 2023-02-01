@@ -194,5 +194,13 @@ class DatabaseHelper {
         $stmt->bind_param('s', $notificationID);
         $stmt->execute();
     }
+
+    public function getPost($post) {
+        $stmt = $this->db->prepare("SELECT * FROM posts WHERE PostID = ?");
+        $stmt->bind_param('i', $post);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
