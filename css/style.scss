@@ -19,7 +19,6 @@ body {
   min-height: 100vh;
   background: white;
 
-
   header {
     @media screen and (max-width: 768px) {
       width: 100%;
@@ -231,11 +230,6 @@ body {
       padding: 0;
       margin: 0;
       list-style: none;
-      button{
-        float: right;
-        margin: 0;
-        padding: 5px;
-      }
       li{
           &:hover{
             background: #E9ECEF;
@@ -284,20 +278,4 @@ body {
   }
 }
 
-button {
-  padding: 10px;
-  background-color: $templateColor;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  text-align: center;
-  font-size: 16px;
-  text-decoration: none;
-  margin-top: 5px;
-  &:active {
-    background-color: $templateColor;
-  }
-  &:hover {
-    background-color: #3481d0;
-  }
-}
+

@@ -7,9 +7,9 @@ $searchedUser = $_GET["Username"];
 $friends = $dbh->getUserFriends($user);
 $friends_col = array_column($friends, "Username");
 if (in_array($searchedUser, $friends_col)) {
-    echo json_encode("friend");
+    echo json_encode(1);
 } else {
-    echo json_encode("not-friend");
+    echo json_encode(0);
 }
 
 
