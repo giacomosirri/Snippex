@@ -1,6 +1,7 @@
-const user = document.querySelector("#username").innerText;
+
 
 function addRecentSearch(data) {
+    const user = document.querySelector("#username").value;
     const query = document.querySelector(".container ul");
     const li = document.createElement("li");
     li.innerHTML = `
@@ -10,7 +11,9 @@ function addRecentSearch(data) {
     query.appendChild(li);
 }
 
-axios.get('../php/searchusers-api.php', {params: {Username: user}}).then(response => {
-    console.log(response.data[0]);
-    addRecentSearch(response.data[0]);
-});
+function applyRecentSearch() {
+    const user = document.querySelector("#username").value;
+    axios.get('../php/searchusers-api.php', {params: {Username: user}}).then(response => {
+        addRecentSearch(response.data);
+    });
+}

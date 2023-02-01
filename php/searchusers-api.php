@@ -1,13 +1,16 @@
 <?php
+
 require_once "bootstrap.php";
 global $dbh;
 $user = $_SESSION["LoggedUser"];
 $searchedUser = $_GET["Username"];
-$friendship = $dbh->getUserFriends($user);
-$friendship_col = array_column($friendship, "Username");
-if (in_array($searchedUser, $friendship_col)) {
-    $json_data = "friend";
+$friends = $dbh->getUserFriends($user);
+$friends_col = array_column($friends, "Username");
+if (in_array($searchedUser, $friends_col)) {
+    echo json_encode("friend");
 } else {
-    $json_data = "not-friend";
+    echo json_encode("not-friend");
 }
+
+
 ?>
