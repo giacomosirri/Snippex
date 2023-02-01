@@ -3,13 +3,6 @@ window.onload = function() {
     document.getElementById("go-back").addEventListener("click", () => goBack());
 }
 
-function activeLogin(link) {
-    const links = document.querySelectorAll("nav .nav-link");
-    links.forEach(item => item.classList.remove("active"));
-    links.forEach(item => item.style.fontWeight="normal");
-    link.classList.add("active");
-    link.style.fontWeight="bold";
-}
 
 function activeMenu(link) {
     const menu = document.querySelectorAll("header nav ul li a");
