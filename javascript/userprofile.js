@@ -1,9 +1,8 @@
 import {createNewPost} from "./commons.js";
 
 let navItems = Array.from(document.getElementsByClassName("nav-item"));
-navItems.forEach(item => item.addEventListener("click", function() {
-    item.addEventListener("click", () => activeMenu(item));
-}));
+navItems.forEach(item => item.addEventListener("click", () =>
+    item.addEventListener("click", () => activeMenu(item))));
 
 function activeMenu(link) {
     const menu = document.querySelectorAll("header nav ul li a");
@@ -118,13 +117,14 @@ function isFriend() {
     });
 }
 
-function addButton(friend) {
+function addRequestFriendshipButton(friend) {
     if (!friend) {
         const friendship_div = document.getElementById("friendship");
         const button = document.createElement("button");
         button.className = "btn btn-primary";
         button.innerText = "Request friendship";
         friendship_div.appendChild(button);
+        button.addEventListener("click", () => requestFriendship(user, session_user));
     }
 }
 
@@ -145,7 +145,7 @@ axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(respons
     const date_paragraph = document.getElementById("user-since");
     // add request button only in the profile pages of users the current user is not yet friend with
     if (document.getElementById("friendship") !== null) {
-        isFriend().then(friend => addButton(friend));
+        isFriend().then(friend => addRequestFriendshipButton(friend));
     }
     header.innerHTML += userData;
     table.innerHTML += ratingStats;
