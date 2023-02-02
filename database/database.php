@@ -8,6 +8,15 @@ class DatabaseHelper {
             die("Connection failed: " . $this->db->connect_error);
         }
     }
+    public function getUserFromInitials($initials): array
+    {
+        $stmt = $this->db->prepare("SELECT Username FROM users WHERE Username LIKE ?");
+        $str = $initials.'%';
+        $stmt->bind_param('s', $str);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
     public function getUserData($username): array {
         $stmt = $this->db->prepare("SELECT * FROM users WHERE Username = ?");
