@@ -1,6 +1,7 @@
 
 window.onload = (event) => {
-    document.getElementById("username").addEventListener('input', addProposal);
+    $("#username").change(() => addProposal($("#username").val()));
+    $("#username").keyup(() => $(this).change());
     displayRecentSearch();
 };
 
@@ -8,7 +9,7 @@ function deleteSearch(object){
     object.parentNode.style.display='none';
 }
 function addProposal(user) {
-    if(user.data != null && user.data.length > 0){
+    if(user != null && user.length > 0){
         displayProposal();
     }else{
         displayRecentSearch();
