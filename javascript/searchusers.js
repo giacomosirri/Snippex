@@ -1,6 +1,7 @@
 
 window.onload = (event) => {
     document.getElementById("username").addEventListener('input', addProposal);
+    displayRecentSearch();
 };
 
 function deleteSearch(object){
