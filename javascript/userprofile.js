@@ -107,7 +107,30 @@ function addFriends(friends) {
     return list;
 }
 
-let user = session_user ?? new URL(window.location.href).searchParams.get("Username");
+function isFriend() {
+    return axios.get('../php/friends-api.php', {params: {Username: user}}).then(response => {
+        for (let i=0; i<response.data.length; i++) {
+            if (response.data[i]["Username"] === session_user) {
+                return true;
+            }
+        }
+        return false;
+    });
+}
+
+function addButton(friend) {
+    if (!friend) {
+        const friendship_div = document.getElementById("friendship");
+        const button = document.createElement("button");
+        button.className = "btn btn-primary";
+        button.innerText = "Request friendship";
+        friendship_div.appendChild(button);
+    }
+}
+
+// if this script is part of the profile page, then this variable contains the name of the user currently logged in,
+// otherwise it contains the name of the user searched by the user currently logged in.
+let user = new URL(window.location.href).searchParams.get("Username") ?? session_user;
 
 axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(response => {
     const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];
@@ -120,6 +143,10 @@ axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(respons
     const table = document.getElementById("rating-statistics");
     const friends_paragraph = document.getElementById("friends");
     const date_paragraph = document.getElementById("user-since");
+    // add request button only in the profile pages of users the current user is not yet friend with
+    if (document.getElementById("friendship") !== null) {
+        isFriend().then(friend => addButton(friend));
+    }
     header.innerHTML += userData;
     table.innerHTML += ratingStats;
     friends_paragraph.innerHTML = friendsNum;

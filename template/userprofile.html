@@ -4,7 +4,7 @@
             <img id="go-back" src="../icons/back_arrow.png" alt="go back" style="margin-top: 20px"/>
         </div>
         <div id="user-data" class="col-10 d-flex justify-content-center"></div>
-        <div class="col-1">
+        <div id="friendship" class="col-1">
         </div>
     </div>
 </header>
@@ -16,5 +16,5 @@
     <section id="friends-list"></section>
 </main>
 <script type="text/javascript">
-    const session_user = null;
+    const session_user = "<?php echo $_SESSION["LoggedUser"] ?>";
 </script>
