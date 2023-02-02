@@ -113,8 +113,8 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPostComments($post_id) {
-        $stmt = $this->db->prepare("SELECT * FROM comments WHERE Post = ?");
+    public function getPostComments($post_id): array {
+        $stmt = $this->db->prepare("SELECT * FROM comments WHERE Post = ? ORDER BY DateAndTime DESC");
         $stmt->bind_param('i', $post_id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -210,6 +210,13 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function addComment($comment, $post) {
+        $stmt = $this->db->prepare("INSERT INTO comments (Content, DateAndTime, User, Post) VALUES (?, ?, ?, ?)");
+        $date = date("Y-m-d H:i:s");
+        $stmt->bind_param('sssi', $comment, $date, $_SESSION['LoggedUser'], $post);
+        $stmt->execute();
     }
 }
 ?>

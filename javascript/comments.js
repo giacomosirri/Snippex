@@ -1,6 +1,17 @@
 const url_string = window.location.href;
 const url = new URL(url_string);
 const comments = document.getElementById("comments");
+$("#comment-input").submit(function(e) {
+
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+    let form = $(this);
+    let actionUrl = form.attr('action');
+
+    axios.post(actionUrl, form.serialize());
+    window.location.reload();
+});
+
 
 
 function createNewComment(data) {
