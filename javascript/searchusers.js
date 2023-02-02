@@ -28,13 +28,12 @@ function displayRecentSearch(){
         .then(response =>
         {
             console.log(response.data);
+            document.getElementById("proposes").innerHTML="";
+
             if(response.data.length > 0) {
-                document.getElementById("proposes").innerHTML="";
                 return appendUsers(response.data);
-            }else{
-                document.getElementById("proposes").innerHTML="";
-                return;
             }
+            return;
         });
 }
 
@@ -46,7 +45,11 @@ function appendUser(user){
             <span class="input-group-text h-100">&#128269;</span>
          </div>
          <button type="button" class="search-button btn btn-light col-sm-2 sol-ms-2 m-0">${user}</button>`
-    div.querySelector(".search-button").addEventListener('click', () => addRecentUser(user))
+    div.querySelector(".search-button").addEventListener('click', () => {
+        addRecentUser(user);
+        window.location.replace("./userprofile.php?Username="+user);
+        //change page
+    })
     document.getElementById("proposes").appendChild(div);
 }
 
