@@ -1,7 +1,9 @@
 
 window.onload = (event) => {
     $("#username").change(() => addProposal($("#username").val()));
-    $("#username").keyup(() => $(this).change());
+    $("#username").keyup(function(){
+        $(this).change();
+    });
     displayRecentSearch();
 };
 
