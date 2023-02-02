@@ -218,5 +218,12 @@ class DatabaseHelper {
         $stmt->bind_param('sssi', $comment, $date, $_SESSION['LoggedUser'], $post);
         $stmt->execute();
     }
+
+    public function addPost($title, $content) {
+        $stmt = $this->db->prepare("INSERT INTO posts (Title, Content, DateAndTime, Writer) VALUES (?, ?, ?, ?)");
+        $date = date("Y-m-d H:i:s");
+        $stmt->bind_param('ssss', $title, $content, $date, $_SESSION['LoggedUser']);
+        $stmt->execute();
+    }
 }
 ?>
