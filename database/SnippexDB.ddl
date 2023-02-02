@@ -20,7 +20,7 @@ use snippex;
 -- _____________ 
 
 create table COMMENTS (
-     CommentID int not null,
+     CommentID int not null auto_increment,
      Content longtext not null,
      DateAndTime datetime not null,
      User char(40) not null,
@@ -34,7 +34,7 @@ create table FAVORITES (
      constraint IDFAVORITE primary key (User, Post));
 
 create table FRIENDSHIPS (
-     FriendshipID int not null,
+     FriendshipID int not null auto_increment,
      User1 char(40) not null,
      User2 char(40) not null,
      RequestDate date not null,
@@ -43,7 +43,7 @@ create table FRIENDSHIPS (
      constraint IDfriendship primary key (FriendshipID));
 
 create table NOTIFICATIONS (
-     NotificationID int not null,
+     NotificationID int not null auto_increment,
      Comment int,
      Rating int,
      Friend int,
@@ -61,7 +61,7 @@ create table POINTS (
      constraint IDpoints primary key (User, Category));
 
 create table POSTS (
-     PostID int not null,
+     PostID int not null auto_increment,
      Title char(150) not null,
      Content longtext not null,
      DateAndTime datetime not null,
@@ -70,7 +70,7 @@ create table POSTS (
      constraint IDPOST primary key (PostID));
 
 create table RATINGS (
-     RatingID int not null,
+     RatingID int not null auto_increment,
      DateAndTime datetime not null,
      Category char(50) not null,
      Rater char(40) not null,
