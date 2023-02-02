@@ -58,7 +58,8 @@ function appendUser(user){
 }
 
 function appendUsers(users){
-    users.forEach(x => appendUser(x));
+    const usersWithoutDuplicate = new Set(users)
+    usersWithoutDuplicate.forEach(x => appendUser(x));
 }
 
 function addRecentUser(user){
