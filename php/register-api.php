@@ -6,6 +6,7 @@ $password = $_POST["password"];
 $passwordConfirm = $_POST["passwordConfirm"];
 $name = $_POST["name"];
 $surname = $_POST["surname"];
+$dateOfBirth = $_POST["dateBirth"];
 $signup_date = date("Y-m-d");
 
 if($password != $passwordConfirm) {
@@ -13,7 +14,7 @@ if($password != $passwordConfirm) {
 }
 var_dump(password_hash($password, PASSWORD_DEFAULT));
 if(count($dbh->getUserData($username)) == 0){
-    $dbh->registerUser($name, $surname, $username, password_hash($password, PASSWORD_DEFAULT), $signup_date);
+    $dbh->registerUser($name, $surname, $username, $dateOfBirth, password_hash($password, PASSWORD_DEFAULT), $signup_date);
     $_SESSION["LoggedUser"] = $username;
     header("Location: ./feed.php?Username=$username");
     exit;
