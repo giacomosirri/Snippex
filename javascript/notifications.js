@@ -1,5 +1,6 @@
 async function markNotificationAsRead(notificationID) {
     await axios.put('../php/notifications-api.php', {ID: notificationID, Type: "update"});
+    location.reload();
 }
 
 function addNotifications(notifications) {

@@ -166,11 +166,11 @@ class DatabaseHelper {
     }
 
     public function getNotificationsOfComments($username): array {
-        $stmt = $this->db->prepare("SELECT n.NotificationID, n.Comment, n.Read, c.Content, c.DateAndTime, c.User, 
+        $stmt = $this->db->prepare("SELECT n.NotificationID, n.Comment, c.Content, c.DateAndTime, c.User, 
                                     c.Post AS PostID, p.Title AS PostTitle FROM notifications AS n 
                                     JOIN comments AS c ON n.Comment = c.CommentID 
                                     JOIN posts AS p ON c.Post = p.PostID 
-                                    WHERE n.Notified_user = ?");
+                                    WHERE n.Notified_user = ? AND n.Read = 0");
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -178,24 +178,19 @@ class DatabaseHelper {
     }
 
     public function getNotificationsOfRatings($username): array {
-        $stmt = $this->db->prepare("SELECT n.NotificationID, n.Rating, n.Read, r.DateAndTime, r.Category, r.Rater, 
+        $stmt = $this->db->prepare("SELECT n.NotificationID, n.Rating, r.DateAndTime, r.Category, r.Rater, 
                                     r.Post AS PostID, p.Title AS PostTitle FROM notifications AS n 
                                     JOIN ratings AS r ON n.Rating = r.RatingID 
                                     JOIN posts AS p ON r.Post = p.PostID 
-                                    WHERE n.Notified_user = ?");
+                                    WHERE n.Notified_user = ? AND n.Read = 0");
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getNotificationsOfFriendships($username): array {
-        $stmt = $this->db->prepare("SELECT n.NotificationID, n.Friend, n.Read, f.User1, f.User2, f.RequestDate, f.FriendsSince, f.FriendsUntil 
-            FROM notifications AS n JOIN friendships AS f ON n.Friend = f.FriendshipID WHERE n.Notified_user = ?");
-        $stmt->bind_param('s', $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+    public function getNotificationsOfFriendships($user): array {
+        return array();
     }
 
     public function markNotificationAsRead($notificationID) {
@@ -247,5 +242,6 @@ class DatabaseHelper {
 
     public function addNewRatingNotification($ID, $Notified) {
     }
+
 }
 ?>
