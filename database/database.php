@@ -264,5 +264,18 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
+    public function getPostsFromKeyword($keyword) : array {
+        $stmt1 = $this->db->prepare("SELECT * FROM posts WHERE Title LIKE ? ORDER BY DateAndTime DESC");
+        $stmt2 = $this->db->prepare("SELECT * FROM posts WHERE Content LIKE ? ORDER BY DateAndTime DESC");
+        $keyword = '%' . $keyword . '%';
+        $stmt1->bind_param('s', $keyword);
+        $stmt2->bind_param('s', $keyword);
+        $stmt1->execute();
+        $result1 = $stmt1->get_result();
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        return array_merge($result1->fetch_all(MYSQLI_ASSOC), $result2->fetch_all(MYSQLI_ASSOC));
+    }
+
 }
 ?>
