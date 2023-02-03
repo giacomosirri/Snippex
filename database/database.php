@@ -188,13 +188,9 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getNotificationsOfFriendships($user): array {
-        return array();
-    }
-
     public function markNotificationAsRead($notificationID) {
         $stmt = $this->db->prepare("UPDATE notifications AS n SET n.Read = 1 WHERE n.NotificationID = ?");
-        $stmt->bind_param('s', $notificationID);
+        $stmt->bind_param('i', $notificationID);
         $stmt->execute();
     }
 
@@ -218,6 +214,9 @@ class DatabaseHelper {
         $date = date("Y-m-d H:i:s");
         $stmt->bind_param('ssss', $title, $content, $date, $_SESSION['LoggedUser']);
         $stmt->execute();
+        $stmt = $this->db->prepare("UPDATE users SET NumberOfPosts = NumberOfPosts + 1 WHERE Username = ?");
+        $stmt->bind_param('s', $_SESSION['LoggedUser']);
+        $stmt->execute();
     }
 
     public function addFriendshipRequest($requesting, $requested) {
@@ -240,6 +239,29 @@ class DatabaseHelper {
     }
 
     public function addNewRatingNotification($ID, $Notified) {
+    }
+
+    public function addFriendshipAcceptance($friendshipId) {
+        $stmt = $this->db->prepare("UPDATE friendships SET FriendsSince = ? WHERE FriendshipID = ?");
+        $date = date("Y-m-d");
+        $stmt->bind_param('si', $date, $friendshipId);
+        $stmt->execute();
+        $stmt = $this->db->prepare("UPDATE users SET NumberOfFriends = NumberOfFriends + 1 
+                                    WHERE Username = (SELECT Requesting_user FROM friendships WHERE FriendshipID = ?) 
+                                    OR Username = (SELECT Requested_user FROM friendships WHERE FriendshipID = ?)");
+        $stmt->bind_param('ii', $friendshipId, $friendshipId);
+        $stmt->execute();
+    }
+
+    public function deleteFriendship($friendshipId) {
+        $stmt = $this->db->prepare("UPDATE users SET NumberOfFriends = NumberOfFriends - 1 
+                                    WHERE Username = (SELECT Requesting_user FROM friendships WHERE FriendshipID = ?) 
+                                    OR Username = (SELECT Requested_user FROM friendships WHERE FriendshipID = ?)");
+        $stmt->bind_param('ii', $friendshipId, $friendshipId);
+        $stmt->execute();
+        $stmt = $this->db->prepare("DELETE FROM friendships WHERE FriendshipID = ?");
+        $stmt->bind_param('i', $friendshipId);
+        $stmt->execute();
     }
 
 }

@@ -12,11 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
     $data = json_decode(file_get_contents("php://input"), true);
-    if ($data["Type"] === "update") {
+    $type = $data["Type"];
+    if ($type === "update") {
         $dbh->markNotificationAsRead($data["ID"]);
-    } else if ($data["Type"] === "comment-addition") {
+    } else if ($type === "comment-addition") {
         $dbh->addNewCommentNotification($data["ID"], $data["Notified"]);
-    } else if ($data["Type"] === "rating-addition") {
+    } else if ($type === "rating-addition") {
         $dbh->addNewRatingNotification($data["ID"], $data["Notified"]);
     } else {
         throw new Error("Something went wrong!");

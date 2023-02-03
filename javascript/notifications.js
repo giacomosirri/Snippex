@@ -47,10 +47,7 @@ function addDeleteNotification(id) {
     bin.className = "col-1 d-flex justify-content-start";
     bin.style.marginLeft = "15px";
     const button = document.createElement("button");
-    button.addEventListener("click", () => {
-        markNotificationAsRead(id).then();
-        location.reload();
-    });
+    button.addEventListener("click", () => markNotificationAsRead(id).then(() => location.reload()));
     bin.appendChild(button);
     const icon = document.createElement("img");
     icon.className = "delete-notification";
@@ -60,20 +57,22 @@ function addDeleteNotification(id) {
     return bin;
 }
 
-function addAcceptButton() {
+function addAcceptButton(id) {
     const accept = document.createElement("button");
     accept.className = "btn btn-outline-primary col-1";
     accept.innerText = `Accept request`;
     accept.style.marginRight = "15px";
+    accept.addEventListener("click", () => friendshipAcceptance(id).then(() => location.reload()));
     return accept;
 }
 
-function addRejectButton() {
-    const accept = document.createElement("button");
-    accept.className = "btn btn-outline-danger col-1";
-    accept.innerText = `Reject request`;
-    accept.style.marginRight = "15px";
-    return accept;
+function addRejectButton(id) {
+    const reject = document.createElement("button");
+    reject.className = "btn btn-outline-danger col-1";
+    reject.innerText = `Reject request`;
+    reject.style.marginRight = "15px";
+    reject.addEventListener("click", () => friendshipRejection(id).then(() => location.reload()));
+    return reject;
 }
 
 function createNotification(data, type) {
@@ -85,8 +84,8 @@ function createNotification(data, type) {
     notification.appendChild(left_space);
     notification.appendChild(addNotificationMainContent(data, type));
     if (type === "friendship") {
-        notification.appendChild(addAcceptButton());
-        notification.appendChild(addRejectButton());
+        notification.appendChild(addAcceptButton(data["FriendshipID"]));
+        notification.appendChild(addRejectButton(data["FriendshipID"]));
     } else {
         notification.appendChild(addDate(data));
         notification.appendChild(addDeleteNotification(data["NotificationID"]));

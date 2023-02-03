@@ -119,7 +119,7 @@ function addRequestFriendshipButton(friend) {
         const button = document.createElement("button");
         button.className = "btn btn-primary";
         button.innerText = "Request friendship";
-        button.addEventListener("click", () => requestFriendship(session_user, user));
+        button.addEventListener("click", () => friendshipRequest(session_user, user));
         friendship_div.appendChild(button);
     }
 }

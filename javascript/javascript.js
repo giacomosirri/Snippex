@@ -76,6 +76,16 @@ function showUsername(post) {
     postTitle.innerText = postTitle.innerText.split(" ~ ")[0] + " ~ " + username;
 }
 
-async function requestFriendship(requesting, requested) {
-    await axios.put('../php/friends-api.php', {User1: requesting, User2: requested});
+async function friendshipRequest(requesting, requested) {
+    await axios.put('../php/friends-api.php', {User1: requesting, User2: requested, Type: "request"});
+}
+
+async function friendshipAcceptance(id) {
+    console.log(id);
+    await axios.put('../php/friends-api.php', {ID: id, Type: "acceptance"});
+}
+
+async function friendshipRejection(id) {
+    alert("Are you sure? This rejection is definitive");
+    await axios.put('../php/friends-api.php', {ID: id, Type: "rejection"});
 }
