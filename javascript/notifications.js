@@ -26,7 +26,7 @@ function addNotificationMainContent(data, type) {
     } else if (type === "rating") {
         content.innerHTML = `<strong>~${data["Rater"]}</strong> has rated your post <em>${data["PostTitle"]}</em> with <em>${data["Category"]}</em>`;
     } else {
-        content.innerHTML = `${data["User"]} has requested to become your friend`;
+        content.innerHTML = `<strong>${data["Username"]}</strong> has requested to become your friend`;
     }
     return content;
 }
@@ -60,15 +60,17 @@ function addDeleteNotification(id) {
 
 function addAcceptButton() {
     const accept = document.createElement("button");
-    accept.className = "btn-primary";
-    accept.innerHTML = `Accept request`;
+    accept.className = "btn btn-primary col-1";
+    accept.innerText = `Accept request`;
+    accept.style.marginRight = "15px";
     return accept;
 }
 
 function addRejectButton() {
     const accept = document.createElement("button");
-    accept.className = "btn-danger";
-    accept.innerHTML = `Reject request`;
+    accept.className = "btn btn-danger col-1";
+    accept.innerText = `Reject request`;
+    accept.style.marginRight = "15px";
     return accept;
 }
 
@@ -80,12 +82,13 @@ function createNotification(data, type) {
     left_space.className = "col-md-1";
     notification.appendChild(left_space);
     notification.appendChild(addNotificationMainContent(data, type));
-    notification.appendChild(addDate(data));
     if (type === "friendship") {
         notification.appendChild(addAcceptButton());
         notification.appendChild(addRejectButton());
+    } else {
+        notification.appendChild(addDate(data));
+        notification.appendChild(addDeleteNotification(data["NotificationID"]));
     }
-    notification.appendChild(addDeleteNotification(data["NotificationID"]));
     return notification;
 }
 

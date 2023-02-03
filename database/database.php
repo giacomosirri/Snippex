@@ -228,8 +228,8 @@ class DatabaseHelper {
     }
 
     public function getUserPotentialFriends($username): array {
-        $stmt = $this->db->prepare("SELECT u.*, f.FriendshipID FROM friendships AS f, users AS u WHERE f.Requested_user = u.Username AND f.Requesting_user = ?
-                                     AND f.FriendsSince IS NULL AND f.FriendsUntil IS NULL");
+        $stmt = $this->db->prepare("SELECT u.Username, f.FriendshipID FROM friendships AS f JOIN users AS u ON u.Username = f.Requesting_user 
+                                    WHERE f.Requested_user = ? AND f.FriendsSince IS NULL AND f.FriendsUntil IS NULL");
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();

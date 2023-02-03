@@ -3,8 +3,7 @@ require_once "bootstrap.php";
 global $dbh;
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $user = $_GET["Username"];
-    $json_data["friends"] = $dbh->getUserFriends($user);
-    $json_data["pending"] = $dbh-> getUserPotentialFriends($user);
+    $json_data = $dbh->getUserFriends($user);
     header("Content-Type: application/json");
     echo json_encode($json_data);
 } elseif ($_SERVER['REQUEST_METHOD'] == 'PUT') {
