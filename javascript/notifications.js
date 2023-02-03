@@ -10,9 +10,11 @@ function addNotifications(notifications) {
 }
 
 function countNotifications(data) {
-    let notifications = 0;
-    Object.keys(data).forEach(i => notifications += data[i].length);
-    return notifications;
+    return data["comments"].length + data["ratings"].length;
+}
+
+function countFriendshipRequests(data) {
+    return data["friendships"].length;
 }
 
 function addNotificationMainContent(data, type) {
@@ -60,7 +62,7 @@ function addDeleteNotification(id) {
 
 function addAcceptButton() {
     const accept = document.createElement("button");
-    accept.className = "btn btn-primary col-1";
+    accept.className = "btn btn-outline-primary col-1";
     accept.innerText = `Accept request`;
     accept.style.marginRight = "15px";
     return accept;
@@ -68,7 +70,7 @@ function addAcceptButton() {
 
 function addRejectButton() {
     const accept = document.createElement("button");
-    accept.className = "btn btn-danger col-1";
+    accept.className = "btn btn-outline-danger col-1";
     accept.innerText = `Reject request`;
     accept.style.marginRight = "15px";
     return accept;
@@ -95,7 +97,8 @@ function createNotification(data, type) {
 axios.get('../php/notifications-api.php').then(response => {
     const h1 = document.querySelector("header h1");
     const n = countNotifications(response.data);
-    h1.innerHTML = `You have ${n} notifications to read`;
+    const m = countFriendshipRequests(response.data);
+    h1.innerHTML = `You have ${n} notifications to read and ${m} friendship requests`;
     const notifications = [];
     response.data["comments"].forEach(elem => notifications.push(createNotification(elem, "comment")));
     response.data["ratings"].forEach(elem => notifications.push(createNotification(elem, "rating")));
