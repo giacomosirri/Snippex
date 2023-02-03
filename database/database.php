@@ -75,12 +75,12 @@ class DatabaseHelper {
     }
 
     public function getUserFriends($username) {
-        $stmt1 = $this->db->prepare("SELECT u.*, f.FriendshipID FROM friendships AS f, users AS u WHERE f.User2 = u.Username AND f.User1 = ?
+        $stmt1 = $this->db->prepare("SELECT u.*, f.FriendshipID FROM friendships AS f, users AS u WHERE f.Requested_user = u.Username AND f.Requesting_user = ?
                                      AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NULL");
         $stmt1->bind_param('s', $username);
         $stmt1->execute();
         $result = $stmt1->get_result();
-        $stmt2 = $this->db->prepare("SELECT u.* FROM friendships AS f, users AS u WHERE f.User1 = u.Username AND f.User2 = ?
+        $stmt2 = $this->db->prepare("SELECT u.* FROM friendships AS f, users AS u WHERE f.Requesting_user = u.Username AND f.Requested_user = ?
                                      AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NULL");
         $stmt2->bind_param('s', $username);
         $stmt2->execute();
@@ -89,11 +89,11 @@ class DatabaseHelper {
     }
 
     public function getFeedPosts($username) {
-        $stmt1 = $this->db->prepare("SELECT posts.* FROM users JOIN friendships ON users.Username = friendships.User1 JOIN posts ON friendships.User2 = posts.Writer WHERE users.Username = ? ORDER BY posts.DateAndTime DESC");
+        $stmt1 = $this->db->prepare("SELECT p.* FROM users AS u JOIN friendships AS f ON u.Username = f.Requesting_user JOIN posts AS p ON f.Requested_user = p.Writer WHERE u.Username = ? ORDER BY p.DateAndTime DESC");
         $stmt1->bind_param('s',$username);
         $stmt1->execute();
         $result = $stmt1->get_result();
-        $stmt2 = $this->db->prepare("SELECT posts.* FROM users JOIN friendships ON users.Username = friendships.User2 JOIN posts ON friendships.User1 = posts.Writer WHERE users.Username = ? ORDER BY posts.DateAndTime DESC");
+        $stmt2 = $this->db->prepare("SELECT p.* FROM users AS u JOIN friendships AS f ON u.Username = f.Requested_user JOIN posts AS p ON f.Requesting_user = p.Writer WHERE u.Username = ? ORDER BY p.DateAndTime DESC");
         $stmt2->bind_param('s',$username);
         $stmt2->execute();
         $result2 = $stmt2->get_result();
@@ -101,12 +101,11 @@ class DatabaseHelper {
     }
 
     public function getExplorePosts($username): array {
-        $stmt = $this->db->prepare("SELECT posts.* FROM posts WHERE posts.Writer NOT IN (
-            SELECT friendships.User2 FROM users JOIN friendships ON users.Username = friendships.User1 WHERE users.Username = ?
-        ) AND posts.Writer NOT IN (
-            SELECT friendships.User1 FROM users JOIN friendships ON users.Username = friendships.User2 WHERE users.Username = ?
-        ) AND posts.Writer != ?
-        ORDER BY posts.DateAndTime DESC");
+        $stmt = $this->db->prepare("SELECT p.* FROM posts AS p WHERE p.Writer NOT IN (
+            SELECT f.Requested_user FROM users AS u JOIN friendships AS f ON u.Username = f.Requesting_user WHERE u.Username = ?
+        ) AND p.Writer NOT IN (
+            SELECT f.Requesting_user FROM users AS u JOIN friendships AS f ON u.Username = f.Requested_user WHERE u.Username = ?
+        ) AND p.Writer != ? ORDER BY p.DateAndTime DESC");
         $stmt->bind_param('sss',$username, $username,$username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -221,15 +220,15 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
-    public function addFriendshipRequest($user1, $user2) {
-        $stmt = $this->db->prepare("INSERT INTO friendships (User1, User2, RequestDate) VALUES (?, ?, ?)");
+    public function addFriendshipRequest($requesting, $requested) {
+        $stmt = $this->db->prepare("INSERT INTO friendships (Requesting_user, Requested_user, RequestDate) VALUES (?, ?, ?)");
         $date = date("Y-m-d");
-        $stmt->bind_param('sss', $user1, $user2, $date);
+        $stmt->bind_param('sss', $requesting, $requested, $date);
         $stmt->execute();
     }
 
     public function getUserPotentialFriends($username): array {
-        $stmt = $this->db->prepare("SELECT u.*, f.FriendshipID FROM friendships AS f, users AS u WHERE f.User2 = u.Username AND f.User1 = ?
+        $stmt = $this->db->prepare("SELECT u.*, f.FriendshipID FROM friendships AS f, users AS u WHERE f.Requested_user = u.Username AND f.Requesting_user = ?
                                      AND f.FriendsSince IS NULL AND f.FriendsUntil IS NULL");
         $stmt->bind_param('s', $username);
         $stmt->execute();
