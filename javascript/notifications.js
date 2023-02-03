@@ -1,6 +1,5 @@
 async function markNotificationAsRead(notificationID) {
     await axios.put('../php/notifications-api.php', {ID: notificationID, Type: "update"});
-    location.reload();
 }
 
 function addNotifications(notifications) {
@@ -46,7 +45,10 @@ function addDeleteNotification(id) {
     bin.className = "col-1 d-flex justify-content-start";
     bin.style.marginLeft = "15px";
     const button = document.createElement("button");
-    button.addEventListener("click", () => markNotificationAsRead(id));
+    button.addEventListener("click", () => {
+        markNotificationAsRead(id).then();
+        location.reload();
+    });
     bin.appendChild(button);
     const icon = document.createElement("img");
     icon.className = "delete-notification";
@@ -96,4 +98,8 @@ axios.get('../php/notifications-api.php').then(response => {
     response.data["ratings"].forEach(elem => notifications.push(createNotification(elem, "rating")));
     response.data["friendships"].forEach(elem => notifications.push(createNotification(elem, "friendship")));
     addNotifications(notifications);
+    document.getElementById("delete-all").addEventListener("click", () => {
+        notifications.forEach(notification => markNotificationAsRead(notification.id.split("-")[1]))
+        location.reload();
+    });
 });
