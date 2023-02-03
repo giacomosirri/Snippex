@@ -35,8 +35,8 @@ create table FAVORITES (
 
 create table FRIENDSHIPS (
      FriendshipID int not null auto_increment,
-     User1 char(40) not null,
-     User2 char(40) not null,
+     Requesting_user char(40) not null,
+     Requested_user char(40) not null,
      RequestDate date not null,
      FriendsSince date,
      FriendsUntil date,
@@ -46,13 +46,11 @@ create table NOTIFICATIONS (
      NotificationID int not null auto_increment,
      Comment int,
      Rating int,
-     Friend int,
      `Read` boolean not null,
      Notified_user char(40) not null,
      constraint IDNOTIFICATION primary key (NotificationID),
      constraint FKabout_ID unique (Comment),
-     constraint FKabout_1_ID unique (Rating),
-     constraint FKabout_2_ID unique (Friend));
+     constraint FKabout_1_ID unique (Rating));
 
 create table POINTS (
      User char(40) not null,
@@ -121,11 +119,11 @@ alter table FAVORITES add constraint FKR_1
      references POSTS (PostID);
 
 alter table FRIENDSHIPS add constraint FKfri_USE
-     foreign key (User2)
+     foreign key (Requested_user)
      references USERS (Username);
 
 alter table FRIENDSHIPS add constraint FKFRIEND
-     foreign key (User1)
+     foreign key (Requesting_user)
      references USERS (Username);
 
 alter table NOTIFICATIONS add constraint FKreceives
@@ -139,10 +137,6 @@ alter table NOTIFICATIONS add constraint FKabout_FK
 alter table NOTIFICATIONS add constraint FKabout_1_FK
      foreign key (Rating)
      references RATINGS (RatingID);
-
-alter table NOTIFICATIONS add constraint FKabout_2_FK
-     foreign key (Friend)
-     references FRIENDSHIPS (FriendshipID);
 
 alter table POINTS add constraint FKpoi_RAT
      foreign key (Category)

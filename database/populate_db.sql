@@ -64,7 +64,7 @@ INSERT INTO `points` (`User`, `Category`, `Points`) VALUES
 ('lorytosi', 'thoughtfulness', 1),
 ('lorytosi', 'humour', 2);
 
-INSERT INTO `friendships` (`FriendshipID`, `User1`, `User2`, `RequestDate`, `FriendsSince`, `FriendsUntil`) VALUES
+INSERT INTO `friendships` (`FriendshipID`, `Requesting_user`, `Requested_user`, `RequestDate`, `FriendsSince`, `FriendsUntil`) VALUES
 (1, 'topg', 'sergio', '2023-01-18', '2023-01-18', NULL),
 (2, 'zava', 'sergio', '2023-01-18', '2023-01-18', NULL),
 (3, 'paso', 'sergio', '2023-01-18', '2023-01-18', NULL),
@@ -86,24 +86,24 @@ INSERT INTO `friendships` (`FriendshipID`, `User1`, `User2`, `RequestDate`, `Fri
 (19, 'therock', 'jenna69', '2023-01-18', '2023-01-18', NULL),
 (20, 'mark', 'giulio', '2023-01-18', '2023-01-18', NULL);
 
-INSERT INTO `notifications` (`NotificationID`, `Comment`, `Rating`, `Friend`, `Read`, `Notified_user`) VALUES
-(1, 1, NULL, NULL, FALSE, 'topg'),
-(2, 2, NULL, NULL, FALSE, 'm!shel'),
-(3, 3, NULL, NULL, FALSE, 'm!shel'),
-(4, 4, NULL, NULL, FALSE, 'm!shel'),
-(5, 5, NULL, NULL, FALSE, 'lorytosi'),
-(6, 6, NULL, NULL, TRUE, 'lorytosi'),
-(7, 7, NULL, NULL, FALSE, 'lorytosi'),
-(8, 8, NULL, NULL, FALSE, 'lorytosi'),
-(9, 9, NULL, NULL, FALSE, 'lorytosi'),
-(10, 10, NULL, NULL, FALSE, 'lorytosi'),
-(11, 11, NULL, NULL, FALSE, 'jaaack'),
-(12, 12, NULL, NULL, FALSE, 'jaaack'),
-(13, 13, NULL, NULL, FALSE, 'sined'),
-(14, 14, NULL, NULL, FALSE, 'sined'),
-(15, 15, NULL, NULL, FALSE, 'sined'),
-(16, 16, NULL, NULL, FALSE, 'sined'),
-(17, NULL, 1, NULL, FALSE, 'sined'),
-(18, NULL, 2, NULL, FALSE, 'lorytosi'),
-(19, NULL, 3, NULL, TRUE, 'lorytosi'),
-(20, NULL, 4, NULL, FALSE, 'lorytosi');
+INSERT INTO `notifications` (`NotificationID`, `Comment`, `Rating`, `Read`, `Notified_user`) VALUES
+(1, 1, NULL, FALSE, 'topg'),
+(2, 2, NULL, FALSE, 'm!shel'),
+(3, 3, NULL, FALSE, 'm!shel'),
+(4, 4, NULL, FALSE, 'm!shel'),
+(5, 5, NULL, FALSE, 'lorytosi'),
+(6, 6, NULL, TRUE, 'lorytosi'),
+(7, 7, NULL, FALSE, 'lorytosi'),
+(8, 8, NULL, FALSE, 'lorytosi'),
+(9, 9, NULL, FALSE, 'lorytosi'),
+(10, 10, NULL, FALSE, 'lorytosi'),
+(11, 11, NULL, FALSE, 'jaaack'),
+(12, 12, NULL, FALSE, 'jaaack'),
+(13, 13, NULL, FALSE, 'sined'),
+(14, 14, NULL, FALSE, 'sined'),
+(15, 15, NULL, FALSE, 'sined'),
+(16, 16, NULL, FALSE, 'sined'),
+(17, NULL, 1, FALSE, 'sined'),
+(18, NULL, 2, FALSE, 'lorytosi'),
+(19, NULL, 3, TRUE, 'lorytosi'),
+(20, NULL, 4, FALSE, 'lorytosi');
