@@ -12,7 +12,7 @@ function addBasicInfo(data) {
             <h1 style="color: black">${data[0]["Name"]} ${data[0]["Surname"]}</h1>
             <h2 style="color: black; font-size: 18px; margin-top: -14px">~${data[0]["Username"]}</h2>
             <div style="margin-bottom: 5px">
-                <img id="main-profile-pic" src="../profile_pics/${data[0]["ProfilePic"]}" alt="profile pic"/>
+                <img id="main-profile-pic" src="../profile_pics/${data[0]["ProfilePic"] ?? "unknown-man.png"}" alt="profile pic"/>
             </div>
         </div>
     `;
