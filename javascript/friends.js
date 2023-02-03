@@ -20,10 +20,10 @@ const url = new URL(url_string);
 const user = url.searchParams.get("Username");
 
 axios.get('../php/friends-api.php', {params: {Username: user}}).then(response => {
-    console.log(response.data);
     const section = document.getElementById("friends");
-    for (let i=0; i<response.data.length; i++) {
-        section.appendChild(addFriend(response.data[i]));
+    const friends = response.data["friends"];
+    for (let i=0; i<friends.length; i++) {
+        section.appendChild(addFriend(friends[i]));
     }
     const h1 = document.querySelector("header h1");
     h1.innerHTML = user + "'s friends";
