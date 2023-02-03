@@ -10,9 +10,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     header("Content-Type: application/json");
     echo json_encode($json_data);
 }
-// the client marks a specific notification as read
 if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
-    parse_str(file_get_contents("php://input"),$notificationID);
-    $dbh->markNotificationAsRead($notificationID);
+    $data = json_decode(file_get_contents("php://input"), true);
+    if ($data["Type"] === "update") {
+        $dbh->markNotificationAsRead($data["ID"]);
+    } else if ($data["Type"] === "comment-addition") {
+        $dbh->addNewCommentNotification($data["ID"], $data["Notified"]);
+    } else if ($data["Type"] === "rating-addition") {
+        $dbh->addNewRatingNotification($data["ID"], $data["Notified"]);
+    } else {
+        throw new Error("Something went wrong!");
+    }
 }
 ?>

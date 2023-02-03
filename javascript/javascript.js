@@ -76,6 +76,6 @@ function showUsername(post) {
     postTitle.innerText = postTitle.innerText.split(" ~ ")[0] + " ~ " + username;
 }
 
-async function requestFriendship(user1, user2) {
-    await axios.put('../php/friends-api.php', {User1: user1, User2: user2});
+async function requestFriendship(requesting, requested) {
+    await axios.put('../php/friends-api.php', {User1: requesting, User2: requested});
 }

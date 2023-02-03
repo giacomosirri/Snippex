@@ -1,5 +1,5 @@
-function markNotificationAsRead(notificationID) {
-    axios.put('../php/notifications.php', { NotificationID: notificationID });
+async function markNotificationAsRead(notificationID) {
+    await axios.put('../php/notifications-api.php', {ID: notificationID, Type: "update"});
 }
 
 function addNotifications(notifications) {
@@ -45,13 +45,13 @@ function addDeleteNotification(id) {
     bin.className = "col-1 d-flex justify-content-start";
     bin.style.marginLeft = "15px";
     const button = document.createElement("button");
+    button.addEventListener("click", () => markNotificationAsRead(id));
     bin.appendChild(button);
     const icon = document.createElement("img");
     icon.className = "delete-notification";
     icon.src = "../icons/bin_icon.png";
     icon.alt = "delete-notification";
     button.appendChild(icon);
-    button.addEventListener("click", () => markNotificationAsRead(id));
     return bin;
 }
 

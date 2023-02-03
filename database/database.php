@@ -75,7 +75,7 @@ class DatabaseHelper {
     }
 
     public function getUserFriends($username) {
-        $stmt1 = $this->db->prepare("SELECT u.* FROM friendships AS f, users AS u WHERE f.User2 = u.Username AND f.User1 = ?
+        $stmt1 = $this->db->prepare("SELECT u.*, f.FriendshipID FROM friendships AS f, users AS u WHERE f.User2 = u.Username AND f.User1 = ?
                                      AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NULL");
         $stmt1->bind_param('s', $username);
         $stmt1->execute();
@@ -100,7 +100,7 @@ class DatabaseHelper {
         return array_merge($result->fetch_all(MYSQLI_ASSOC), $result2->fetch_all(MYSQLI_ASSOC));
     }
 
-    public function getExplorePosts($username) {
+    public function getExplorePosts($username): array {
         $stmt = $this->db->prepare("SELECT posts.* FROM posts WHERE posts.Writer NOT IN (
             SELECT friendships.User2 FROM users JOIN friendships ON users.Username = friendships.User1 WHERE users.Username = ?
         ) AND posts.Writer NOT IN (
@@ -231,6 +231,21 @@ class DatabaseHelper {
         $date = date("Y-m-d");
         $stmt->bind_param('sss', $user1, $user2, $date);
         $stmt->execute();
+    }
+
+    public function getUserPotentialFriends($username): array {
+        $stmt = $this->db->prepare("SELECT u.*, f.FriendshipID FROM friendships AS f, users AS u WHERE f.User2 = u.Username AND f.User1 = ?
+                                     AND f.FriendsSince IS NULL AND f.FriendsUntil IS NULL");
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function addNewCommentNotification($ID, $Notified) {
+    }
+
+    public function addNewRatingNotification($ID, $Notified) {
     }
 }
 ?>
