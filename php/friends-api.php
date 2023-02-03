@@ -7,9 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     header("Content-Type: application/json");
     echo json_encode($json_data);
 } elseif ($_SERVER['REQUEST_METHOD'] == 'PUT') {
-    parse_str(file_get_contents("php://input"), $json_data);
-    $users = json_decode($json_data, true);
-    echo $users;
+    $data = json_decode(file_get_contents("php://input"), true);
+    if (isset($data["User1"]) && isset($data["User2"])) {
+        $dbh->addFriendshipRequest($data["User1"], $data["User2"]);
+    }
 } else {
     throw new Error("Something went wrong!");
 }

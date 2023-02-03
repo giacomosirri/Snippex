@@ -7,14 +7,14 @@ window.onload = function() {
     document.getElementById("post").addEventListener("click", createPost);
 }
 
-function createPost(){
-        let title = document.querySelector("#recipient-title").value;
-        let content = document.querySelector("#message-text").value;
-        let close = document.querySelector("#close");
-        axios.post("../php/insertions.php", {title: title, content: content});
-        $("#recipient-title").val("");
-        $("#message-text").val("");
-        close.click();
+function createPost() {
+    let title = document.querySelector("#recipient-title").value;
+    let content = document.querySelector("#message-text").value;
+    let close = document.querySelector("#close");
+    axios.post("../php/insertions.php", {title: title, content: content});
+    $("#recipient-title").val("");
+    $("#message-text").val("");
+    close.click();
 }
 
 function changeText(label) {
@@ -76,7 +76,6 @@ function showUsername(post) {
     postTitle.innerText = postTitle.innerText.split(" ~ ")[0] + " ~ " + username;
 }
 
-function requestFriendship(user1, user2) {
-    axios.put('../php/friends-api.php', {params: {User1: user1, User2: user2}});
+async function requestFriendship(user1, user2) {
+    await axios.put('../php/friends-api.php', {User1: user1, User2: user2});
 }
-

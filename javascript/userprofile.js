@@ -1,9 +1,5 @@
 import {createNewPost} from "./commons.js";
 
-let navItems = Array.from(document.getElementsByClassName("nav-item"));
-navItems.forEach(item => item.addEventListener("click", () =>
-    item.addEventListener("click", () => activeMenu(item))));
-
 function activeMenu(link) {
     const menu = document.querySelectorAll("header nav ul li a");
     menu.forEach(item => item.classList.remove("active"));
@@ -23,7 +19,7 @@ function addBasicInfo(data) {
 }
 
 function addMostVotedPost(data) {
-    let postFrame = document.createElement("div");
+    const postFrame = document.createElement("div");
     postFrame.innerHTML = `
         <div class="col-12 col-md-8 d-flex justify-content-between">
             <h2>
@@ -40,7 +36,7 @@ function addMostVotedPost(data) {
             </div>
         </div>
     `;
-    let post = createNewPost(data[0], 0);
+    const post = createNewPost(data[0], 0);
     return postFrame.outerHTML + post.outerHTML;
 }
 
@@ -123,14 +119,19 @@ function addRequestFriendshipButton(friend) {
         const button = document.createElement("button");
         button.className = "btn btn-primary";
         button.innerText = "Request friendship";
-        friendship_div.appendChild(button);
         button.addEventListener("click", () => requestFriendship(user, session_user));
+        friendship_div.appendChild(button);
     }
 }
 
+// adds a behavior to the elements of the settings menu in the profile page of the current user
+let navItems = Array.from(document.getElementsByClassName("nav-item"));
+navItems.forEach(item => item.addEventListener("click", () =>
+    item.addEventListener("click", () => activeMenu(item))));
+
 // if this script is part of the profile page, then this variable contains the name of the user currently logged in,
 // otherwise it contains the name of the user searched by the user currently logged in.
-let user = new URL(window.location.href).searchParams.get("Username") ?? session_user;
+const user = new URL(window.location.href).searchParams.get("Username") ?? session_user;
 
 axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(response => {
     const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];

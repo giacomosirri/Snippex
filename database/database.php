@@ -225,5 +225,12 @@ class DatabaseHelper {
         $stmt->bind_param('ssss', $title, $content, $date, $_SESSION['LoggedUser']);
         $stmt->execute();
     }
+
+    public function addFriendshipRequest($user1, $user2) {
+        $stmt = $this->db->prepare("INSERT INTO friendships (User1, User2, RequestDate) VALUES (?, ?, ?)");
+        $date = date("Y-m-d");
+        $stmt->bind_param('sss', $user1, $user2, $date);
+        $stmt->execute();
+    }
 }
 ?>
