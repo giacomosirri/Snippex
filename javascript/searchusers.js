@@ -76,6 +76,8 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
     for (let i=0; i<categories.length; i++) {
         col2.innerHTML+=`<div>${categories[i]["Name"]}:${getPointsFromCategory(ratingStats, categories[i]["Name"])}</div>`;
     }
+
+
     row.appendChild(col1);
     row.appendChild(col2);
     div.appendChild(row);
@@ -85,13 +87,9 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
         window.location.replace("./userprofile.php?Username="+user);
         //change page
     })
-    /*
-    div.querySelector(".search-button").addEventListener('click', () => {
-        addRecentUser(user);
-        window.location.replace("./userprofile.php?Username="+user);
-        //change page
-    })*/
     document.getElementById("proposes").appendChild(div);
+
+
 }
 
 function appendUsers(users){
