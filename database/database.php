@@ -74,20 +74,6 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getUserFriends($username) {
-        $stmt1 = $this->db->prepare("SELECT u.*, f.FriendshipID FROM friendships AS f, users AS u WHERE f.Requested_user = u.Username AND f.Requesting_user = ?
-                                     AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NULL");
-        $stmt1->bind_param('s', $username);
-        $stmt1->execute();
-        $result = $stmt1->get_result();
-        $stmt2 = $this->db->prepare("SELECT u.* FROM friendships AS f, users AS u WHERE f.Requesting_user = u.Username AND f.Requested_user = ?
-                                     AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NULL");
-        $stmt2->bind_param('s', $username);
-        $stmt2->execute();
-        $result2 = $stmt2->get_result();
-        return array_merge($result->fetch_all(MYSQLI_ASSOC), $result2->fetch_all(MYSQLI_ASSOC));
-    }
-
     public function getFeedPosts($username) {
         $stmt1 = $this->db->prepare("SELECT p.* FROM users AS u JOIN friendships AS f ON u.Username = f.Requesting_user JOIN posts AS p ON f.Requested_user = p.Writer WHERE u.Username = ? ORDER BY p.DateAndTime DESC");
         $stmt1->bind_param('s',$username);
@@ -226,13 +212,50 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
-    public function getUserPotentialFriends($username): array {
+    public function getUserCurrentFriendships($username) {
+        $stmt1 = $this->db->prepare("SELECT u.*, f.FriendshipID FROM friendships AS f, users AS u WHERE f.Requested_user = u.Username AND f.Requesting_user = ?
+                                     AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NULL");
+        $stmt1->bind_param('s', $username);
+        $stmt1->execute();
+        $result = $stmt1->get_result();
+        $stmt2 = $this->db->prepare("SELECT u.*, f.FriendshipID FROM friendships AS f, users AS u WHERE f.Requesting_user = u.Username AND f.Requested_user = ?
+                                     AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NULL");
+        $stmt2->bind_param('s', $username);
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        return array_merge($result->fetch_all(MYSQLI_ASSOC), $result2->fetch_all(MYSQLI_ASSOC));
+    }
+
+    public function getUserIncomingRequestsOfFriendship($username): array {
         $stmt = $this->db->prepare("SELECT u.Username, f.FriendshipID FROM friendships AS f JOIN users AS u ON u.Username = f.Requesting_user 
                                     WHERE f.Requested_user = ? AND f.FriendsSince IS NULL AND f.FriendsUntil IS NULL");
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getUserSentRequestsOfFriendships($username): array {
+        $stmt = $this->db->prepare("SELECT u.Username, f.FriendshipID FROM friendships AS f JOIN users AS u ON u.Username = f.Requested_user 
+                                    WHERE f.Requesting_user = ? AND f.FriendsSince IS NULL AND f.FriendsUntil IS NULL");
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getUserPastFriendships($username): array {
+        $stmt1 = $this->db->prepare("SELECT u.*, f.FriendshipID FROM friendships AS f, users AS u WHERE f.Requested_user = u.Username AND f.Requesting_user = ?
+                                     AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NOT NULL");
+        $stmt1->bind_param('s', $username);
+        $stmt1->execute();
+        $result = $stmt1->get_result();
+        $stmt2 = $this->db->prepare("SELECT u.*, f.FriendshipID FROM friendships AS f, users AS u WHERE f.Requesting_user = u.Username AND f.Requested_user = ?
+                                     AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NOT NULL");
+        $stmt2->bind_param('s', $username);
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        return array_merge($result->fetch_all(MYSQLI_ASSOC), $result2->fetch_all(MYSQLI_ASSOC));
     }
 
     public function addNewCommentNotification($ID, $Notified) {
@@ -282,6 +305,9 @@ class DatabaseHelper {
         $stmt->bind_param('ss', $file, $username);
         $stmt->execute();
     }
+
+
+
 
 }
 ?>

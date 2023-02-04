@@ -102,34 +102,23 @@ function addFriends(friends) {
     return list;
 }
 
-function getFriendshipStatus() {
-    return axios.get('../php/friends-api.php', {params: {Username: user}}).then(response => {
-        /* code that implements the logic of the friendship status:
-         * 4 STATUSES:
-         * RECEIVED: Request received --> Two buttons: accept and reject
-         * SENT: Request sent --> No button
-         * FRIEND: Already friend --> One button: terminate
-         * NOT: Not friend --> One button: request friendship
-         */
-        return true;
-    });
-}
-
-function manageFriendshipStatus(status) {
+function manageFriendshipStatus(status, friendshipID, requested_user) {
     const div = document.getElementById("friendship-status");
     div.className = "d-flex justify-content-center";
     const p = document.createElement("p");
     if (status === "RECEIVED") {
-        p.innerText = user + " has asked for your friendship!"
+        p.innerText = user + " has asked for your friendship!";
         div.appendChild(p);
-
+        div.appendChild(createAcceptFriendshipButton(friendshipID));
+        div.appendChild(createRejectFriendshipButton(friendshipID));
     } else if (status === "SENT") {
-        p.innerText = "Your have asked " + user + " to become friends! You just need to wait for his approval";
+        p.innerText = "Your have asked " + user + " to become friends! Now you just need to wait for his approval.";
         div.appendChild(p);
     } else if (status === "FRIEND") {
-
+        p.innerText = "You are friend with " + user;
+        div.appendChild(p);
     } else {
-        createRequestFriendshipButton(div);
+        div.appendChild(createRequestFriendshipButton(requested_user));
     }
 }
 
@@ -155,7 +144,8 @@ axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(respons
     const date_paragraph = document.getElementById("user-since");
     // add friendship status only in pages of users that are not the currently logged-in user.
     if (user !== session_user) {
-        getFriendshipStatus().then(status => manageFriendshipStatus(status));
+        getFriendshipStatus(session_user, user).then(data =>
+            manageFriendshipStatus(data["status"], data["friendshipID"], data["requested_user"]));
     }
     header.innerHTML += userData;
     table.innerHTML += ratingStats;

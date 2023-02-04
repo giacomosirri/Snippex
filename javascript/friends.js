@@ -21,7 +21,7 @@ const user = url.searchParams.get("Username");
 
 axios.get('../php/friends-api.php', {params: {Username: user}}).then(response => {
     const section = document.getElementById("friends");
-    const friends = response.data;
+    const friends = response.data["current"];
     for (let i=0; i<friends.length; i++) {
         section.appendChild(addFriend(friends[i]));
     }

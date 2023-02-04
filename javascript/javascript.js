@@ -107,10 +107,54 @@ function createRejectFriendshipButton(id) {
     return reject;
 }
 
-function createRequestFriendshipButton(htmlElement, requested_user) {
+function createRequestFriendshipButton(requested_user) {
     const button = document.createElement("button");
     button.className = "btn btn-primary";
     button.innerText = "Request friendship";
     button.addEventListener("click", () => friendshipRequest(session_user, requested_user));
-    htmlElement.appendChild(button);
+    return button;
+}
+
+// BAD IMPLEMENTATION: needs refactoring
+// This function takes as input two usernames and returns the status of QUERIED_USER in relation to MAIN_USER
+// There are four possible statuses:
+// 1. FRIEND - MAIN_USER and QUERIED_USER are friends currently,
+// 2. SENT - MAIN_USER has sent its request to QUERIED_USER who has yet to decide,
+// 3. RECEIVED - MAIN_USER has received QUERIED_USER's request and has to decide,
+// 4. NOT - MAIN_USER and QUERIED_USER are not friends currently.
+function getFriendshipStatus(main_user, queried_user) {
+    return axios.get('../php/friends-api.php', {params: {Username: main_user}}).then(response => {
+        console.log(response.data);
+        const current_friends = response.data["current"];
+        const requested_friends = response.data["requested"];
+        const waiting_friends = response.data["incoming"];
+        for (let i=0; i<current_friends.length; i++) {
+            if (current_friends[i]["Username"] === queried_user) {
+                return {
+                    "status": "FRIEND",
+                    "friendshipID": current_friends[i]["FriendshipID"],
+                    "requested_user": queried_user
+                }
+            }
+        }
+        for (let i=0; i<requested_friends.length; i++) {
+            if (requested_friends[i]["Username"] === queried_user) {
+                return {
+                    "status": "SENT",
+                    "friendshipID": requested_friends[i]["FriendshipID"],
+                    "requested_user": queried_user
+                }
+            }
+        }
+        for (let i=0; i<waiting_friends.length; i++) {
+            if (waiting_friends[i]["Username"] === queried_user) {
+                return {
+                    "status": "RECEIVED",
+                    "friendshipID": waiting_friends[i]["FriendshipID"],
+                    "requested_user": queried_user
+                }
+            }
+        }
+        return {"status": "NOT", "friendshipID": null};
+    });
 }
