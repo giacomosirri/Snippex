@@ -42,7 +42,7 @@ function addDate(data) {
     return date;
 }
 
-function addDeleteNotification(id) {
+function createDeleteNotificationButton(id) {
     const bin = document.createElement("div");
     bin.className = "col-1 d-flex justify-content-start";
     bin.style.marginLeft = "15px";
@@ -58,7 +58,7 @@ function addDeleteNotification(id) {
     return bin;
 }
 
-function addDeleteAllNotifications(notifications) {
+function createDeleteAllNotificationsButton(notifications) {
     const header = document.querySelector("header");
     const div = document.createElement("div");
     div.className = "col-5 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center flex-column";
@@ -75,24 +75,6 @@ function addDeleteAllNotifications(notifications) {
     header.appendChild(div);
 }
 
-function addAcceptButton(id) {
-    const accept = document.createElement("button");
-    accept.className = "btn btn-outline-primary col-2 col-lg-1";
-    accept.innerText = `Accept request`;
-    accept.style.marginRight = "15px";
-    accept.addEventListener("click", () => friendshipAcceptance(id).then(() => location.reload()));
-    return accept;
-}
-
-function addRejectButton(id) {
-    const reject = document.createElement("button");
-    reject.className = "btn btn-outline-danger col-2 col-lg-1";
-    reject.innerText = `Reject request`;
-    reject.style.marginRight = "15px";
-    reject.addEventListener("click", () => friendshipRejection(id).then(() => location.reload()));
-    return reject;
-}
-
 function createNotification(data, type) {
     const notification = document.createElement("div");
     notification.className = "notification row align-items-center";
@@ -102,11 +84,11 @@ function createNotification(data, type) {
     notification.appendChild(left_space);
     notification.appendChild(addNotificationMainContent(data, type));
     if (type === "friendship") {
-        notification.appendChild(addAcceptButton(data["FriendshipID"]));
-        notification.appendChild(addRejectButton(data["FriendshipID"]));
+        notification.appendChild(createAcceptFriendshipButton(data["FriendshipID"]));
+        notification.appendChild(createRejectFriendshipButton(data["FriendshipID"]));
     } else {
         notification.appendChild(addDate(data));
-        notification.appendChild(addDeleteNotification(data["NotificationID"]));
+        notification.appendChild(createDeleteNotificationButton(data["NotificationID"]));
     }
     return notification;
 }
@@ -122,6 +104,6 @@ axios.get('../php/notifications-api.php').then(response => {
     response.data["friendships"].forEach(elem => notifications.push(createNotification(elem, "friendship")));
     addNotifications(notifications);
     if (countNotifications(response.data) > 0) {
-        addDeleteAllNotifications(notifications);
+        createDeleteAllNotificationsButton(notifications);
     }
 });

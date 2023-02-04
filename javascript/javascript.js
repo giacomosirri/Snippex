@@ -81,11 +81,36 @@ async function friendshipRequest(requesting, requested) {
 }
 
 async function friendshipAcceptance(id) {
-    console.log(id);
     await axios.put('../php/friends-api.php', {ID: id, Type: "acceptance"});
 }
 
 async function friendshipRejection(id) {
-    alert("Are you sure? This rejection is definitive");
+    alert("Are you sure? This action is definitive");
     await axios.put('../php/friends-api.php', {ID: id, Type: "rejection"});
+}
+
+function createAcceptFriendshipButton(id) {
+    const accept = document.createElement("button");
+    accept.className = "btn btn-outline-primary col-2 col-lg-1";
+    accept.innerText = `Accept request`;
+    accept.style.marginRight = "15px";
+    accept.addEventListener("click", () => friendshipAcceptance(id).then(() => location.reload()));
+    return accept;
+}
+
+function createRejectFriendshipButton(id) {
+    const reject = document.createElement("button");
+    reject.className = "btn btn-outline-danger col-2 col-lg-1";
+    reject.innerText = `Reject request`;
+    reject.style.marginRight = "15px";
+    reject.addEventListener("click", () => friendshipRejection(id).then(() => location.reload()));
+    return reject;
+}
+
+function createRequestFriendshipButton(htmlElement, requested_user) {
+    const button = document.createElement("button");
+    button.className = "btn btn-primary";
+    button.innerText = "Request friendship";
+    button.addEventListener("click", () => friendshipRequest(session_user, requested_user));
+    htmlElement.appendChild(button);
 }

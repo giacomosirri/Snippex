@@ -102,25 +102,34 @@ function addFriends(friends) {
     return list;
 }
 
-function isFriend() {
+function getFriendshipStatus() {
     return axios.get('../php/friends-api.php', {params: {Username: user}}).then(response => {
-        for (let i=0; i<response.data.length; i++) {
-            if (response.data[i]["Username"] === session_user) {
-                return true;
-            }
-        }
-        return false;
+        /* code that implements the logic of the friendship status:
+         * 4 STATUSES:
+         * RECEIVED: Request received --> Two buttons: accept and reject
+         * SENT: Request sent --> No button
+         * FRIEND: Already friend --> One button: terminate
+         * NOT: Not friend --> One button: request friendship
+         */
+        return true;
     });
 }
 
-function addRequestFriendshipButton(friend) {
-    if (!friend) {
-        const friendship_div = document.getElementById("friendship");
-        const button = document.createElement("button");
-        button.className = "btn btn-primary";
-        button.innerText = "Request friendship";
-        button.addEventListener("click", () => friendshipRequest(session_user, user));
-        friendship_div.appendChild(button);
+function manageFriendshipStatus(status) {
+    const div = document.getElementById("friendship-status");
+    div.className = "d-flex justify-content-center";
+    const p = document.createElement("p");
+    if (status === "RECEIVED") {
+        p.innerText = user + " has asked for your friendship!"
+        div.appendChild(p);
+
+    } else if (status === "SENT") {
+        p.innerText = "Your have asked " + user + " to become friends! You just need to wait for his approval";
+        div.appendChild(p);
+    } else if (status === "FRIEND") {
+
+    } else {
+        createRequestFriendshipButton(div);
     }
 }
 
@@ -144,9 +153,9 @@ axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(respons
     const table = document.getElementById("rating-statistics");
     const friends_paragraph = document.getElementById("friends");
     const date_paragraph = document.getElementById("user-since");
-    // add request button only in the profile pages of users the current user is not yet friend with
-    if (document.getElementById("friendship") !== null) {
-        isFriend().then(friend => addRequestFriendshipButton(friend));
+    // add friendship status only in pages of users that are not the currently logged-in user.
+    if (user !== session_user) {
+        getFriendshipStatus().then(status => manageFriendshipStatus(status));
     }
     header.innerHTML += userData;
     table.innerHTML += ratingStats;
