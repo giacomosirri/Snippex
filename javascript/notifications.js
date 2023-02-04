@@ -77,7 +77,7 @@ function addDeleteAllNotifications(notifications) {
 
 function addAcceptButton(id) {
     const accept = document.createElement("button");
-    accept.className = "btn btn-outline-primary col-1";
+    accept.className = "btn btn-outline-primary col-2 col-lg-1";
     accept.innerText = `Accept request`;
     accept.style.marginRight = "15px";
     accept.addEventListener("click", () => friendshipAcceptance(id).then(() => location.reload()));
@@ -86,7 +86,7 @@ function addAcceptButton(id) {
 
 function addRejectButton(id) {
     const reject = document.createElement("button");
-    reject.className = "btn btn-outline-danger col-1";
+    reject.className = "btn btn-outline-danger col-2 col-lg-1";
     reject.innerText = `Reject request`;
     reject.style.marginRight = "15px";
     reject.addEventListener("click", () => friendshipRejection(id).then(() => location.reload()));
