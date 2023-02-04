@@ -57,6 +57,23 @@ function addDeleteNotification(id) {
     return bin;
 }
 
+function addDeleteAllNotifications(notifications) {
+    const header = document.querySelector("header");
+    const div = document.createElement("div");
+    div.className = "col-5 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center flex-column";
+    const button = document.createElement("button");
+    button.id = "delete-all";
+    button.className = "btn btn-outline-danger btn-sm col-12";
+    button.style.fontSize = "90%";
+    button.innerText = "Delete all notifications";
+    button.addEventListener("click", () => {
+        notifications.forEach(notification => markNotificationAsRead(notification.id.split("-")[1]))
+        location.reload();
+    });
+    div.appendChild(button);
+    header.appendChild(div);
+}
+
 function addAcceptButton(id) {
     const accept = document.createElement("button");
     accept.className = "btn btn-outline-primary col-1";
@@ -103,8 +120,7 @@ axios.get('../php/notifications-api.php').then(response => {
     response.data["ratings"].forEach(elem => notifications.push(createNotification(elem, "rating")));
     response.data["friendships"].forEach(elem => notifications.push(createNotification(elem, "friendship")));
     addNotifications(notifications);
-    document.getElementById("delete-all").addEventListener("click", () => {
-        notifications.forEach(notification => markNotificationAsRead(notification.id.split("-")[1]))
-        location.reload();
-    });
+    if (countNotifications(response.data) > 0) {
+        addDeleteAllNotifications(notifications);
+    }
 });
