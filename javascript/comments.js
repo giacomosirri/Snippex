@@ -12,8 +12,6 @@ $("#comment-input").submit(function(e) {
     window.location.reload();
 });
 
-
-
 function createNewComment(data) {
     const comment = document.createElement("article");
     comment.class = "comment col-12 col-md-8 mx-auto";
