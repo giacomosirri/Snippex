@@ -47,6 +47,7 @@ function addDeleteNotification(id) {
     bin.className = "col-1 d-flex justify-content-start";
     bin.style.marginLeft = "15px";
     const button = document.createElement("button");
+    button.className = "btn btn-outline-danger";
     button.addEventListener("click", () => markNotificationAsRead(id).then(() => location.reload()));
     bin.appendChild(button);
     const icon = document.createElement("img");
