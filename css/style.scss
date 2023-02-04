@@ -13,12 +13,6 @@ html, body {
   width: 100%
 }
 
-#proposes {
-  img{
-    display: inline-block;
-    width: 100px;
-  }
-}
 
 body {
   display: flex;
@@ -101,33 +95,19 @@ body {
     }
   }
   main {
-
+    #proposes{
+      img{
+        width: 150px !important;
+      }
+    }
     font-size: 110%;
     div {
-      img {
-        height: auto;
-        width: auto;
-        max-width: 140px;
-        max-height: 140px;
-      }
       div {
         div {
-          img {
-            height: auto;
-            width: auto;
-            max-width: 20px;
-            max-height: 20px;
-          }
           img:hover {
             cursor: pointer;
           }
           div {
-            img {
-              height: auto;
-              width: auto;
-              max-width: 20px;
-              max-height: 20px;
-            }
             img:hover {
               cursor: pointer;
             }

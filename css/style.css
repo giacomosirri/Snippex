@@ -8,11 +8,6 @@ html, body {
   width: 100%;
 }
 
-#proposes img {
-  display: inline-block;
-  width: 100px;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -95,26 +90,11 @@ body header div div img {
 body main {
   font-size: 110%;
 }
-body main div img {
-  height: auto;
-  width: auto;
-  max-width: 140px;
-  max-height: 140px;
-}
-body main div div div img {
-  height: auto;
-  width: auto;
-  max-width: 20px;
-  max-height: 20px;
+body main #proposes img {
+  width: 150px !important;
 }
 body main div div div img:hover {
   cursor: pointer;
-}
-body main div div div div img {
-  height: auto;
-  width: auto;
-  max-width: 20px;
-  max-height: 20px;
 }
 body main div div div div img:hover {
   cursor: pointer;
