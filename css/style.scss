@@ -13,11 +13,19 @@ html, body {
   width: 100%
 }
 
+#proposes {
+  img{
+    display: inline-block;
+    width: 100px;
+  }
+}
+
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background: white;
+
 
   header {
     @media screen and (max-width: 768px) {

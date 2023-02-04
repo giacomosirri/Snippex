@@ -12,7 +12,7 @@ INSERT INTO `users` (`Username`, `Password`, `Name`, `Surname`, `ProfilePic`, `B
 ('topg', '$2y$10$1SilM94RBqzBruBV51mz4uo9NMCI/W6MeqLfnup/8WhHxORPAPh32', 'Andrew', 'Tate', 'topg.png', '1986-12-01', '2023-01-18', 1, 1),
 ('greta', '$2y$10$fW/qginZH3a3rDaSXeMJ/O0acRZiGaSr2DL9fqr2hn/FnAkHqaxQW', 'Greta', 'Thunberg', 'greta.png', '2003-01-03', '2023-01-18', 0, 0),
 ('mark', '$2y$10$VbAXEOxYrBuZ2AJcrVt.WuI2pLA753ihKBYfrmBp10uESK1R5kEPm', 'Marco', 'Antolini', 'mark.png', '2001-12-04', '2023-01-18', 0, 2),
-('lorytosi', '$2y$10$mh1stcBbXOihQcvPO4s3Ku0fLRBRdcBlOrJMrE3OT5i.oo28J380C', 'Lorenzo', 'Tosi', 'lorytosi.jpg', '2001-12-01', '2023-01-18', 1, 0),
+('lorytosi', '$2y$10$mh1stcBbXOihQcvPO4s3Ku0fLRBRdcBlOrJMrE3OT5i.oo28J380C', 'Lorenzo', 'Tosi', 'lorytosi.png', '2001-12-01', '2023-01-18', 1, 0),
 ('sined', '$2y$10$vnb.NZ8EiuWR/8g1.UTBEOIKVXcX4kVYSYQCl6ukbQE4z0KFGffr2', 'Denis', 'Caushaj', 'sined.png', '2000-09-08', '2023-01-18', 1, 0),
 ('angelina', '$2y$10$fxw.JQXz09Nl8s9HZ7gjjeIHObU983/2zVFLv8OasNquD/j2wxDw6', 'Angela', 'Speranza', 'angelina.png', '2002-02-13', '2023-01-18', 0, 1);
 

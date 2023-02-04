@@ -45,9 +45,15 @@ function appendUser(user){
     div.classList.add("input-group");
     div.innerHTML =
         `<div class="input-group-prepend">
-            <span class="input-group-text h-100">&#128269;</span>
+            <img src="../profile_pics/${user}.png">
          </div>
          <button type="button" class="search-button btn btn-light col-sm-2 sol-ms-2 m-0">${user}</button>`
+
+    div.querySelector("img").addEventListener('click', () => {
+        addRecentUser(user);
+        window.location.replace("./userprofile.php?Username="+user);
+        //change page
+    })
     div.querySelector(".search-button").addEventListener('click', () => {
         addRecentUser(user);
         window.location.replace("./userprofile.php?Username="+user);
