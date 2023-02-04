@@ -60,11 +60,11 @@ function appendUser(user){
 }
 
 function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, categories){
-    let div = document.createElement("div");
+    let container = document.createElement("div");
     let row = document.createElement("div");
     let col1 = document.createElement("div");
     let col2 = document.createElement("div");
-    div.classList.add("container");
+    container.classList.add("container");
     row.classList.add("row");
     col1.classList.add("col");
     col2.classList.add("col");
@@ -77,19 +77,46 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
         col2.innerHTML+=`<div>${categories[i]["Name"]}:${getPointsFromCategory(ratingStats, categories[i]["Name"])}</div>`;
     }
 
-
     row.appendChild(col1);
     row.appendChild(col2);
-    div.appendChild(row);
+    container.appendChild(row);
+
+    if (user !== session_user) {
+        getFriendshipStatus(session_user, user).then(data =>
+            row.appendChild(manageFriendshipStatus(data["status"], data["friendshipID"], data["requested_user"])));
+    }
 
     row.querySelector("img").addEventListener('click', () => {
         addRecentUser(user);
         window.location.replace("./userprofile.php?Username="+user);
         //change page
     })
-    document.getElementById("proposes").appendChild(div);
+    document.getElementById("proposes").appendChild(container);
 
 
+}
+
+function manageFriendshipStatus(status, friendshipID, requested_user) {
+    const div = document.createElement("div");
+    div.classList.add("friendship-status");
+    div.className = "col";
+    const p = document.createElement("p");
+    div.innerHTML="";
+    if (status === "RECEIVED") {
+        p.innerText = requested_user + " has asked for your friendship!";
+        div.appendChild(p);
+        div.appendChild(createAcceptFriendshipButton(friendshipID));
+        div.appendChild(createRejectFriendshipButton(friendshipID));
+    } else if (status === "SENT") {
+        p.innerText = "Your have asked " + requested_user + " to become friends! Now you just need to wait for his approval.";
+        div.appendChild(p);
+    } else if (status === "FRIEND") {
+        p.innerText = "You are friend with " + requested_user;
+        div.appendChild(p);
+    } else {
+        div.appendChild(createRequestFriendshipButton(requested_user));
+    }
+    return div;
 }
 
 function appendUsers(users){

@@ -158,3 +158,25 @@ function getFriendshipStatus(main_user, queried_user) {
         return {"status": "NOT", "friendshipID": null};
     });
 }
+
+
+function manageFriendshipStatus(status, friendshipID, requested_user) {
+    const div = document.getElementById("friendship-status");
+    div.className = "d-flex justify-content-center";
+    const p = document.createElement("p");
+    if (status === "RECEIVED") {
+        p.innerText = user + " has asked for your friendship!";
+        div.appendChild(p);
+        div.appendChild(createAcceptFriendshipButton(friendshipID));
+        div.appendChild(createRejectFriendshipButton(friendshipID));
+    } else if (status === "SENT") {
+        p.innerText = "Your have asked " + user + " to become friends! Now you just need to wait for his approval.";
+        div.appendChild(p);
+    } else if (status === "FRIEND") {
+        p.innerText = "You are friend with " + user;
+        div.appendChild(p);
+    } else {
+        div.appendChild(createRequestFriendshipButton(requested_user));
+    }
+}
+
