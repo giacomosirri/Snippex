@@ -17,6 +17,11 @@
                         <a class="nav-link" href="../php/notifications.php">notifications</a>
                     </li>
                     <li class="nav-item">
+                        <label class="nav-link">change profile image
+                            <input id="choose-image" type="file" accept="image/png, image/jpeg" style="display: none"/>
+                        </label>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="../php/logout.php">logout</a>
                     </li>
                 </ul>
@@ -33,5 +38,18 @@
     <section id="friends-list"></section>
 </main>
 <script type="text/javascript">
+    // needed to distinguish between the currently logged-in user's profile page and another user's profile page
     const session_user = "<?php echo $_SESSION["LoggedUser"] ?>";
+
+    const filePicker = document.getElementById("choose-image");
+    filePicker.onchange = e => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = function() {
+            console.log('RESULT', reader.result)
+        }
+    }
+
 </script>
+
