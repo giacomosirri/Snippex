@@ -84,7 +84,12 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
     if (user !== session_user) {
         getFriendshipStatus(session_user, user).then(data =>
             row.appendChild(manageFriendshipStatus(data["status"], data["friendshipID"], data["requested_user"])));
+    }else{
+        let col = document.createElement("div");
+        col.classList.add("col");
+        row.appendChild(col);
     }
+    row.style.marginBottom = '50px';
 
     row.querySelector("img").addEventListener('click', () => {
         addRecentUser(user);
