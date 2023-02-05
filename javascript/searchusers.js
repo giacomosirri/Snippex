@@ -29,7 +29,6 @@ function displayProposal(){
 function displayRecentSearch(){
     axios.get('../php/searchusers-api-recentsearch.php')
         .then(response => {
-            console.log(response.data);
             document.getElementById("proposes").innerHTML="";
             if(response.data.length > 0) {
                 return appendUsers(response.data);
@@ -65,34 +64,39 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
     row.classList.add("row");
     col1.classList.add("col");
     col2.classList.add("col");
-    let profile_pic = getUserProfilePic(user);
-    col1.innerHTML+=`<img src=${profile_pic} alt="profile pic">`;
-    col2.innerHTML+=`
-                <div>${user}</div>
-                <div>posts:${numberOfPosts}</div>`;
+    getUserProfilePic(user).then(image => {
+        const img = document.createElement("img");
+        img.className = "selected-users-profile-pics";
+        img.alt = "profile pic";
+        img.src = image;
+        col1.appendChild(img);
+    });
+    col2.innerHTML += `
+        <div><strong>~${user}</strong></div>
+        <div>posts: ${numberOfPosts}</div>
+    `;
     for (let i=0; i<categories.length; i++) {
-        col2.innerHTML+=`<div>${categories[i]["Name"]}:${getPointsFromCategory(ratingStats, categories[i]["Name"])}</div>`;
+        col2.innerHTML+=`<div>${categories[i]["Name"]}: ${getPointsFromCategory(ratingStats, categories[i]["Name"])}</div>`;
     }
-
     row.appendChild(col1);
-    row.appendChild(col2);
-    container.appendChild(row);
-
-    if (user !== session_user) {
-        getFriendshipStatus(session_user, user).then(data =>
-            row.appendChild(manageFriendshipStatus(data["status"], data["friendshipID"], data["requested_user"])));
-    }else{
-        let col = document.createElement("div");
-        col.classList.add("col");
-        row.appendChild(col);
-    }
+    setTimeout(() => {
+        row.appendChild(col2);
+        container.appendChild(row);
+        if (user !== session_user) {
+            getFriendshipStatus(session_user, user).then(data =>
+                row.appendChild(manageFriendshipStatus(data["status"], data["friendshipID"], data["requested_user"])));
+        } else {
+            let col = document.createElement("div");
+            col.classList.add("col");
+            row.appendChild(col);
+        }
+    }, 50);
     row.style.marginBottom = '50px';
-
-    row.querySelector("img").addEventListener('click', () => {
+    Array.from(row.getElementsByClassName("selected-users-profile-pics")).forEach(() => addEventListener('click', () => {
         addRecentUser(user);
-        window.location.replace("./userprofile.php?Username="+user);
         //change page
-    })
+        window.location.replace("./userprofile.php?Username="+user);
+    }));
     document.getElementById("proposes").appendChild(container);
 }
 
