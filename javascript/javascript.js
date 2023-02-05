@@ -111,7 +111,7 @@ function createRequestFriendshipButton(requested_user) {
     const button = document.createElement("button");
     button.className = "btn btn-primary";
     button.innerText = "Request friendship";
-    button.addEventListener("click", () => friendshipRequest(session_user, requested_user));
+    button.addEventListener("click", () => friendshipRequest(session_user, requested_user).then(() => {}));
     return button;
 }
 
@@ -124,7 +124,6 @@ function createRequestFriendshipButton(requested_user) {
 // 4. NOT - MAIN_USER and QUERIED_USER are not friends currently.
 function getFriendshipStatus(main_user, queried_user) {
     return axios.get('../php/friends-api.php', {params: {Username: main_user}}).then(response => {
-        console.log(response.data);
         const current_friends = response.data["current"];
         const requested_friends = response.data["requested"];
         const waiting_friends = response.data["incoming"];
@@ -155,28 +154,10 @@ function getFriendshipStatus(main_user, queried_user) {
                 }
             }
         }
-        return {"status": "NOT", "friendshipID": null};
+        return {
+            "status": "NOT",
+            "friendshipID": null,
+            "requested_user": queried_user
+        };
     });
 }
-
-
-function manageFriendshipStatus(status, friendshipID, requested_user) {
-    const div = document.getElementById("friendship-status");
-    div.className = "d-flex justify-content-center";
-    const p = document.createElement("p");
-    if (status === "RECEIVED") {
-        p.innerText = user + " has asked for your friendship!";
-        div.appendChild(p);
-        div.appendChild(createAcceptFriendshipButton(friendshipID));
-        div.appendChild(createRejectFriendshipButton(friendshipID));
-    } else if (status === "SENT") {
-        p.innerText = "Your have asked " + user + " to become friends! Now you just need to wait for his approval.";
-        div.appendChild(p);
-    } else if (status === "FRIEND") {
-        p.innerText = "You are friend with " + user;
-        div.appendChild(p);
-    } else {
-        div.appendChild(createRequestFriendshipButton(requested_user));
-    }
-}
-
