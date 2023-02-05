@@ -6,6 +6,7 @@ window.onload = () => {
         document.getElementById("username").value = window.sessionStorage.getItem("username");
     }
     addProposal(document.getElementById("username").value);
+    sessionStorage.removeItem("username");
 };
 
 function addProposal(user) {
