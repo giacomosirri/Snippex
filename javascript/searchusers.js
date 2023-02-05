@@ -2,7 +2,10 @@ window.onload = () => {
     $("#username").keyup(function() {
         addProposal($("#username").val());
     });
-    displayRecentSearch();
+    if(sessionStorage["username"]) {
+        document.getElementById("username").value = window.sessionStorage.getItem("username");
+    }
+    addProposal(document.getElementById("username").value);
 };
 
 function addProposal(user) {
@@ -116,7 +119,12 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         p.innerText = "You are friend with " + requested_user;
         div.appendChild(p);
     } else {
-        div.appendChild(createRequestFriendshipButton(requested_user));
+        let button = createRequestFriendshipButton(requested_user);
+        button.addEventListener("click", ()=>{
+            window.sessionStorage.setItem("username", document.getElementById("username").value);
+            location.reload();
+        })
+        div.appendChild(button);
     }
     return div;
 }
