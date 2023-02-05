@@ -7,14 +7,15 @@ window.onload = () => {
 
 function addProposal(user) {
     if (user != null && user.length > 0) {
-        displayProposal();
+        displayProposal(user);
     } else {
         displayRecentSearch();
     }
 }
 
-function displayProposal() {
-    const user = document.querySelector("#username").value;
+function displayProposal(user) {
+    const h3 = document.querySelector("h3");
+    h3.innerText = "We have found these people that match the input '" + user + "':";
     return axios.get('../php/searchusers-api-proposal.php', {params: {Username: user}})
         .then(response => {
             document.getElementById("proposes").innerHTML="";
@@ -23,10 +24,12 @@ function displayProposal() {
 }
 
 function displayRecentSearch() {
+    const h3 = document.querySelector("h3");
+    h3.innerText = "Recent searches:"
     axios.get('../php/searchusers-api-recentsearch.php')
         .then(response => {
             document.getElementById("proposes").innerHTML="";
-            if(response.data.length > 0) {
+            if (response.data.length > 0) {
                 return appendUsers(response.data);
             }
         });
