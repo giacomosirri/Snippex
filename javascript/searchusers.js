@@ -65,11 +65,11 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
     row.classList.add("row");
     col1.classList.add("col");
     col2.classList.add("col");
-    col1.innerHTML+=
-        `<img src="../profile_pics/${user}.png" alt="profile pic">`;
+    let profile_pic = getUserProfilePic(user);
+    col1.innerHTML+=`<img src=${profile_pic} alt="profile pic">`;
     col2.innerHTML+=`
                 <div>${user}</div>
-                <div>post:${numberOfPosts}</div>`;
+                <div>posts:${numberOfPosts}</div>`;
     for (let i=0; i<categories.length; i++) {
         col2.innerHTML+=`<div>${categories[i]["Name"]}:${getPointsFromCategory(ratingStats, categories[i]["Name"])}</div>`;
     }

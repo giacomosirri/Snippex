@@ -76,6 +76,18 @@ function showUsername(post) {
     postTitle.innerText = postTitle.innerText.split(" ~ ")[0] + " ~ " + username;
 }
 
+async function getUserProfilePic(username) {
+    const default_pic = "../profile_pics/unknown-man.png";
+    return axios.get('../php/image-api.php?Username=' + username).then(response => {
+        const image = response.data[0]["ProfilePic"];
+        if (image === null) {
+            return "../profile_pics/" + default_pic;
+        } else {
+            return "../profile_pics/" + image;
+        }
+    });
+}
+
 async function friendshipRequest(requesting, requested) {
     await axios.put('../php/friends-api.php', {User1: requesting, User2: requested, Type: "request"});
 }

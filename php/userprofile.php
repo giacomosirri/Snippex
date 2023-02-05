@@ -1,6 +1,6 @@
 <?php
 require_once "session-check.php";
-$templateParams["js"] = array("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js", "../javascript/userprofile.js", "../javascript/image.js");
+$templateParams["js"] = array("../javascript/userprofile.js");
 if (isset($_GET["Username"])) {
     $templateParams["title"] = $_GET["Username"]."'s profile";
 } else {

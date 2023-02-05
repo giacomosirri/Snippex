@@ -6,16 +6,27 @@ function activeMenu(link) {
     link.classList.add("active");
 }
 
-function addBasicInfo(data) {
-    return `
-        <div class="d-flex justify-content-start flex-column">
-            <h1 style="color: black">${data[0]["Name"]} ${data[0]["Surname"]}</h1>
-            <h2 style="color: black; font-size: 18px; margin-top: -14px">~${data[0]["Username"]}</h2>
-            <div style="margin-bottom: 5px">
-                <img id="main-profile-pic" src="../profile_pics/${data[0]["ProfilePic"] ?? "unknown-man.png"}" alt="profile pic"/>
-            </div>
-        </div>
-    `;
+function createBasicInfo(data) {
+    const section = document.createElement("section");
+    const h1 = document.createElement("h1");
+    h1.style.color = "black";
+    h1.innerText = data["Name"] + " " + data["Surname"];
+    const h2 = document.createElement("h2");
+    h2.style.color = "black";
+    h2.style.fontSize = "18px";
+    h2.style.marginTop = "-14px";
+    h2.innerText = "~" + data["Username"];
+    const innerDiv = document.createElement("div");
+    innerDiv.style.marginBottom = "5px";
+    const img = document.createElement("img");
+    img.id = "main-profile.pic";
+    img.alt = "profile pic";
+    getUserProfilePic(data["Username"]).then(image => img.src = image);
+    section.appendChild(h1);
+    innerDiv.appendChild(img);
+    h2.appendChild(innerDiv);
+    section.appendChild(h2);
+    return section;
 }
 
 function addMostVotedPost(data) {
@@ -134,7 +145,7 @@ const user = new URL(window.location.href).searchParams.get("Username") ?? sessi
 axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(response => {
     const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];
     const numberOfFriends = response.data["user-data"][0]["NumberOfFriends"];
-    const userData = addBasicInfo(response.data["user-data"]);
+    const userData = createBasicInfo(response.data["user-data"][0]);
     const ratingStats = addRatingStats(response.data["rating-stats"], response.data["categories"], numberOfPosts);
     const friendsNum = `${numberOfFriends} friends`;
     const signupDate = `${response.data["user-data"][0]["SignupDate"]}`;
@@ -147,7 +158,7 @@ axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(respons
         getFriendshipStatus(session_user, user).then(data =>
             manageFriendshipStatus(data["status"], data["friendshipID"], data["requested_user"]));
     }
-    header.innerHTML += userData;
+    header.appendChild(userData);
     table.innerHTML += ratingStats;
     friends_paragraph.innerHTML = friendsNum;
     date_paragraph.innerHTML = signupDate;

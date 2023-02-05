@@ -1,6 +1,6 @@
 <?php
 require_once "session-check.php";
-$templateParams["js"] = array("https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js", "../javascript/profile.js", "../javascript/userprofile.js", "../javascript/image.js");
+$templateParams["js"] = array("../javascript/profile.js", "../javascript/userprofile.js");
 $templateParams["title"] = "Your profile";
 $templateParams["page"] = "../template/profile.html";
 require "./base.php";

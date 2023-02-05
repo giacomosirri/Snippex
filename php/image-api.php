@@ -1,12 +1,13 @@
 <?php
 require_once "bootstrap.php";
 global $dbh;
-$user = $_SESSION["LoggedUser"];
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $user = $_GET["Username"];
     $json_data = $dbh->getProfilePic($user);
     header("Content-Type: application/json");
     echo json_encode($json_data);
 } elseif ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+    $user = $_SESSION["LoggedUser"];
     $data = json_decode(file_get_contents("php://input"), true);
     $encoded_image = $data["Image"];
     $format = explode(";", explode("/", $encoded_image)[1])[0];
