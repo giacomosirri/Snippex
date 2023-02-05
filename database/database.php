@@ -289,10 +289,12 @@ class DatabaseHelper {
 
     public function getPostsFromKeyword($keyword): array {
         $stmt1 = $this->db->prepare("SELECT * FROM posts WHERE Title LIKE ? ORDER BY DateAndTime DESC");
-        $stmt2 = $this->db->prepare("SELECT * FROM posts WHERE Content LIKE ? ORDER BY DateAndTime DESC");
+        $stmt2 = $this->db->prepare("SELECT * FROM posts WHERE Content LIKE ? AND PostID NOT IN (
+                                            SELECT PostID FROM posts WHERE Title LIKE ? ORDER BY DateAndTime DESC)
+                                            ORDER BY DateAndTime DESC");
         $keyword = '%' . $keyword . '%';
         $stmt1->bind_param('s', $keyword);
-        $stmt2->bind_param('s', $keyword);
+        $stmt2->bind_param('ss', $keyword, $keyword);
         $stmt1->execute();
         $result1 = $stmt1->get_result();
         $stmt2->execute();
