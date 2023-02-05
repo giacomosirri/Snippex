@@ -1,23 +1,19 @@
 window.onload = () => {
-    $("#username").keyup(function(){
-        addProposal($("#username").val())
+    $("#username").keyup(function() {
+        addProposal($("#username").val());
     });
     displayRecentSearch();
 };
 
-function deleteSearch(object){
-    object.parentNode.style.display='none';
-}
-
 function addProposal(user) {
-    if(user != null && user.length > 0){
+    if (user != null && user.length > 0) {
         displayProposal();
-    }else{
+    } else {
         displayRecentSearch();
     }
 }
 
-function displayProposal(){
+function displayProposal() {
     const user = document.querySelector("#username").value;
     return axios.get('../php/searchusers-api-proposal.php', {params: {Username: user}})
         .then(response => {
@@ -26,7 +22,7 @@ function displayProposal(){
         });
 }
 
-function displayRecentSearch(){
+function displayRecentSearch() {
     axios.get('../php/searchusers-api-recentsearch.php')
         .then(response => {
             document.getElementById("proposes").innerHTML="";
@@ -62,13 +58,17 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
     let col2 = document.createElement("div");
     container.classList.add("container");
     row.classList.add("row");
-    col1.classList.add("col");
-    col2.classList.add("col");
+    col1.classList.add("col-4");
+    col2.classList.add("col-5");
     getUserProfilePic(user).then(image => {
         const img = document.createElement("img");
         img.className = "selected-users-profile-pics";
         img.alt = "profile pic";
         img.src = image;
+        img.addEventListener("click", () => {
+            addRecentUser(user);
+            window.location.replace("./userprofile.php?Username=" + user);
+        })
         col1.appendChild(img);
     });
     col2.innerHTML += `
@@ -87,23 +87,18 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
                 row.appendChild(manageFriendshipStatus(data["status"], data["friendshipID"], data["requested_user"])));
         } else {
             let col = document.createElement("div");
-            col.classList.add("col");
+            col.classList.add("col-3");
             row.appendChild(col);
         }
-    }, 50);
+    }, 150);
     row.style.marginBottom = '50px';
-    Array.from(row.getElementsByClassName("selected-users-profile-pics")).forEach(() => addEventListener('click', () => {
-        addRecentUser(user);
-        //change page
-        window.location.replace("./userprofile.php?Username="+user);
-    }));
     document.getElementById("proposes").appendChild(container);
 }
 
 function manageFriendshipStatus(status, friendshipID, requested_user) {
     const div = document.createElement("div");
     div.classList.add("friendship-status");
-    div.className = "col";
+    div.className = "col-3";
     const p = document.createElement("p");
     div.innerHTML = "";
     if (status === "RECEIVED") {
@@ -124,7 +119,7 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
 }
 
 function appendUsers(users){
-    const usersWithoutDuplicate = new Set(users)
+    const usersWithoutDuplicate = new Set(users);
     usersWithoutDuplicate.forEach(x => appendUser(x));
 }
 
