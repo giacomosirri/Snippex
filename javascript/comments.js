@@ -26,9 +26,21 @@ function createNewComment(data) {
                 </label>
                 <p class="post-date col-12">${data["DateAndTime"]}</p>
             </div>
+            <div class="comment-interactions d-flex justify-content-between flex-column">
+                <img class="modify" style="padding: 5px; border-radius: 20px; display:none;" src="../icons/burger_icon.png" alt="modify">
+                <img class="delete" style="padding: 5px; border-radius: 20px; display: none;" src="../icons/bin_icon.png" alt="delete">
+            </div>
         </div>`;
     comment.getElementsByClassName("change-text-button")[0]
         .addEventListener("click", () => changeText(comment));
+    if (data["User"] === session_user) {
+        comment.getElementsByClassName("modify")[0].style.display = "block";
+        comment.getElementsByClassName("delete")[0].style.display = "block";
+        comment.getElementsByClassName("modify")[0]
+            .addEventListener("click", () => editComment(data["CommentID"], data["Content"]));
+        comment.getElementsByClassName("delete")[0]
+            .addEventListener("click", () => deleteComment(data["CommentID"]));
+    }
     return comment;
 }
 
@@ -53,6 +65,26 @@ function createHeaderPost(data) {
     post.getElementsByClassName("change-text-button")[0]
         .addEventListener("click", () => changeText(post));
     return post;
+}
+
+function editComment(id, content) {
+    let text = prompt("Enter new text:", content);
+    if (text != null && text.length > 0) {
+        axios.post('../php/comments-api.php', {id: id, text: text, action: "edit"}).then(response => {
+            console.log(response);
+        });
+        window.location.reload();
+    }
+}
+
+function deleteComment(id) {
+    let result = confirm("Are you sure?");
+    if (result) {
+        axios.post('../php/comments-api.php', {id: id, action: "delete"}).then(response => {
+            console.log(response);
+        });
+        window.location.reload();
+    }
 }
 
 axios.get('../php/comments-api.php', {params: {PostID: url.searchParams.get("PostID")}}).then(response => {

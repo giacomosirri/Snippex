@@ -358,6 +358,21 @@ class DatabaseHelper {
         }
         return $result;
     }
-    
+
+    public function deleteComment($id) {
+        $stmt = $this->db->prepare("DELETE FROM notifications WHERE Comment = ?");
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $stmt = $this->db->prepare("DELETE FROM comments WHERE CommentID = ?");
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+    }
+
+    public function editComment($id, $text) {
+        $stmt = $this->db->prepare("UPDATE comments SET Content = ? WHERE CommentID = ?");
+        $stmt->bind_param('si', $text, $id);
+        $stmt->execute();
+    }
+
 }
 ?>
