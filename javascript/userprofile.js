@@ -120,8 +120,12 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
     if (status === "RECEIVED") {
         p.innerText = user + " has asked for your friendship!";
         div.appendChild(p);
-        div.appendChild(createAcceptFriendshipButton(friendshipID));
-        div.appendChild(createRejectFriendshipButton(friendshipID));
+        const accept = createAcceptFriendshipButton(friendshipID);
+        accept.addEventListener('click', () => reload());
+        div.appendChild(accept);
+        const reject = createRejectFriendshipButton(friendshipID);
+        reject.addEventListener('click', () => reload());
+        div.appendChild(reject);
     } else if (status === "SENT") {
         p.innerText = "Your have asked " + user + " to become friends! Now you just need to wait for his approval.";
         div.appendChild(p);
@@ -129,8 +133,14 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         p.innerText = "You are friend with " + user;
         div.appendChild(p);
     } else {
-        div.appendChild(createRequestFriendshipButton(requested_user));
+        const request = createRequestFriendshipButton(requested_user);
+        request.addEventListener('click', () => reload());
+        div.appendChild(request);
     }
+}
+
+function reload() {
+    location.reload();
 }
 
 // adds a behavior to the elements of the settings menu in the profile page of the current user

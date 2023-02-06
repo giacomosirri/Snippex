@@ -85,16 +85,20 @@ function createNotification(data, type) {
     notification.appendChild(addNotificationMainContent(data, type));
     if (type === "friendship") {
         const accept = createAcceptFriendshipButton(data["FriendshipID"]);
-        accept.addEventListener('click', () => location.reload());
+        accept.addEventListener('click', () => reload());
         notification.appendChild(accept);
         const reject = createRejectFriendshipButton(data["FriendshipID"]);
-        reject.addEventListener('click', () => location.reload());
+        reject.addEventListener('click', () => reload());
         notification.appendChild(reject);
     } else {
         notification.appendChild(addDate(data));
         notification.appendChild(createDeleteNotificationButton(data["NotificationID"]));
     }
     return notification;
+}
+
+function reload() {
+    location.reload();
 }
 
 axios.get('../php/notifications-api.php').then(response => {
