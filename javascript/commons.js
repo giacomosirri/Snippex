@@ -44,8 +44,10 @@ export function createNewPost(data, index) {
     post.getElementsByClassName("rate-post")[0]
         .addEventListener("click", () => showRatingCategories(post));
     let ratingCategories = Array.from(post.getElementsByClassName("rating"));
-    ratingCategories.forEach(item =>
-        item.addEventListener("click", () => showPlus(post)));
+    ratingCategories[0].addEventListener("click", () => addRating(post, "thoughtfulness"));
+    ratingCategories[1].addEventListener("click", () => addRating(post, "ideas"));
+    ratingCategories[2].addEventListener("click", () => addRating(post, "advice"));
+    ratingCategories[3].addEventListener("click", () => addRating(post, "humour"));
     post.getElementsByClassName("comment-post")[0]
         .addEventListener("click", () => showComments(post));
     return post;

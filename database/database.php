@@ -311,7 +311,29 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
-
+    public function addRating($rating, $post) {
+        $stmt = $this->db->prepare("INSERT INTO ratings (DateAndTime, Category, Rater, Post) VALUES (?, ?, ?, ?)");
+        $date = date("Y-m-d H:i:s");
+        $rater = $_SESSION['LoggedUser'];
+        $stmt->bind_param('sssi',$date , $rating, $rater, $post);
+        $stmt->execute();
+        $stmt = $this->db->prepare("SELECT Writer FROM posts WHERE PostID = ?");
+        $stmt->bind_param('i', $post);
+        $stmt->execute();
+        $writer = $stmt->get_result()->fetch_assoc()['Writer'];
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM points WHERE User = ? AND Category = ?");
+        $stmt->bind_param('ss', $writer, $rating);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc()['COUNT(*)'];
+        if ($result == 0) {
+            $stmt = $this->db->prepare("INSERT INTO points (User, Category, Points) VALUES (?, ?, 1)");
+            $stmt->bind_param('ss', $writer, $rating);
+        } else {
+            $stmt = $this->db->prepare("UPDATE points SET Points = Points + 1 WHERE User = ? AND Category = ?");
+            $stmt->bind_param('ss', $writer, $rating);
+        }
+        $stmt->execute();
+    }
 
 
 }

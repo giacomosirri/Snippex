@@ -38,6 +38,12 @@ function showRatingCategories(post) {
     }
 }
 
+function addRating(post, rating) {
+    const postId = post.getElementsByClassName("post-id")[0];
+    axios.post("../php/insertions-api.php", {rating: rating, post: postId.innerText});
+    showPlus(post);
+}
+
 function showPlus(post) {
     const div = post.getElementsByClassName("post-interactions")[0];
     const icons = div.children;

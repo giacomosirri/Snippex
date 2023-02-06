@@ -12,3 +12,9 @@ if (isset($data["title"]) && isset($data["content"])) {
     $content = $data["content"];
     $dbh->addPost($title, $content);
 }
+if (isset($data["rating"]) && isset($data["post"])) {
+    var_dump($data);
+    $rating = $data["rating"];
+    $post = $data["post"];
+    $dbh->addRating($rating, $post);
+}
