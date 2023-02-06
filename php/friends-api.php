@@ -18,7 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $dbh->addFriendshipAcceptance($data["ID"]);
     } elseif ($type == "rejection") {
         $dbh->deleteFriendship($data["ID"]);
-    } else {
+    } elseif ($type == "termination") {
+        $dbh->terminateFriendship($data["ID"]);
+    }
+    else {
         throw new Error("Incorrect call.");
     }
 } else {

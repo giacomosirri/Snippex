@@ -103,8 +103,13 @@ async function friendshipAcceptance(id) {
 }
 
 async function friendshipRejection(id) {
-    alert("Are you sure? This action is definitive");
+    alert("Are you sure? This action is definitive.");
     await axios.put('../php/friends-api.php', {ID: id, Type: "rejection"});
+}
+
+async function friendshipTermination(id) {
+    alert("Are you sure? This action is definitive.");
+    await axios.put('../php/friends-api.php', {ID: id, Type: "termination"});
 }
 
 function createAcceptFriendshipButton(id) {
@@ -130,6 +135,14 @@ function createRequestFriendshipButton(requested_user) {
     button.className = "btn btn-primary";
     button.innerText = "Request friendship";
     button.addEventListener("click", () => friendshipRequest(session_user, requested_user));
+    return button;
+}
+
+function createTerminateFriendshipButton(id) {
+    const button = document.createElement("button");
+    button.className = "btn btn-danger";
+    button.innerText = "Terminate friendship";
+    button.addEventListener("click", () => friendshipTermination(id));
     return button;
 }
 

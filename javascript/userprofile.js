@@ -132,6 +132,9 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
     } else if (status === "FRIEND") {
         p.innerText = "You are friend with " + user;
         div.appendChild(p);
+        const terminate = createTerminateFriendshipButton(friendshipID);
+        terminate.addEventListener('click', () => reload());
+        div.appendChild(terminate);
     } else {
         const request = createRequestFriendshipButton(requested_user);
         request.addEventListener('click', () => reload());

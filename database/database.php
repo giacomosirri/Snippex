@@ -290,6 +290,13 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
+    public function terminateFriendship($friendshipID) {
+        $stmt = $this->db->prepare("UPDATE friendships SET FriendsUntil = ? WHERE FriendshipID = ?");
+        $date = date("Y-m-d");
+        $stmt->bind_param('ss', $date, $friendshipID);
+        $stmt->execute();
+    }
+
     public function getPostsFromKeyword($keyword): array {
         $stmt1 = $this->db->prepare("SELECT * FROM posts WHERE Title LIKE ? ORDER BY DateAndTime DESC");
         $stmt2 = $this->db->prepare("SELECT * FROM posts WHERE Content LIKE ? AND PostID NOT IN (
@@ -334,7 +341,6 @@ class DatabaseHelper {
         }
         $stmt->execute();
     }
-
 
 }
 ?>
