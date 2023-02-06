@@ -7,21 +7,17 @@
     </div>
 </header>
 <main class="container">
-    <form action="" method="get" style="margin-bottom: 20px">
-        <div class="row">
-                <label class="col-4 col-md-3 col-xl-2">
-                    Sort for:
-                    <select class="col-12" name="options">
-                        <option value="number of votes" selected="selected">Most voted</option>
-                        <option value="date">Most recent</option>
-                        <option value="number of comments">Most commented</option>
-                    </select>
-                </label>
-            <label class="col-1">
-                Descending
-                <input class="col-md-2" type="checkbox" id="descending">
-            </label>
-        </div>
-    </form>
-    <section id="all-posts"></section>
+    <div class="row" style="margin: 15px 0">
+        <nav class="explore">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">~</span>
+                </div>
+                <input id="keyword-search" type="text" class="form-control" placeholder="Search keywords in posts title" aria-label="Keyword" aria-describedby="basic-addon1">
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <section id="all-posts"></section>
+    </div>
 </main>

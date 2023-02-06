@@ -3,13 +3,13 @@ export function createNewPost(data, index) {
     const post = document.createElement("article");
     post.class = "post col-12 col-md-8 mx-auto";
     post.id = "post-" + index;
-    if (window.location.href.includes("profile")) {
+    if (window.location.href.includes("profile") || window.location.href.includes("posthistory")) {
         post.innerHTML = `<h3 class="post-title col-10">${data["Title"]}</h3>
                             <div class="user-username d-none"> ${data["Writer"]} </div>`;
     } else if (window.location.href.includes("feed")) {
         post.innerHTML = `<h3 class="post-title col-10">${data["Title"]} ~ ${data["Writer"]}</h3>
                             <div class="user-username d-none"> ${data["Writer"]} </div>`;
-    } else {
+    } else if (window.location.href.includes("explore")) {
         post.innerHTML = `<h3 class="post-title col-10" id="post-header">${data["Title"]} ~ *****</h3>
                             <div class="user-username d-none"> ${data["Writer"]} </div>`;
     }
@@ -39,20 +39,16 @@ export function createNewPost(data, index) {
                      alt="comment">
             </div>
         </div>`;
-    post.getElementsByClassName("change-text-button")[0]
-        .addEventListener("click", () => changeText(post));
-    post.getElementsByClassName("rate-post")[0]
-        .addEventListener("click", () => showRatingCategories(post));
+    post.getElementsByClassName("change-text-button")[0].addEventListener("click", () => changeText(post));
+    post.getElementsByClassName("rate-post")[0].addEventListener("click", () => showRatingCategories(post));
     let ratingCategories = Array.from(post.getElementsByClassName("rating"));
     ratingCategories[0].addEventListener("click", () => addRating(post, "thoughtfulness"));
     ratingCategories[1].addEventListener("click", () => addRating(post, "ideas"));
     ratingCategories[2].addEventListener("click", () => addRating(post, "advice"));
     ratingCategories[3].addEventListener("click", () => addRating(post, "humour"));
-    post.getElementsByClassName("comment-post")[0]
-        .addEventListener("click", () => showComments(post));
+    post.getElementsByClassName("comment-post")[0].addEventListener("click", () => showComments(post));
     axios.get("../php/rating-api.php", {params: {PostID: data["PostID"]}}).then((response) => {
-        if(response.data != null) {
-            console.log(response.data);
+        if (response.data != null) {
             changeIcon(post, response.data);
             showUsername(post);
         }

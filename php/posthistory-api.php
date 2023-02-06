@@ -1,8 +1,8 @@
 <?php
 require_once "bootstrap.php";
 global $dbh;
-if (isset($_GET["Username"])) {
-    $user = $_GET["Username"];
+if (isset($_GET["username"])) {
+    $user = $_GET["username"];
     $json_data = $dbh->getAllPostsWrittenByUser($user);
     header("Content-Type: application/json");
     echo json_encode($json_data);
