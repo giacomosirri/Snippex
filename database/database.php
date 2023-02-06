@@ -193,6 +193,9 @@ class DatabaseHelper {
         $date = date("Y-m-d H:i:s");
         $stmt->bind_param('sssi', $comment, $date, $_SESSION['LoggedUser'], $post);
         $stmt->execute();
+        $stmt = $this->db->prepare("UPDATE posts SET NumberOfComments = NumberOfComments + 1 WHERE PostID = ?");
+        $stmt->bind_param('i', $post);
+        $stmt->execute();
     }
 
     public function addPost($title, $content) {
