@@ -27,13 +27,13 @@ export function createNewPost(data, index) {
             <div class="post-interactions d-flex justify-content-between flex-column">
                 <img class="rate-post" style="padding: 5px; border-radius: 20px;"
                      src="../icons/plus_icon.png" alt="post menu"/>
-                <img class="rating thoughtfulness" style="display: none" src="../icons/thoughts_icon.png"
+                <img class="rating thoughtfulness" style="display: none" src="../icons/thoughtfulness_icon.png"
                      alt="rate as thoughtfulness">
-                <img class="rating idea" style="display: none" src="../icons/idea_icon.png"
+                <img class="rating idea" style="display: none" src="../icons/ideas_icon.png"
                      alt="rate as idea">
                 <img class="rating advice" style="display: none" src="../icons/advice_icon.png"
                      alt="rate as advice">
-                <img class="rating laugh" style="display: none" src="../icons/laugh_icon.png"
+                <img class="rating laugh" style="display: none" src="../icons/humour_icon.png"
                      alt="rate as humour">
                 <img class="comment-post" style="margin-bottom: 6px" src="../icons/comment_icon.png"
                      alt="comment">
@@ -50,5 +50,12 @@ export function createNewPost(data, index) {
     ratingCategories[3].addEventListener("click", () => addRating(post, "humour"));
     post.getElementsByClassName("comment-post")[0]
         .addEventListener("click", () => showComments(post));
+    axios.get("../php/rating-api.php", {params: {PostID: data["PostID"]}}).then((response) => {
+        if(response.data != null) {
+            console.log(response.data);
+            changeIcon(post, response.data);
+            showUsername(post);
+        }
+    });
     return post;
 }

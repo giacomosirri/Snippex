@@ -342,5 +342,22 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
+    public function verifyRating($post) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM ratings WHERE Post = ? AND Rater = ?");
+        $rater = $_SESSION['LoggedUser'];
+        $stmt->bind_param('is', $post, $rater);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc()['COUNT(*)'];
+        if ($result > 0) {
+            $stmt = $this->db->prepare("SELECT Category FROM ratings WHERE Post = ? AND Rater = ?");
+            $stmt->bind_param('is', $post, $rater);
+            $stmt->execute();
+            $result = $stmt->get_result()->fetch_assoc()['Category'];
+        } else {
+            $result = null;
+        }
+        return $result;
+    }
+    
 }
 ?>

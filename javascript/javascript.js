@@ -41,10 +41,10 @@ function showRatingCategories(post) {
 function addRating(post, rating) {
     const postId = post.getElementsByClassName("post-id")[0];
     axios.post("../php/insertions-api.php", {rating: rating, post: postId.innerText});
-    showPlus(post);
+    showPlus(post, rating);
 }
 
-function showPlus(post) {
+function showPlus(post, rating) {
     const div = post.getElementsByClassName("post-interactions")[0];
     const icons = div.children;
     for (let i=0; i<icons.length-1; i++) {
@@ -54,7 +54,17 @@ function showPlus(post) {
             icons[i].style.display = "none";
         }
     }
+    changeIcon(post, rating);
     showUsername(post);
+}
+
+function changeIcon(post, rating) {
+    const div = post.getElementsByClassName("post-interactions")[0];
+    const icons = div.children;
+    let img = document.createElement("img");
+    img.src = "../icons/" + rating + "_icon.png";
+    img.style = "width: 30px; height: 30px; margin-right: 15px;";
+    icons[0].outerHTML = img.outerHTML;
 }
 
 function showComments(post) {
