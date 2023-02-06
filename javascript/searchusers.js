@@ -109,10 +109,15 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
     const p = document.createElement("p");
     div.innerHTML = "";
     if (status === "RECEIVED") {
+        p.style.marginRight = "10px";
         p.innerText = requested_user + " has asked for your friendship!";
         div.appendChild(p);
-        div.appendChild(createAcceptFriendshipButton(friendshipID));
-        div.appendChild(createRejectFriendshipButton(friendshipID));
+        const accept = createAcceptFriendshipButton(friendshipID);
+        accept.addEventListener("click", () => saveAndRefresh());
+        div.appendChild(accept);
+        const reject = createRejectFriendshipButton(friendshipID);
+        reject.addEventListener("click", () => saveAndRefresh());
+        div.appendChild(reject);
     } else if (status === "SENT") {
         p.innerText = "Your have asked " + requested_user + " to become friends! Now you just need to wait for his approval.";
         div.appendChild(p);
@@ -120,14 +125,16 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         p.innerText = "You are friend with " + requested_user;
         div.appendChild(p);
     } else {
-        let button = createRequestFriendshipButton(requested_user);
-        button.addEventListener("click", ()=>{
-            window.sessionStorage.setItem("username", document.getElementById("username").value);
-            location.reload();
-        })
-        div.appendChild(button);
+        let request = createRequestFriendshipButton(requested_user);
+        request.addEventListener("click", () => saveAndRefresh());
+        div.appendChild(request);
     }
     return div;
+}
+
+function saveAndRefresh() {
+    window.sessionStorage.setItem("username", document.getElementById("username").value);
+    location.reload();
 }
 
 function appendUsers(users){

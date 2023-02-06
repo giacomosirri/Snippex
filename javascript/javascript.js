@@ -112,7 +112,7 @@ function createAcceptFriendshipButton(id) {
     accept.className = "btn btn-outline-primary col-2 col-lg-1";
     accept.innerText = `Accept request`;
     accept.style.marginRight = "15px";
-    accept.addEventListener("click", () => friendshipAcceptance(id).then(() => location.reload()));
+    accept.addEventListener("click", () => friendshipAcceptance(id));
     return accept;
 }
 
@@ -121,7 +121,7 @@ function createRejectFriendshipButton(id) {
     reject.className = "btn btn-outline-danger col-2 col-lg-1";
     reject.innerText = `Reject request`;
     reject.style.marginRight = "15px";
-    reject.addEventListener("click", () => friendshipRejection(id).then(() => location.reload()));
+    reject.addEventListener("click", () => friendshipRejection(id));
     return reject;
 }
 
@@ -129,7 +129,7 @@ function createRequestFriendshipButton(requested_user) {
     const button = document.createElement("button");
     button.className = "btn btn-primary";
     button.innerText = "Request friendship";
-    button.addEventListener("click", () => friendshipRequest(session_user, requested_user).then(() => {}));
+    button.addEventListener("click", () => friendshipRequest(session_user, requested_user));
     return button;
 }
 
