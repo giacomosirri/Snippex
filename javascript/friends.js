@@ -17,21 +17,25 @@ function addFriend(data) {
     const friend = document.createElement("div");
     friend.innerHTML = `
         <div class="row">
-                <div class="col-2 align-self-stretch">
+            <div class="col-2">
                 <a href="../php/userprofile.php?Username=${data["Username"]}">
-                    <img src="../profile_pics/${data["ProfilePic"]}" alt="profile pic" style="width: 100%"/>
+                    <img src="../profile_pics/${data["ProfilePic"]}" alt="profile pic" style="min-height: 120px; min-width: 120px"/>
                 </a>
             </div>
-            <div class="col-10 d-flex align-items-center">
+            <div class="col-5">
                 <p><strong>${data["Name"]} ${data["Surname"]}</strong></p>
                 <p>~${data["Username"]}</p>
                 <p>You have been friends for ${friendsFor} days</p>
             </div>
         </div>
     `;
+    const button_div = document.createElement("div");
+    button_div.className = "col-2";
     const button = createTerminateFriendshipButton(data["FriendshipID"], data["Username"]);
     button.addEventListener("click", () => reload());
-    friend.appendChild(button);
+    button_div.appendChild(button);
+    const row = friend.children.item(0);
+    row.appendChild(button_div);
     return friend;
 }
 
@@ -46,5 +50,5 @@ axios.get('../php/friends-api.php', {params: {Username: user}}).then(response =>
         section.appendChild(addFriend(friends[i]));
     }
     const h1 = document.querySelector("header h1");
-    h1.innerHTML = user + "'s friends";
+    h1.innerHTML = "All " + user + "'s friends (" + friends.length + ")";
 });
