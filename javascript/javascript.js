@@ -11,11 +11,13 @@ function createPost() {
     let title = document.querySelector("#recipient-title").value;
     let content = document.querySelector("#message-text").value;
     let close = document.querySelector("#close");
-    axios.post("../php/insertions-api.php", {title: title, content: content});
+    axios.post("../php/insertions-api.php", {title: title, content: content, action: "create"});
     $("#recipient-title").val("");
     $("#message-text").val("");
     close.click();
 }
+
+
 
 function changeText(label) {
     let paragraph = label.querySelector('p');

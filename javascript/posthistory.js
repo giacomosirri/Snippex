@@ -28,10 +28,29 @@ function displayAllPosts() {
                 <br /><br /><br /><br />
                 <img src="../icons/bin_icon.png" alt="delete post" id="delete-post" />
             `;
+            ops_div.querySelector("#edit-post").addEventListener("click", () => editPost(response.data[i]["PostID"], response.data[i]["Title"], response.data[i]["Content"]));
+            ops_div.querySelector("#delete-post").addEventListener("click", () => deletePost(response.data[i]["PostID"]));
             div.appendChild(ops_div);
             section.appendChild(div);
         }
     });
+}
+
+function editPost(id, title, content) {
+    let newTitle = prompt("Enter new title:", title);
+    let newContent = prompt("Enter new text:", content);
+    if ((newTitle != null && newTitle.length > 0) || (newContent != null && newContent.length > 0)) {
+        axios.post("../php/insertions-api.php", {id: id, title: newTitle, content: newContent, action: "edit"});
+        window.location.reload();
+    }
+}
+
+function deletePost(id) {
+    let result = confirm("Are you sure you want to delete this post?");
+    if (result) {
+        axios.post("../php/insertions-api.php", {id: id, action: "delete"});
+        window.location.reload();
+    }
 }
 
 function displaySearch(text) {

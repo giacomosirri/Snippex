@@ -410,5 +410,54 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
+    public function deletePost($id) {
+        $post = $this->getPostFromId($id);
+        $stmt = $this->db->prepare("UPDATE users SET NumberOfPosts = NumberOfPosts - 1 WHERE Username = ?");
+        $stmt->bind_param('s', $post['Writer']);
+        $stmt->execute();
+        $comments = $this->getPostCommentsFromId($id);
+        foreach ($comments as $comment) {
+            $this->deleteComment($comment['CommentID']);
+        }
+        $ratings = $this->getPostRatings($id);
+        foreach ($ratings as $rating) {
+            $this->deleteRating($rating['RatingID'], $id);
+        }
+        $stmt = $this->db->prepare("DELETE FROM posts WHERE PostID = ?");
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+    }
+
+    private function getPostRatings($id) : array {
+        $stmt = $this->db->prepare("SELECT * FROM ratings WHERE Post = ?");
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    private function deleteRating($RatingID, $postID) {
+        $stmt = $this->db->prepare("DELETE FROM notifications WHERE Rating = ?");
+        $stmt->bind_param('i', $RatingID);
+        $stmt->execute();
+        $stmt = $this->db->prepare("SELECT Category FROM ratings WHERE RatingID = ?");
+        $stmt->bind_param('i', $RatingID);
+        $stmt->execute();
+        $category = $stmt->get_result()->fetch_assoc()['Category'];
+        $user = $this->getWriterFromPostId($postID);
+        $stmt = $this->db->prepare("UPDATE points SET Points = Points - 1 WHERE User = ? AND Category = ?");
+        $stmt->bind_param('ss', $user, $category);
+        $stmt->execute();
+        $stmt = $this->db->prepare("DELETE FROM ratings WHERE RatingID = ?");
+        $stmt->bind_param('i', $RatingID);
+        $stmt->execute();
+    }
+
+    public function editPost($id, $title, $content) {
+        $stmt = $this->db->prepare("UPDATE posts SET Title = ?, Content = ? WHERE PostID = ?");
+        $stmt->bind_param('ssi', $title, $content, $id);
+        $stmt->execute();
+    }
+
 }
 ?>

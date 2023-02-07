@@ -67,14 +67,16 @@ function createHeaderPost(data) {
 function editComment(id, content) {
     let text = prompt("Enter new text:", content);
     if (text != null && text.length > 0) {
-        axios.post('../php/comments-api.php', {id: id, text: text, action: "edit"}).then(window.location.reload);
+        axios.post('../php/comments-api.php', {id: id, text: text, action: "edit"});
+        window.location.reload();
     }
 }
 
 function deleteComment(id) {
     let result = confirm("Are you sure?");
     if (result) {
-        axios.post('../php/comments-api.php', {id: id, action: "delete"}).then(window.location.reload);
+        axios.post('../php/comments-api.php', {id: id, action: "delete"});
+        window.location.reload();
     }
 }
 
