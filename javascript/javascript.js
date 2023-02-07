@@ -108,35 +108,35 @@ async function friendshipRequest(requesting, requested) {
     await axios.put('../php/friends-api.php', {Requesting: requesting, Requested: requested, Type: "request"});
 }
 
-async function friendshipAcceptance(id, accepting) {
-    await axios.put('../php/friends-api.php', {ID: id, Type: "acceptance", User: accepting});
+async function friendshipAcceptance(id, passive_user) {
+    await axios.put('../php/friends-api.php', {ID: id, Type: "acceptance", External_user: passive_user});
 }
 
-async function friendshipRejection(id, rejecting) {
+async function friendshipRejection(id, passive_user) {
     alert("Are you sure? This action is definitive.");
-    await axios.put('../php/friends-api.php', {ID: id, Type: "rejection", User: rejecting});
+    await axios.put('../php/friends-api.php', {ID: id, Type: "rejection", External_user: passive_user});
 }
 
-async function friendshipTermination(id, terminating) {
+async function friendshipTermination(id, passive_user) {
     alert("Are you sure? This action is definitive.");
-    await axios.put('../php/friends-api.php', {ID: id, Type: "termination", User: terminating});
+    await axios.put('../php/friends-api.php', {ID: id, Type: "termination", External_user: passive_user});
 }
 
-function createAcceptFriendshipButton(id, accepting) {
+function createAcceptFriendshipButton(id, accepted_user) {
     const accept = document.createElement("button");
     accept.className = "btn btn-outline-primary col-2 col-lg-1";
     accept.innerText = `Accept request`;
     accept.style.marginRight = "15px";
-    accept.addEventListener("click", () => friendshipAcceptance(id, accepting));
+    accept.addEventListener("click", () => friendshipAcceptance(id, accepted_user));
     return accept;
 }
 
-function createRejectFriendshipButton(id, rejecting) {
+function createRejectFriendshipButton(id, rejected_user) {
     const reject = document.createElement("button");
     reject.className = "btn btn-outline-danger col-2 col-lg-1";
     reject.innerText = `Reject request`;
     reject.style.marginRight = "15px";
-    reject.addEventListener("click", () => friendshipRejection(id, rejecting));
+    reject.addEventListener("click", () => friendshipRejection(id, rejected_user));
     return reject;
 }
 
@@ -148,11 +148,11 @@ function createRequestFriendshipButton(requesting_user, requested_user) {
     return button;
 }
 
-function createTerminateFriendshipButton(id, terminating) {
+function createTerminateFriendshipButton(id, terminated_user) {
     const button = document.createElement("button");
     button.className = "btn btn-danger";
     button.innerText = "Terminate friendship";
-    button.addEventListener("click", () => friendshipTermination(id, terminating));
+    button.addEventListener("click", () => friendshipTermination(id, terminated_user));
     return button;
 }
 

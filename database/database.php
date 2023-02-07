@@ -285,7 +285,7 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getUserSentRequestsOfFriendships($username): array {
+    public function getUserSentRequestsOfFriendship($username): array {
         $stmt = $this->db->prepare("SELECT u.Username, f.FriendshipID FROM friendships AS f JOIN users AS u ON u.Username = f.Requested_user 
                                     WHERE f.Requesting_user = ? AND f.FriendsSince IS NULL AND f.FriendsUntil IS NULL");
         $stmt->bind_param('s', $username);

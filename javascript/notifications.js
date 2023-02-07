@@ -84,10 +84,10 @@ function createNotification(data, type) {
     notification.appendChild(left_space);
     notification.appendChild(addNotificationMainContent(data, type));
     if (type === "friendship") {
-        const accept = createAcceptFriendshipButton(data["FriendshipID"], session_user);
+        const accept = createAcceptFriendshipButton(data["FriendshipID"], data["Username"]);
         accept.addEventListener('click', () => reload());
         notification.appendChild(accept);
-        const reject = createRejectFriendshipButton(data["FriendshipID"], session_user);
+        const reject = createRejectFriendshipButton(data["FriendshipID"], data["Username"]);
         reject.addEventListener('click', () => reload());
         notification.appendChild(reject);
     } else {

@@ -3,6 +3,7 @@ require_once "bootstrap.php";
 global $dbh;
 
 function checkFriendship($friend_matrix, $user, $logic): bool {
+    var_dump($friend_matrix, $user);
     foreach ($friend_matrix as $group):
         foreach ($group as $friend):
             if ($friend['Username'] == $user) {
@@ -17,21 +18,24 @@ function checkFriendship($friend_matrix, $user, $logic): bool {
 // or if they 'A' has already sent a requested to 'B' or vice versa
 function isFriendshipRequestAcceptable($db, $user): bool {
     $unavailable = array();
-    $unavailable[] = $db->getUserCurrentFriendship($user);
-    $unavailable[] = $db->getUserSentRequestsOfFriendships($user);
-    $unavailable[] = $db->getUserIncomingRequestsOfFriendship($user);
+    $current_user = $_SESSION["LoggedUser"];
+    $unavailable[] = $db->getUserCurrentFriendships($current_user);
+    $unavailable[] = $db->getUserSentRequestsOfFriendship($current_user);
+    $unavailable[] = $db->getUserIncomingRequestsOfFriendship($current_user);
     return checkFriendship($unavailable, $user, false);
 }
 
 function isFriendshipRequestManagementAcceptable($db, $user): bool {
     $available = array();
-    $available[] = $db->getUserIncomingRequestsOfFriendship($user);
+    $current_user = $_SESSION["LoggedUser"];
+    $available[] = $db->getUserIncomingRequestsOfFriendship($current_user);
     return checkFriendship($available, $user, true);
 }
 
 function isFriendshipTerminationAcceptable($db, $user): bool {
     $available = array();
-    $available[] = $db->getUserCurrentFriendship($user);
+    $current_user = $_SESSION["LoggedUser"];
+    $available[] = $db->getUserCurrentFriendships($current_user);
     return checkFriendship($available, $user, true);
 }
 
@@ -40,7 +44,7 @@ function isFriendshipTerminationAcceptable($db, $user): bool {
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $user = $_GET["Username"];
     $json_data["current"] = $dbh->getUserCurrentFriendships($user);
-    $json_data["requested"] = $dbh->getUserSentRequestsOfFriendships($user);
+    $json_data["requested"] = $dbh->getUserSentRequestsOfFriendship($user);
     $json_data["incoming"] = $dbh->getUserIncomingRequestsOfFriendship($user);
     $json_data["past"] = $dbh->getUserPastFriendships($user);
     header("Content-Type: application/json");
@@ -50,14 +54,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $type = $data["Type"];
     if ($type == "request" && isFriendshipRequestAcceptable($dbh, $data["Requesting"])) {
         $dbh->addFriendshipRequest($data["Requesting"], $data["Requested"]);
-    } elseif ($type == "acceptance" && isFriendshipRequestManagementAcceptable($dbh, $data["User"])) {
+    } elseif ($type == "acceptance" && isFriendshipRequestManagementAcceptable($dbh, $data["External_user"])) {
         $dbh->addFriendshipAcceptance($data["ID"]);
-    } elseif ($type == "rejection" && isFriendshipRequestManagementAcceptable($dbh, $data["User"])) {
+    } elseif ($type == "rejection" && isFriendshipRequestManagementAcceptable($dbh, $data["External_user"])) {
         $dbh->deleteFriendship($data["ID"]);
-    } elseif ($type == "termination" && isFriendshipTerminationAcceptable($dbh, $data["User"])) {
+    } elseif ($type == "termination" && isFriendshipTerminationAcceptable($dbh, $data["External_user"])) {
         $dbh->terminateFriendship($data["ID"]);
-    }
-    else {
+    } else {
         throw new Error("Incorrect call.");
     }
 } else {
