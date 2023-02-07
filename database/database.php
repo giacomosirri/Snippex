@@ -83,11 +83,17 @@ class DatabaseHelper {
     }
 
     public function getFeedPosts($username) {
-        $stmt1 = $this->db->prepare("SELECT p.* FROM users AS u JOIN friendships AS f ON u.Username = f.Requesting_user JOIN posts AS p ON f.Requested_user = p.Writer WHERE u.Username = ? ORDER BY p.DateAndTime DESC");
+        $stmt1 = $this->db->prepare("SELECT p.* FROM users AS u JOIN friendships AS f ON u.Username = f.Requesting_user 
+                                     JOIN posts AS p ON f.Requested_user = p.Writer 
+                                     WHERE u.Username = ? AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NULL
+                                     ORDER BY p.DateAndTime DESC");
         $stmt1->bind_param('s',$username);
         $stmt1->execute();
         $result = $stmt1->get_result();
-        $stmt2 = $this->db->prepare("SELECT p.* FROM users AS u JOIN friendships AS f ON u.Username = f.Requested_user JOIN posts AS p ON f.Requesting_user = p.Writer WHERE u.Username = ? ORDER BY p.DateAndTime DESC");
+        $stmt2 = $this->db->prepare("SELECT p.* FROM users AS u JOIN friendships AS f ON u.Username = f.Requested_user 
+                                     JOIN posts AS p ON f.Requesting_user = p.Writer 
+                                     WHERE u.Username = ? AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NULL 
+                                     ORDER BY p.DateAndTime DESC");
         $stmt2->bind_param('s',$username);
         $stmt2->execute();
         $result2 = $stmt2->get_result();
