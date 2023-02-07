@@ -1,7 +1,7 @@
 <?php
 require_once "bootstrap.php";
 global $dbh;
-
+var_dump($_POST["username"]);
 if (isset($_POST["username"]) && isset($_POST["password"])) {
     $user = $_POST["username"];
     $password = $_POST["password"];
