@@ -4,14 +4,14 @@ window.onload = function() {
     if (goBackButton !== null) {
         goBackButton.addEventListener("click", goBack);
     }
-    document.getElementById("post").addEventListener("click", createPost);
+    document.getElementById("post-button").addEventListener("click", createPost);
 }
 
 function createPost() {
     let title = document.querySelector("#recipient-title").value;
     let content = document.querySelector("#message-text").value;
     let close = document.querySelector("#close");
-    axios.post("../php/insertions.php", {title: title, content: content});
+    axios.post("../php/insertions-api.php", {title: title, content: content});
     $("#recipient-title").val("");
     $("#message-text").val("");
     close.click();
