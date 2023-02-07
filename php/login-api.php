@@ -8,12 +8,13 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     $password_hash = $dbh->getHashPasswordFromUsername($user);
     if (count($password_hash) > 0 && password_verify($password, $password_hash[0]["Password"])) {
         $_SESSION["LoggedUser"] = $user;
-        header("Location: ./feed.php");
         exit;
     } else {
-        throw new Error("Username or password are incorrect. Please check again.");
+        http_response_code(404);
+        exit;
     }
 } else {
-    throw new Error("Something went wrong!");
+    http_response_code(404);
+    exit();
 }
 ?>
