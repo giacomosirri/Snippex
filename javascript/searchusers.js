@@ -112,10 +112,10 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         p.style.marginRight = "10px";
         p.innerText = requested_user + " has asked for your friendship!";
         div.appendChild(p);
-        const accept = createAcceptFriendshipButton(friendshipID);
+        const accept = createAcceptFriendshipButton(friendshipID, session_user);
         accept.addEventListener("click", () => saveAndRefresh());
         div.appendChild(accept);
-        const reject = createRejectFriendshipButton(friendshipID);
+        const reject = createRejectFriendshipButton(friendshipID, session_user);
         reject.addEventListener("click", () => saveAndRefresh());
         div.appendChild(reject);
     } else if (status === "SENT") {
@@ -125,7 +125,7 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         p.innerText = "You are friend with " + requested_user;
         div.appendChild(p);
     } else {
-        let request = createRequestFriendshipButton(requested_user);
+        let request = createRequestFriendshipButton(session_user, requested_user);
         request.addEventListener("click", () => saveAndRefresh());
         div.appendChild(request);
     }
