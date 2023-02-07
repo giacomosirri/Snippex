@@ -1,8 +1,9 @@
-window.onload = ()=> {
-        document.getElementById("nav-home-tab").addEventListener("click", () => activeLogin(this));
-        document.getElementById("nav-profile-tab").addEventListener("click", () => activeLogin(this));
-        document.getElementById("formLogin").addEventListener("submit", () => checkForm());
-    }
+window.onload = () => {
+    document.getElementById("nav-home-tab").addEventListener("click", () => activeLogin(this));
+    document.getElementById("nav-profile-tab").addEventListener("click", () => activeLogin(this));
+    document.getElementById("formLogin").addEventListener("submit", () => checkForm());
+}
+
 function activeLogin(link) {
     const links = document.querySelectorAll("nav .nav-link");
     links.forEach(item => item.classList.remove("active"));
@@ -18,9 +19,5 @@ function submitPrint(event){
 function checkForm() {
     let username = document.getElementById("usernameLogin").value;
     let password= document.getElementById("passwordLogin").value;
-    axios.post("../php/login-api.php",  {username: username, password: password}
-        .then((response)=>{})
-        ,(error) => {
-        alert(error)
-    });
+    axios.post("../php/login-api.php",  {username: username, password: password}).then(() => {}).catch(() => alert("Bad"));
 }
