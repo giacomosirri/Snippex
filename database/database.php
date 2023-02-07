@@ -8,6 +8,7 @@ class DatabaseHelper {
             die("Connection failed: " . $this->db->connect_error);
         }
     }
+
     public function getUserFromInitials($initials): array
     {
         $stmt = $this->db->prepare("SELECT Username FROM users WHERE Username LIKE ?");
@@ -26,14 +27,14 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getRating() {
+    public function getRating(): array {
         $stmt = $this->db->prepare("SELECT * FROM ratings");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPostFromUser($username) {
+    public function getPostFromUser($username): array {
         $stmt = $this->db->prepare("SELECT * FROM posts WHERE Writer = ?");
         $stmt->bind_param('s', $username);
         $stmt->execute();
@@ -41,7 +42,7 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getCommentFromPost($post_id) {
+    public function getCommentFromPost($post_id): array {
         $stmt = $this->db->prepare("SELECT * FROM comments WHERE Post = ?");
         $stmt->bind_param('s', $post_id);
         $stmt->execute();
@@ -57,6 +58,13 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    private function getWriterFromPostId($postID): string {
+        $stmt = $this->db->prepare("SELECT Writer FROM posts WHERE PostID = ?");
+        $stmt->bind_param('i', $postID);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_assoc()['Writer'];
     }
 
     public function getUserRatingStats($username): array {
@@ -98,7 +106,7 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPostComments($post_id): array {
+    public function getPostCommentsFromId($post_id): array {
         $stmt = $this->db->prepare("SELECT * FROM comments WHERE Post = ? ORDER BY DateAndTime DESC");
         $stmt->bind_param('i', $post_id);
         $stmt->execute();
@@ -180,22 +188,55 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
-    public function getPost($post) {
+    public function getPostFromId($postID): array {
         $stmt = $this->db->prepare("SELECT * FROM posts WHERE PostID = ?");
-        $stmt->bind_param('i', $post);
+        $stmt->bind_param('i', $postID);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addComment($comment, $post) {
+    public function getPostsFromKeyword($keyword): array {
+        $stmt1 = $this->db->prepare("SELECT * FROM posts WHERE Title LIKE ? ORDER BY DateAndTime DESC");
+        $stmt2 = $this->db->prepare("SELECT * FROM posts WHERE Content LIKE ? AND PostID NOT IN (
+                                            SELECT PostID FROM posts WHERE Title LIKE ? ORDER BY DateAndTime DESC)
+                                            ORDER BY DateAndTime DESC");
+        $keyword = '%' . $keyword . '%';
+        $stmt1->bind_param('s', $keyword);
+        $stmt2->bind_param('ss', $keyword, $keyword);
+        $stmt1->execute();
+        $result1 = $stmt1->get_result();
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        return array_merge($result1->fetch_all(MYSQLI_ASSOC), $result2->fetch_all(MYSQLI_ASSOC));
+    }
+
+    public function getPostsFromKeywordAndUser($keyword, $username): array {
+        $stmt1 = $this->db->prepare("SELECT * FROM posts WHERE Title LIKE ? AND Writer = ? ORDER BY DateAndTime DESC");
+        $stmt2 = $this->db->prepare("SELECT * FROM posts WHERE Content LIKE ? AND Writer = ? AND PostID NOT IN (
+                                            SELECT PostID FROM posts WHERE Title LIKE ?)
+                                            ORDER BY DateAndTime DESC");
+        $keyword = '%' . $keyword . '%';
+        $stmt1->bind_param('ss', $keyword, $username);
+        $stmt2->bind_param('sss', $keyword, $keyword, $username);
+        $stmt1->execute();
+        $result1 = $stmt1->get_result();
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        return array_merge($result1->fetch_all(MYSQLI_ASSOC), $result2->fetch_all(MYSQLI_ASSOC));
+    }
+
+    public function addComment($comment, $postID) {
         $stmt = $this->db->prepare("INSERT INTO comments (Content, DateAndTime, User, Post) VALUES (?, ?, ?, ?)");
         $date = date("Y-m-d H:i:s");
-        $stmt->bind_param('sssi', $comment, $date, $_SESSION['LoggedUser'], $post);
+        $stmt->bind_param('sssi', $comment, $date, $_SESSION['LoggedUser'], $postID);
         $stmt->execute();
+        $comment_id = $this->db->insert_id;
         $stmt = $this->db->prepare("UPDATE posts SET NumberOfComments = NumberOfComments + 1 WHERE PostID = ?");
-        $stmt->bind_param('i', $post);
+        $stmt->bind_param('i', $postID);
         $stmt->execute();
+        $post_writer = $this->getWriterFromPostId($postID);
+        $this->addNewCommentNotification($comment_id, $post_writer);
     }
 
     public function addPost($title, $content) {
@@ -261,10 +302,16 @@ class DatabaseHelper {
         return array_merge($result->fetch_all(MYSQLI_ASSOC), $result2->fetch_all(MYSQLI_ASSOC));
     }
 
-    public function addNewCommentNotification($ID, $Notified) {
+    public function addNewCommentNotification($commentID, $notified) {
+        $stmt = $this->db->prepare("INSERT INTO notifications (Comment, `Read`, Notified_user) VALUES (?, 0, ?)");
+        $stmt->bind_param('is', $commentID, $notified);
+        $stmt->execute();
     }
 
-    public function addNewRatingNotification($ID, $Notified) {
+    public function addNewRatingNotification($ratingID, $notified) {
+        $stmt = $this->db->prepare("INSERT INTO notifications (Rating, `Read`, Notified_user) VALUES (?, 0, ?)");
+        $stmt->bind_param('is', $ratingID, $notified);
+        $stmt->execute();
     }
 
     public function addFriendshipAcceptance($friendshipId) {
@@ -297,49 +344,32 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
-    public function getPostsFromKeyword($keyword): array {
-        $stmt1 = $this->db->prepare("SELECT * FROM posts WHERE Title LIKE ? ORDER BY DateAndTime DESC");
-        $stmt2 = $this->db->prepare("SELECT * FROM posts WHERE Content LIKE ? AND PostID NOT IN (
-                                            SELECT PostID FROM posts WHERE Title LIKE ? ORDER BY DateAndTime DESC)
-                                            ORDER BY DateAndTime DESC");
-        $keyword = '%' . $keyword . '%';
-        $stmt1->bind_param('s', $keyword);
-        $stmt2->bind_param('ss', $keyword, $keyword);
-        $stmt1->execute();
-        $result1 = $stmt1->get_result();
-        $stmt2->execute();
-        $result2 = $stmt2->get_result();
-        return array_merge($result1->fetch_all(MYSQLI_ASSOC), $result2->fetch_all(MYSQLI_ASSOC));
-    }
-
     public function updateUserProfilePic($username, string $file) {
         $stmt = $this->db->prepare("UPDATE users SET ProfilePic = ? WHERE Username = ?");
         $stmt->bind_param('ss', $file, $username);
         $stmt->execute();
     }
 
-    public function addRating($rating, $post) {
+    public function addRating($rating, $postID) {
         $stmt = $this->db->prepare("INSERT INTO ratings (DateAndTime, Category, Rater, Post) VALUES (?, ?, ?, ?)");
         $date = date("Y-m-d H:i:s");
         $rater = $_SESSION['LoggedUser'];
-        $stmt->bind_param('sssi',$date , $rating, $rater, $post);
+        $stmt->bind_param('sssi',$date , $rating, $rater, $postID);
         $stmt->execute();
-        $stmt = $this->db->prepare("SELECT Writer FROM posts WHERE PostID = ?");
-        $stmt->bind_param('i', $post);
-        $stmt->execute();
-        $writer = $stmt->get_result()->fetch_assoc()['Writer'];
+        $rating_id = $this->db->insert_id;
+        $writer = $this->getWriterFromPostId($postID);
         $stmt = $this->db->prepare("SELECT COUNT(*) FROM points WHERE User = ? AND Category = ?");
         $stmt->bind_param('ss', $writer, $rating);
         $stmt->execute();
         $result = $stmt->get_result()->fetch_assoc()['COUNT(*)'];
         if ($result == 0) {
             $stmt = $this->db->prepare("INSERT INTO points (User, Category, Points) VALUES (?, ?, 1)");
-            $stmt->bind_param('ss', $writer, $rating);
         } else {
             $stmt = $this->db->prepare("UPDATE points SET Points = Points + 1 WHERE User = ? AND Category = ?");
-            $stmt->bind_param('ss', $writer, $rating);
         }
+        $stmt->bind_param('ss', $writer, $rating);
         $stmt->execute();
+        $this->addNewRatingNotification($rating_id, $writer);
     }
 
     public function verifyRating($post) {
@@ -372,21 +402,6 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("UPDATE comments SET Content = ? WHERE CommentID = ?");
         $stmt->bind_param('si', $text, $id);
         $stmt->execute();
-    }
-
-    public function getPostsFromKeywordAndUser($keyword, $username): array {
-        $stmt1 = $this->db->prepare("SELECT * FROM posts WHERE Title LIKE ? AND Writer = ? ORDER BY DateAndTime DESC");
-        $stmt2 = $this->db->prepare("SELECT * FROM posts WHERE Content LIKE ? AND Writer = ? AND PostID NOT IN (
-                                            SELECT PostID FROM posts WHERE Title LIKE ?)
-                                            ORDER BY DateAndTime DESC");
-        $keyword = '%' . $keyword . '%';
-        $stmt1->bind_param('ss', $keyword, $username);
-        $stmt2->bind_param('sss', $keyword, $keyword, $username);
-        $stmt1->execute();
-        $result1 = $stmt1->get_result();
-        $stmt2->execute();
-        $result2 = $stmt2->get_result();
-        return array_merge($result1->fetch_all(MYSQLI_ASSOC), $result2->fetch_all(MYSQLI_ASSOC));
     }
 
 }
