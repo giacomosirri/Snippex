@@ -65,7 +65,7 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
     let col2 = document.createElement("div");
     container.classList.add("container");
     row.classList.add("row");
-    col1.classList.add("col-5");
+    col1.classList.add("col-4");
     col2.classList.add("col-5");
     getUserProfilePic(user).then(image => {
         const img = document.createElement("img");
