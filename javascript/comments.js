@@ -24,7 +24,7 @@ function createNewComment(data) {
                 <p class="post-date col-12">${data["DateAndTime"]}</p>
             </div>
             <div class="comment-interactions d-flex justify-content-between flex-column">
-                <img class="modify" style="padding: 5px; border-radius: 20px; display:none;" src="../icons/burger_icon.png" alt="modify">
+                <img class="modify" style="padding: 5px; border-radius: 20px; display:none;" src="../icons/edit_icon.png" alt="modify">
                 <img class="delete" style="padding: 5px; border-radius: 20px; display: none;" src="../icons/bin_icon.png" alt="delete">
             </div>
         </div>`;
