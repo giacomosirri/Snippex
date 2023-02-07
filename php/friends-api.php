@@ -3,7 +3,6 @@ require_once "bootstrap.php";
 global $dbh;
 
 function checkFriendship($friend_matrix, $user, $logic): bool {
-    var_dump($friend_matrix, $user);
     foreach ($friend_matrix as $group):
         foreach ($group as $friend):
             if ($friend['Username'] == $user) {
@@ -57,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     } elseif ($type == "acceptance" && isFriendshipRequestManagementAcceptable($dbh, $data["External_user"])) {
         $dbh->addFriendshipAcceptance($data["ID"]);
     } elseif ($type == "rejection" && isFriendshipRequestManagementAcceptable($dbh, $data["External_user"])) {
-        $dbh->deleteFriendship($data["ID"]);
+        $dbh->deleteFriendshipProposal($data["ID"]);
     } elseif ($type == "termination" && isFriendshipTerminationAcceptable($dbh, $data["External_user"])) {
         $dbh->terminateFriendship($data["ID"]);
     } else {

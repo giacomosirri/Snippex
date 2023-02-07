@@ -262,13 +262,43 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
+    public function addFriendshipAcceptance($friendshipId) {
+        $stmt = $this->db->prepare("UPDATE friendships SET FriendsSince = ? WHERE FriendshipID = ?");
+        $date = date("Y-m-d");
+        $stmt->bind_param('si', $date, $friendshipId);
+        $stmt->execute();
+        $stmt = $this->db->prepare("UPDATE users SET NumberOfFriends = NumberOfFriends + 1 
+                                    WHERE Username = (SELECT Requesting_user FROM friendships WHERE FriendshipID = ?) 
+                                    OR Username = (SELECT Requested_user FROM friendships WHERE FriendshipID = ?)");
+        $stmt->bind_param('ii', $friendshipId, $friendshipId);
+        $stmt->execute();
+    }
+
+    public function deleteFriendshipProposal($friendshipId) {
+        $stmt = $this->db->prepare("DELETE FROM friendships WHERE FriendshipID = ?");
+        $stmt->bind_param('i', $friendshipId);
+        $stmt->execute();
+    }
+
+    public function terminateFriendship($friendshipId) {
+        $stmt = $this->db->prepare("UPDATE users SET NumberOfFriends = NumberOfFriends - 1 
+                                    WHERE Username = (SELECT Requested_user FROM friendships WHERE FriendshipID = ?)
+                                    OR Username = (SELECT Requesting_user FROM friendships WHERE FriendshipID = ?)");
+        $stmt->bind_param('ii', $friendshipId, $friendshipId);
+        $stmt->execute();
+        $stmt = $this->db->prepare("UPDATE friendships SET FriendsUntil = ? WHERE FriendshipID = ?");
+        $date = date("Y-m-d");
+        $stmt->bind_param('ss', $date, $friendshipId);
+        $stmt->execute();
+    }
+
     public function getUserCurrentFriendships($username) {
-        $stmt1 = $this->db->prepare("SELECT u.*, f.FriendshipID FROM friendships AS f, users AS u WHERE f.Requested_user = u.Username AND f.Requesting_user = ?
+        $stmt1 = $this->db->prepare("SELECT u.*, f.* FROM friendships AS f, users AS u WHERE f.Requested_user = u.Username AND f.Requesting_user = ?
                                      AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NULL");
         $stmt1->bind_param('s', $username);
         $stmt1->execute();
         $result = $stmt1->get_result();
-        $stmt2 = $this->db->prepare("SELECT u.*, f.FriendshipID FROM friendships AS f, users AS u WHERE f.Requesting_user = u.Username AND f.Requested_user = ?
+        $stmt2 = $this->db->prepare("SELECT u.*, f.* FROM friendships AS f, users AS u WHERE f.Requesting_user = u.Username AND f.Requested_user = ?
                                      AND f.FriendsSince IS NOT NULL AND f.FriendsUntil IS NULL");
         $stmt2->bind_param('s', $username);
         $stmt2->execute();
@@ -317,36 +347,6 @@ class DatabaseHelper {
     public function addNewRatingNotification($ratingID, $notified) {
         $stmt = $this->db->prepare("INSERT INTO notifications (Rating, `Read`, Notified_user) VALUES (?, 0, ?)");
         $stmt->bind_param('is', $ratingID, $notified);
-        $stmt->execute();
-    }
-
-    public function addFriendshipAcceptance($friendshipId) {
-        $stmt = $this->db->prepare("UPDATE friendships SET FriendsSince = ? WHERE FriendshipID = ?");
-        $date = date("Y-m-d");
-        $stmt->bind_param('si', $date, $friendshipId);
-        $stmt->execute();
-        $stmt = $this->db->prepare("UPDATE users SET NumberOfFriends = NumberOfFriends + 1 
-                                    WHERE Username = (SELECT Requesting_user FROM friendships WHERE FriendshipID = ?) 
-                                    OR Username = (SELECT Requested_user FROM friendships WHERE FriendshipID = ?)");
-        $stmt->bind_param('ii', $friendshipId, $friendshipId);
-        $stmt->execute();
-    }
-
-    public function deleteFriendship($friendshipId) {
-        $stmt = $this->db->prepare("UPDATE users SET NumberOfFriends = NumberOfFriends - 1 
-                                    WHERE Username = (SELECT Requesting_user FROM friendships WHERE FriendshipID = ?) 
-                                    OR Username = (SELECT Requested_user FROM friendships WHERE FriendshipID = ?)");
-        $stmt->bind_param('ii', $friendshipId, $friendshipId);
-        $stmt->execute();
-        $stmt = $this->db->prepare("DELETE FROM friendships WHERE FriendshipID = ?");
-        $stmt->bind_param('i', $friendshipId);
-        $stmt->execute();
-    }
-
-    public function terminateFriendship($friendshipID) {
-        $stmt = $this->db->prepare("UPDATE friendships SET FriendsUntil = ? WHERE FriendshipID = ?");
-        $date = date("Y-m-d");
-        $stmt->bind_param('ss', $date, $friendshipID);
         $stmt->execute();
     }
 
