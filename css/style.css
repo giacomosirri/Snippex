@@ -90,9 +90,6 @@ body header div div img {
 body main {
   font-size: 110%;
 }
-body main #proposes {
-  float: left;
-}
 body main #proposes img {
   width: 150px !important;
 }

@@ -65,7 +65,7 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
     let col2 = document.createElement("div");
     container.classList.add("container");
     row.classList.add("row");
-    col1.classList.add("col-4");
+    col1.classList.add("col-5");
     col2.classList.add("col-5");
     getUserProfilePic(user).then(image => {
         const img = document.createElement("img");
@@ -94,7 +94,7 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
                 row.appendChild(manageFriendshipStatus(data["status"], data["friendshipID"], data["requested_user"])));
         } else {
             let col = document.createElement("div");
-            col.classList.add("col-3");
+            col.classList.add("col-2");
             row.appendChild(col);
         }
     }, 150);
@@ -105,7 +105,7 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
 function manageFriendshipStatus(status, friendshipID, requested_user) {
     const div = document.createElement("div");
     div.classList.add("friendship-status");
-    div.className = "col-3";
+    div.className = "col-2";
     const p = document.createElement("p");
     div.innerHTML = "";
     if (status === "RECEIVED") {
