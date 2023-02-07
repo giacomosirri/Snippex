@@ -10,3 +10,4 @@ if (isset($_GET["PostID"])) {
 } else {
     throw new Error("Something went wrong!");
 }
+?>

@@ -1,6 +1,7 @@
 <?php
 require_once "bootstrap.php";
 global $dbh;
+
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $user = $_GET["Username"];
     $json_data = $dbh->getProfilePic($user);

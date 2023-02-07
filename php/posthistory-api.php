@@ -1,6 +1,7 @@
 <?php
 require_once "bootstrap.php";
 global $dbh;
+
 if (isset($_GET["username"])) {
     $user = $_GET["username"];
     $json_data = $dbh->getAllPostsWrittenByUser($user);

@@ -1,6 +1,7 @@
 <?php
 require_once "bootstrap.php";
 global $dbh;
+
 if (isset($_POST["comment"]) && isset($_POST["post"])) {
     $comment = $_POST["comment"];
     $post = $_POST["post"];
@@ -13,8 +14,8 @@ if (isset($data["title"]) && isset($data["content"])) {
     $dbh->addPost($title, $content);
 }
 if (isset($data["rating"]) && isset($data["post"])) {
-    var_dump($data);
     $rating = $data["rating"];
     $post = $data["post"];
     $dbh->addRating($rating, $post);
 }
+?>

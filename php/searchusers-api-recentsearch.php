@@ -1,6 +1,7 @@
 <?php
 require_once "bootstrap.php";
 global $dbh;
+
 $username = "";
 if (isset($_GET["Username"])) {
     $username = $_GET["Username"];

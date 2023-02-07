@@ -1,7 +1,7 @@
 <?php
 require_once "bootstrap.php";
 global $dbh;
-// the client asks for the logged user's notifications
+
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $user = $_SESSION["LoggedUser"];
     $json_data["comments"] = $dbh->getNotificationsOfComments($user);
