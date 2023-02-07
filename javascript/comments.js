@@ -1,15 +1,12 @@
 const url_string = window.location.href;
 const url = new URL(url_string);
 const comments = document.getElementById("comments");
+
 $("#comment-input").submit(function(e) {
-
     e.preventDefault(); // avoid to execute the actual submit of the form.
-
     let form = $(this);
     let actionUrl = form.attr('action');
-
     axios.post(actionUrl, form.serialize());
-    window.location.reload();
 });
 
 function createNewComment(data) {
@@ -70,20 +67,14 @@ function createHeaderPost(data) {
 function editComment(id, content) {
     let text = prompt("Enter new text:", content);
     if (text != null && text.length > 0) {
-        axios.post('../php/comments-api.php', {id: id, text: text, action: "edit"}).then(response => {
-            console.log(response);
-        });
-        window.location.reload();
+        axios.post('../php/comments-api.php', {id: id, text: text, action: "edit"}).then(window.location.reload);
     }
 }
 
 function deleteComment(id) {
     let result = confirm("Are you sure?");
     if (result) {
-        axios.post('../php/comments-api.php', {id: id, action: "delete"}).then(response => {
-            console.log(response);
-        });
-        window.location.reload();
+        axios.post('../php/comments-api.php', {id: id, action: "delete"}).then(window.location.reload);
     }
 }
 
