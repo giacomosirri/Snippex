@@ -29,28 +29,6 @@ function createBasicInfo(data) {
     return section;
 }
 
-function addMostVotedPost(data) {
-    const postFrame = document.createElement("div");
-    postFrame.innerHTML = `
-        <div class="col-12 col-md-8 d-flex justify-content-between">
-            <h2>
-                Most voted post ever
-            </h2>
-            <div>
-                <a href="../php/posthistory.php?Username=${user}" class="d-flex justify-content-start" style="padding-top: 1%;
-                                text-decoration: none; color: black">
-                    <p style="font-size: 12px;">Browse history</p>
-                    <div>
-                        <img src="../icons/goarrow_icon.png" alt="browse history">
-                    </div>
-                </a>
-            </div>
-        </div>
-    `;
-    const post = createNewPost(data[0]);
-    return postFrame.outerHTML + post.outerHTML;
-}
-
 // returns the number of points the user has obtained in the given category
 function getPointsFromCategory(stats, category) {
     for (let i=0; i<stats.length; i++) {
@@ -62,7 +40,10 @@ function getPointsFromCategory(stats, category) {
 }
 
 function addRatingStats(stats, categories, numOfPosts) {
-    let table = `
+    const table = document.createElement("table");
+    table.id = "rating-statistics";
+    table.className = "table table-primary table-bordered table-striped table-hover";
+    table.innerHTML = `
         <caption>Statistics - ${numOfPosts} posts</caption>
         <thead>
             <tr>
@@ -70,47 +51,64 @@ function addRatingStats(stats, categories, numOfPosts) {
                 <th>Points</th>
             </tr>
         </thead>
-        <tbody>
     `;
-    for (let i=0; i<categories.length; i++) {
-        table += `
-            <tr>
-                <td>${categories[i]["Name"]}</td>
-                <td>${getPointsFromCategory(stats, categories[i]["Name"])}</td>
-            </tr>
+    const body = document.createElement("tbody");
+    for (let i=0; i < categories.length; i++) {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${categories[i]["Name"]}</td>
+            <td>${getPointsFromCategory(stats, categories[i]["Name"])}</td>
         `;
+        body.appendChild(row);
     }
-    table += `</body>`;
+    table.appendChild(body);
     return table;
 }
 
-function addFriends(friends) {
-    let list = `
-        <div class="col-12 col-lg-8 d-flex justify-content-between">
-            <h2>Friends</h2>
-            <div>
-                <a href="../php/friends.php?Username=${user}" class="d-flex justify-content-start" style="padding-top: 1%">
-                <p style="font-size: 12px;">See all friends</p>
+function createPostFrame() {
+    const postFrame = document.createElement("div");
+    postFrame.className = "col-12 col-md-8 d-flex justify-content-between";
+    postFrame.innerHTML = `
+        <h2>Most voted post</h2>
+        <div>
+            <a href="../php/posthistory.php?Username=${user}" class="d-flex justify-content-start" style="padding-top: 1%; text-decoration: none; color: black">
+                <p style="font-size: 12px;">Browse history</p>
                 <div>
                     <img src="../icons/goarrow_icon.png" alt="browse history">
                 </div>
-                </a>
-            </div>
+            </a>
         </div>
-        <div class="col-12 col-lg-8 d-flex justify-content-between">
     `;
-    for (let i=0; i<Math.min(5, friends.length); i++) {
-        list += `
-            <div class="text-center">
-                <a href="../php/userprofile.php?Username=${friends[i]["Username"]}">
-                    <img src="../profile_pics/${friends[i]["ProfilePic"]}" alt="${friends[i]["Username"]} profile pic">
-                    <p>${friends[i]["Name"]} ${friends[i]["Surname"]}</p>
-                </a>
+    return postFrame;
+}
+
+function createFriendsFrame() {
+    const frame = document.createElement("div");
+    frame.className = "col-12 col-lg-8 d-flex justify-content-between";
+    frame.innerHTML = `
+        <h2>Friends</h2>
+        <div>
+            <a href="../php/friends.php?Username=${user}" class="d-flex justify-content-start" style="padding-top: 1%">
+            <p style="font-size: 12px;">See all friends</p>
+            <div>
+                <img src="../icons/goarrow_icon.png" alt="browse history">
             </div>
-        `;
-    }
-    list += `</div>`
-    return list;
+            </a>
+        </div>
+    `;
+    return frame;
+}
+
+function createFriend(friend) {
+    const div = document.createElement("div");
+    div.className = "text-center";
+    div.innerHTML = `
+        <a href="../php/userprofile.php?Username=${friend["Username"]}">
+            <img src="../profile_pics/${friend["ProfilePic"]}" alt="${friend["Username"]} profile pic">
+            <p>${friend["Name"]} ${friend["Surname"]}</p>
+        </a>
+    `;
+    return div;
 }
 
 function manageFriendshipStatus(status, friendshipID, requested_user) {
@@ -156,6 +154,7 @@ navItems.forEach(item => item.addEventListener("click", () =>
 const user = new URL(window.location.href).searchParams.get("Username") ?? session_user;
 
 axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(response => {
+    console.log(response.data);
     const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];
     const numberOfFriends = response.data["user-data"][0]["NumberOfFriends"];
     const userData = createBasicInfo(response.data["user-data"][0]);
@@ -172,17 +171,23 @@ axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(respons
             manageFriendshipStatus(data["status"], data["friendshipID"], data["requested_user"]));
     }
     header.appendChild(userData);
-    table.innerHTML += ratingStats;
+    table.appendChild(ratingStats);
     friends_paragraph.innerHTML = friendsNum;
     date_paragraph.innerHTML = signupDate;
     if (numberOfPosts !== 0) {
-        const mostVotedPost = addMostVotedPost(response.data["most-voted-post"]);
-        const main = document.getElementById("post");
-        main.innerHTML += mostVotedPost;
+        const section = document.getElementById("post");
+        section.appendChild(createPostFrame());
+        section.appendChild(createNewPost(response.data["most-voted-post"][0]));
     }
     if (numberOfFriends !== 0) {
-        const friends = addFriends(response.data["friends"]);
-        const friends_section = document.getElementById("friends-list");
-        friends_section.innerHTML = friends;
+        const section = document.getElementById("friends-list");
+        section.appendChild(createFriendsFrame());
+        const div = document.createElement("div");
+        div.className = "col-12 col-lg-8 d-flex justify-content-between";
+        const friends = response.data["friends"];
+        for (let i=0; i<Math.min(5, friends.length); i++) {
+            div.appendChild(createFriend(friends[i]));
+        }
+        section.appendChild(div);
     }
 });
