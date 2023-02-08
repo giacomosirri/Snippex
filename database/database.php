@@ -482,5 +482,22 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getFavoritePostsWithKeyword($keyword, $user) {
+        $keyword = '%' . $keyword . '%';
+        $stmt = $this->db->prepare("SELECT p.* FROM favorites AS f JOIN posts AS p ON f.Post = p.PostID WHERE f.User = ?
+                                    AND Title LIKE ? ORDER BY p.DateAndTime DESC");
+        $stmt->bind_param('ss', $user, $keyword);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $result->fetch_all(MYSQLI_ASSOC);
+        $stmt2 = $this->db->prepare("SELECT p.* FROM favorites AS f JOIN posts AS p ON f.Post = p.PostID WHERE f.User = ?
+                                     AND Content LIKE ? AND PostID NOT IN (SELECT PostID FROM posts WHERE Title LIKE ?) 
+                                     ORDER BY p.DateAndTime DESC");
+        $stmt2->bind_param('sss', $user, $keyword, $keyword);
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        return array_merge($result2->fetch_all(MYSQLI_ASSOC), $result->fetch_all(MYSQLI_ASSOC));
+    }
+
 }
 ?>
