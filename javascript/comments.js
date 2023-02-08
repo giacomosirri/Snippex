@@ -7,6 +7,7 @@ $("#comment-input").submit(function(e) {
     let form = $(this);
     let actionUrl = form.attr('action');
     axios.post(actionUrl, form.serialize());
+    window.location.reload();
 });
 
 function createNewComment(data) {
