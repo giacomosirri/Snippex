@@ -102,12 +102,16 @@ function createFriendsFrame() {
 function createFriend(friend) {
     const div = document.createElement("div");
     div.className = "text-center";
-    div.innerHTML = `
-        <a href="../php/userprofile.php?Username=${friend["Username"]}">
-            <img src="../profile_pics/${friend["ProfilePic"]}" alt="${friend["Username"]} profile pic">
-            <p>${friend["Name"]} ${friend["Surname"]}</p>
-        </a>
-    `;
+    const a = document.createElement("a");
+    a.href = "../php/userprofile.php?Username=" + friend["Username"];
+    const img = document.createElement("img");
+    img.alt = friend["Username"] + " profile pic";
+    getUserProfilePic(friend["Username"]).then(image => img.src = image);
+    const p = document.createElement("p");
+    p.innerText = friend["Name"] + " " + friend["Surname"];
+    a.appendChild(img);
+    a.appendChild(p);
+    div.appendChild(a);
     return div;
 }
 
@@ -154,7 +158,6 @@ navItems.forEach(item => item.addEventListener("click", () =>
 const user = new URL(window.location.href).searchParams.get("Username") ?? session_user;
 
 axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(response => {
-    console.log(response.data);
     const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];
     const numberOfFriends = response.data["user-data"][0]["NumberOfFriends"];
     const userData = createBasicInfo(response.data["user-data"][0]);

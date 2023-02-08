@@ -19,7 +19,7 @@ function addFriend(data) {
         <div class="row">
             <div class="col-2">
                 <a href="../php/userprofile.php?Username=${data["Username"]}">
-                    <img src="../profile_pics/${data["ProfilePic"]}" alt="profile pic" style="min-height: 120px; min-width: 120px"/>
+                    <img src="" alt="profile pic" style="min-height: 120px; min-width: 120px"/>
                 </a>
             </div>
             <div class="col-5">
@@ -29,6 +29,8 @@ function addFriend(data) {
             </div>
         </div>
     `;
+    const img = friend.querySelector("img");
+    getUserProfilePic(data["Username"]).then(image => img.src = image);
     const button_div = document.createElement("div");
     button_div.className = "col-2";
     const button = createTerminateFriendshipButton(data["FriendshipID"], data["Username"]);
