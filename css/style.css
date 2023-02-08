@@ -257,6 +257,15 @@ body nav ul li a img {
   width: 100%;
 }
 
+.star-post {
+  height: auto;
+  width: auto;
+  max-width: 30px;
+  max-height: 30px;
+  margin-right: 10px;
+  margin-bottom: 3px;
+}
+
 #comment-input {
   position: fixed;
   bottom: 80px;
