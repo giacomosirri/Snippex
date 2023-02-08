@@ -7,6 +7,6 @@ const feed = document.getElementById("feed-posts");
 
 axios.get('../php/feed-api.php', {params: {Username: user}}).then(response => {
     for (let i=0; i<response.data.length; i++) {
-        feed.appendChild(createNewPost(response.data[i], i));
+        feed.appendChild(createNewPost(response.data[i]));
     }
 });

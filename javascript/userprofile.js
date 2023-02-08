@@ -47,7 +47,7 @@ function addMostVotedPost(data) {
             </div>
         </div>
     `;
-    const post = createNewPost(data[0], 0);
+    const post = createNewPost(data[0]);
     return postFrame.outerHTML + post.outerHTML;
 }
 

@@ -1,8 +1,7 @@
 // creates a post - the writer of the post is shown if knownUser parameter is false, otherwise it is not displayed
-export function createNewPost(data, index) {
+export function createNewPost(data) {
     const post = document.createElement("article");
     post.class = "post col-12 col-md-8 mx-auto";
-    post.id = "post-" + index;
     if (window.location.href.includes("profile") || window.location.href.includes("posthistory")) {
         post.innerHTML = `<h3 class="post-title col-10">${data["Title"]}</h3>
                             <div class="user-username d-none"> ${data["Writer"]} </div>`;

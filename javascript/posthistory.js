@@ -17,7 +17,7 @@ function displaySinglePost(data, id) {
     div.appendChild(empty);
     const post_div = document.createElement("div");
     post_div.className = "col-9";
-    post_div.appendChild(createNewPost(data, id));
+    post_div.appendChild(createNewPost(data));
     div.appendChild(post_div);
     const ops_div = document.createElement("div");
     ops_div.className = "col-2 d-flex justify-content-center flex-column";

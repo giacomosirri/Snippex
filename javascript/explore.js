@@ -12,7 +12,7 @@ function updateSearch(text) {
 function displayAllPosts() {
     axios.get('../php/explore-api.php').then(response => {
         for (let i = 0; i < response.data.length; i++) {
-            explore.appendChild(createNewPost(response.data[i], i));
+            explore.appendChild(createNewPost(response.data[i]));
         }
     });
 }
@@ -20,7 +20,7 @@ function displayAllPosts() {
 function displaySearch(text) {
     axios.get('../php/explore-api-search.php', {params: {keyword: text}}).then(response => {
         for (let i=0; i<response.data.length; i++) {
-            explore.appendChild(createNewPost(response.data[i], i));
+            explore.appendChild(createNewPost(response.data[i]));
         }
     });
 }
