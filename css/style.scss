@@ -167,16 +167,6 @@ body {
       padding: 6px 56px 6px 12px;
       border-radius: 12px;
       min-height: 180px;
-      div{
-        img {
-          height: auto;
-          width: auto;
-          max-width: 30px;
-          max-height: 30px;
-          margin-left: 10px;
-          margin-bottom: 3px;
-        }
-      }
       h3 {
         font-size: 24px;
       }
@@ -289,6 +279,15 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+}
+
+.star-post{
+  height: auto;
+  width: auto;
+  max-width: 30px;
+  max-height: 30px;
+  margin-right: 10px;
+  margin-bottom: 3px;
 }
 
 #comment-input {

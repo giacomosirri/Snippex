@@ -13,10 +13,10 @@ export function createNewPost(data, index) {
                             <div class="user-username d-none col"> ${data["Writer"]} </div>
                           </div>`;
     } else if (window.location.href.includes("explore")) {
-        post.innerHTML = `<div class="row">
-                            <img class="star-post col-1" src="../icons/star_icon.png" alt="star post"/>
-                            <h3 class="post-title col-10" id="post-header">${data["Title"]} ~ *****</h3>
-                            <div class="user-username d-none col"> ${data["Writer"]} </div>
+        post.innerHTML = `<div class="d-flex justify-content-start">
+                            <img class="star-post" src="../icons/star_icon.png" alt="star post"/>
+                            <h3 class="post-title" id="post-header">${data["Title"]} ~ *****</h3>
+                            <div class="user-username d-none"> ${data["Writer"]} </div>
                           </div>`;
     }
     post.innerHTML += `
