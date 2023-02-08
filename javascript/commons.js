@@ -58,6 +58,9 @@ export function createNewPost(data, index) {
                 }
             }
         });
+    } else {
+        post.getElementsByClassName("rate-post")[0].style.display = "none";
+        post.getElementsByClassName("post-interactions")[0].className = "d-flex justify-content-end flex-column";
     }
     post.getElementsByClassName("change-text-button")[0].addEventListener("click", () => changeText(post));
     post.getElementsByClassName("rate-post")[0].addEventListener("click", () => showRatingCategories(post));
