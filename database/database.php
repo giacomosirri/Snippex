@@ -459,5 +459,28 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
+    public function addStar($post) {
+        $stmt = $this->db->prepare("INSERT INTO favorites (User, Post, DateAndTime) VALUES (?, ?, ?)");
+        $user = $_SESSION['LoggedUser'];
+        $date = date("Y-m-d H:i:s");
+        $stmt->bind_param('sis', $user, $post, $date);
+        $stmt->execute();
+    }
+
+    public function removeStar($post) {
+        $stmt = $this->db->prepare("DELETE FROM favorites WHERE User = ? AND Post = ?");
+        $user = $_SESSION['LoggedUser'];
+        $stmt->bind_param('si', $user, $post);
+        $stmt->execute();
+    }
+
+    public function getFavoritePosts($user) : array {
+        $stmt = $this->db->prepare("SELECT Post FROM favorites WHERE User = ?");
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 ?>

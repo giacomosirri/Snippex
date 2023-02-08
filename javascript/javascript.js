@@ -40,6 +40,18 @@ function showRatingCategories(post) {
     }
 }
 
+function starPost(post) {
+    const postId = post.getElementsByClassName("post-id")[0];
+    const star = post.getElementsByClassName("star-post")[0];
+    if (star.src.includes("starred_icon.png")) {
+        axios.post("../php/favorites-api.php", {unstar: true, post: postId.innerText});
+        star.src = "../icons/star_icon.png";
+    } else {
+        axios.post("../php/favorites-api.php", {star: true, post: postId.innerText});
+        star.src = "../icons/starred_icon.png";
+    }
+}
+
 function addRating(post, rating) {
     const postId = post.getElementsByClassName("post-id")[0];
     axios.post("../php/insertions-api.php", {rating: rating, post: postId.innerText});

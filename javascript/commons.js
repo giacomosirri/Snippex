@@ -7,11 +7,17 @@ export function createNewPost(data, index) {
         post.innerHTML = `<h3 class="post-title col-10">${data["Title"]}</h3>
                             <div class="user-username d-none"> ${data["Writer"]} </div>`;
     } else if (window.location.href.includes("feed")) {
-        post.innerHTML = `<h3 class="post-title col-10">${data["Title"]} ~ ${data["Writer"]}</h3>
-                            <div class="user-username d-none"> ${data["Writer"]} </div>`;
+        post.innerHTML = `<div class="row">
+                            <img class="star-post col-1" src="../icons/star_icon.png" alt="star post"/>
+                            <h3 class="post-title col-10" id="post-header">${data["Title"]} ~ *****</h3>
+                            <div class="user-username d-none col"> ${data["Writer"]} </div>
+                          </div>`;
     } else if (window.location.href.includes("explore")) {
-        post.innerHTML = `<h3 class="post-title col-10" id="post-header">${data["Title"]} ~ *****</h3>
-                            <div class="user-username d-none"> ${data["Writer"]} </div>`;
+        post.innerHTML = `<div class="row">
+                            <img class="star-post col-1" src="../icons/star_icon.png" alt="star post"/>
+                            <h3 class="post-title col-10" id="post-header">${data["Title"]} ~ *****</h3>
+                            <div class="user-username d-none col"> ${data["Writer"]} </div>
+                          </div>`;
     }
     post.innerHTML += `
         <div class="post-id d-none"> ${data["PostID"]} </div>
@@ -39,6 +45,19 @@ export function createNewPost(data, index) {
                      alt="comment">
             </div>
         </div>`;
+    let star = post.getElementsByClassName("star-post")[0];
+    star.addEventListener("click", () => starPost(post));
+    axios.get("../php/favorites-api.php").then((response) => {
+        if (response.data != null) {
+            const favorites_id = [];
+            for (let i = 0; i < response.data.length; i++) {
+                favorites_id.push(response.data[i]["Post"]);
+            }
+            if (favorites_id.includes(data["PostID"])) {
+                star.src = "../icons/starred_icon.png";
+            }
+        }
+    });
     post.getElementsByClassName("change-text-button")[0].addEventListener("click", () => changeText(post));
     post.getElementsByClassName("rate-post")[0].addEventListener("click", () => showRatingCategories(post));
     let ratingCategories = Array.from(post.getElementsByClassName("rating"));
