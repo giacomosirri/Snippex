@@ -19,7 +19,9 @@ function countFriendshipRequests(data) {
 
 function addNotificationMainContent(data, type) {
     const content = document.createElement("a");
-    content.href = "../php/comments.php?PostID=" + `${data["PostID"]}`;
+    if (type === "comment" || type === "rating") {
+        content.href = "../php/comments.php?PostID=" + `${data["PostID"]}`;
+    }
     content.className = "col-5 col-xl-5 notification-content";
     content.style.fontSize = "15px";
     content.style.wordSpacing = "1px";
