@@ -68,7 +68,9 @@ export function createNewPost(data) {
                 response.data.forEach(elem => favorites_id.push(elem["PostID"]));
                 if (favorites_id.includes(data["PostID"])) {
                     star.src = "../icons/starred_icon.png";
-                    showUsername(post);
+                    if (page.includes("explore")) {
+                        showUsername(post);
+                    }
                 }
             }
         });
@@ -84,7 +86,9 @@ export function createNewPost(data) {
     axios.get("../php/rating-api.php", {params: {PostID: data["PostID"]}}).then((response) => {
         if (response.data != null) {
             changeIcon(post, response.data);
-            showUsername(post);
+            if (page.includes("explore")) {
+                showUsername(post);
+            }
         }
     });
     return post;

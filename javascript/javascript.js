@@ -52,7 +52,9 @@ function starPost(post) {
     } else {
         axios.post("../php/favorites-api.php", {star: true, post: postId.innerText});
         star.src = "../icons/starred_icon.png";
-        showUsername(post);
+        if (window.location.href.includes("explore")) {
+            showUsername(post);
+        }
     }
 }
 
@@ -73,7 +75,9 @@ function showPlus(post, rating) {
         }
     }
     changeIcon(post, rating);
-    showUsername(post);
+    if (window.location.href.includes("explore")) {
+        showUsername(post);
+    }
 }
 
 function changeIcon(post, rating) {
