@@ -2,16 +2,24 @@
 export function createNewPost(data) {
     const post = document.createElement("article");
     post.class = "post col-12 col-md-8 mx-auto";
-    if (window.location.href.includes("profile") || window.location.href.includes("posthistory")) {
+    const page = window.location.href;
+    const current_user = new URL(page).searchParams.get("Username") ?? session_user;
+    if (page.includes("userprofile") || (page.includes("history") && session_user !== current_user)) {
+        post.innerHTML = `<div class="d-flex justify-content-start">
+                            <img class="star-post" src="../icons/star_icon.png" alt="star post"/>
+                            <h3 class="post-title" id="post-header">${data["Title"]}</h3>
+                            <div class="user-username d-none"> ${data["Writer"]} </div>
+                          </div>`;
+    } else if (page.includes("profile") || page.includes("history")) {
         post.innerHTML = `<h3 class="post-title col-10">${data["Title"]}</h3>
                             <div class="user-username d-none"> ${data["Writer"]} </div>`;
-    } else if (window.location.href.includes("feed") || window.location.href.includes("favorites")) {
-        post.innerHTML = `<div class="row">
-                            <img class="star-post col-1" src="../icons/star_icon.png" alt="star post"/>
-                            <h3 class="post-title col-10" id="post-header">${data["Title"]} ~ ${data["Writer"]}</h3>
-                            <div class="user-username d-none col"> ${data["Writer"]} </div>
+    } else if (page.includes("feed") || page.includes("favorites")) {
+        post.innerHTML = `<div class="d-flex justify-content-start">
+                            <img class="star-post" src="../icons/star_icon.png" alt="star post"/>
+                            <h3 class="post-title" id="post-header">${data["Title"]} ~ ${data["Writer"]}</h3>
+                            <div class="user-username d-none"> ${data["Writer"]} </div>
                           </div>`;
-    } else if (window.location.href.includes("explore")) {
+    } else if (page.includes("explore")) {
         post.innerHTML = `<div class="d-flex justify-content-start">
                             <img class="star-post" src="../icons/star_icon.png" alt="star post"/>
                             <h3 class="post-title" id="post-header">${data["Title"]} ~ *****</h3>
@@ -44,10 +52,17 @@ export function createNewPost(data) {
                      alt="comment">
             </div>
         </div>`;
-    if (!window.location.href.includes("profile") && !window.location.href.includes("posthistory")) {
+    if ((page.includes("profile") && current_user === session_user) || (page.includes("history") && current_user === session_user)) {
+        post.getElementsByClassName("rate-post")[0].style.display = "none";
+        post.getElementsByClassName("post-interactions")[0].className = "d-flex justify-content-end flex-column";
+    } else {
         let star = post.getElementsByClassName("star-post")[0];
-        star.addEventListener("click", () => starPost(post));
+        star.addEventListener('click', () => {
+            console.log("ciao")
+            starPost(post)
+        });
         axios.get("../php/favorites-api.php").then((response) => {
+            console.log(response.data);
             if (response.data != null) {
                 const favorites_id = [];
                 response.data.forEach(elem => favorites_id.push(elem["PostID"]));
@@ -57,9 +72,6 @@ export function createNewPost(data) {
                 }
             }
         });
-    } else {
-        post.getElementsByClassName("rate-post")[0].style.display = "none";
-        post.getElementsByClassName("post-interactions")[0].className = "d-flex justify-content-end flex-column";
     }
     post.getElementsByClassName("change-text-button")[0].addEventListener("click", () => changeText(post));
     post.getElementsByClassName("rate-post")[0].addEventListener("click", () => showRatingCategories(post));
