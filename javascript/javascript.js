@@ -49,6 +49,7 @@ function starPost(post) {
     } else {
         axios.post("../php/favorites-api.php", {star: true, post: postId.innerText});
         star.src = "../icons/starred_icon.png";
+        showUsername(post);
     }
 }
 

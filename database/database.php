@@ -475,7 +475,7 @@ class DatabaseHelper {
     }
 
     public function getFavoritePosts($user) : array {
-        $stmt = $this->db->prepare("SELECT Post FROM favorites WHERE User = ?");
+        $stmt = $this->db->prepare("SELECT p.* FROM favorites AS f JOIN posts AS p ON f.Post = p.PostID WHERE f.User = ?");
         $stmt->bind_param('s', $user);
         $stmt->execute();
         $result = $stmt->get_result();
