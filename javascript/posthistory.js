@@ -72,5 +72,5 @@ $("#keyword-search").on("keyup", function () {
 const user = new URL(window.location.href).searchParams.get("Username");
 const section = document.getElementById("posts");
 const h1 = document.querySelector("header h1");
-h1.innerHTML = session_user + "'s post history";
+h1.innerHTML = user + "'s post history";
 displayAllPosts();
