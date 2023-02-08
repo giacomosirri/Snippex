@@ -46,6 +46,9 @@ function starPost(post) {
     if (star.src.includes("starred_icon.png")) {
         axios.post("../php/favorites-api.php", {unstar: true, post: postId.innerText});
         star.src = "../icons/star_icon.png";
+        if (window.location.href.includes("favorites")) {
+            location.reload();
+        }
     } else {
         axios.post("../php/favorites-api.php", {star: true, post: postId.innerText});
         star.src = "../icons/starred_icon.png";
