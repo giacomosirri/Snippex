@@ -80,8 +80,17 @@ nav#main-menu {
   @media screen and (min-width: 768px) {
     top: 0;
     height: 70px;
+    #nav-logo {
+      display: inline-block;
+      font-family: "Itim", cursive;
+      font-size: 36px;
+      color: $templateColor;
+    }
   }
   @media screen and (max-width: 768px) {
+    #nav-logo {
+      display: none;
+    }
     margin-top: 30px;
     bottom: 0;
     height: 57px;
