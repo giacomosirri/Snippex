@@ -4,6 +4,9 @@
 body {
   height: 100vh;
   background-color: $backgroundColor;
+  @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+    position: relative;
+  }
 }
 
 main {
@@ -15,6 +18,7 @@ main {
   }
   @media screen and (min-width: $smartphones) and (max-width: $desktop) {
     padding: 3%;
+    margin-top: 50px;
   }
 }
 

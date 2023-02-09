@@ -21,15 +21,15 @@ header {
       font-size: 18px;
     }
     img {
-      max-width: 46px;
-      max-height: 46px;
+      max-width: 44px;
+      max-height: 44px;
       float: right;
       margin-right: 2%;
-      padding-top: 8px;
+      padding: 8px 0 3px;
     }
   }
 }
-#feed-header{
+#feed-header {
   @media screen and (min-width: $desktop) {
     display: none;
   }
