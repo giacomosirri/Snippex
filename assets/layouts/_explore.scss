@@ -1,3 +1,20 @@
-.explore{
-  padding-top:7px;
+@use "../abstract/mediaquery-breakpoints" as *;
+
+@media screen and (min-width: $smartphones) and (max-width: $desktop) {
+  body {
+    position: relative;
+  }
+  header {
+    padding: 2%;
+    position: fixed;
+    top: 0;
+    height: 50px;
+    * {
+      height: 28px;
+    }
+  }
+  main {
+    margin-top: 50px;
+    margin-bottom: 57px;
+  }
 }

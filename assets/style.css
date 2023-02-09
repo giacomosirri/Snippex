@@ -73,7 +73,7 @@ article {
   min-height: 180px;
 }
 article h3 {
-  font-size: 24px;
+  font-size: 22px;
 }
 article .post-text {
   font-size: 18px;
@@ -106,7 +106,7 @@ article .star-post {
   width: auto;
   max-width: 30px;
   max-height: 30px;
-  margin: 0 10px 4px 3px;
+  margin: 0 10px 8px 3px;
 }
 article .post-interactions img {
   height: auto;
@@ -124,10 +124,24 @@ article .post-interactions img:hover {
   cursor: pointer;
 }
 
-.explore {
-  padding-top: 7px;
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+  body {
+    position: relative;
+  }
+  header {
+    padding: 2%;
+    position: fixed;
+    top: 0;
+    height: 50px;
+  }
+  header * {
+    height: 28px;
+  }
+  main {
+    margin-top: 50px;
+    margin-bottom: 57px;
+  }
 }
-
 @media screen and (min-width: 320px) {
   header {
     position: fixed;
