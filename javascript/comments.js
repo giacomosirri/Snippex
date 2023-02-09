@@ -14,7 +14,7 @@ let editModal = document.getElementById("editModal");
 editModal.addEventListener("show.bs.modal", (event) => {
     let comment = event.relatedTarget.closest("article");
     let id = comment.getElementsByClassName("comment-id")[0].innerText;
-    let text = comment.getElementsByClassName("post-text")[0].innerText;
+    let text = comment.getElementsByClassName("comment-text")[0].innerText;
     document.getElementById("comment-edit-id").value = id;
     document.getElementById("comment-text").value = text;
 });
@@ -37,7 +37,7 @@ function createNewComment(data) {
         <div class="d-flex justify-content-between">
             <div class="post-content col-12">
                 <label class="change-text-button">
-                    <p class="post-text">
+                    <p class="comment-text">
                         ${data["Content"]}
                     </p>
                 </label>

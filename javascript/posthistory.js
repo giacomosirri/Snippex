@@ -1,5 +1,24 @@
-import { createNewPost } from "./commons.js";
+import {createNewPost} from "./commons.js";
 
+let editModal = document.getElementById("editModal");
+editModal.addEventListener("show.bs.modal", (event) => {
+    let post = event.relatedTarget.closest(".post-with-buttons");
+    console.log(post);
+    let id = post.getElementsByClassName("post-id")[0].innerText;
+    let text = post.getElementsByClassName("post-text")[0].innerText;
+    let title = post.getElementsByClassName("post-title")[0].innerText;
+    document.getElementById("post-edit-id").value = id;
+    document.getElementById("post-text").value = text;
+    document.getElementById("post-title").value = title;
+});
+document.getElementById("post-edit").addEventListener("click", () => editPost());
+
+let deleteModal = document.getElementById("deleteModal");
+deleteModal.addEventListener("show.bs.modal", (event) => {
+    let post = event.relatedTarget.closest(".post-with-buttons");
+    document.getElementById("post-delete-id").value = post.getElementsByClassName("post-id")[0].innerText;
+});
+document.getElementById("post-delete").addEventListener("click", () => deletePost());
 function updateSearch(text) {
     section.innerHTML = "";
     if (text != null && text.length > 0) {
@@ -22,12 +41,10 @@ function displaySinglePost(data, id) {
     const ops_div = document.createElement("div");
     ops_div.className = "col-2 d-flex justify-content-center flex-column";
     ops_div.innerHTML = `
-                <img src="../icons/edit_icon.png" alt="edit post" id="edit-post" />
+                <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"><img src="../icons/edit_icon.png" alt="edit post" id="edit-post" /></a>
                 <br /><br /><br /><br />
-                <img src="../icons/bin_icon.png" alt="delete post" id="delete-post" />
+                <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><img src="../icons/bin_icon.png" alt="delete post" id="delete-post" /></a>
             `;
-    ops_div.querySelector("#edit-post").addEventListener("click", () => editPost(response.data[i]["PostID"], response.data[i]["Title"], response.data[i]["Content"]));
-    ops_div.querySelector("#delete-post").addEventListener("click", () => deletePost(response.data[i]["PostID"]));
     div.appendChild(ops_div);
     return div;
 }
@@ -48,21 +65,20 @@ function displaySearch(text) {
     });
 }
 
-function editPost(id, title, content) {
-    let newTitle = prompt("Enter new title:", title);
-    let newContent = prompt("Enter new text:", content);
+function editPost() {
+    let id = document.getElementById("post-edit-id").value;
+    let newTitle = document.getElementById("post-title").value;
+    let newContent = document.getElementById("post-text").value;
     if ((newTitle != null && newTitle.length > 0) || (newContent != null && newContent.length > 0)) {
         axios.post("../php/insertions-api.php", {id: id, title: newTitle, content: newContent, action: "edit"});
         window.location.reload();
     }
 }
 
-function deletePost(id) {
-    let result = confirm("Are you sure you want to delete this post?");
-    if (result) {
-        axios.post("../php/insertions-api.php", {id: id, action: "delete"});
-        window.location.reload();
-    }
+function deletePost() {
+    let id = document.getElementById("post-delete-id").value;
+    axios.post("../php/insertions-api.php", {id: id, action: "delete"});
+    window.location.reload();
 }
 
 $("#keyword-search").on("keyup", function () {
