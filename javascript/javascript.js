@@ -19,8 +19,6 @@ function createPost() {
     close.click();
 }
 
-
-
 function changeText(label) {
     let paragraph = label.querySelector('p');
     if (paragraph.style.webkitLineClamp === "4") {
@@ -77,7 +75,7 @@ function showPlus(post, rating) {
     const div = post.getElementsByClassName("post-interactions")[0];
     const icons = div.children;
     for (let i=0; i<icons.length-1; i++) {
-        if(icons[i].className==="rate-post" || icons[i].className==="comment-post") {
+        if (icons[i].className==="rate-post" || icons[i].className==="comment-post") {
             icons[i].style.display = "inline";
         } else {
             icons[i].style.display = "none";

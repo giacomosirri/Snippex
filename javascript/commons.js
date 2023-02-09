@@ -38,7 +38,7 @@ export function createNewPost(data) {
                 <p class="post-date col-12">${data["DateAndTime"]}</p>
             </div>
             <div class="post-interactions d-flex justify-content-between flex-column">
-                <img class="rate-post" style="padding: 5px; border-radius: 20px;"
+                <img class="rate-post"
                      src="../icons/plus_icon.png" alt="post menu"/>
                 <img class="rating thoughtfulness" style="display: none" src="../icons/thoughtfulness_icon.png"
                      alt="rate as thoughtfulness">
