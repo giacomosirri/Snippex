@@ -1,7 +1,8 @@
 @use "../abstract/colors" as *;
+@use "../abstract/mediaquery-breakpoints" as *;
 
 main {
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $desktop) {
     margin-top: 90px;
   }
 }
@@ -11,7 +12,7 @@ nav#main-menu {
   padding-top: 10px;
   background-color: white;
   width: 100%;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $desktop) {
     top: 0;
     height: 70px;
     #nav-logo {
@@ -21,7 +22,7 @@ nav#main-menu {
       color: $templateColor;
     }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (min-width: $smartphones) {
     #nav-logo {
       display: none;
     }
@@ -35,7 +36,7 @@ nav#main-menu {
       list-style-type: none;
       a {
         img {
-          @media screen and (max-width: 768px) {
+          @media screen and (min-width: $smartphones) {
             max-width: 38px;
             max-height: 38px;
           }
