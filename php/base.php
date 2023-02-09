@@ -14,6 +14,9 @@
         <!-- Latest compiled Axios -->
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <!--CSS-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../assets/style.css">
         <!-- Common javascript code -->
         <script type="text/javascript" src="../javascript/javascript.js"></script>
