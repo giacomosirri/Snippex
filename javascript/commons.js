@@ -62,7 +62,6 @@ export function createNewPost(data) {
             starPost(post)
         });
         axios.get("../php/favorites-api.php").then((response) => {
-            console.log(response.data);
             if (response.data != null) {
                 const favorites_id = [];
                 response.data.forEach(elem => favorites_id.push(elem["PostID"]));
