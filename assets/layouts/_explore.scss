@@ -1,16 +1,25 @@
 @use "../abstract/mediaquery-breakpoints" as *;
 
-@media screen and (min-width: $smartphones) and (max-width: $desktop) {
-  header.explore {
-    padding: 2%;
-    position: fixed;
+header.explore {
+  padding: 10px 2%;
+  position: fixed;
+  @media screen and (min-width: $smartphones) and (max-width: $desktop) {
     top: 0;
-    height: 50px;
-    * {
-      height: 29px;
-    }
   }
-  main.explore {
-    padding-top: 1% !important;
+  @media screen and (min-width: $desktop) {
+    top: 70px;
+    width: 60%;
+    margin-left: 20%;
+  }
+  height: 50px;
+  * {
+    height: 30px;
+  }
+}
+
+main.explore {
+  padding-top: 1% !important;
+  @media screen and (min-width: $desktop) {
+    margin-top: 50px;
   }
 }
