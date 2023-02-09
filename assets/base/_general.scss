@@ -1,74 +1,8 @@
 @use "../abstract/colors" as *;
 
-header {
-  width: 100%;
-  background: white;
-  max-width: 1500px !important;
-  text-align: center;
-  color: $templateColor;
-  font-weight: bolder;
-  margin: 0;
-  padding: 6px;
-  h1 {
-    @media screen and (max-width: 576px) {
-      font-size: 16px;
-    }
-    @media screen and (max-width: 768px) {
-      font-size: 18px;
-    }
-    @media screen and (max-width: 992px) {
-      font-size: 20px;
-    }
-  }
-  img {
-    width: 50px;
-    margin-top: 2px;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  img#profile-pic {
-    border-radius: 10px;
-    width: auto;
-    height: auto;
-    max-width: 160px;
-    max-height: 160px;
-    @media screen and (max-width: 768px) {
-      max-width: 110px;
-      max-height: 110px;
-    }
-  }
-  img#profile-pic:hover {
-    cursor: initial;
-  }
-  h2 {
-    font-size: small;
-  }
-  div {
-    a {
-      img {
-        height: auto;
-        width: auto;
-        max-width: 32px;
-        max-height: 32px;
-      }
-    }
-    div {
-      a {
-        img {
-          height: auto;
-          width: auto;
-          max-width: 32px;
-          max-height: 32px;
-        }
-      }
-      img {
-        height: auto;
-        width: auto;
-        max-width: 100px;
-        max-height: 100px;
-      }
-    }
+main {
+  @media screen and (min-width: 768px) {
+    margin-top: 90px;
   }
 }
 
