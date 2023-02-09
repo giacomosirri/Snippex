@@ -2,11 +2,12 @@
 @use "../abstract/mediaquery-breakpoints" as *;
 
 body {
+  height: 100vh;
   background-color: $backgroundColor;
 }
 
 main {
-  height: 100vh;
+  min-height: 100%;
   background-color: white;
   @media screen and (min-width: $desktop) {
     margin: 70px 20% 0 20%;
