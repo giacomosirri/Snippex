@@ -1,0 +1,24 @@
+@use "../abstract/colors" as *;
+
+header {
+  @media screen and (max-width: 768px) {
+    background-color: white;
+    width: 100%;
+    font-family: "Itim", cursive;
+    margin-bottom: 15px;
+    color: $templateColor;
+    h1 {
+      margin-left: 2%;
+      display: inline-block;
+      margin-right: 3%;
+      font-size: 36px;
+    }
+    h2 {
+      display: inline-block;
+      font-size: 18px;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
