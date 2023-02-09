@@ -1,0 +1,10 @@
+@use "../abstract/colors" as *;
+@use "../abstract/mediaquery-breakpoints" as *;
+  @media screen and (min-width: $desktop) {
+    header {
+      position: relative;
+    }
+    body{
+      padding-top:70px;
+    }
+  }

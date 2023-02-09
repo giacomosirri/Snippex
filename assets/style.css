@@ -127,6 +127,10 @@ article .post-interactions img:hover {
   cursor: pointer;
 }
 
+.explore {
+  padding-top: 7px;
+}
+
 @media screen and (min-width: 320px) {
   header {
     position: fixed;
@@ -155,9 +159,19 @@ article .post-interactions img:hover {
     padding-top: 8px;
   }
 }
+
+@media screen and (min-width: 1025px) {
+  #feed-header {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 1025px) {
   header {
-    display: none;
+    position: relative;
+  }
+  body {
+    padding-top: 70px;
   }
 }
 

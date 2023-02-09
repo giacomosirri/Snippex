@@ -28,6 +28,8 @@ header {
       padding-top: 8px;
     }
   }
+}
+#feed-header{
   @media screen and (min-width: $desktop) {
     display: none;
   }
