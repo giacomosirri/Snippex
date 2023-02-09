@@ -18,6 +18,10 @@ header {
       display: inline-block;
       font-size: 18px;
     }
+    img {
+      max-width: 38px;
+      max-height: 38px;
+    }
   }
   @media screen and (min-width: $desktop) {
     display: none;

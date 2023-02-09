@@ -12,6 +12,14 @@ nav#main-menu {
   padding-top: 10px;
   background-color: white;
   width: 100%;
+  @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+    #nav-logo {
+      display: none;
+    }
+    margin-top: 30px;
+    bottom: 0;
+    height: 57px;
+  }
   @media screen and (min-width: $desktop) {
     top: 0;
     height: 70px;
@@ -22,21 +30,13 @@ nav#main-menu {
       color: $templateColor;
     }
   }
-  @media screen and (min-width: $smartphones) {
-    #nav-logo {
-      display: none;
-    }
-    margin-top: 30px;
-    bottom: 0;
-    height: 57px;
-  }
   ul {
     padding: 0;
     li {
       list-style-type: none;
       a {
         img {
-          @media screen and (min-width: $smartphones) {
+          @media screen and (min-width: $smartphones) and (max-width: $desktop) {
             max-width: 38px;
             max-height: 38px;
           }
