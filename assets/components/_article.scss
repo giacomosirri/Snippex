@@ -3,19 +3,22 @@
 article {
   margin-bottom: 20px;
   background-color: $primaryPost;
-  padding: 6px 56px 6px 12px;
+  padding: 6px 56px 12px 12px;
   border-radius: 12px;
   min-height: 180px;
   h3 {
     font-size: 24px;
   }
+  .post-text{
+    font-size: 18px;
+  }
   .post-date{
-    font-size: 11px;
+    border-radius: 6px;
+    font-size: 12px;
     background-color: $primaryPost;
-    padding-left: 5px;
+    padding-left: 10px;
   }
   .change-text-button{
-    font-size: 13px;
     background-color: transparent;
     width: 100%;
     p {
@@ -27,9 +30,8 @@ article {
     }
   }
   div.post-content {
-    padding-left: 8px;
-    padding-right: 8px;
-    font-size: 16px;
+    border-radius: 12px;
+    padding: 7px 14px 0 14px;
     background-color: $secondaryPost;
     min-height: 128px;
   }
