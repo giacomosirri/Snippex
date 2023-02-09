@@ -1,0 +1,19 @@
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @use "abstract";
+ *   | ^^^^^^^^^^^^^^^
+ *   '
+ *   layouts\login.scss 1:1   @forward
+ *   layouts\_index.scss 5:1  @use
+ *   style.scss 4:1           root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @use \"abstract\";\d\a   \2502  ^^^^^^^^^^^^^^^\a   \2575 \a   layouts\\login.scss 1:1   @forward\a   layouts\\_index.scss 5:1  @use\a   style.scss 4:1           root stylesheet";
+}
