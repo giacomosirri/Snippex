@@ -9,47 +9,29 @@ article {
   h3 {
     font-size: 24px;
   }
-  div {
-    div > p {
-      font-size: 11px;
-      background-color: $primaryPost;
-      padding-left: 5px;
+  .post-date{
+    font-size: 11px;
+    background-color: $primaryPost;
+    padding-left: 5px;
+  }
+  .change-text-button{
+    font-size: 13px;
+    background-color: transparent;
+    width: 100%;
+    p {
+      min-height: 80px;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
-    div {
-      label {
-        font-size: 13px;
-        background-color: transparent;
-        width: 100%;
-        p {
-          min-height: 80px;
-          display: -webkit-box;
-          -webkit-line-clamp: 4;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-      }
-      img {
-        height: auto;
-        width: auto;
-        max-width: 30px;
-        max-height: 30px;
-        margin-left: 10px;
-        margin-bottom: 3px;
-      }
-      img.rate-post {
-        background-color: $secondaryPost;
-      }
-      img:hover {
-        cursor: pointer;
-      }
-    }
-    div.post-content {
-      padding-left: 8px;
-      padding-right: 8px;
-      font-size: 16px;
-      background-color: $secondaryPost;
-      min-height: 128px;
-    }
+  }
+  div.post-content {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 16px;
+    background-color: $secondaryPost;
+    min-height: 128px;
   }
   .star-post{
     height: auto;
@@ -58,5 +40,21 @@ article {
     max-height: 30px;
     margin-right: 10px;
     margin-bottom: 3px;
+  }
+  .post-interactions{
+    img {
+      height: auto;
+      width: auto;
+      max-width: 30px;
+      max-height: 30px;
+      margin-left: 10px;
+      margin-bottom: 3px;
+    }
+    img.rate-post {
+      background-color: $secondaryPost;
+    }
+    img:hover {
+      cursor: pointer;
+    }
   }
 }
