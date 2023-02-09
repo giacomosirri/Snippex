@@ -1,10 +1,22 @@
+body {
+  background-color: #e6f5ff;
+}
+
+main {
+  height: 100vh;
+  background-color: white;
+}
 @media screen and (min-width: 1025px) {
   main {
-    margin-top: 90px;
+    margin: 70px 15% 0 15%;
+    border-left: 2px solid #e6f5ff;
+    border-right: 2px solid #e6f5ff;
+    padding: 2%;
   }
 }
 
 nav#main-menu {
+  border-bottom: 2px solid #226fbd;
   position: fixed;
   padding-top: 10px;
   background-color: white;
