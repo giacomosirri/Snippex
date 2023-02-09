@@ -13,10 +13,15 @@ if (isset($data["title"]) && isset($data["content"]) && $data["action"] == "crea
     $content = $data["content"];
     $dbh->addPost($title, $content);
 }
-if (isset($data["rating"]) && isset($data["post"])) {
+if (isset($data["rating"]) && $data["action"] == "addRating") {
     $rating = $data["rating"];
     $post = $data["post"];
     $dbh->addRating($rating, $post);
+}
+if (isset($data["rating"]) && $data["action"] == "changeRating") {
+    $newRating = $data["rating"];
+    $post = $data["post"];
+    $dbh->changeRating($newRating, $post);
 }
 if (isset($data["id"]) && $data["action"] == "delete") {
     $id = $data["id"];

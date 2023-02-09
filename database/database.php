@@ -356,13 +356,7 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
-    public function addRating($rating, $postID) {
-        $stmt = $this->db->prepare("INSERT INTO ratings (DateAndTime, Category, Rater, Post) VALUES (?, ?, ?, ?)");
-        $date = date("Y-m-d H:i:s");
-        $rater = $_SESSION['LoggedUser'];
-        $stmt->bind_param('sssi',$date , $rating, $rater, $postID);
-        $stmt->execute();
-        $rating_id = $this->db->insert_id;
+    public function addRatingPoints($postID, $rating) {
         $writer = $this->getWriterFromPostId($postID);
         $stmt = $this->db->prepare("SELECT COUNT(*) FROM points WHERE User = ? AND Category = ?");
         $stmt->bind_param('ss', $writer, $rating);
@@ -375,7 +369,43 @@ class DatabaseHelper {
         }
         $stmt->bind_param('ss', $writer, $rating);
         $stmt->execute();
+    }
+
+    public function removeRatingPoints($postID, $rating) {
+        $writer = $this->getWriterFromPostId($postID);
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM points WHERE User = ? AND Category = ?");
+        $stmt->bind_param('ss', $writer, $rating);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc()['COUNT(*)'];
+        if ($result == 1) {
+            $stmt = $this->db->prepare("DELETE FROM points WHERE User = ? AND Category = ?");
+        } else {
+            $stmt = $this->db->prepare("UPDATE points SET Points = Points - 1 WHERE User = ? AND Category = ?");
+        }
+        $stmt->bind_param('ss', $writer, $rating);
+        $stmt->execute();
+    }
+
+    public function addRating($rating, $postID) {
+        $stmt = $this->db->prepare("INSERT INTO ratings (DateAndTime, Category, Rater, Post) VALUES (?, ?, ?, ?)");
+        $date = date("Y-m-d H:i:s");
+        $rater = $_SESSION['LoggedUser'];
+        $stmt->bind_param('sssi',$date , $rating, $rater, $postID);
+        $stmt->execute();
+        $rating_id = $this->db->insert_id;
+        $this->addRatingPoints($postID, $rating);
+        $writer = $this->getWriterFromPostId($postID);
         $this->addNewRatingNotification($rating_id, $writer);
+    }
+
+    public function changeRating($newRating, $postID) {
+        $stmt = $this->db->prepare("SELECT RatingID FROM ratings WHERE Post = ? AND Rater = ?");
+        $rater = $_SESSION['LoggedUser'];
+        $stmt->bind_param('is', $postID, $rater);
+        $stmt->execute();
+        $ratingID = $stmt->get_result()->fetch_assoc()['RatingID'];
+        $this->deleteRating($ratingID, $postID);
+        $this->addRating($newRating, $postID);
     }
 
     public function verifyRating($post) {
@@ -444,10 +474,7 @@ class DatabaseHelper {
         $stmt->bind_param('i', $RatingID);
         $stmt->execute();
         $category = $stmt->get_result()->fetch_assoc()['Category'];
-        $user = $this->getWriterFromPostId($postID);
-        $stmt = $this->db->prepare("UPDATE points SET Points = Points - 1 WHERE User = ? AND Category = ?");
-        $stmt->bind_param('ss', $user, $category);
-        $stmt->execute();
+        $this->removeRatingPoints($postID, $category);
         $stmt = $this->db->prepare("DELETE FROM ratings WHERE RatingID = ?");
         $stmt->bind_param('i', $RatingID);
         $stmt->execute();

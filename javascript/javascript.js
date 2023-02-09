@@ -4,10 +4,12 @@ window.onload = function() {
     if (goBackButton !== null) {
         goBackButton.addEventListener("click", goBack);
     }
+    console.log("window.onload");
     document.getElementById("post-button").addEventListener("click", createPost);
 }
 
 function createPost() {
+    console.log("createPost");
     let title = document.querySelector("#recipient-title").value;
     let content = document.querySelector("#message-text").value;
     let close = document.querySelector("#close");
@@ -59,9 +61,16 @@ function starPost(post) {
 }
 
 function addRating(post, rating) {
-    const postId = post.getElementsByClassName("post-id")[0];
-    axios.post("../php/insertions-api.php", {rating: rating, post: postId.innerText});
-    showPlus(post, rating);
+    let img = post.getElementsByClassName("rate-post")[0];
+    if (img.src.includes("plus_icon.png")) {
+        const postId = post.getElementsByClassName("post-id")[0];
+        axios.post("../php/insertions-api.php", {rating: rating, post: postId.innerText, action: "addRating"});
+        showPlus(post, rating);
+    } else {
+        const postId = post.getElementsByClassName("post-id")[0];
+        axios.post("../php/insertions-api.php", {rating: rating, post: postId.innerText, action: "changeRating"});
+        showPlus(post, rating);
+    }
 }
 
 function showPlus(post, rating) {
@@ -83,10 +92,7 @@ function showPlus(post, rating) {
 function changeIcon(post, rating) {
     const div = post.getElementsByClassName("post-interactions")[0];
     const icons = div.children;
-    let img = document.createElement("img");
-    img.src = "../icons/" + rating + "_icon.png";
-    img.style = "width: 30px; height: 30px; margin-right: 15px;";
-    icons[0].outerHTML = img.outerHTML;
+    icons[0].src = "../icons/" + rating + "_icon.png";
 }
 
 function showComments(post) {
