@@ -8,7 +8,10 @@ window.onload = ()=> {
             console.log([...formData]);
             axios.post("../php/login-api.php", formData)
                 .then(x => window.location.replace("../php/feed.php"))
-                .catch(x => alert("username o password errate"));
+                .catch(x => {
+                    let errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
+                    errorModal.show();
+                });
         });
     }
 function activeLogin(link) {
