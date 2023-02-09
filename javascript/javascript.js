@@ -4,12 +4,10 @@ window.onload = function() {
     if (goBackButton !== null) {
         goBackButton.addEventListener("click", goBack);
     }
-    console.log("window.onload");
     document.getElementById("post-button").addEventListener("click", createPost);
 }
 
 function createPost() {
-    console.log("createPost");
     let title = document.querySelector("#recipient-title").value;
     let content = document.querySelector("#message-text").value;
     let close = document.querySelector("#close");
