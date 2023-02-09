@@ -28,13 +28,15 @@
             require $templateParams["page"];
         } ?>
         <nav id="main-menu">
-            <ul class="d-flex justify-content-around text-center">
+            <ul class="d-flex justify-content-between text-center">
+                <li></li>
                 <li id="nav-logo">Snippex</li>
                 <li><a href="./feed.php"><img src="../icons/home_icon.png" alt="home"></a></li>
                 <li><a href="./explore.php"><img src="../icons/search_icon.png" alt="explore"></a></li>
                 <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
                 <li><a href="./searchusers.php"><img src="../icons/users_icon.png" alt="search users"></a></li>
                 <li><a href="./profile.php"><img id="menu-profile-pic" src="" alt="my profile"></a></li>
+                <li></li>
             </ul>
         </nav>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
