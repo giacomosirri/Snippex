@@ -10,13 +10,10 @@ main {
   min-height: 100%;
   background-color: white;
   @media screen and (min-width: $desktop) {
-    margin: 70px 20% 0 20%;
-    border-left: 2px solid $backgroundColor;
-    border-right: 2px solid $backgroundColor;
-    padding: 2%;
+    margin: 0 20%;
+    padding: 2% 3%;
   }
   @media screen and (min-width: $smartphones) and (max-width: $desktop) {
-    margin-top: 50px;
     padding: 3%;
   }
 }

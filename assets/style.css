@@ -9,15 +9,12 @@ main {
 }
 @media screen and (min-width: 1025px) {
   main {
-    margin: 70px 20% 0 20%;
-    border-left: 2px solid #e6f5ff;
-    border-right: 2px solid #e6f5ff;
-    padding: 2%;
+    margin: 0 20%;
+    padding: 2% 3%;
   }
 }
 @media screen and (min-width: 320px) and (max-width: 1025px) {
   main {
-    margin-top: 50px;
     padding: 3%;
   }
 }
@@ -71,7 +68,7 @@ nav#main-menu ul li a img {
 article {
   margin-bottom: 20px;
   background-color: #acd1f6;
-  padding: 6px 56px 12px 12px;
+  padding: 8px 56px 12px 14px;
   border-radius: 12px;
   min-height: 180px;
 }
@@ -99,8 +96,8 @@ article .change-text-button p {
   overflow: hidden;
 }
 article div.post-content {
-  border-radius: 12px;
-  padding: 7px 14px 0 14px;
+  border-radius: 6px;
+  padding: 7px 12px 0 12px;
   background-color: #91bae3;
   min-height: 128px;
 }
@@ -109,18 +106,18 @@ article .star-post {
   width: auto;
   max-width: 30px;
   max-height: 30px;
-  margin-right: 10px;
-  margin-bottom: 3px;
+  margin: 0 10px 4px 3px;
 }
 article .post-interactions img {
   height: auto;
   width: auto;
   max-width: 30px;
   max-height: 30px;
-  margin-left: 10px;
-  margin-bottom: 3px;
+  margin: 0 0 6px 12px;
 }
 article .post-interactions img.rate-post {
+  padding: 5px;
+  border-radius: 8px;
   background-color: #91bae3;
 }
 article .post-interactions img:hover {

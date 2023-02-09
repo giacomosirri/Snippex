@@ -3,22 +3,22 @@
 article {
   margin-bottom: 20px;
   background-color: $primaryPost;
-  padding: 6px 56px 12px 12px;
+  padding: 8px 56px 12px 14px;
   border-radius: 12px;
   min-height: 180px;
   h3 {
     font-size: 24px;
   }
-  .post-text{
+  .post-text {
     font-size: 18px;
   }
-  .post-date{
+  .post-date {
     border-radius: 6px;
     font-size: 12px;
     background-color: $primaryPost;
     padding-left: 10px;
   }
-  .change-text-button{
+  .change-text-button {
     background-color: transparent;
     width: 100%;
     p {
@@ -30,29 +30,29 @@ article {
     }
   }
   div.post-content {
-    border-radius: 12px;
-    padding: 7px 14px 0 14px;
+    border-radius: 6px;
+    padding: 7px 12px 0 12px;
     background-color: $secondaryPost;
     min-height: 128px;
   }
-  .star-post{
+  .star-post {
     height: auto;
     width: auto;
     max-width: 30px;
     max-height: 30px;
-    margin-right: 10px;
-    margin-bottom: 3px;
+    margin: 0 10px 4px 3px;
   }
-  .post-interactions{
+  .post-interactions {
     img {
       height: auto;
       width: auto;
       max-width: 30px;
       max-height: 30px;
-      margin-left: 10px;
-      margin-bottom: 3px;
+      margin: 0 0 6px 12px;
     }
     img.rate-post {
+      padding: 5px;
+      border-radius: 8px;
       background-color: $secondaryPost;
     }
     img:hover {
