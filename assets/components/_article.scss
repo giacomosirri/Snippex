@@ -1,0 +1,54 @@
+@use "../abstract/colors" as *;
+
+article {
+  margin-bottom: 20px;
+  background-color: $primaryPost;
+  padding: 6px 56px 6px 12px;
+  border-radius: 12px;
+  min-height: 180px;
+  h3 {
+    font-size: 24px;
+  }
+  div {
+    div > p {
+      font-size: 11px;
+      background-color: $primaryPost;
+      padding-left: 5px;
+    }
+    div {
+      label {
+        font-size: 13px;
+        background-color: transparent;
+        width: 100%;
+        p {
+          min-height: 80px;
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      }
+      img {
+        height: auto;
+        width: auto;
+        max-width: 30px;
+        max-height: 30px;
+        margin-left: 10px;
+        margin-bottom: 3px;
+      }
+      img.rate-post {
+        background-color: $secondaryPost;
+      }
+      img:hover {
+        cursor: pointer;
+      }
+    }
+    div.post-content {
+      padding-left: 8px;
+      padding-right: 8px;
+      font-size: 16px;
+      background-color: $secondaryPost;
+      min-height: 128px;
+    }
+  }
+}

@@ -14,7 +14,7 @@
         <!-- Latest compiled Axios -->
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <!--CSS-->
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../assets/style.css">
         <!-- Common javascript code -->
         <script type="text/javascript" src="../javascript/javascript.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -24,19 +24,15 @@
             if(isset($templateParams["page"])) {
             require $templateParams["page"];
         } ?>
-        <footer class="d-flex justify-content-start flex-column">
-            <div></div>
-            <nav>
-                <ul class="d-flex justify-content-around text-center">
-                    <li><a href="./feed.php"><img src="../icons/home_icon.png" alt="home"></a></li>
-                    <li><a href="./explore.php"><img src="../icons/search_icon.png" alt="explore"></a></li>
-                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
-                    <li><a href="./searchusers.php"><img src="../icons/users_icon.png" alt="search users"></a></li>
-                    <li><a href="./profile.php"><img id="menu-profile-pic" src="" alt="my profile"></a></li>
-                </ul>
-            </nav>
-            <div></div>
-        </footer>
+        <nav id="main-menu">
+            <ul class="d-flex justify-content-around text-center">
+                <li><a href="./feed.php"><img src="../icons/home_icon.png" alt="home"></a></li>
+                <li><a href="./explore.php"><img src="../icons/search_icon.png" alt="explore"></a></li>
+                <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../icons/write_icon.png" alt="write"></a></li>
+                <li><a href="./searchusers.php"><img src="../icons/users_icon.png" alt="search users"></a></li>
+                <li><a href="./profile.php"><img id="menu-profile-pic" src="" alt="my profile"></a></li>
+            </ul>
+        </nav>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
