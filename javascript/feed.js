@@ -5,10 +5,8 @@ const url = new URL(url_string);
 const user = url.searchParams.get("Username");
 const feed = document.getElementById("feed-posts");
 const desktop_size = 1025;
-window.onload = () => {
-    window.addEventListener("resize", () => desktopVisualization());
-    desktopVisualization();
-}
+window.addEventListener("resize", () => desktopVisualization());
+desktopVisualization();
 
 async function getNotificationIcon() {
     console.log("ciao");
