@@ -1,6 +1,6 @@
 @use "../abstract/mediaquery-breakpoints" as *;
 
-header.explore {
+header.explore, header.search-users {
   padding: 10px 2%;
   position: fixed;
   @media screen and (min-width: $smartphones) and (max-width: $desktop) {
@@ -17,7 +17,7 @@ header.explore {
   }
 }
 
-main.explore {
+main.explore, main.search-users {
   padding-top: 1% !important;
   @media screen and (min-width: $desktop) {
     margin-top: 50px;
