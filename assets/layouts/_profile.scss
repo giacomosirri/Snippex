@@ -1,6 +1,18 @@
 @use "../abstract/colors" as *;
 @use "../abstract/mediaquery-breakpoints" as *;
 
+@media screen and (min-width: $desktop) {
+  nav#options-menu {
+    float: left;
+    background-color: $backgroundColor;
+    width: 20%;
+
+    div.position-fixed {
+      margin-top: 200px;
+    }
+  }
+}
+
 header.profile {
   height: 220px !important;
   padding-top: 10px;
@@ -26,7 +38,6 @@ header.profile {
 }
 
 main.profile {
-  margin-top: 0;
   padding-top: 1%;
   section#post, section#friends-list {
     img.go-arrow {
