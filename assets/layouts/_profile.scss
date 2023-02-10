@@ -6,8 +6,8 @@
     float: left;
     background-color: $backgroundColor;
     width: 20%;
-
-    div.position-fixed {
+    div.collapse {
+      position: fixed;
       margin-top: 200px;
     }
   }
@@ -38,6 +38,9 @@ header.profile {
 }
 
 main.profile {
+  @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+    margin-top: 0;
+  }
   padding-top: 1%;
   section#post, section#friends-list {
     img.go-arrow {
