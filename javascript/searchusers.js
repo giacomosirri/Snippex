@@ -79,11 +79,11 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
         col1.appendChild(img);
     });
     col2.innerHTML += `
-        <div><strong>~${user}</strong></div>
-        <div>posts: ${numberOfPosts}</div>
+        <div class="username"><strong>~${user}</strong></div>
+        <div class="posts">posts: ${numberOfPosts}</div>
     `;
     for (let i=0; i<categories.length; i++) {
-        col2.innerHTML+=`<div>${categories[i]["Name"]}: ${getPointsFromCategory(ratingStats, categories[i]["Name"])}</div>`;
+        col2.innerHTML+=`<div class="points">${categories[i]["Name"]}: ${getPointsFromCategory(ratingStats, categories[i]["Name"])}</div>`;
     }
     row.appendChild(col1);
     setTimeout(() => {
@@ -98,7 +98,6 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
             row.appendChild(col);
         }
     }, 150);
-    row.style.marginBottom = '50px';
     document.getElementById("proposes").appendChild(container);
 }
 
@@ -107,6 +106,7 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
     div.classList.add("friendship-status");
     div.className = "col-4";
     const p = document.createElement("p");
+    p.classList.add("friendship-status");
     div.innerHTML = "";
     if (status === "RECEIVED") {
         p.style.marginRight = "10px";
@@ -131,7 +131,7 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         reject.addEventListener("click", () => saveAndRefresh());
         div.appendChild(reject);
     } else if (status === "SENT") {
-        p.innerText = "Your have asked " + requested_user + " to become friends! Now you just need to wait for his approval.";
+        p.innerText = "You have asked " + requested_user + " to become friends! Now you just need to wait for his approval.";
         div.appendChild(p);
     } else if (status === "FRIEND") {
         p.innerText = "You are friend with " + requested_user;

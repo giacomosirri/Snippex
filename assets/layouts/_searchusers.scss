@@ -1,13 +1,36 @@
 @use "../abstract/colors" as *;
 @use "../abstract/mediaquery-breakpoints" as *;
-  @media screen and (min-width: $desktop) {
-    header {
-      position: relative;
-    }
-    body{
-      padding-top:70px;
-    }
+
+@media screen and (min-width: $desktop) {
+  header {
+    position: relative;
   }
-  .selected-users-profile-pics{
-    max-width: 140px;
+  body{
+    padding-top:70px;
   }
+}
+
+main.search-users {
+  h3 {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  .proposes {
+    margin-top: 1%;
+  }
+  div.row {
+    margin-bottom: 50px;
+  }
+  div.points, div.posts {
+    color: gray;
+    font-size: 14px;
+  }
+  p.friendship-status {
+    color: gray;
+    font-size: 16px;
+  }
+}
+
+.selected-users-profile-pics {
+  max-width: 140px;
+}
