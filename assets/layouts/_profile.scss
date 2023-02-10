@@ -1,0 +1,47 @@
+@use "../abstract/colors" as *;
+@use "../abstract/mediaquery-breakpoints" as *;
+
+header.profile {
+  height: 210px !important;
+  color: black;
+  text-align: center;
+  h2 {
+    font-size: 18px;
+  }
+  div {
+    margin-bottom: 5px;
+    img#main-profile-pic {
+      border-radius: 10px;
+      width: auto;
+      height: auto;
+      // max-width is calculated dynamically via javascript
+      max-height: 120px;
+    }
+  }
+  @media screen and (min-width: $desktop) {
+    margin-left: 20%;
+    width: 60%;
+  }
+}
+
+main.profile {
+  margin-top: 0;
+  padding-top: 1%;
+  section#post, section#friends-list {
+    img {
+      height: auto;
+      width: auto;
+      max-width: 20px;
+      max-height: 20px;
+    }
+    img:hover {
+      cursor: pointer;
+    }
+    div.forward-arrow {
+      padding-top: 1%;
+    }
+  }
+  table {
+    caption-side: top;
+  }
+}

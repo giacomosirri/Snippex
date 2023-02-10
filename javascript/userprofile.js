@@ -9,23 +9,21 @@ function activeMenu(link) {
 function createBasicInfo(data) {
     const section = document.createElement("section");
     const h1 = document.createElement("h1");
-    h1.style.color = "black";
     h1.innerText = data["Name"] + " " + data["Surname"];
     const h2 = document.createElement("h2");
-    h2.style.color = "black";
-    h2.style.fontSize = "18px";
-    h2.style.marginTop = "-14px";
     h2.innerText = "~" + data["Username"];
     const innerDiv = document.createElement("div");
-    innerDiv.style.marginBottom = "5px";
     const img = document.createElement("img");
-    img.id = "main-profile.pic";
+    img.id = "main-profile-pic";
     img.alt = "profile pic";
+    const aspectRatio = img.naturalWidth / img.naturalHeight;
+    const maxWidth = img.style.maxHeight * aspectRatio;
+    img.style.maxWidth = maxWidth.toString();
     getUserProfilePic(data["Username"]).then(image => img.src = image);
-    section.appendChild(h1);
     innerDiv.appendChild(img);
-    h2.appendChild(innerDiv);
+    section.appendChild(h1);
     section.appendChild(h2);
+    section.appendChild(innerDiv);
     return section;
 }
 
@@ -67,10 +65,10 @@ function addRatingStats(stats, categories, numOfPosts) {
 
 function createPostFrame() {
     const postFrame = document.createElement("div");
-    postFrame.className = "col-12 col-md-8 d-flex justify-content-between";
+    postFrame.className = "d-flex justify-content-between";
     postFrame.innerHTML = `
         <h2>Most voted post</h2>
-        <div>
+        <div class="forward-arrow">
             <a href="../php/posthistory.php?Username=${user}" class="d-flex justify-content-start" style="padding-top: 1%; text-decoration: none; color: black">
                 <p style="font-size: 12px;">Browse history</p>
                 <div>
@@ -84,7 +82,7 @@ function createPostFrame() {
 
 function createFriendsFrame() {
     const frame = document.createElement("div");
-    frame.className = "col-12 col-lg-8 d-flex justify-content-between";
+    frame.className = "d-flex justify-content-between";
     frame.innerHTML = `
         <h2>Friends</h2>
         <div>
