@@ -2,22 +2,23 @@
 @use "../abstract/mediaquery-breakpoints" as *;
 
 header.comment {
-  padding-top: 2px;
-  h1 {
-    text-align: left;
-  }
   position: fixed;
-  @media screen and (min-width: $smartphones) and (max-width: $desktop) {
-    top: 0;
-  }
-  @media screen and (min-width: $desktop) {
-    top: 70px;
-    width: 60%;
-    margin-left: 20%;
-  }
   height: 50px;
   * {
     height: 30px;
+  }
+  h1 {
+    text-align: left;
+  }
+  @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+    top: 0;
+    padding: 10px 12px;
+  }
+  @media screen and (min-width: $desktop) {
+    top: 70px;
+    padding: 2px 8px;
+    width: 60%;
+    margin-left: 20%;
   }
 }
 
