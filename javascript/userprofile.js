@@ -40,7 +40,7 @@ function getPointsFromCategory(stats, category) {
 function addRatingStats(stats, categories, numOfPosts) {
     const table = document.createElement("table");
     table.id = "rating-statistics";
-    table.className = "table table-primary table-bordered table-striped table-hover";
+    table.className = "table table-primary table-bordered table-striped table-hover mb-0";
     table.innerHTML = `
         <caption>Statistics - ${numOfPosts} posts</caption>
         <thead>
@@ -69,11 +69,9 @@ function createPostFrame() {
     postFrame.innerHTML = `
         <h2>Most voted post</h2>
         <div class="forward-arrow">
-            <a href="../php/posthistory.php?Username=${user}" class="d-flex justify-content-start" style="padding-top: 1%; text-decoration: none; color: black">
-                <p style="font-size: 12px;">Browse history</p>
-                <div>
-                    <img src="../icons/goarrow_icon.png" alt="browse history">
-                </div>
+            <a href="../php/posthistory.php?Username=${user}" class="d-flex justify-content-start">
+                <p>Browse history</p>
+                <div><img class="go-arrow" src="../icons/goarrow_icon.png" alt="browse history"></div>
             </a>
         </div>
     `;
@@ -85,12 +83,10 @@ function createFriendsFrame() {
     frame.className = "d-flex justify-content-between";
     frame.innerHTML = `
         <h2>Friends</h2>
-        <div>
-            <a href="../php/friends.php?Username=${user}" class="d-flex justify-content-start" style="padding-top: 1%">
-            <p style="font-size: 12px;">See all friends</p>
-            <div>
-                <img src="../icons/goarrow_icon.png" alt="browse history">
-            </div>
+        <div class="forward-arrow">
+            <a href="../php/friends.php?Username=${user}" class="d-flex justify-content-start">
+                <p>See all friends</p>
+                <div><img class="go-arrow" src="../icons/goarrow_icon.png" alt="browse history"></div>
             </a>
         </div>
     `;
@@ -99,7 +95,7 @@ function createFriendsFrame() {
 
 function createFriend(friend) {
     const div = document.createElement("div");
-    div.className = "text-center";
+    div.className = "text-center friend";
     const a = document.createElement("a");
     a.href = "../php/userprofile.php?Username=" + friend["Username"];
     const img = document.createElement("img");
@@ -184,7 +180,7 @@ axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(respons
         const section = document.getElementById("friends-list");
         section.appendChild(createFriendsFrame());
         const div = document.createElement("div");
-        div.className = "col-12 col-lg-8 d-flex justify-content-between";
+        div.className = "col-12 d-flex justify-content-start";
         const friends = response.data["friends"];
         for (let i=0; i<Math.min(5, friends.length); i++) {
             div.appendChild(createFriend(friends[i]));

@@ -50,7 +50,10 @@ article {
       max-height: 30px;
       margin: 0 0 6px 12px;
     }
-    img.rate-post {
+    img.comment-post {
+      margin-bottom: 6px;
+    }
+    img.rate-post, img.rating {
       padding: 5px;
       border-radius: 8px;
       background-color: $secondaryPost;

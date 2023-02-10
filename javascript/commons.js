@@ -48,13 +48,13 @@ export function createNewPost(data) {
                      alt="rate as advice">
                 <img class="rating laugh" style="display: none" src="../icons/humour_icon.png"
                      alt="rate as humour">
-                <img class="comment-post" style="margin-bottom: 6px" src="../icons/comment_icon.png"
+                <img class="comment-post" src="../icons/comment_icon.png"
                      alt="comment">
             </div>
         </div>`;
     if ((page.includes("profile") && current_user === session_user) || (page.includes("history") && current_user === session_user)) {
         post.getElementsByClassName("rate-post")[0].style.display = "none";
-        post.getElementsByClassName("post-interactions")[0].className = "d-flex justify-content-end flex-column";
+        post.getElementsByClassName("post-interactions")[0].className = "post-interactions d-flex justify-content-end flex-column";
     } else {
         let star = post.getElementsByClassName("star-post")[0];
         star.addEventListener('click', () => {
