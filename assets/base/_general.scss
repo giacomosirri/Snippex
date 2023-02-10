@@ -32,24 +32,21 @@ main {
     margin-top: 50px;
   }
 }
-.post-content{
+
+.post-content {
   z-index: 0;
 }
-.explore{
+.explore {
   z-index: 1;
 }
-
-.post-date{
-  width: 95%;
-}
-#nav-logo{
+#nav-logo {
   cursor: pointer;
 }
-
-#go-back{
+#go-back {
   width: 40px;
   cursor: pointer;
 }
+
 nav#main-menu {
   border-bottom: 2px solid $templateColor;
   position: fixed;
