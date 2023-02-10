@@ -29,13 +29,13 @@ export function createNewPost(data) {
     post.innerHTML += `
         <div class="post-id d-none"> ${data["PostID"]} </div>
         <div class="d-flex justify-content-between">
-            <div class="post-content col-12">
+            <div class="post-content col-12 position-relative">
                 <label class="change-text-button">
                     <p class="post-text">
                         ${data["Content"]}
                     </p>
                 </label>
-                <p class="post-date col-12">${data["DateAndTime"]}</p>
+                <p class="post-date position-absolute bottom-0">${data["DateAndTime"]}</p>
             </div>
             <div class="post-interactions d-flex justify-content-between flex-column">
                 <img class="rate-post"
