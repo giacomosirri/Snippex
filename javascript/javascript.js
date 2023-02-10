@@ -5,6 +5,8 @@ window.onload = function() {
         goBackButton.addEventListener("click", goBack);
     }
     document.getElementById("post-button").addEventListener("click", createPost);
+    document.getElementById("nav-logo").addEventListener("click", ()=>window.location.href = "../php/profile.php");
+
 }
 
 function createPost() {

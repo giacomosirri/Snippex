@@ -17,6 +17,7 @@ header {
   height: 50px;
   font-family: "Itim", cursive;
   color: $templateColor;
+
 }
 
 main {
@@ -31,7 +32,9 @@ main {
     margin-top: 50px;
   }
 }
-
+#nav-logo{
+  cursor: pointer;
+}
 nav#main-menu {
   border-bottom: 2px solid $templateColor;
   position: fixed;
