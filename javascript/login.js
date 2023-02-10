@@ -1,6 +1,9 @@
 window.onload = ()=> {
-        document.getElementById("nav-home-tab").addEventListener("click", () => activeLogin(this));
-        document.getElementById("nav-profile-tab").addEventListener("click", () => activeLogin(this));
+        let logintab =  document.getElementById("login-tab");
+        let navprofiletab = document.getElementById("nav-profile-tab");
+        logintab.addEventListener("click", () => activeLogin(logintab));
+        navprofiletab.addEventListener("click", () => activeLogin(navprofiletab));
+        activeLogin(logintab);
         const form =document.getElementById("formLogin");
         form.addEventListener("submit", (e) => {
             e.preventDefault();
