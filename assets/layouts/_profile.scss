@@ -1,8 +1,12 @@
 @use "../abstract/colors" as *;
 @use "../abstract/mediaquery-breakpoints" as *;
 
-@media screen and (min-width: $desktop) {
-  nav#options-menu {
+nav#options-menu {
+  @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+    background-color: white;
+    text-align: center;
+  }
+  @media screen and (min-width: $desktop) {
     float: left;
     background-color: $backgroundColor;
     width: 20%;
