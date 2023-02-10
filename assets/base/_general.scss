@@ -10,6 +10,11 @@ body {
 }
 
 header {
+  #go-back {
+    width: 40px;
+    cursor: pointer;
+  }
+  z-index: 1;
   position: fixed;
   top: 0;
   background-color: white;
@@ -32,20 +37,6 @@ main {
   }
 }
 
-.post-content {
-  z-index: 0;
-}
-.explore {
-  z-index: 1;
-}
-#nav-logo {
-  cursor: pointer;
-}
-#go-back {
-  width: 40px;
-  cursor: pointer;
-}
-
 nav#main-menu {
   border-bottom: 2px solid $templateColor;
   position: fixed;
@@ -64,6 +55,7 @@ nav#main-menu {
     top: 0;
     height: 70px;
     #nav-logo {
+      cursor: pointer;
       display: inline-block;
       font-family: "Itim", cursive;
       font-size: 36px;
