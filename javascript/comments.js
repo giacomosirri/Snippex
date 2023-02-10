@@ -23,19 +23,18 @@ document.getElementById("comment-edit").addEventListener("click", () => editComm
 let deleteModal = document.getElementById("deleteModal");
 deleteModal.addEventListener("show.bs.modal", (event) => {
     let comment = event.relatedTarget.closest("article");
-    let id = comment.getElementsByClassName("comment-id")[0].innerText;
-    document.getElementById("comment-delete-id").value = id;
+    document.getElementById("comment-delete-id").value = comment.getElementsByClassName("comment-id")[0].innerText;
 });
 document.getElementById("comment-delete").addEventListener("click", () => deleteComment());
 
 function createNewComment(data) {
     const comment = document.createElement("article");
-    comment.class = "comment col-12 col-md-8 mx-auto";
+    comment.className = "comment";
     comment.innerHTML = `
         <h3 class="post-title col-10">~ ${data["User"]}</h3>
         <div class="comment-id d-none"> ${data["CommentID"]} </div>
         <div class="d-flex justify-content-between">
-            <div class="post-content col-12">
+            <div class="post-content col-12 position-relative">
                 <label class="change-text-button">
                     <p class="comment-text">
                         ${data["Content"]}
@@ -51,6 +50,7 @@ function createNewComment(data) {
     comment.getElementsByClassName("change-text-button")[0]
         .addEventListener("click", () => changeText(comment));
     if (data["User"] === session_user) {
+        comment.className = "editable-comment";
         comment.getElementsByClassName("modify")[0].style.display = "block";
         comment.getElementsByClassName("delete")[0].style.display = "block";
     }
@@ -59,14 +59,14 @@ function createNewComment(data) {
 
 function createHeaderPost(data) {
     const post = document.createElement("article");
-    post.class = "post col-12 col-md-8 mx-auto";
+    post.className = "post-comment";
     post.id = "post";
     post.innerHTML = `<h3 class="post-title col-10">${data["Title"]} ~ ${data["Writer"]}</h3>
                         <div class="user-username d-none"> ${data["Writer"]} </div>`;
     post.innerHTML += `
         <div class="post-id d-none"> ${data["PostID"]} </div>
         <div class="d-flex justify-content-between">
-            <div class="post-content col-12">
+            <div class="post-content col-12 position-relative">
                 <label class="change-text-button">
                     <p class="post-text">
                         ${data["Content"]}

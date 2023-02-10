@@ -1,16 +1,14 @@
-<div class="container-fluid">
-    <header class="row">
-        <div class="arrow d-flex justify-content-center flex-column">
-            <img id="go-back" src="../icons/back_arrow.png" alt="go back"/>
-        </div>
-        <div class="col-6 col-md-5 d-flex justify-content-center flex-column">
-            <h1 style="text-align: left;">Comments</h1>
-        </div>
-    </header>
-</div>
-<main>
+<header class="comment row">
+    <div class="arrow d-flex justify-content-center flex-column">
+        <img id="go-back" src="../icons/back_arrow.png" alt="go back"/>
+    </div>
+    <div class="col-6 d-flex justify-content-center flex-column">
+        <h1 style="text-align: left;">Comments</h1>
+    </div>
+</header>
+<main class="comment">
     <div class="content comments">
-        <div class="justify-content-center" id="comments">
+        <div class="justify-content-start" id="comments">
         </div>
     </div>
     <form id="comment-input" class="col-11 col-sm-10 col-md-9" action="../php/insertions-api.php" method="post">

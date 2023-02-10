@@ -1,18 +1,44 @@
-.modify, .delete{
-  width: 40px;
-  margin-left: 6px;
+@use "../abstract/colors" as *;
+@use "../abstract/mediaquery-breakpoints" as *;
+
+header.comment {
+  padding-top: 2px;
+  h1 {
+    text-align: left;
+  }
+  position: fixed;
+  @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+    top: 0;
+  }
+  @media screen and (min-width: $desktop) {
+    top: 70px;
+    width: 60%;
+    margin-left: 20%;
+  }
+  height: 50px;
+  * {
+    height: 30px;
+  }
 }
 
-.arrow{
-  width: 65px;
-  cursor: pointer;
-}
-.modify, .delete{
-  width: 40px;
-  margin-left: 6px;
+main.comment {
+  margin-top: 40px;
+  article.comment, article.editable-comment {
+    width: 90%;
+  }
+  article.post-comment, article.comment {
+    padding: 8px 20px 12px 14px;
+  }
 }
 
-.arrow{
+.modify, .delete {
+  border-radius: 0 !important;
+  width: 32px;
+  margin-left: 9px;
+}
+
+.arrow {
+  padding-top: 1.2%;
   width: 65px;
   cursor: pointer;
 }
