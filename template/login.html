@@ -12,86 +12,89 @@
         <!-- Latest compiled Axios -->
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <!--CSS-->
-        <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/login.css">
         <script type="text/javascript" src="../javascript/login.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
     <body>
-        <div class="first-half">
-            <div class="login-square">
-                <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="login-tab" data-bs-toggle="tab"
-                                data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Login</button>
-                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
-                                data-bs-target="#registration" type="button" role="tab" aria-controls="registration" aria-selected="false">Register</button>
-                    </div>
-                </nav>
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                        <form id="formLogin">
-                            <div class="form-row">
-                                <div class="col w-50 mx-auto mt-3">
-                                    <label>
-                                        <input type="text" id="usernameLogin" name="username" class="form-control" placeholder="Username" required>
-                                    </label>
-                                </div>
-                                <div class="col w-50 mx-auto mt-3">
-                                    <label>
-                                        <input type="password" id="passwordLogin" name="password" class="form-control" placeholder="Password" required>
-                                    </label>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto mt-3">
-                                    <input class="btn btn-primary" type="submit" value="Login">
-                                </div>
+        <div class="contain">
+            <div class="first-half">
+                <div class="login-square">
+                    <div class="login-content">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="login-tab" data-bs-toggle="tab"
+                                        data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Login</button>
+                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                        data-bs-target="#registration" type="button" role="tab" aria-controls="registration" aria-selected="false">Register</button>
                             </div>
-                        </form>
-                    </div>
-                    <div class="tab-pane fade" id="registration" role="tabpanel" aria-labelledby="registration-tab">
-                        <form action="../php/register-api.php" method="POST">
-                            <div class="form-row">
-                                <div class="col w-50 mx-auto mt-3">
-                                    <label>
-                                        <input type="text" name="name" class="form-control" placeholder="Name" required>
-                                    </label>
-                                </div>
-                                <div class="col w-50 mx-auto mt-3">
-                                    <label>
-                                        <input type="text" name="surname" class="form-control" placeholder="Surname" required>
-                                    </label>
-                                </div>
-                                <div class="col w-50 mx-auto mt-3">
-                                    <label>
-                                        <input type="text" name="username" class="form-control" placeholder="Username" required>
-                                    </label>
-                                </div>
-                                <div class="col w-50 mx-auto mt-3">
-                                    <label>
-                                        <input type="date" name="dateBirth" class="form-control" placeholder="Date of birth" required>
-                                    </label>
-                                </div>
-                                <div class="col w-50 mx-auto mt-3">
-                                    <label>
-                                        <input type="password" name="password" class="form-control" placeholder="Password" required>
-                                    </label>
-                                </div>
-                                <div class="col w-50 mx-auto mt-3">
-                                    <label>
-                                        <input type="password" name="passwordConfirm" class="form-control" placeholder="Password confirmation" required>
-                                    </label>
-                                </div>
-                                <div class="d-grid gap-2 col-6 mx-auto mt-3">
-                                    <input class="btn btn-primary" type="submit" value="Register">
-                                </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                                <form id="formLogin">
+                                    <div class="form-row">
+                                        <div class="col w-50 mx-auto mt-3">
+                                            <label>
+                                                <input type="text" id="usernameLogin" name="username" class="form-control" placeholder="Username" required>
+                                            </label>
+                                        </div>
+                                        <div class="col w-50 mx-auto mt-3">
+                                            <label>
+                                                <input type="password" id="passwordLogin" name="password" class="form-control" placeholder="Password" required>
+                                            </label>
+                                        </div>
+                                        <div class="d-grid gap-2 col-6 mx-auto mt-3">
+                                            <input class="btn btn-primary" type="submit" value="Login">
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                            <div class="tab-pane fade" id="registration" role="tabpanel" aria-labelledby="registration-tab">
+                                <form action="../php/register-api.php" method="POST">
+                                    <div class="form-row">
+                                        <div class="col w-50 mx-auto mt-3">
+                                            <label>
+                                                <input type="text" name="name" class="form-control" placeholder="Name" required>
+                                            </label>
+                                        </div>
+                                        <div class="col w-50 mx-auto mt-3">
+                                            <label>
+                                                <input type="text" name="surname" class="form-control" placeholder="Surname" required>
+                                            </label>
+                                        </div>
+                                        <div class="col w-50 mx-auto mt-3">
+                                            <label>
+                                                <input type="text" name="username" class="form-control" placeholder="Username" required>
+                                            </label>
+                                        </div>
+                                        <div class="col w-50 mx-auto mt-3">
+                                            <label>
+                                                <input type="date" name="dateBirth" class="form-control" placeholder="Date of birth" required>
+                                            </label>
+                                        </div>
+                                        <div class="col w-50 mx-auto mt-3">
+                                            <label>
+                                                <input type="password" name="password" class="form-control" placeholder="Password" required>
+                                            </label>
+                                        </div>
+                                        <div class="col w-50 mx-auto mt-3">
+                                            <label>
+                                                <input type="password" name="passwordConfirm" class="form-control" placeholder="Password confirmation" required>
+                                            </label>
+                                        </div>
+                                        <div class="d-grid gap-2 col-6 mx-auto mt-3">
+                                            <input class="btn btn-primary" type="submit" value="Register">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="second-half">
-            <img src="../sources/world.png" alt="world">
+            <div class="second-half">
+                <img src="../sources/world.png" alt="world">
+            </div>
         </div>
     </body>
 
