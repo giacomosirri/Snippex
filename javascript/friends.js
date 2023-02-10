@@ -19,7 +19,7 @@ function addFriend(data) {
         <div class="row">
             <div class="col-2">
                 <a href="../php/userprofile.php?Username=${data["Username"]}">
-                    <img src="" alt="profile pic" style="min-height: 120px; min-width: 120px"/>
+                    <img class="selected-users-profile-pics" src="" alt="profile pic" style="min-height: 120px; min-width: 120px"/>
                 </a>
             </div>
             <div class="col-5">
