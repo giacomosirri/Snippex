@@ -113,6 +113,7 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
     const div = document.getElementById("friendship-status");
     div.className = "d-flex justify-content-center";
     const p = document.createElement("p");
+    p.id = "status";
     if (status === "RECEIVED") {
         p.innerText = user + " has asked for your friendship!";
         div.appendChild(p);

@@ -46,6 +46,12 @@ header.profile {
     margin-left: 20%;
     width: 60%;
   }
+  img#go-back {
+    margin-left: 10px;
+    @media screen and (min-width: $desktop) {
+      margin-top: 5px;
+    }
+  }
 }
 
 main.profile {
@@ -58,6 +64,15 @@ main.profile {
   }
   p#friends {
     margin-bottom: 2px;
+  }
+  div#friendship-status {
+    margin-top: 8px;
+    margin-bottom: 4px;
+    max-height: 40px;
+  }
+  p#status {
+    margin-top: 8px;
+    margin-right: 15px;
   }
   section#post, section#friends-list {
     img.go-arrow {
