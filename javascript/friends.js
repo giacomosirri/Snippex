@@ -22,7 +22,7 @@ function addFriend(data) {
                     <img class="selected-users-profile-pics" src="" alt="profile pic"/>
                 </a>
             </div>
-            <div class="col-7">
+            <div class="col-6 col-md-7">
                 <p><strong>${data["Name"]} ${data["Surname"]}</strong></p>
                 <p>~${data["Username"]}</p>
                 <p>You have been friends for ${friendsFor} days</p>

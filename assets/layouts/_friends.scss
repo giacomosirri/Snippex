@@ -1,9 +1,14 @@
 @use "../abstract/colors" as *;
 @use "../abstract/mediaquery-breakpoints" as *;
-
+header.friend{
+  :first-child{
+    margin-right: 20px;
+  }
+}
 main.friend {
   margin-top: 40px;
   #friends {
+    margin-bottom: 40px;
     .row {
       align-items: center;
     }
