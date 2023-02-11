@@ -40,8 +40,7 @@ main.notification {
   margin-top: 70px;
   padding-top: 0;
   div.notification {
-    padding-bottom: 9px;
-    padding-top: 9px;
+    padding: 9px 0 9px 12px;
     border-bottom: #cccccc solid 1px;
     p.notification-date {
       color: gray;
