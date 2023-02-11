@@ -19,7 +19,7 @@ use snippex;
 -- Tables Section
 -- _____________ 
 
-create table COMMENTS (
+create table comments (
      CommentID int not null auto_increment,
      Content longtext not null,
      DateAndTime datetime not null,
@@ -27,13 +27,13 @@ create table COMMENTS (
      Post int not null,
      constraint IDCOMMENT_ID primary key (CommentID));
 
-create table FAVORITES (
+create table favorites (
      User char(40) not null,
      Post int not null,
      DateAndTime datetime not null,
      constraint IDFAVORITE primary key (User, Post));
 
-create table FRIENDSHIPS (
+create table friendships (
      FriendshipID int not null auto_increment,
      Requesting_user char(40) not null,
      Requested_user char(40) not null,
@@ -42,7 +42,7 @@ create table FRIENDSHIPS (
      FriendsUntil date,
      constraint IDfriendship primary key (FriendshipID));
 
-create table NOTIFICATIONS (
+create table notifications (
      NotificationID int not null auto_increment,
      Comment int,
      Rating int,
@@ -52,13 +52,13 @@ create table NOTIFICATIONS (
      constraint FKabout_ID unique (Comment),
      constraint FKabout_1_ID unique (Rating));
 
-create table POINTS (
+create table points (
      User char(40) not null,
      Category char(50) not null,
      Points int not null,
      constraint IDpoints primary key (User, Category));
 
-create table POSTS (
+create table posts (
      PostID int not null auto_increment,
      Title char(150) not null,
      Content longtext not null,
@@ -67,7 +67,7 @@ create table POSTS (
      Writer char(40) not null,
      constraint IDPOST primary key (PostID));
 
-create table RATINGS (
+create table ratings (
      RatingID int not null auto_increment,
      DateAndTime datetime not null,
      Category char(50) not null,
@@ -76,12 +76,12 @@ create table RATINGS (
      constraint IDRATING_ID primary key (RatingID),
      constraint IDRATING_1 unique (Rater, Post));
 
-create table RATING_CATEGORIES (
+create table rating_categories (
      Name char(50) not null,
      Description longtext not null,
      constraint IDRATING_TYPE primary key (Name));
 
-create table `USERS` (
+create table users (
      Username char(40) not null,
      Password char(100) not null,
      Name char(80) not null,
@@ -97,77 +97,75 @@ create table `USERS` (
 -- Constraints Section
 -- ___________________ 
 
-alter table COMMENTS add constraint FKwrites
+alter table comments add constraint FKwrites
      foreign key (User)
-     references USERS (Username);
+     references users (Username);
 
-alter table COMMENTS add constraint FKunder
+alter table comments add constraint FKunder
      foreign key (Post)
-     references POSTS (PostID);
+     references posts (PostID);
 
 -- Not implemented
--- alter table COMMENTS add constraint IDCOMMENT_CHK
+-- alter table comments add constraint IDCOMMENT_CHK
 --     check(exists(select * from NOTIFICATIONS
 --                  where NOTIFICATIONS.Comment = CommentID)); 
 
-alter table FAVORITES add constraint FKR
-     foreign key (User)
-     references USERS (Username);
-
-alter table FAVORITES add constraint FKR_1
+alter table favorites add constraint FKR_1
      foreign key (Post)
-     references POSTS (PostID);
+     references posts (PostID);
 
-alter table FRIENDSHIPS add constraint FKfri_USE
+alter table friendships add constraint FKfri_USE
      foreign key (Requested_user)
-     references USERS (Username);
+     references users (Username);
 
-alter table FRIENDSHIPS add constraint FKFRIEND
+alter table friendships add constraint FKFRIEND
      foreign key (Requesting_user)
-     references USERS (Username);
+     references users (Username);
 
-alter table NOTIFICATIONS add constraint FKreceives
+alter table notifications add constraint FKreceives
      foreign key (Notified_user)
-     references USERS (Username);
+     references users (Username);
 
-alter table NOTIFICATIONS add constraint FKabout_FK
+alter table notifications add constraint FKabout_FK
      foreign key (Comment)
-     references COMMENTS (CommentID);
+     references comments (CommentID);
 
-alter table NOTIFICATIONS add constraint FKabout_1_FK
+alter table notifications add constraint FKabout_1_FK
      foreign key (Rating)
-     references RATINGS (RatingID);
+     references ratings (RatingID);
 
-alter table POINTS add constraint FKpoi_RAT
+alter table points add constraint FKpoi_RAT
      foreign key (Category)
-     references RATING_CATEGORIES (Name);
+     references rating_categories (Name);
 
-alter table POINTS add constraint FKpoi_USE
+alter table points add constraint FKpoi_USE
      foreign key (User)
-     references USERS (Username);
+     references users (Username);
 
-alter table POSTS add constraint FKposts
+alter table posts add constraint FKposts
      foreign key (Writer)
-     references USERS (Username);
+     references users (Username);
 
 -- Not implemented
--- alter table RATINGS add constraint IDRATING_CHK
+-- alter table ratings add constraint IDRATING_CHK
 --     check(exists(select * from NOTIFICATIONS
 --                  where NOTIFICATIONS.Rating = RatingID)); 
 
-alter table RATINGS add constraint FKof
+alter table ratings add constraint FKof
      foreign key (Category)
-     references RATING_CATEGORIES (Name);
+     references rating_categories (Name);
 
-alter table RATINGS add constraint FKposts_1
+alter table ratings add constraint FKposts_1
      foreign key (Rater)
-     references USERS (Username);
+     references users (Username);
 
-alter table RATINGS add constraint FKrelated
+alter table ratings add constraint FKrelated
      foreign key (Post)
-     references POSTS (PostID);
+     references posts (PostID);
 
-
+alter table favorites add constraint FKR
+     foreign key (User)
+     references posts (Writer);
 -- Index Section
 -- _____________ 
 

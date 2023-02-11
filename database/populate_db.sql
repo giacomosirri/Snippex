@@ -42,10 +42,10 @@ INSERT INTO `comments` (`CommentID`, `Content`, `DateAndTime`, `User`, `Post`) V
 (16, 'ok', '2023-01-20 09:25:25', 'm!shel', 5);
 
 INSERT INTO `favorites` (`User`, `Post`, `DateAndTime`) VALUES
-('sergio', 1, '2023-01-18 14:04:58'),
+('lorytosi', 1, '2023-01-18 14:04:58'),
 ('jaaack', 5, '2023-01-19 15:16:10'),
-('zava', 5, '2023-01-19 16:12:52'),
-('paso', 5, '2023-01-19 16:32:32');
+('sined', 5, '2023-01-19 16:12:52'),
+('topg', 5, '2023-01-19 16:32:32');
 
 INSERT INTO `rating_categories` (`Name`, `Description`) VALUES
 ('thoughtfulness', 'Something that makes you think and see things under a different light'),
