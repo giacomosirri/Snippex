@@ -2,23 +2,29 @@
 @use "../abstract/mediaquery-breakpoints" as *;
 
 header.comment {
+  z-index: 1;
   position: fixed;
-  height: 50px;
-  * {
-    height: 30px;
-  }
-  h1 {
-    text-align: left;
-  }
   @media screen and (min-width: $smartphones) and (max-width: $desktop) {
     top: 0;
-    padding: 10px 12px;
+    padding-left: 12px;
+    height: 40px;
+    div.flex-column {
+      max-height: 40px;
+    }
   }
   @media screen and (min-width: $desktop) {
     top: 70px;
     padding: 2px 8px;
     width: 60%;
     margin-left: 20%;
+    height: 50px;
+    div.flex-column {
+      max-height: 50px;
+    }
+  }
+  h1 {
+    padding-top: 6px;
+    text-align: left;
   }
 }
 
@@ -39,7 +45,6 @@ main.comment {
 }
 
 .arrow {
-  padding-top: 1.2%;
   width: 65px;
   cursor: pointer;
 }
