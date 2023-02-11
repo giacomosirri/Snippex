@@ -10,7 +10,9 @@ article {
     font-size: 22px;
   }
   .post-text {
+    cursor: pointer;
     font-size: 18px;
+    line-clamp: 3;
   }
   .star-post{
     cursor: pointer;

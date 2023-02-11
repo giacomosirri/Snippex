@@ -21,10 +21,10 @@ function createPost() {
 
 function changeText(label) {
     let paragraph = label.querySelector('p');
-    if (paragraph.style.webkitLineClamp === "4") {
+    if (paragraph.style.webkitLineClamp === "3") {
         paragraph.style.webkitLineClamp = "unset";
     } else {
-        paragraph.style.webkitLineClamp = "4";
+        paragraph.style.webkitLineClamp = "3";
     }
 }
 
