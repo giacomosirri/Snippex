@@ -78,3 +78,10 @@ nav#main-menu {
     }
   }
 }
+
+button.accept, button.reject {
+  margin-top: 4px;
+  width: 50%;
+  display: inline-block;
+  margin-right: 0;
+}

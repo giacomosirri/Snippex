@@ -150,18 +150,16 @@ async function friendshipTermination(id, passive_user) {
 
 function createAcceptFriendshipButton(id, accepted_user) {
     const accept = document.createElement("button");
-    accept.className = "btn btn-outline-primary col-2 col-lg-1";
-    accept.innerText = `Accept request`;
-    accept.style.marginRight = "15px";
+    accept.className = "btn btn-outline-primary accept";
+    accept.innerText = "Accept";
     accept.addEventListener("click", () => friendshipAcceptance(id, accepted_user));
     return accept;
 }
 
 function createRejectFriendshipButton(id, rejected_user) {
     const reject = document.createElement("button");
-    reject.className = "btn btn-outline-danger col-2 col-lg-1";
-    reject.innerText = `Reject request`;
-    reject.style.marginRight = "15px";
+    reject.className = "btn btn-outline-danger reject";
+    reject.innerText = "Reject";
     reject.addEventListener("click", () => friendshipRejection(id, rejected_user));
     return reject;
 }

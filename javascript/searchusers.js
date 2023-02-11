@@ -109,25 +109,18 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
     p.classList.add("friendship-status");
     div.innerHTML = "";
     if (status === "RECEIVED") {
-        p.style.marginRight = "10px";
         p.innerText = requested_user + " has asked for your friendship!";
         div.appendChild(p);
         const accept = createAcceptFriendshipButton(friendshipID, requested_user);
-        accept.classList.remove("col-2");
-        accept.classList.remove("col-lg-1");
         accept.style.width = "50%";
-        accept.style.display= "inline-block"
-        accept.innerText = "accept"
-        accept.style.marginRight ="0px";
+        accept.style.display = "inline-block"
+        accept.style.marginRight = "0px";
         accept.addEventListener("click", () => saveAndRefresh());
         div.appendChild(accept);
         const reject = createRejectFriendshipButton(friendshipID, requested_user);
-        reject.classList.remove("col-2");
-        reject.classList.remove("col-lg-1");
         reject.style.width = "50%";
-        reject.style.display= "inline-block"
-        reject.innerText = "reject"
-        reject.style.marginRight ="0px";
+        reject.style.display = "inline-block"
+        reject.style.marginRight = "0px";
         reject.addEventListener("click", () => saveAndRefresh());
         div.appendChild(reject);
     } else if (status === "SENT") {
