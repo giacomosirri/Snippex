@@ -1,7 +1,7 @@
 @use "../abstract/colors" as *;
 @use "../abstract/mediaquery-breakpoints" as *;
 
-header.comment {
+header.comment, header.notification {
   z-index: 1;
   position: fixed;
   @media screen and (min-width: $smartphones) and (max-width: $desktop) {

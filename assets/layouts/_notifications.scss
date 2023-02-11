@@ -1,0 +1,60 @@
+@use "../abstract/colors" as *;
+@use "../abstract/mediaquery-breakpoints" as *;
+
+header.notification {
+  height: 50px;
+  div {
+    @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+      margin-top: 8px;
+    }
+    @media screen and (min-width: $desktop) {
+      margin-top: 4px;
+    }
+  }
+  h1 {
+    width: 80%;
+    @media screen and (min-width: $desktop) {
+      font-size: 20px;
+    }
+    @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+      font-size: 16px
+    }
+  }
+  button#delete-all {
+    @media screen and (min-width: $desktop) {
+      font-size: 16px;
+    }
+    @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+      font-size: 14px
+    }
+    max-height: 40px;
+  }
+}
+
+main.notification {
+  margin-top: 40px;
+  div.notification {
+    padding-bottom: 9px;
+    padding-top: 9px;
+    border-bottom: #cccccc solid 1px;
+    p.notification-date {
+      color: gray;
+      margin: 5px 0 0 14px;
+      font-size: 12px;
+    }
+    img.delete-notification {
+      max-width: 28px;
+      max-height: 28px;
+    }
+    button.delete-one {
+      max-height: 44px;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    a.comment:hover, a.rating:hover {
+      color: $templateColor;
+    }
+  }
+}
