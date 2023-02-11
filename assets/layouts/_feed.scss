@@ -3,6 +3,7 @@
 
 header.feed {
   @media screen and (min-width: $smartphones) {
+    z-index: 1;
     h1 {
       margin-left: 2%;
       display: inline-block;
