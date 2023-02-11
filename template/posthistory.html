@@ -1,27 +1,24 @@
-<header class="row">
-    <div class="col-1 d-flex justify-content-center flex-column">
+<header class="row post-history">
+    <div class="arrow d-flex justify-content-center flex-column">
         <img id="go-back" src="../icons/back_arrow.png" alt="go back"/>
     </div>
-    <div class="col-11 d-flex justify-content-center flex-column">
-        <h1 style="text-align: left;"></h1>
+    <div class="col-10 d-flex justify-content-center flex-column">
+        <h1></h1>
     </div>
 </header>
-<main class="container">
-    <div class="row" style="margin: 15px 0">
-        <nav class="explore">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">~</span>
-                </div>
-                <input id="keyword-search" type="text" class="form-control" placeholder="Search keywords in posts title" aria-label="Keyword" aria-describedby="basic-addon1">
+<main class="post-history">
+    <nav class="row explore">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">~</span>
             </div>
-        </nav>
-    </div>
+            <input id="keyword-search" type="text" class="form-control" placeholder="Search keywords in posts title" aria-label="Keyword" aria-describedby="basic-addon1">
+        </div>
+    </nav>
     <div class="row">
         <section id="posts"></section>
     </div>
 </main>
-
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="d-none" id="post-edit-id"></div>
     <div class="modal-dialog">
@@ -49,7 +46,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="d-none" id="post-delete-id"></div>
     <div class="modal-dialog">
