@@ -16,13 +16,13 @@ function addFriend(data) {
     const friendsFor = timeOfFriendship(data["FriendsSince"]);
     const friend = document.createElement("div");
     friend.innerHTML = `
-        <div class="row">
-            <div class="col-2">
+        <div class="row friend">
+            <div class="col-${col} d-flex justify-content-center">
                 <a href="../php/userprofile.php?Username=${data["Username"]}">
-                    <img class="selected-users-profile-pics" src="" alt="profile pic" style="min-height: 120px; min-width: 120px"/>
+                    <img class="selected-users-profile-pics" src="" alt="profile pic"/>
                 </a>
             </div>
-            <div class="col-5">
+            <div class="col-7">
                 <p><strong>${data["Name"]} ${data["Surname"]}</strong></p>
                 <p>~${data["Username"]}</p>
                 <p>You have been friends for ${friendsFor} days</p>
@@ -41,10 +41,30 @@ function addFriend(data) {
     return friend;
 }
 
+function calculateImageMaxWidth() {
+    // actual width is the full screen width minus the padding and the margins of the images
+    const main_margins = (window.innerWidth > desktopSize) ? 0.60 : 1;
+    const actualWidth = window.innerWidth * (main_margins-padding) * (col/12) - 20;
+    return Math.floor(actualWidth);
+}
+
+function adaptFriendsSizeToDisplay() {
+    const all_friends = document.getElementsByClassName("friend");
+    for (let i=0; i<all_friends.length; i++) {
+        const img = all_friends[i].querySelector("img");
+        img.style.maxWidth = calculateImageMaxWidth() + "px";
+    }
+}
+
 const url_string = window.location.href;
 const url = new URL(url_string);
 const user = url.searchParams.get("Username");
 const section = document.getElementById("friends");
+const padding = 0.03;
+const desktopSize = 1025;
+const col = 3;
+
+window.addEventListener("resize", () => adaptFriendsSizeToDisplay());
 
 axios.get('../php/friends-api.php', {params: {Username: user}}).then(response => {
     const friends = response.data["current"];
@@ -53,4 +73,5 @@ axios.get('../php/friends-api.php', {params: {Username: user}}).then(response =>
     }
     const h1 = document.querySelector("header h1");
     h1.innerHTML = "All " + user + "'s friends (" + friends.length + ")";
+    adaptFriendsSizeToDisplay();
 });

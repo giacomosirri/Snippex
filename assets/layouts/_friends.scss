@@ -1,5 +1,15 @@
-#friends{
-  .row{
-    align-items: center;
+@use "../abstract/colors" as *;
+@use "../abstract/mediaquery-breakpoints" as *;
+
+main.friend {
+  margin-top: 40px;
+  #friends {
+    .row {
+      align-items: center;
+    }
+  }
+  img {
+    max-height: 80px;
+    border-radius: 10px;
   }
 }
