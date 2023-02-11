@@ -96,8 +96,23 @@ function createFriendsFrame() {
 function calculateImageMaxWidth() {
     // actual width is the full screen width minus the padding and the margins of the images
     const main_margins = (window.innerWidth > desktopSize) ? 0.60 : 1;
-    const actualWidth = window.innerWidth * (main_margins-padding) - 120;
+    const actualWidth = window.innerWidth * (main_margins-padding) - 132;
     return Math.floor(actualWidth/maxFriends);
+}
+
+function adaptFriendsNamePosition() {
+    const heights = [];
+    const all_friends = document.getElementsByClassName("friend");
+    for (let i=0; i<all_friends.length; i++) {
+        const img = all_friends[i].querySelector("img");
+        const aspectRatio = img.naturalWidth / img.naturalHeight;
+        heights.push(Math.ceil(calculateImageMaxWidth() / aspectRatio));
+    }
+    const maxHeight = Math.max(...heights);
+    const adapters = document.getElementsByClassName("adapt-image-size");
+    for (let i=0; i<adapters.length; i++) {
+        adapters[i].style.height = (maxHeight + 8).toString() + "px";
+    }
 }
 
 function adaptFriendsSizeToDisplay() {
@@ -105,6 +120,7 @@ function adaptFriendsSizeToDisplay() {
     for (let i=0; i<all_friends.length; i++) {
         const img = all_friends[i].querySelector("img");
         img.style.maxWidth = calculateImageMaxWidth() + "px";
+        img.onload = () => adaptFriendsNamePosition();
     }
 }
 
@@ -113,13 +129,16 @@ function createFriend(friend) {
     div.className = "text-center friend";
     const a = document.createElement("a");
     a.href = "../php/userprofile.php?Username=" + friend["Username"];
+    const div_img = document.createElement("div");
+    div_img.className = "adapt-image-size";
     const img = document.createElement("img");
     img.alt = friend["Username"] + " profile pic";
     img.style.maxWidth = calculateImageMaxWidth() + "px";
     getUserProfilePic(friend["Username"]).then(image => img.src = image);
     const p = document.createElement("p");
     p.innerText = friend["Name"] + " " + friend["Surname"];
-    a.appendChild(img);
+    div_img.appendChild(img);
+    a.appendChild(div_img);
     a.appendChild(p);
     div.appendChild(a);
     return div;
@@ -172,7 +191,10 @@ navItems.forEach(item => item.addEventListener("click", () =>
 // if this script is part of the profile page, then this variable contains the name of the user currently logged in,
 // otherwise it contains the name of the user searched by the user currently logged in.
 const user = new URL(window.location.href).searchParams.get("Username") ?? session_user;
-window.addEventListener("resize", () => adaptFriendsSizeToDisplay());
+window.addEventListener("resize", () => {
+    adaptFriendsSizeToDisplay();
+    adaptFriendsNamePosition();
+});
 
 axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(response => {
     const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];
@@ -208,7 +230,7 @@ axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(respons
         for (let i=0; i<Math.min(maxFriends, friends.length); i++) {
             div.appendChild(createFriend(friends[i]));
         }
-        adaptFriendsSizeToDisplay();
         section.appendChild(div);
+        adaptFriendsSizeToDisplay();
     }
 });
