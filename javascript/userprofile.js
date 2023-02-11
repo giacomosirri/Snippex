@@ -37,10 +37,7 @@ function getPointsFromCategory(stats, category) {
     return 0;
 }
 
-function addRatingStats(stats, categories, numOfPosts) {
-    const table = document.createElement("table");
-    table.id = "rating-statistics";
-    table.className = "table table-primary table-bordered table-striped table-hover mb-0";
+function addRatingStats(table, stats, categories, numOfPosts) {
     table.innerHTML = `
         <caption>Statistics - ${numOfPosts} posts</caption>
         <thead>
@@ -60,7 +57,7 @@ function addRatingStats(stats, categories, numOfPosts) {
         body.appendChild(row);
     }
     table.appendChild(body);
-    return table;
+    return;
 }
 
 function createPostFrame() {
@@ -200,11 +197,11 @@ axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(respons
     const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];
     const numberOfFriends = response.data["user-data"][0]["NumberOfFriends"];
     const userData = createBasicInfo(response.data["user-data"][0]);
-    const ratingStats = addRatingStats(response.data["rating-stats"], response.data["categories"], numberOfPosts);
     const friendsNum = (numberOfFriends === 1) ? `${numberOfFriends} friend` : `${numberOfFriends} friends`;
     const signupDate = `Active since ${response.data["user-data"][0]["SignupDate"]}`;
     const header = document.getElementById("user-data");
     const table = document.getElementById("rating-statistics");
+    addRatingStats(table, response.data["rating-stats"], response.data["categories"], numberOfPosts);
     const friends_paragraph = document.getElementById("friends");
     const date_paragraph = document.getElementById("user-since");
     // add friendship status only in pages of users that are not the currently logged-in user.
@@ -213,7 +210,6 @@ axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(respons
             manageFriendshipStatus(data["status"], data["friendshipID"], data["requested_user"]));
     }
     header.appendChild(userData);
-    table.appendChild(ratingStats);
     friends_paragraph.innerHTML = friendsNum;
     date_paragraph.innerHTML = signupDate;
     if (numberOfPosts !== 0) {
