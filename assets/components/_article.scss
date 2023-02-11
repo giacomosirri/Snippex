@@ -8,6 +8,10 @@ article {
   min-height: 180px;
   h3 {
     font-size: 22px;
+    a {
+      text-decoration: none;
+      color: black;
+    }
   }
   .post-text {
     margin-bottom: 50px;
