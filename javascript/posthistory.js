@@ -31,15 +31,12 @@ function updateSearch(text) {
 function displaySinglePost(data, id) {
     const div = document.createElement("div");
     div.className = "post-with-buttons row";
-    const empty = document.createElement("div");
-    empty.className = "col-1";
-    div.appendChild(empty);
     const post_div = document.createElement("div");
-    post_div.className = "col-9";
+    post_div.className = "col-10";
     post_div.appendChild(createNewPost(data));
     div.appendChild(post_div);
     const ops_div = document.createElement("div");
-    ops_div.className = "col-2 d-flex justify-content-center flex-column";
+    ops_div.className = "buttons col-1 d-flex justify-content-center flex-column";
     ops_div.innerHTML = `
                 <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"><img src="../icons/edit_icon.png" alt="edit post" id="edit-post" /></a>
                 <br /><br /><br /><br />

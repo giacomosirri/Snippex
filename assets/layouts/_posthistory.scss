@@ -1,10 +1,33 @@
-#edit-post, #delete-post{
-  width: 30px;
+@use "../abstract/colors" as *;
+@use "../abstract/mediaquery-breakpoints" as *;
+
+header.post-history {
+  h1 {
+    padding-top: 0;
+    @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+      font-size: 22px;
+    }
+  }
 }
 
 main.post-history {
   margin-top: 40px;
   nav.explore {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+  }
+  div.post-with-buttons {
+    div.buttons {
+      @media screen and (min-width: $smartphones) and (max-width: $tablet) {
+        padding-left: 0;
+      }
+      img#edit-post, img#delete-post {
+        @media screen and (min-width: $smartphones) and (max-width: $tablet) {
+          width: 26px;
+        }
+        @media screen and (min-width: $smartphones) {
+          width: 20px;
+        }
+      }
+    }
   }
 }
