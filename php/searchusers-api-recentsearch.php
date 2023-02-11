@@ -11,6 +11,8 @@ if (!isset($_SESSION["RecentSearch"])) {
 }
 if ($username != "") {
     $_SESSION["RecentSearch"][] = $username;
+    $_SESSION["RecentSearch"] = array_unique($_SESSION["RecentSearch"]);
+
 }
 echo json_encode($_SESSION["RecentSearch"]);
 ?>
