@@ -93,6 +93,21 @@ function createFriendsFrame() {
     return frame;
 }
 
+function calculateImageMaxWidth() {
+    // actual width is the full screen width minus the padding and the margins of the images
+    const main_margins = (window.innerWidth > desktopSize) ? 0.60 : 1;
+    const actualWidth = window.innerWidth * (main_margins-padding) - 120;
+    return Math.floor(actualWidth/maxFriends);
+}
+
+function adaptFriendsSizeToDisplay() {
+    const all_friends = document.getElementsByClassName("friend");
+    for (let i=0; i<all_friends.length; i++) {
+        const img = all_friends[i].querySelector("img");
+        img.style.maxWidth = calculateImageMaxWidth() + "px";
+    }
+}
+
 function createFriend(friend) {
     const div = document.createElement("div");
     div.className = "text-center friend";
@@ -100,6 +115,7 @@ function createFriend(friend) {
     a.href = "../php/userprofile.php?Username=" + friend["Username"];
     const img = document.createElement("img");
     img.alt = friend["Username"] + " profile pic";
+    img.style.maxWidth = calculateImageMaxWidth() + "px";
     getUserProfilePic(friend["Username"]).then(image => img.src = image);
     const p = document.createElement("p");
     p.innerText = friend["Name"] + " " + friend["Surname"];
@@ -143,6 +159,11 @@ function reload() {
     location.reload();
 }
 
+// the maximum number of friends displayed in the friends section
+const maxFriends = 5;
+const padding = 0.03;
+const desktopSize = 1025;
+
 // adds a behavior to the elements of the settings menu in the profile page of the current user
 let navItems = Array.from(document.getElementsByClassName("nav-item"));
 navItems.forEach(item => item.addEventListener("click", () =>
@@ -151,6 +172,7 @@ navItems.forEach(item => item.addEventListener("click", () =>
 // if this script is part of the profile page, then this variable contains the name of the user currently logged in,
 // otherwise it contains the name of the user searched by the user currently logged in.
 const user = new URL(window.location.href).searchParams.get("Username") ?? session_user;
+window.addEventListener("resize", () => adaptFriendsSizeToDisplay());
 
 axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(response => {
     const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];
@@ -183,9 +205,10 @@ axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(respons
         const div = document.createElement("div");
         div.className = "col-12 d-flex justify-content-start";
         const friends = response.data["friends"];
-        for (let i=0; i<Math.min(5, friends.length); i++) {
+        for (let i=0; i<Math.min(maxFriends, friends.length); i++) {
             div.appendChild(createFriend(friends[i]));
         }
+        adaptFriendsSizeToDisplay();
         section.appendChild(div);
     }
 });
