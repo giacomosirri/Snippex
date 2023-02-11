@@ -5,7 +5,6 @@ header.comment, header.notification, header.post-history {
   z-index: 1;
   position: fixed;
   @media screen and (min-width: $smartphones) and (max-width: $desktop) {
-    min-width: 1100px;
     top: 0;
     padding-left: 12px;
     height: 40px;

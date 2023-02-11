@@ -38,7 +38,7 @@ function addNotificationMainContent(data, type) {
 
 function addDate(data) {
     const date = document.createElement("p");
-    date.className = "col-4 notification-date";
+    date.className = "col-3 col-sm-4 notification-date";
     date.innerHTML = `${data["DateAndTime"]}`;
     return date;
 }
