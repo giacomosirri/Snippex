@@ -8,7 +8,7 @@ export function createNewPost(data) {
         post.innerHTML = `<div class="d-flex justify-content-start">
                             <img class="star-post" src="../icons/star_icon.png" alt="star post"/>
                             <h3 class="post-title" id="post-header">${data["Title"]}</h3>
-                            <div class="user-username d-none"> ${data["Writer"]} </div>
+                            <div class="user-username d-none">${data["Writer"]}</div>
                           </div>`;
     } else if (page.includes("profile") || page.includes("history")) {
         post.innerHTML = `<h3 class="post-title col-10">${data["Title"]}</h3>
@@ -16,14 +16,14 @@ export function createNewPost(data) {
     } else if (page.includes("feed") || page.includes("favorites")) {
         post.innerHTML = `<div class="d-flex justify-content-start">
                             <img class="star-post" src="../icons/star_icon.png" alt="star post"/>
-                            <h3 class="post-title" id="post-header">${data["Title"]} ~ ${data["Writer"]}</h3>
-                            <div class="user-username d-none"> ${data["Writer"]} </div>
+                            <h3 class="post-title" id="post-header">${data["Title"]} ~ <a href="../php/userprofile.php?Username=${data['Writer']}">${data["Writer"]}</a></h3>
+                            <div class="user-username d-none">${data["Writer"]}</div>
                           </div>`;
     } else if (page.includes("explore")) {
         post.innerHTML = `<div class="d-flex justify-content-start">
                             <img class="star-post" src="../icons/star_icon.png" alt="star post"/>
                             <h3 class="post-title" id="post-header">${data["Title"]} ~ *****</h3>
-                            <div class="user-username d-none"> ${data["Writer"]} </div>
+                            <div class="user-username d-none">${data["Writer"]}</div>
                           </div>`;
     }
     post.innerHTML += `

@@ -113,9 +113,10 @@ function setMenuVisibility() {
 }
 
 function showUsername(post) {
-    const username = post.getElementsByClassName("user-username")[0].innerText;
+    const username = post.getElementsByClassName("user-username")[0].innerHTML;
     const postTitle = post.getElementsByClassName("post-title")[0];
-    postTitle.innerText = postTitle.innerText.split(" ~ ")[0] + " ~ " + username;
+    const title = postTitle.innerText.split(" ~ ")[0];
+    postTitle.innerHTML = `${title} ~ <a href="../php/profile.php?Username=${username}">${username}</a>`;
 }
 
 async function getUserProfilePic(username) {
