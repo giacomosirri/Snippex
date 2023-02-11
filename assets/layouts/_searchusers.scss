@@ -9,7 +9,6 @@
     padding-top:70px;
   }
 }
-
 main.search-users {
   h3 {
     font-size: 24px;
@@ -34,4 +33,5 @@ main.search-users {
 
 .selected-users-profile-pics {
   max-width: 140px;
+  cursor: pointer;
 }
