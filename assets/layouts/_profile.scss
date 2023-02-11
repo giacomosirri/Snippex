@@ -18,7 +18,14 @@ nav#options-menu {
 }
 
 header.profile {
-  height: 220px !important;
+  position: relative !important;
+  @media screen and (min-width: $desktop) {
+    height: 220px !important;
+  }
+  @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+    height: 210px !important;
+  }
+  z-index: 0;
   padding-top: 10px;
   color: black;
   text-align: center;
@@ -45,7 +52,13 @@ main.profile {
   @media screen and (min-width: $smartphones) and (max-width: $desktop) {
     margin-top: 0;
   }
-  padding-top: 1%;
+  padding-top: 0;
+  p#user-since {
+    margin-bottom: 0;
+  }
+  p#friends {
+    margin-bottom: 2px;
+  }
   section#post, section#friends-list {
     img.go-arrow {
       height: auto;

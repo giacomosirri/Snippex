@@ -156,8 +156,8 @@ axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(respons
     const numberOfFriends = response.data["user-data"][0]["NumberOfFriends"];
     const userData = createBasicInfo(response.data["user-data"][0]);
     const ratingStats = addRatingStats(response.data["rating-stats"], response.data["categories"], numberOfPosts);
-    const friendsNum = `${numberOfFriends} friends`;
-    const signupDate = `${response.data["user-data"][0]["SignupDate"]}`;
+    const friendsNum = (numberOfFriends === 1) ? `${numberOfFriends} friend` : `${numberOfFriends} friends`;
+    const signupDate = `Active since ${response.data["user-data"][0]["SignupDate"]}`;
     const header = document.getElementById("user-data");
     const table = document.getElementById("rating-statistics");
     const friends_paragraph = document.getElementById("friends");
