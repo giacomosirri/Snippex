@@ -80,8 +80,10 @@ nav#main-menu {
 }
 
 button.accept, button.reject {
-  margin-top: 4px;
+  margin: 2px 0;
   width: 50%;
   display: inline-block;
-  margin-right: 0;
+  @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+    font-size: 12px;
+  }
 }

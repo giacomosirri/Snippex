@@ -1,5 +1,6 @@
 const col = 4;
 const desktopSize = 1025;
+const tabletSize = 600;
 const padding = 0.03;
 let last_keydown = 0;
 let typing = false;
@@ -22,22 +23,33 @@ window.onload = () => {
     addProposal(document.getElementById("username").value);
     sessionStorage.removeItem("username");
 };
+
 window.onresize = () => {
     adaptFriendsSizeToDisplay();
+    adaptButtonsSizeToDisplay();
 }
 
-function addProposal(user) {
-    if (user != null && user.length > 0) {
-        displayProposal(user);
-    } else {
-        displayRecentSearch();
+function adaptButtonsSizeToDisplay() {
+    if (window.innerWidth < tabletSize) {
+        const rejects = document.getElementsByClassName("reject");
+        const accepts = document.getElementsByClassName("accept");
+        for (let i=0; i<rejects.length; i++) {
+            if (window.innerWidth < 410) {
+                rejects[i].innerText = "NO";
+            } else {
+                rejects[i].innerText = "Deny";
+            }
+        }
+        for (let i=0; i<rejects.length; i++) {
+            accepts[i].innerText = "OK";
+        }
     }
 }
 
 function calculateImageMaxWidth() {
     // actual width is the full screen width minus the padding and the margins of the images
-    const main_margins = (window.innerWidth > desktopSize) ? 0.60 : 1;
-    const actualWidth = window.innerWidth * (main_margins-padding) * (col/12) - 15;
+    const main_width = (window.innerWidth > desktopSize) ? innerWidth * 0.60 : innerWidth;
+    const actualWidth = main_width * 0.9 * (col/12) - 8;
     return Math.floor(actualWidth);
 }
 
@@ -46,6 +58,14 @@ function adaptFriendsSizeToDisplay() {
     for (let i=0; i<all_friends.length; i++) {
         const img = all_friends[i].querySelector("img");
         img.style.maxWidth = calculateImageMaxWidth() + "px";
+    }
+}
+
+function addProposal(user) {
+    if (user != null && user.length > 0) {
+        displayProposal(user);
+    } else {
+        displayRecentSearch();
     }
 }
 
@@ -93,7 +113,6 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
     let row = document.createElement("div");
     let col1 = document.createElement("div");
     let col2 = document.createElement("div");
-    container.classList.add("container");
     row.classList.add("row");
     row.classList.add("friend");
     col1.classList.add("col-4");
@@ -130,6 +149,8 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
         }
     }, 150);
     document.getElementById("proposes").appendChild(container);
+    adaptFriendsSizeToDisplay();
+    adaptButtonsSizeToDisplay();
 }
 
 function manageFriendshipStatus(status, friendshipID, requested_user) {
@@ -143,15 +164,9 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         p.innerText = requested_user + " has asked for your friendship!";
         div.appendChild(p);
         const accept = createAcceptFriendshipButton(friendshipID, requested_user);
-        accept.style.width = "50%";
-        accept.style.display = "inline-block"
-        accept.style.marginRight = "0px";
         accept.addEventListener("click", () => saveAndRefresh());
         div.appendChild(accept);
         const reject = createRejectFriendshipButton(friendshipID, requested_user);
-        reject.style.width = "50%";
-        reject.style.display = "inline-block"
-        reject.style.marginRight = "0px";
         reject.addEventListener("click", () => saveAndRefresh());
         div.appendChild(reject);
     } else if (status === "SENT") {
