@@ -12,7 +12,7 @@ header.post-history, header.friend {
 
 main.post-history {
   margin-top: 40px;
-  section#posts {
+  div#posts {
     @media screen and (min-width: $smartphones) and (max-width: $desktop) {
       margin-bottom: 57px;
     }

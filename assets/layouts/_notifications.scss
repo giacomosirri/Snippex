@@ -37,7 +37,7 @@ header.notification {
 }
 
 main.notification {
-  section#all-notifications {
+  div#all-notifications {
     @media screen and (min-width: $smartphones) and (max-width: $desktop) {
       margin-bottom: 57px;
     }
