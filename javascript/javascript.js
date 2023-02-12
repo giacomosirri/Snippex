@@ -9,12 +9,25 @@ window.onload = function() {
     setUpModal();
 }
 
+function getDaysInFebruary(year) {
+    return ((year%4 === 0 && year%100 !== 0) || year%400 === 0) ? 29 : 28;
+}
+
+function isLastOfMonth(date) {
+    const month_31 = [1,3,5,7,8,10,12];
+    const month_30 = [4,6,9,11];
+    return (month_31.includes(date.getUTCMonth()) && date.getUTCDate() === 31) ||
+           (month_30.includes(date.getUTCMonth()) && date.getUTCDate() === 30) ||
+           getDaysInFebruary(date.getUTCFullYear()) === date.getUTCDate();
+}
+
 function calculateTimeElapsed(date) {
     const ONE_MINUTE = 60 * 1000;
     const ONE_HOUR = 60 * ONE_MINUTE;
     const ONE_DAY = 24 * ONE_HOUR;
     const ONE_MONTH = 30 * ONE_DAY;
     const now = Date.now();
+    const today = new Date();
     date = new Date(date);
     const elapsed = now - date;
     if (elapsed < ONE_MINUTE) {
@@ -28,12 +41,14 @@ function calculateTimeElapsed(date) {
         return "one hour ago";
     } else if (elapsed < ONE_DAY) {
         const hours = Math.floor(elapsed / ONE_HOUR);
-        return hours + " hours ago"
-    } else if (elapsed < 2 * ONE_DAY) {
-        return "yesterday";
+        return hours + " hours ago";
     } else if (elapsed < ONE_MONTH) {
-        const days = Math.floor(elapsed / ONE_DAY);
-        return days + " days ago";
+        if (today.getUTCDate()-date.getUTCDate() === 1 || (today.getUTCDate() === 1 && isLastOfMonth(date))) {
+            return "yesterday";
+        } else {
+            const days = Math.ceil(elapsed / ONE_DAY);
+            return days + " days ago";
+        }
     } else if (elapsed < 2 * ONE_MONTH) {
         return "one month ago";
     } else if (elapsed < 7 * ONE_MONTH) {
@@ -184,7 +199,7 @@ function friendshipTermination(id, passive_user) {
         axios.put('../php/friends-api.php', {ID: id, Type: "termination", External_user: passive_user});
         alertModal.hide();
         window.location.reload();
-    }  );
+    });
     alertModal.show();
 }
 
