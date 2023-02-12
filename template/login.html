@@ -49,14 +49,12 @@
                                 <form id="formLogin">
                                     <div class="form-row">
                                         <div class="col w-50 mx-auto mt-3">
-                                            <label>Username
-                                                <input type="text" id="usernameLogin" name="username" class="form-control" required>
-                                            </label>
+                                            <label class="d-none" for="usernameLogin">Username</label>
+                                            <input id="usernameLogin" type="text" name="username" placeholder="Username" class="form-control" required>
                                         </div>
                                         <div class="col w-50 mx-auto mt-3">
-                                            <label>Password
-                                                <input type="password" id="passwordLogin" name="password" class="form-control" required>
-                                            </label>
+                                            <label class="d-none" for="passwordLogin">Password</label>
+                                            <input id="passwordLogin" type="password" name="password" placeholder="Password" class="form-control" required>
                                         </div>
                                         <div class="d-grid gap-2 col-6 mx-auto mt-3">
                                             <input class="btn btn-primary" type="submit" value="Login">
@@ -68,33 +66,28 @@
                                 <form action="../php/register-api.php" method="POST">
                                     <div class="form-row">
                                         <div class="col w-50 mx-auto mt-3">
-                                            <label>Name
-                                                <input type="text" name="name" class="form-control" required>
-                                            </label>
+                                            <label class="d-none" for="name">Name</label>
+                                            <input id="name" type="text" name="name" placeholder="Name" class="form-control" required>
                                         </div>
                                         <div class="col w-50 mx-auto mt-3">
-                                            <label>Surname
-                                                <input type="text" name="surname" class="form-control" required>
-                                            </label>
+                                            <label class="d-none" for="surname">Surname</label>
+                                            <input id="surname" type="text" name="surname" placeholder="Surname" class="form-control" required>
                                         </div>
                                         <div class="col w-50 mx-auto mt-3">
-                                            <label>Username
-                                                <input type="text" name="username" class="form-control" required>
-                                            </label>
+                                            <label class="d-none" for="username">Username</label>
+                                            <input id="username" type="text" name="username" placeholder="Username" class="form-control" required>
                                         </div>
                                         <div class="col w-50 mx-auto mt-3">
-                                            <label>Date of birth
-                                                <input type="date" name="dateBirth" class="form-control" required>
+                                            <label class="d-none" for="date">Date of birth</label>
+                                            <input id="date" type="date" name="dateBirth" class="form-control" required>
                                         </div>
                                         <div class="col w-50 mx-auto mt-3">
-                                            <label>Password
-                                                <input type="password" name="password" class="form-control" required>
-                                            </label>
+                                            <label class="d-none" for="password">Password</label>
+                                            <input id="password" type="password" name="password" placeholder="Password" class="form-control" required>
                                         </div>
                                         <div class="col w-50 mx-auto mt-3">
-                                            <label>Password confirmation
-                                                <input type="password" name="passwordConfirm" class="form-control" required>
-                                            </label>
+                                            <label class="d-none" for="passwordConfirm">Password confirmation</label>
+                                            <input id="passwordConfirm" type="password" name="passwordConfirm" placeholder="Confirm password" class="form-control" required>
                                         </div>
                                         <div class="d-grid gap-2 col-6 mx-auto mt-3">
                                             <input class="btn btn-primary" type="submit" value="Register">
