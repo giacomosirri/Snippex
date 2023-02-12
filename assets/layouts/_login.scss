@@ -1,1 +1,82 @@
 @use "../abstract/colors" as *;
+@use "../abstract/mediaquery-breakpoints" as *;
+
+.first-half, .second-half {
+  margin: 10px;
+}
+
+div.contain {
+  margin: 2%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  width: 100%;
+  height: 100vh;
+  div.first-half {
+    position:relative;
+    div.login-square {
+      background-color: white;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 500px;
+      padding: 4px;
+      border-radius: 15px;
+      border: solid 1px #000;
+      div.login-content {
+        height: 100%;
+        position: relative;
+      }
+    }
+  }
+}
+
+div.second-half {
+  position:relative;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    max-width: 90%;
+  }
+}
+
+.form-row {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-link {
+  color: #000;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 10px;
+}
+
+//create a media query for mobile devices to make the login square smaller
+@media screen and (min-width: $smartphones) and (max-width: $tablet) {
+  .login-square {
+    width: 90%
+  }
+}
+@media screen and (min-width: $smartphones) and (max-width: $tablet) {
+  .second-half {
+    display: none;
+  }
+  .contain {
+    display: block;
+  }
+  .first-half {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+  }
+}
