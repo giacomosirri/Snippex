@@ -1,6 +1,6 @@
 <?php
 require_once "bootstrap.php";
-global $dbh;
+global $dbh, $error;
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $user = $_SESSION["LoggedUser"];
@@ -21,8 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($data["unstar"])) {
         $post = $data["post"];
         $dbh->removeStar($post);
+    } else {
+        throw new $error;
     }
 } else {
-    throw new Error("Incorrect call.");
+    throw new $error;
 }
 ?>

@@ -1,12 +1,17 @@
 <?php
 require_once "bootstrap.php";
-global $dbh;
+global $dbh, $error;
+$UPLOAD_DIR = '../profile_pics/';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $user = $_GET["Username"];
-    $json_data = $dbh->getProfilePic($user);
-    header("Content-Type: application/json");
-    echo json_encode($json_data);
+    if (isset($_GET["Username"])) {
+        $user = $_GET["Username"];
+        $json_data = $dbh->getProfilePic($user);
+        header("Content-Type: application/json");
+        echo json_encode($json_data);
+    } else {
+        throw new $error;
+    }
 } elseif ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     $user = $_SESSION["LoggedUser"];
     $data = json_decode(file_get_contents("php://input"), true);
@@ -17,10 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $encoded_image = str_replace(' ', '+', $encoded_image);
     $decoded_image = base64_decode($encoded_image);
     $file = $user.'.'.$format;
-    $path_file = '../profile_pics/'.$file;
+    $path_file = $UPLOAD_DIR.$file;
     $source_img = imagecreatefromstring($decoded_image);
     $dbh->updateUserProfilePic($user, $file);
     $imageSave = imagejpeg($source_img, $path_file, 50);
     imagedestroy($source_img);
+} else {
+    throw new $error;
 }
 ?>

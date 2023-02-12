@@ -1,6 +1,6 @@
 <?php
 require_once "bootstrap.php";
-global $dbh;
+global $dbh, $error;
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET["PostID"])) {
@@ -9,6 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $json_data["post"] = $dbh->getPostFromId($postID);
         header("Content-Type: application/json");
         echo json_encode($json_data);
+    } else {
+        throw new $error;
     }
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
@@ -19,7 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $id = $data["id"];
         $text = $data["text"];
         $dbh->editComment($id, $text);
+    } else {
+        throw new $error;
     }
 } else {
-    throw new Error("Something went wrong!");
+    throw new $error;
 }
+?>
+

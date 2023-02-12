@@ -1,6 +1,6 @@
 <?php
 require_once "bootstrap.php";
-global $dbh;
+global $dbh, $error;
 
 function checkFriendship($friend_matrix, $user, $logic): bool {
     foreach ($friend_matrix as $group):
@@ -41,28 +41,36 @@ function isFriendshipTerminationAcceptable($db, $user): bool {
 // All operations that change friendship status are critical, because inconsistencies may come up.
 // Therefore, controls are needed before the submission of new friendship requests, acceptances, rejections and terminations.
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $user = $_GET["Username"];
-    $json_data["current"] = $dbh->getUserCurrentFriendships($user);
-    $json_data["requested"] = $dbh->getUserSentRequestsOfFriendship($user);
-    $json_data["incoming"] = $dbh->getUserIncomingRequestsOfFriendship($user);
-    $json_data["past"] = $dbh->getUserPastFriendships($user);
-    header("Content-Type: application/json");
-    echo json_encode($json_data);
+    if (isset($_GET["Username"])) {
+        $user = $_GET["Username"];
+        $json_data["current"] = $dbh->getUserCurrentFriendships($user);
+        $json_data["requested"] = $dbh->getUserSentRequestsOfFriendship($user);
+        $json_data["incoming"] = $dbh->getUserIncomingRequestsOfFriendship($user);
+        $json_data["past"] = $dbh->getUserPastFriendships($user);
+        header("Content-Type: application/json");
+        echo json_encode($json_data);
+    } else {
+        throw new $error;
+    }
 } elseif ($_SERVER['REQUEST_METHOD'] == 'PUT') {
     $data = json_decode(file_get_contents("php://input"), true);
-    $type = $data["Type"];
-    if ($type == "request" && isFriendshipRequestAcceptable($dbh, $data["Requesting"])) {
-        $dbh->addFriendshipRequest($data["Requesting"], $data["Requested"]);
-    } elseif ($type == "acceptance" && isFriendshipRequestManagementAcceptable($dbh, $data["External_user"])) {
-        $dbh->addFriendshipAcceptance($data["ID"]);
-    } elseif ($type == "rejection" && isFriendshipRequestManagementAcceptable($dbh, $data["External_user"])) {
-        $dbh->deleteFriendshipProposal($data["ID"]);
-    } elseif ($type == "termination" && isFriendshipTerminationAcceptable($dbh, $data["External_user"])) {
-        $dbh->terminateFriendship($data["ID"]);
+    if ($data["Type"] != null) {
+        $type = $data["Type"];
+        if ($type == "request" && isFriendshipRequestAcceptable($dbh, $data["Requesting"])) {
+            $dbh->addFriendshipRequest($data["Requesting"], $data["Requested"]);
+        } elseif ($type == "acceptance" && isFriendshipRequestManagementAcceptable($dbh, $data["External_user"])) {
+            $dbh->addFriendshipAcceptance($data["ID"]);
+        } elseif ($type == "rejection" && isFriendshipRequestManagementAcceptable($dbh, $data["External_user"])) {
+            $dbh->deleteFriendshipProposal($data["ID"]);
+        } elseif ($type == "termination" && isFriendshipTerminationAcceptable($dbh, $data["External_user"])) {
+            $dbh->terminateFriendship($data["ID"]);
+        } else {
+            throw new $error;
+        }
     } else {
-        throw new Error("Incorrect call.");
+        throw new $error;
     }
 } else {
-    throw new Error("Something went wrong!");
+    throw new $error;
 }
 ?>
