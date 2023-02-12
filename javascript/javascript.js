@@ -6,7 +6,7 @@ window.onload = function() {
     }
     document.getElementById("post-button").addEventListener("click", createPost);
     document.getElementById("nav-logo").addEventListener("click", ()=>window.location.href = "../php/profile.php");
-
+    setUpModal();
 }
 
 function calculateTimeElapsed(date) {
@@ -165,14 +165,29 @@ function friendshipAcceptance(id, passive_user) {
 }
 
 function friendshipRejection(id, passive_user) {
-    alert("Are you sure? This action is definitive.");
-    axios.put('../php/friends-api.php', {ID: id, Type: "rejection", External_user: passive_user});
+    let alertModal = new bootstrap.Modal(document.getElementById("alertModal"));
+    document.getElementById("error-message").innerText = "Are you sure? This action is definitive.";
+    document.getElementById("alert-proceed").eventListeners = [];
+    document.getElementById("alert-proceed").addEventListener("click", () => {
+        axios.put('../php/friends-api.php', {ID: id, Type: "rejection", External_user: passive_user});
+        alertModal.hide();
+        window.location.reload();
+    }  );
+    alertModal.show();
 }
 
 function friendshipTermination(id, passive_user) {
-    alert("Are you sure? This action is definitive.");
-    axios.put('../php/friends-api.php', {ID: id, Type: "termination", External_user: passive_user});
+    let alertModal = new bootstrap.Modal(document.getElementById("alertModal"));
+    document.getElementById("error-message").innerText = "Are you sure? This action is definitive.";
+    document.getElementById("alert-proceed").eventListeners = [];
+    document.getElementById("alert-proceed").addEventListener("click", () => {
+        axios.put('../php/friends-api.php', {ID: id, Type: "termination", External_user: passive_user});
+        alertModal.hide();
+        window.location.reload();
+    }  );
+    alertModal.show();
 }
+
 
 function createAcceptFriendshipButton(id, accepted_user) {
     const accept = document.createElement("button");
@@ -251,4 +266,48 @@ function getFriendshipStatus(main_user, queried_user) {
             "requested_user": queried_user
         };
     });
+}
+
+function setUpModal() {
+    let modal = document.createElement("div");
+    modal.innerHTML = `
+        <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="col-form-label" id="error-message"></label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+         </div>`;
+    document.body.appendChild(modal);
+    modal.innerHTML = `
+        <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="col-form-label" id="error-message"></label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> 
+                        <button type="button" class="btn btn-primary" id="alert-proceed" data-bs-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+         </div>`;
 }

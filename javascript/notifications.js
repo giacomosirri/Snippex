@@ -85,7 +85,6 @@ function createNotification(data, type) {
         accept.addEventListener('click', () => reload());
         div.appendChild(accept);
         const reject = createRejectFriendshipButton(data["FriendshipID"], data["Username"]);
-        reject.addEventListener('click', () => reload());
         div.appendChild(reject);
         notification.appendChild(div);
     } else {
