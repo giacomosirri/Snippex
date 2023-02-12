@@ -1,9 +1,9 @@
 @use "../abstract/colors" as *;
 @use "../abstract/mediaquery-breakpoints" as *;
 
-header.post-history {
+header.post-history, header.friend {
   h1 {
-    padding-top: 0;
+    padding-top: 4px;
     @media screen and (min-width: $smartphones) and (max-width: $desktop) {
       font-size: 22px;
     }

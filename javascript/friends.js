@@ -12,6 +12,17 @@ function reload() {
     location.reload();
 }
 
+function adaptButtonsSizeToDisplay() {
+    const buttons = document.querySelector("main button");
+    for (let i=0; i<buttons.length; i++) {
+        if (window.innerWidth < desktopSize) {
+            buttons[i].innerText = "Unfriend";
+        } else {
+            buttons[i].innerText = "End friendship";
+        }
+    }
+}
+
 function addFriend(data) {
     const friendsFor = timeOfFriendship(data["FriendsSince"]);
     const friend = document.createElement("div");
@@ -22,18 +33,21 @@ function addFriend(data) {
                     <img class="selected-users-profile-pics" src="" alt="profile pic"/>
                 </a>
             </div>
-            <div class="col-6 col-md-7">
-                <p><strong>${data["Name"]} ${data["Surname"]}</strong></p>
-                <p>~${data["Username"]}</p>
-                <p>You have been friends for ${friendsFor} days</p>
+            <div class="col-6">
+                <p class="name"><strong>${data["Name"]} ${data["Surname"]}</strong></p>
+                <p class="username">~${data["Username"]}</p>
+                <p class="time">You have been friends for ${friendsFor} days</p>
             </div>
         </div>
     `;
     const img = friend.querySelector("img");
     getUserProfilePic(data["Username"]).then(image => img.src = image);
     const button_div = document.createElement("div");
-    button_div.className = "col-2";
+    button_div.className = "col-3";
     const button = createTerminateFriendshipButton(data["FriendshipID"], data["Username"]);
+    if (window.innerWidth < desktopSize) {
+        button.innerText = "Unfriend";
+    }
     button.addEventListener("click", () => reload());
     button_div.appendChild(button);
     const row = friend.children.item(0);
@@ -64,7 +78,10 @@ const padding = 0.03;
 const desktopSize = 1025;
 const col = 3;
 
-window.addEventListener("resize", () => adaptFriendsSizeToDisplay());
+window.addEventListener("resize", () => {
+    adaptFriendsSizeToDisplay();
+    adaptButtonsSizeToDisplay();
+});
 
 axios.get('../php/friends-api.php', {params: {Username: user}}).then(response => {
     const friends = response.data["current"];

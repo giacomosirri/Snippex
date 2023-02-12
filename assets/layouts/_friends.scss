@@ -1,20 +1,37 @@
 @use "../abstract/colors" as *;
 @use "../abstract/mediaquery-breakpoints" as *;
-header.friend{
-  :first-child{
-    margin-right: 20px;
-  }
-}
+
 main.friend {
   margin-top: 40px;
-  #friends {
-    margin-bottom: 40px;
-    .row {
-      align-items: center;
-    }
+  .friend {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: #cccccc solid 1px;
   }
   img {
     max-height: 80px;
     border-radius: 10px;
+  }
+  p {
+    margin: 0;
+  }
+  p.username, p.time {
+    font-size: 14px;
+    color: gray;
+    @media screen and (min-width: $smartphones) and (max-width: 480px) {
+      font-size: 12px;
+    }
+  }
+  button {
+    margin-top: 6px;
+    @media screen and (min-width: $smartphones) and (max-width: $tablet) {
+      max-width: 66px;
+      font-size: 11px !important;
+    }
+  }
+  button.request, button.terminate {
+    @media screen and (min-width: $smartphones) and (max-width: $tablet) {
+      font-size: 14px;
+    }
   }
 }
