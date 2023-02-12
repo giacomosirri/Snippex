@@ -1,5 +1,3 @@
-import { createNewPost } from "./commons.js";
-
 function displayPosts(favorites) {
     favorites.forEach(post => section.appendChild(createNewPost(post)));
 }

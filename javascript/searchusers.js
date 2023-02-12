@@ -145,7 +145,7 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
         container.appendChild(row);
         if (user !== session_user) {
             getFriendshipStatus(session_user, user).then(data =>
-                row.appendChild(manageFriendshipStatus(data["status"], data["friendshipID"], data["requested_user"])));
+                row.appendChild(manageFriendshipStatus(data["status"], data["friendshipID"], user)));
         } else {
             let col = document.createElement("div");
             col.classList.add("col-2");

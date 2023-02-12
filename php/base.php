@@ -19,7 +19,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../assets/style.css">
         <!-- Common javascript code -->
-        <script type="text/javascript" src="../javascript/javascript.js"></script>
+        <script type="text/javascript" src="../javascript/functions.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
     <body>
@@ -66,14 +66,6 @@
             </div>
         </div>
     </body>
-    <?php
-    if(isset($templateParams["js"])):
-        foreach($templateParams["js"] as $script):?>
-            <script type="module" src="<?php echo $script; ?>"></script>
-        <?php
-        endforeach;
-    endif;
-    ?>
     <script type="text/javascript">
         const session_user = "<?php echo $_SESSION['LoggedUser'] ?>";
 
@@ -82,4 +74,12 @@
         }
         getUserProfilePic(session_user).then(image => addImage(image));
     </script>
+    <?php
+    if(isset($templateParams["js"])):
+        foreach($templateParams["js"] as $script):?>
+            <script type="text/javascript" src="<?php echo $script; ?>"></script>
+        <?php
+        endforeach;
+    endif;
+    ?>
 </html>

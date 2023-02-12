@@ -1,6 +1,4 @@
-
-
-window.onload = ()=> {
+window.onload = () => {
     setUpModal();
     let logintab =  document.getElementById("login-tab");
     let navprofiletab = document.getElementById("nav-profile-tab");
@@ -20,12 +18,13 @@ window.onload = ()=> {
                 errorModal.show();
             });
     });
-    }
+}
+
 function activeLogin(link) {
     const links = document.querySelectorAll("nav .nav-link");
     links.forEach(item => item.classList.remove("active"));
     links.forEach(item => item.style.fontWeight="normal");
     link.classList.add("active");
-    link.style.fontWeight="bold";
+    link.style.fontWeight = "bold";
 }
 

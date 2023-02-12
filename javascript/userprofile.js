@@ -1,5 +1,3 @@
-import {createNewPost} from "./commons.js";
-
 function activeMenu(link) {
     const menu = document.querySelectorAll("header nav ul li a");
     menu.forEach(item => item.classList.remove("active"));
@@ -57,7 +55,6 @@ function addRatingStats(table, stats, categories, numOfPosts) {
         body.appendChild(row);
     }
     table.appendChild(body);
-    return;
 }
 
 function createPostFrame() {
@@ -206,7 +203,7 @@ axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(respons
     // add friendship status only in pages of users that are not the currently logged-in user.
     if (user !== session_user) {
         getFriendshipStatus(session_user, user).then(data =>
-            manageFriendshipStatus(data["status"], data["friendshipID"], data["requested_user"]));
+            manageFriendshipStatus(data["status"], data["friendshipID"], user));
     }
     header.appendChild(userData);
     friends_paragraph.innerHTML = friendsNum;

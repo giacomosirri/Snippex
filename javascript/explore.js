@@ -1,5 +1,3 @@
-import { createNewPost } from "./commons.js";
-
 function updateSearch(text) {
     explore.innerHTML = "";
     if (text != null && text.length > 0) {

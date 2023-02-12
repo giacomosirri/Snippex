@@ -1,5 +1,3 @@
-import {createNewPost} from "./commons.js";
-
 let editModal = document.getElementById("editModal");
 editModal.addEventListener("show.bs.modal", (event) => {
     let post = event.relatedTarget.closest(".post-with-buttons");
@@ -28,7 +26,7 @@ function updateSearch(text) {
     }
 }
 
-function displaySinglePost(data, id) {
+function displaySinglePost(data) {
     const div = document.createElement("div");
     div.className = "post-with-buttons row";
     const post_div = document.createElement("div");
