@@ -69,7 +69,6 @@ nav#main-menu {
       list-style-type: none;
       a {
         img {
-          border-radius: 8px;
           @media screen and (min-width: $smartphones) and (max-width: $desktop) {
             max-width: 38px;
             max-height: 38px;
