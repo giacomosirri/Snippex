@@ -5,8 +5,7 @@ $UPLOAD_DIR = '../profile_pics/';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_GET["Username"])) {
-        $user = $_GET["Username"];
-        $json_data = $dbh->getProfilePic($user);
+        $json_data = $dbh->getProfilePic($_GET["Username"]);
         header("Content-Type: application/json");
         echo json_encode($json_data);
     } else {
