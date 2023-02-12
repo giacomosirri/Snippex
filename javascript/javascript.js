@@ -203,7 +203,6 @@ function friendshipTermination(id, passive_user) {
     alertModal.show();
 }
 
-
 function createAcceptFriendshipButton(id, accepted_user) {
     const accept = document.createElement("button");
     accept.className = "btn btn-outline-primary accept";

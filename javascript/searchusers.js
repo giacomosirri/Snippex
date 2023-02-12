@@ -23,26 +23,16 @@ window.onload = () => {
     addProposal(document.getElementById("username").value);
     sessionStorage.removeItem("username");
 };
-
 window.onresize = () => {
     adaptFriendsSizeToDisplay();
     adaptButtonsSizeToDisplay();
 }
 
-function adaptButtonsSizeToDisplay() {
-    if (window.innerWidth < tabletSize) {
-        const rejects = document.getElementsByClassName("reject");
-        const accepts = document.getElementsByClassName("accept");
-        for (let i=0; i<rejects.length; i++) {
-            if (window.innerWidth < 410) {
-                rejects[i].innerText = "NO";
-            } else {
-                rejects[i].innerText = "Deny";
-            }
-        }
-        for (let i=0; i<rejects.length; i++) {
-            accepts[i].innerText = "OK";
-        }
+function adaptFriendsSizeToDisplay() {
+    const all_friends = document.getElementsByClassName("friend");
+    for (let i=0; i<all_friends.length; i++) {
+        const img = all_friends[i].querySelector("img");
+        img.style.maxWidth = calculateImageMaxWidth() + "px";
     }
 }
 
@@ -53,11 +43,24 @@ function calculateImageMaxWidth() {
     return Math.floor(actualWidth);
 }
 
-function adaptFriendsSizeToDisplay() {
-    const all_friends = document.getElementsByClassName("friend");
-    for (let i=0; i<all_friends.length; i++) {
-        const img = all_friends[i].querySelector("img");
-        img.style.maxWidth = calculateImageMaxWidth() + "px";
+function adaptButtonsSizeToDisplay() {
+    const rejects = document.getElementsByClassName("reject");
+    const accepts = document.getElementsByClassName("accept");
+    for (let i=0; i<rejects.length; i++) {
+        if (window.innerWidth < 410) {
+            rejects[i].innerText = "NO";
+        } else if (window.innerWidth < tabletSize) {
+            rejects[i].innerText = "Deny";
+        } else {
+            rejects[i].innerText = "Reject";
+        }
+    }
+    for (let i=0; i<rejects.length; i++) {
+        if (window.innerWidth < tabletSize) {
+            accepts[i].innerText = "OK";
+        } else {
+            accepts[i].innerText = "Accept";
+        }
     }
 }
 
@@ -127,6 +130,7 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
             window.location.replace("./userprofile.php?Username=" + user);
         })
         col1.appendChild(img);
+        img.onload = () => img.style.maxWidth = calculateImageMaxWidth() + "px";
     });
     col2.innerHTML += `
         <div class="username"><strong>~${user}</strong></div>
@@ -149,8 +153,6 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
         }
     }, 150);
     document.getElementById("proposes").appendChild(container);
-    adaptFriendsSizeToDisplay();
-    adaptButtonsSizeToDisplay();
 }
 
 function manageFriendshipStatus(status, friendshipID, requested_user) {
@@ -164,9 +166,17 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         p.innerText = requested_user + " has asked for your friendship!";
         div.appendChild(p);
         const accept = createAcceptFriendshipButton(friendshipID, requested_user);
+        if (window.innerWidth < tabletSize) {
+            accept.innerText = "OK";
+        }
         accept.addEventListener("click", () => saveAndRefresh());
         div.appendChild(accept);
         const reject = createRejectFriendshipButton(friendshipID, requested_user);
+        if (window.innerWidth < 410) {
+            reject.innerText = "NO";
+        } else if (window.innerWidth < tabletSize) {
+            reject.innerText = "Deny";
+        }
         reject.addEventListener("click", () => saveAndRefresh());
         div.appendChild(reject);
     } else if (status === "SENT") {
@@ -194,7 +204,6 @@ function saveAndRefresh() {
 function appendUsers(users) {
     const usersWithoutDuplicate = new Set(users);
     usersWithoutDuplicate.forEach(x => appendUser(x));
-    adaptFriendsSizeToDisplay();
 }
 
 function addRecentUser(user) {
