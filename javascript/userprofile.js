@@ -76,7 +76,7 @@ function createFriendsFrame() {
     const frame = document.createElement("div");
     frame.className = "d-flex justify-content-between";
     frame.innerHTML = `
-        <h2>Friends</h2>
+        <h3>Friends</h3>
         <div class="forward-arrow">
             <a href="../php/friends.php?Username=${user}" class="d-flex justify-content-start">
                 <p>See all friends</p>

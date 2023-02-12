@@ -99,10 +99,10 @@ function reload() {
 }
 
 axios.get('../php/notifications-api.php').then(response => {
-    const h1 = document.querySelector("header h1");
+    const h3 = document.querySelector("header h3");
     const n = countNotifications(response.data);
     const m = countFriendshipRequests(response.data);
-    h1.innerHTML = `You have ${n} notifications to read and ${m} friendship requests`;
+    h3.innerHTML = `You have ${n} notifications to read and ${m} friendship requests`;
     const notifications = [];
     response.data["comments"].forEach(elem => notifications.push(createNotification(elem, "comment")));
     response.data["ratings"].forEach(elem => notifications.push(createNotification(elem, "rating")));

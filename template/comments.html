@@ -3,7 +3,7 @@
         <img id="go-back" src="../icons/back_arrow.png" alt="go back"/>
     </div>
     <div class="col-6 d-flex justify-content-center flex-column">
-        <h1>Comments</h1>
+        <h2>Comments</h2>
     </div>
 </header>
 <main class="comment">
@@ -13,8 +13,9 @@
     </div>
     <form id="comment-input" class="col-11 col-sm-10 col-md-9" action="../php/insertions-api.php" method="post">
         <input type="hidden" name="post" value="<?php echo $_GET["PostID"]; ?>">
-        <div class="input-group mb-3">
-            <input type="text" name="comment" class="form-control" placeholder="Write a comment" aria-label="Write a comment">
+        <div class="input-group mb-3">h
+            <label for="comment-input-text" class="sr-only d-none">Write a comment</label>
+            <input type="text" id="comment-input-text" class="form-control" placeholder="Write a comment" aria-label="Write a comment">
             <div class="input-group-append">
                 <button id="submit-comment" class="btn btn-outline-primary">Submit</button>
             </div>
@@ -27,7 +28,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Edit Comment</h5>
+                <h4 class="modal-title" id="editModalLabel">Edit Comment</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

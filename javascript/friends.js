@@ -88,7 +88,7 @@ axios.get('../php/friends-api.php', {params: {Username: user}}).then(response =>
     for (let i=0; i<friends.length; i++) {
         section.appendChild(addFriend(friends[i]));
     }
-    const h1 = document.querySelector("header h1");
-    h1.innerHTML = "All " + user + "'s friends (" + friends.length + ")";
+    const h3 = document.querySelector("header h3");
+    h3.innerHTML = "All " + user + "'s friends (" + friends.length + ")";
     adaptFriendsSizeToDisplay();
 });

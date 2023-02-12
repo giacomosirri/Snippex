@@ -36,9 +36,9 @@ function displaySinglePost(data) {
     const ops_div = document.createElement("div");
     ops_div.className = "buttons col-1 d-flex justify-content-center flex-column";
     ops_div.innerHTML = `
-                <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"><img src="../icons/edit_icon.png" alt="edit post" id="edit-post" /></a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"><img src="../icons/edit_icon.png" alt="edit post" class="edit-post"/></a>
                 <br /><br /><br /><br />
-                <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><img src="../icons/bin_icon.png" alt="delete post" id="delete-post" /></a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><img src="../icons/bin_icon.png" alt="delete post" class="delete-post"/></a>
             `;
     div.appendChild(ops_div);
     return div;
@@ -82,6 +82,6 @@ $("#keyword-search").on("keyup", function () {
 
 const user = new URL(window.location.href).searchParams.get("Username");
 const section = document.getElementById("posts");
-const h1 = document.querySelector("header h1");
-h1.innerHTML = user + "'s post history";
+const h3 = document.querySelector("header h3");
+h3.innerHTML = user + "'s post history";
 displayAllPosts();

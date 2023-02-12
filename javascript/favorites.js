@@ -19,6 +19,6 @@ $("#keyword-search").on("keyup", function () {
 });
 
 const section = document.getElementById("posts");
-const h1 = document.querySelector("header h1");
-h1.innerText = "Favorite posts";
+const h3 = document.querySelector("header h3");
+h3.innerText = "Favorite posts";
 axios.get('../php/favorites-api.php', {params: {username: session_user}}).then(response => displayPosts(response.data));

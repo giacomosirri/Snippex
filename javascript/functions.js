@@ -364,7 +364,7 @@ function setUpModal() {
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                        <h4 class="modal-title" id="errorModalLabel">Error</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -385,7 +385,7 @@ function setUpModal() {
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="alertModalLabel">Alert</h5>
+                        <h4 class="modal-title" id="alertModalLabel">Alert</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
