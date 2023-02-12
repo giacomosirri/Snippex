@@ -248,7 +248,7 @@ function showUsername(post) {
     const username = post.getElementsByClassName("user-username")[0].innerHTML;
     const postTitle = post.getElementsByClassName("post-title")[0];
     const title = postTitle.innerText.split(" ~ ")[0];
-    postTitle.innerHTML = `${title} ~ <a href="../php/profile.php?Username=${username}">${username}</a>`;
+    postTitle.innerHTML = `${title} ~ <a href="../php/userprofile.php?Username=${username}">${username}</a>`;
 }
 
 async function getUserProfilePic(username) {
