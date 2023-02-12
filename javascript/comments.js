@@ -62,7 +62,7 @@ function createHeaderPost(data) {
     post.className = "post-comment";
     post.id = "post";
     post.innerHTML = `
-        <h3 class="post-title col-10">${data["Title"]} ~ ${data["Writer"]}</h3>
+        <h3 class="post-title col-10">${data["Title"]} ~ <a href="../php/userprofile.php?Username=${data["Writer"]}">${data["Writer"]}</a></h3>
         <div class="user-username d-none"> ${data["Writer"]} </div>
     `;
     post.innerHTML += `
