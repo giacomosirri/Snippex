@@ -48,7 +48,6 @@ function addFriend(data) {
     if (window.innerWidth < desktopSize) {
         button.innerText = "Unfriend";
     }
-    button.addEventListener("click", () => reload());
     button_div.appendChild(button);
     const row = friend.children.item(0);
     row.appendChild(button_div);
