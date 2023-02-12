@@ -103,15 +103,6 @@ function goBack() {
     window.history.back();
 }
 
-function setMenuVisibility() {
-    const menu = document.getElementById("options-menu");
-    if (menu.style.display === "none") {
-        menu.style.display = "inline";
-    } else {
-        menu.style.display = "none";
-    }
-}
-
 function showUsername(post) {
     const username = post.getElementsByClassName("user-username")[0].innerHTML;
     const postTitle = post.getElementsByClassName("post-title")[0];
@@ -131,22 +122,22 @@ async function getUserProfilePic(username) {
     });
 }
 
-async function friendshipRequest(requesting, requested) {
-    await axios.put('../php/friends-api.php', {Requesting: requesting, Requested: requested, Type: "request"});
+function friendshipRequest(requesting, requested) {
+    axios.put('../php/friends-api.php', {Requesting: requesting, Requested: requested, Type: "request"});
 }
 
-async function friendshipAcceptance(id, passive_user) {
-    await axios.put('../php/friends-api.php', {ID: id, Type: "acceptance", External_user: passive_user});
+function friendshipAcceptance(id, passive_user) {
+    axios.put('../php/friends-api.php', {ID: id, Type: "acceptance", External_user: passive_user});
 }
 
-async function friendshipRejection(id, passive_user) {
+function friendshipRejection(id, passive_user) {
     alert("Are you sure? This action is definitive.");
-    await axios.put('../php/friends-api.php', {ID: id, Type: "rejection", External_user: passive_user});
+    axios.put('../php/friends-api.php', {ID: id, Type: "rejection", External_user: passive_user});
 }
 
-async function friendshipTermination(id, passive_user) {
+function friendshipTermination(id, passive_user) {
     alert("Are you sure? This action is definitive.");
-    await axios.put('../php/friends-api.php', {ID: id, Type: "termination", External_user: passive_user});
+    axios.put('../php/friends-api.php', {ID: id, Type: "termination", External_user: passive_user});
 }
 
 function createAcceptFriendshipButton(id, accepted_user) {
@@ -176,7 +167,7 @@ function createRequestFriendshipButton(requesting_user, requested_user) {
 function createTerminateFriendshipButton(id, terminated_user) {
     const button = document.createElement("button");
     button.className = "btn btn-danger";
-    button.innerText = "Terminate friendship";
+    button.innerText = "End friendship";
     button.addEventListener("click", () => friendshipTermination(id, terminated_user));
     return button;
 }
