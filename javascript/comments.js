@@ -35,11 +35,11 @@ function createNewComment(data) {
         <div class="comment-id d-none"> ${data["CommentID"]} </div>
         <div class="d-flex justify-content-between">
             <div class="post-content col-12 position-relative">
-                <label class="change-text-button">
+                <div class="change-text-button">
                     <p class="comment-text">
                         ${data["Content"]}
                     </p>
-                </label>
+                </div>
                 <p class="post-date col-12">${calculateTimeElapsed(data["DateAndTime"])}</p>
             </div>
             <div class="comment-interactions d-flex justify-content-between flex-column">
@@ -69,11 +69,11 @@ function createHeaderPost(data) {
         <div class="post-id d-none"> ${data["PostID"]} </div>
         <div class="d-flex justify-content-between">
             <div class="post-content col-12 position-relative">
-                <label class="change-text-button">
+                <div class="change-text-button">
                     <p class="post-text">
                         ${data["Content"]}
                     </p>
-                </label>
+                </div>
                 <p class="post-date col-12">${calculateTimeElapsed(data["DateAndTime"])}</p>
             </div>
         </div>

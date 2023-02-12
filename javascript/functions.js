@@ -18,7 +18,7 @@ function createNewPost(data) {
     if (page.includes("userprofile") || (page.includes("history") && session_user !== current_user)) {
         post.innerHTML = `<div class="d-flex justify-content-start">
                             <img class="star-post" src="../icons/star_icon.png" alt="star post"/>
-                            <h3 class="post-title" id="post-header">${data["Title"]}</h3>
+                            <h3 class="post-title">${data["Title"]}</h3>
                             <div class="user-username d-none">${data["Writer"]}</div>
                           </div>`;
     } else if (page.includes("profile") || page.includes("history")) {
@@ -27,13 +27,13 @@ function createNewPost(data) {
     } else if (page.includes("feed") || page.includes("favorites")) {
         post.innerHTML = `<div class="d-flex justify-content-start">
                             <img class="star-post" src="../icons/star_icon.png" alt="star post"/>
-                            <h3 class="post-title" id="post-header">${data["Title"]} ~ <a href="../php/userprofile.php?Username=${data['Writer']}">${data["Writer"]}</a></h3>
+                            <h3 class="post-title">${data["Title"]} ~ <a href="../php/userprofile.php?Username=${data['Writer']}">${data["Writer"]}</a></h3>
                             <div class="user-username d-none">${data["Writer"]}</div>
                           </div>`;
     } else if (page.includes("explore")) {
         post.innerHTML = `<div class="d-flex justify-content-start">
                             <img class="star-post" src="../icons/star_icon.png" alt="star post"/>
-                            <h3 class="post-title" id="post-header">${data["Title"]} ~ *****</h3>
+                            <h3 class="post-title">${data["Title"]} ~ *****</h3>
                             <div class="user-username d-none">${data["Writer"]}</div>
                           </div>`;
     }
@@ -41,11 +41,11 @@ function createNewPost(data) {
         <div class="post-id d-none"> ${data["PostID"]} </div>
         <div class="d-flex justify-content-between">
             <div class="post-content col-12 position-relative">
-                <label class="change-text-button">
+                <div class="change-text-button">
                     <p class="post-text">
                         ${data["Content"]}
                     </p>
-                </label>
+                </div>
                 <p class="post-date position-absolute bottom-0">${calculateTimeElapsed(data["DateAndTime"])}</p>
             </div>
             <div class="post-interactions d-flex justify-content-between flex-column">
@@ -360,11 +360,11 @@ function getFriendshipStatus(main_user, queried_user) {
 function setUpModal() {
     let modal = document.createElement("div");
     modal.innerHTML = `
-        <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                        <h5 class="modal-title" id="errorModalLabel">Error</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -381,11 +381,11 @@ function setUpModal() {
     `;
     document.body.appendChild(modal);
     modal.innerHTML = `
-        <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+                        <h5 class="modal-title" id="alertModalLabel">Alert</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">

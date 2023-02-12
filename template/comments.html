@@ -14,7 +14,7 @@
     <form id="comment-input" class="col-11 col-sm-10 col-md-9" action="../php/insertions-api.php" method="post">
         <input type="hidden" name="post" value="<?php echo $_GET["PostID"]; ?>">
         <div class="input-group mb-3">
-            <input type="text" name="comment" class="form-control" placeholder="Write a comment" aria-label="Write a comment" aria-describedby="basic-addon2">
+            <input type="text" name="comment" class="form-control" placeholder="Write a comment" aria-label="Write a comment">
             <div class="input-group-append">
                 <button id="submit-comment" class="btn btn-outline-primary">Submit</button>
             </div>
@@ -22,12 +22,12 @@
     </form>
 </main>
 
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="d-none" id="comment-edit-id"></div>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Comment</h5>
+                <h5 class="modal-title" id="editModalLabel">Edit Comment</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -46,12 +46,12 @@
     </div>
 </div>
 
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="d-none" id="comment-delete-id"></div>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Are You Sure?</h5>
+                <h5 class="modal-title" id="deleteModalLabel">Are You Sure?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

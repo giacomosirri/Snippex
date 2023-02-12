@@ -19,7 +19,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../assets/style.css">
         <!-- Common javascript code -->
-        <script type="text/javascript" src="../javascript/functions.js"></script>
+        <script src="../javascript/functions.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
     <body>
@@ -66,7 +66,7 @@
             </div>
         </div>
     </body>
-    <script type="text/javascript">
+    <script>
         const session_user = "<?php echo $_SESSION['LoggedUser'] ?>";
 
         function addImage(image) {
@@ -77,7 +77,7 @@
     <?php
     if(isset($templateParams["js"])):
         foreach($templateParams["js"] as $script):?>
-            <script type="text/javascript" src="<?php echo $script; ?>"></script>
+            <script src="<?php echo $script; ?>"></script>
         <?php
         endforeach;
     endif;
