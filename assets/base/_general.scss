@@ -33,11 +33,13 @@ main {
   @media screen and (min-width: $smartphones) and (max-width: $desktop) {
     padding: 3%;
     margin-top: 50px;
+    div.content {
+      margin-bottom: 57px;
+    }
   }
 }
 
 nav#main-menu {
-  border-bottom: 2px solid $templateColor;
   position: fixed;
   padding-top: 10px;
   background-color: white;
@@ -48,9 +50,9 @@ nav#main-menu {
     }
     margin-top: 30px;
     bottom: 0;
-    height: 57px;
   }
   @media screen and (min-width: $desktop) {
+    border-bottom: 2px solid $templateColor;
     top: 0;
     height: 70px;
     #nav-logo {

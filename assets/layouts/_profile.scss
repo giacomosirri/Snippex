@@ -104,6 +104,9 @@ main.profile {
     }
   }
   section#friends-list {
+    @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+      margin-bottom: 57px;
+    }
     .adapt-image-size{
       display: flex;
       justify-content: center;

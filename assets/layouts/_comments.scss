@@ -36,6 +36,14 @@ main.comment {
   article.post-comment, article.comment {
     padding: 8px 20px 12px 14px;
   }
+  div.content {
+    margin-bottom: 22px;
+  }
+  form {
+    @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+      margin-bottom: 57px;
+    }
+  }
 }
 
 .modify, .delete {

@@ -37,10 +37,12 @@ main {
     padding: 3%;
     margin-top: 50px;
   }
+  main div.content {
+    margin-bottom: 57px;
+  }
 }
 
 nav#main-menu {
-  border-bottom: 2px solid #226fbd;
   position: fixed;
   padding-top: 10px;
   background-color: white;
@@ -50,7 +52,6 @@ nav#main-menu {
   nav#main-menu {
     margin-top: 30px;
     bottom: 0;
-    height: 57px;
   }
   nav#main-menu #nav-logo {
     display: none;
@@ -58,6 +59,7 @@ nav#main-menu {
 }
 @media screen and (min-width: 1025px) {
   nav#main-menu {
+    border-bottom: 2px solid #226fbd;
     top: 0;
     height: 70px;
   }
@@ -87,10 +89,14 @@ nav#main-menu ul li a img {
 }
 
 button.accept, button.reject {
-  margin-top: 4px;
+  margin: 2px 0;
   width: 50%;
   display: inline-block;
-  margin-right: 0;
+}
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+  button.accept, button.reject {
+    font-size: 12px;
+  }
 }
 
 article {
@@ -102,6 +108,10 @@ article {
 }
 article h3 {
   font-size: 22px;
+}
+article h3 a {
+  text-decoration: none;
+  color: black;
 }
 article .post-text {
   margin-bottom: 50px;
@@ -126,7 +136,7 @@ article .change-text-button {
 article .change-text-button p {
   min-height: 80px;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -163,33 +173,33 @@ article .post-interactions img:hover {
   cursor: pointer;
 }
 
-header.comment, header.notification, header.post-history {
+header.comment, header.notification, header.post-history, header.friend {
   z-index: 1;
   position: fixed;
 }
 @media screen and (min-width: 320px) and (max-width: 1025px) {
-  header.comment, header.notification, header.post-history {
+  header.comment, header.notification, header.post-history, header.friend {
     top: 0;
     padding-left: 12px;
     height: 40px;
   }
-  header.comment div.flex-column, header.notification div.flex-column, header.post-history div.flex-column {
+  header.comment div.flex-column, header.notification div.flex-column, header.post-history div.flex-column, header.friend div.flex-column {
     max-height: 40px;
   }
 }
 @media screen and (min-width: 1025px) {
-  header.comment, header.notification, header.post-history {
+  header.comment, header.notification, header.post-history, header.friend {
     top: 70px;
     padding: 2px 8px;
     width: 60%;
     margin-left: 20%;
     height: 50px;
   }
-  header.comment div.flex-column, header.notification div.flex-column, header.post-history div.flex-column {
+  header.comment div.flex-column, header.notification div.flex-column, header.post-history div.flex-column, header.friend div.flex-column {
     max-height: 50px;
   }
 }
-header.comment h1, header.notification h1, header.post-history h1 {
+header.comment h1, header.notification h1, header.post-history h1, header.friend h1 {
   padding-top: 6px;
   text-align: left;
 }
@@ -202,6 +212,14 @@ main.comment article.comment, main.comment article.editable-comment {
 }
 main.comment article.post-comment, main.comment article.comment {
   padding: 8px 20px 12px 14px;
+}
+main.comment div.content {
+  margin-bottom: 22px;
+}
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+  main.comment form {
+    margin-bottom: 57px;
+  }
 }
 
 .modify, .delete {
@@ -274,6 +292,50 @@ main.explore, main.search-users {
   }
 }
 
+main.friend {
+  margin-top: 40px;
+}
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+  main.friend section#friends {
+    margin-bottom: 57px;
+  }
+}
+main.friend .friend {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: #cccccc solid 1px;
+}
+main.friend img {
+  max-height: 80px;
+  border-radius: 10px;
+}
+main.friend p {
+  margin: 0;
+}
+main.friend p.username, main.friend p.time {
+  font-size: 14px;
+  color: gray;
+}
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  main.friend p.username, main.friend p.time {
+    font-size: 12px;
+  }
+}
+main.friend button {
+  margin-top: 6px;
+}
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  main.friend button {
+    max-width: 66px;
+    font-size: 11px !important;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  main.friend button.request, main.friend button.terminate {
+    font-size: 14px;
+  }
+}
+
 header.notification {
   height: 70px;
 }
@@ -323,9 +385,13 @@ main.notification {
   margin-top: 70px;
   padding-top: 0;
 }
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+  main.notification section#all-notifications {
+    margin-bottom: 57px;
+  }
+}
 main.notification div.notification {
-  padding-bottom: 9px;
-  padding-top: 9px;
+  padding: 9px 0 9px 6px;
   border-bottom: #cccccc solid 1px;
 }
 main.notification div.notification p.notification-date {
@@ -348,15 +414,40 @@ main.notification div.notification a.comment:hover, main.notification div.notifi
   color: #226fbd;
 }
 
-#edit-post, #delete-post {
-  width: 30px;
+header.post-history h1, header.friend h1 {
+  padding-top: 4px;
+}
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+  header.post-history h1, header.friend h1 {
+    font-size: 22px;
+  }
 }
 
 main.post-history {
   margin-top: 40px;
 }
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+  main.post-history section#posts {
+    margin-bottom: 57px;
+  }
+}
 main.post-history nav.explore {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+}
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  main.post-history div.post-with-buttons div.buttons {
+    padding-left: 0;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  main.post-history div.post-with-buttons div.buttons img#edit-post, main.post-history div.post-with-buttons div.buttons img#delete-post {
+    width: 26px;
+  }
+}
+@media screen and (min-width: 320px) {
+  main.post-history div.post-with-buttons div.buttons img#edit-post, main.post-history div.post-with-buttons div.buttons img#delete-post {
+    width: 20px;
+  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 1025px) {
@@ -373,7 +464,10 @@ main.post-history nav.explore {
   }
   nav#options-menu div.collapse {
     position: fixed;
-    margin-top: 200px;
+    margin-top: 168px;
+  }
+  nav#options-menu div.collapse li {
+    padding-left: 10px;
   }
 }
 
@@ -437,12 +531,21 @@ main.profile p#friends {
 }
 main.profile div#friendship-status {
   margin-top: 8px;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   max-height: 40px;
 }
-main.profile p#status {
-  margin-top: 8px;
+main.profile div#friendship-status p#status {
   margin-right: 15px;
+}
+@media screen and (min-width: 600px) {
+  main.profile div#friendship-status p#status {
+    margin-top: 8px;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  main.profile div#friendship-status p#status {
+    font-size: 13px;
+  }
 }
 main.profile section#post img.go-arrow, main.profile section#friends-list img.go-arrow {
   height: auto;
@@ -462,6 +565,11 @@ main.profile section#post div.forward-arrow a, main.profile section#friends-list
 }
 main.profile section#post div.forward-arrow a p, main.profile section#friends-list div.forward-arrow a p {
   font-size: 12px;
+}
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+  main.profile section#friends-list {
+    margin-bottom: 57px;
+  }
 }
 main.profile section#friends-list .adapt-image-size {
   display: flex;
@@ -497,8 +605,19 @@ main.search-users h3 {
   font-size: 24px;
   margin-bottom: 30px;
 }
-main.search-users .proposes {
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+  main.search-users h3 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+}
+main.search-users div.proposes {
   margin-top: 1%;
+}
+@media screen and (min-width: 320px) and (max-width: 1025px) {
+  main.search-users div.proposes {
+    margin-bottom: 57px;
+  }
 }
 main.search-users div.row {
   margin-bottom: 50px;
@@ -507,14 +626,41 @@ main.search-users div.points, main.search-users div.posts {
   color: gray;
   font-size: 14px;
 }
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  main.search-users div.points, main.search-users div.posts {
+    font-size: 11px;
+  }
+}
 main.search-users p.friendship-status {
+  padding-left: 2px;
   color: gray;
   font-size: 16px;
   margin-right: 10px;
 }
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  main.search-users p.friendship-status {
+    font-size: 12px;
+  }
+}
+main.search-users img {
+  margin-top: 6px;
+  max-height: 120px;
+}
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  main.search-users button {
+    max-width: 86px;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  main.search-users button.request, main.search-users button.terminate {
+    font-size: 14px;
+  }
+}
 
 .selected-users-profile-pics {
   max-width: 140px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

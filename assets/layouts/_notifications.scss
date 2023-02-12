@@ -37,6 +37,11 @@ header.notification {
 }
 
 main.notification {
+  section#all-notifications {
+    @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+      margin-bottom: 57px;
+    }
+  }
   margin-top: 70px;
   padding-top: 0;
   div.notification {

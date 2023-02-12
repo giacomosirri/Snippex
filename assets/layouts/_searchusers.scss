@@ -19,8 +19,11 @@ main.search-users {
     font-size: 24px;
     margin-bottom: 30px;
   }
-  .proposes {
+  div.proposes {
     margin-top: 1%;
+    @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+      margin-bottom: 57px;
+    }
   }
   div.row {
     margin-bottom: 50px;

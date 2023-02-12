@@ -3,6 +3,11 @@
 
 main.friend {
   margin-top: 40px;
+  section#friends {
+    @media screen and (min-width: $smartphones) and (max-width: $desktop) {
+      margin-bottom: 57px;
+    }
+  }
   .friend {
     margin-bottom: 15px;
     padding-bottom: 15px;
