@@ -1,5 +1,5 @@
-async function markNotificationAsRead(notificationID) {
-    await axios.put('../php/notifications-api.php', {ID: notificationID});
+function markNotificationAsRead(notificationID) {
+    return axios.put('../php/notifications-api.php', {ID: notificationID});
 }
 
 function addNotifications(notifications) {

@@ -1,13 +1,30 @@
-window.onload = () => {
-    $("#username").keyup(function() {
+const col = 4;
+const desktopSize = 1025;
+const padding = 0.03;
+let last_keydown = 0;
+let typing = false;
+
+setInterval(() => {
+    if (Date.now()-last_keydown > 200 && typing) {
         addProposal($("#username").val());
-    });
-    if(sessionStorage["username"]) {
+        typing = false;
+    }
+}, 200);
+
+window.onload = () => {
+    document.getElementById("username").onkeydown = () => {
+        last_keydown = Date.now();
+        typing = true;
+    }
+    if (sessionStorage["username"]) {
         document.getElementById("username").value = window.sessionStorage.getItem("username");
     }
     addProposal(document.getElementById("username").value);
     sessionStorage.removeItem("username");
 };
+window.onresize = () => {
+    adaptFriendsSizeToDisplay();
+}
 
 function addProposal(user) {
     if (user != null && user.length > 0) {
@@ -17,26 +34,39 @@ function addProposal(user) {
     }
 }
 
+function calculateImageMaxWidth() {
+    // actual width is the full screen width minus the padding and the margins of the images
+    const main_margins = (window.innerWidth > desktopSize) ? 0.60 : 1;
+    const actualWidth = window.innerWidth * (main_margins-padding) * (col/12) - 15;
+    return Math.floor(actualWidth);
+}
+
+function adaptFriendsSizeToDisplay() {
+    const all_friends = document.getElementsByClassName("friend");
+    for (let i=0; i<all_friends.length; i++) {
+        const img = all_friends[i].querySelector("img");
+        img.style.maxWidth = calculateImageMaxWidth() + "px";
+    }
+}
+
 function displayProposal(user) {
     const h3 = document.querySelector("h3");
     h3.innerText = "We have found these people that match the input '" + user + "':";
-    return axios.get('../php/searchusers-api-proposal.php', {params: {Username: user}})
-        .then(response => {
-            document.getElementById("proposes").innerHTML="";
-            return appendUsers(response.data.map(x => x.Username));
-        });
+    return axios.get('../php/searchusers-api-proposal.php', {params: {Username: user}}).then(response => {
+        document.getElementById("proposes").innerHTML = "";
+        return appendUsers(response.data.map(x => x.Username));
+    });
 }
 
 function displayRecentSearch() {
     const h3 = document.querySelector("h3");
     h3.innerText = "Recent searches:"
-    axios.get('../php/searchusers-api-recentsearch.php')
-        .then(response => {
-            document.getElementById("proposes").innerHTML="";
-            if (response.data.length > 0) {
-                return appendUsers(response.data);
-            }
-        });
+    axios.get('../php/searchusers-api-recentsearch.php').then(response => {
+        document.getElementById("proposes").innerHTML="";
+        if (response.data.length > 0) {
+            return appendUsers(response.data);
+        }
+    });
 }
 
 function getPointsFromCategory(stats, category) {
@@ -48,7 +78,7 @@ function getPointsFromCategory(stats, category) {
     return 0;
 }
 
-function appendUser(user){
+function appendUser(user) {
     axios.get('../php/userprofile-api.php', {params: {Username: user}}).then(response => {
         const numberOfPosts = response.data["user-data"][0]["NumberOfPosts"];
         const numberOfFriends = response.data["user-data"][0]["NumberOfFriends"];
@@ -58,13 +88,14 @@ function appendUser(user){
     });
 }
 
-function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, categories){
+function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, categories) {
     let container = document.createElement("div");
     let row = document.createElement("div");
     let col1 = document.createElement("div");
     let col2 = document.createElement("div");
     container.classList.add("container");
     row.classList.add("row");
+    row.classList.add("friend");
     col1.classList.add("col-4");
     col2.classList.add("col-4");
     getUserProfilePic(user).then(image => {
@@ -104,7 +135,7 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
 function manageFriendshipStatus(status, friendshipID, requested_user) {
     const div = document.createElement("div");
     div.classList.add("friendship-status");
-    div.className = "col-4";
+    div.className = "col-" + col;
     const p = document.createElement("p");
     p.classList.add("friendship-status");
     div.innerHTML = "";
@@ -130,7 +161,7 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         p.innerText = "You are friend with " + requested_user;
         div.appendChild(p);
         const terminate = createTerminateFriendshipButton(friendshipID, requested_user);
-        terminate.addEventListener('click', () => saveAndRefresh());
+        terminate.addEventListener("click", () => saveAndRefresh());
         div.appendChild(terminate);
     } else {
         let request = createRequestFriendshipButton(session_user, requested_user);
@@ -145,11 +176,12 @@ function saveAndRefresh() {
     location.reload();
 }
 
-function appendUsers(users){
+function appendUsers(users) {
     const usersWithoutDuplicate = new Set(users);
     usersWithoutDuplicate.forEach(x => appendUser(x));
+    adaptFriendsSizeToDisplay();
 }
 
-function addRecentUser(user){
+function addRecentUser(user) {
     axios.get('../php/searchusers-api-recentsearch.php', {params:{Username:user}});
 }
