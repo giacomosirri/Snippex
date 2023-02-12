@@ -1,6 +1,6 @@
 <?php
 require_once "bootstrap.php";
-global $dbh;
+global $dbh, $error;
 
 if (isset($_GET["username"])) {
     $user = $_GET["username"];
@@ -8,6 +8,6 @@ if (isset($_GET["username"])) {
     header("Content-Type: application/json");
     echo json_encode($json_data);
 } else {
-    throw new Error("Something went wrong!");
+    throw new $error;
 }
 ?>

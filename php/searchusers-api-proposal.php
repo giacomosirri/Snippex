@@ -1,8 +1,13 @@
 <?php
 require_once "bootstrap.php";
-global $dbh;
+global $dbh, $error;
 
-$searchedUser = $_GET["Username"];
-$user = $dbh->getUserFromInitials($searchedUser);
-echo json_encode($user);
+if (isset($_GET["Username"])) {
+    $searchedUser = $_GET["Username"];
+    $user = $dbh->getUserFromInitials($searchedUser);
+    header("Content-Type: application/json");
+    echo json_encode($user);
+} else {
+    throw new $error;
+}
 ?>

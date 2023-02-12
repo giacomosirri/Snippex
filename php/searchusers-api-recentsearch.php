@@ -12,7 +12,7 @@ if (!isset($_SESSION["RecentSearch"])) {
 if ($username != "") {
     $_SESSION["RecentSearch"][] = $username;
     $_SESSION["RecentSearch"] = array_unique($_SESSION["RecentSearch"]);
-
 }
+header("Content-Type: application/json");
 echo json_encode($_SESSION["RecentSearch"]);
 ?>

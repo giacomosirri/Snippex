@@ -1,6 +1,6 @@
 <?php
 require_once "bootstrap.php";
-global $dbh;
+global $dbh, $error;
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $user = $_SESSION["LoggedUser"];
@@ -16,7 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
         $id = $data["ID"];
         $dbh->markNotificationAsRead($data["ID"]);
     } else {
-        throw new Error("Something went wrong!");
+        throw new $error;
     }
+} else {
+    throw new $error;
 }
 ?>

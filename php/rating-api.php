@@ -1,6 +1,6 @@
 <?php
 require_once "bootstrap.php";
-global $dbh;
+global $dbh, $error;
 
 if (isset($_GET["PostID"])) {
     $post = $_GET["PostID"];
@@ -8,6 +8,6 @@ if (isset($_GET["PostID"])) {
     header("Content-Type: application/json");
     echo json_encode($json_data);
 } else {
-    throw new Error("Something went wrong!");
+    throw new $error;
 }
 ?>
