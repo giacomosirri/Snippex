@@ -9,8 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $json_data["friendships"] = $dbh->getUserIncomingRequestsOfFriendship($user);
     header("Content-Type: application/json");
     echo json_encode($json_data);
-}
-if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+} elseif ($_SERVER['REQUEST_METHOD'] == 'PUT') {
     $data = json_decode(file_get_contents("php://input"), true);
     if ($data["ID"]) {
         $id = $data["ID"];
