@@ -27,29 +27,6 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getRating(): array {
-        $stmt = $this->db->prepare("SELECT * FROM ratings");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function getPostFromUser($username): array {
-        $stmt = $this->db->prepare("SELECT * FROM posts WHERE Writer = ?");
-        $stmt->bind_param('s', $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function getCommentFromPost($post_id): array {
-        $stmt = $this->db->prepare("SELECT * FROM comments WHERE Post = ?");
-        $stmt->bind_param('s', $post_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     public function getMostVotedPostOfUser($username): array {
         $stmt = $this->db->prepare("SELECT p.PostID, p.Title, p.Content, p.DateAndTime, p.NumberOfComments, p.Writer, COUNT(r.RatingID) AS pts
                                     FROM posts AS p LEFT OUTER JOIN ratings AS r ON p.PostID = r.Post 
@@ -123,20 +100,6 @@ class DatabaseHelper {
     public function getAllPostsWrittenByUser($username): array {
         $stmt = $this->db->prepare("SELECT * FROM posts WHERE Writer = ?");
         $stmt->bind_param('s', $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function subscribeUser($username, $name, $surname, $password) {
-        $stmt = $this->db->prepare("INSERT INTO users (Username, Name, Surname, Password) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param('ssss', $username, $name, $surname, $password);
-        $stmt->execute();
-    }
-
-    public function checkLogin($username, $password): array {
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE Username = ? AND Password = ?");
-        $stmt->bind_param('ss', $username, $password);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
