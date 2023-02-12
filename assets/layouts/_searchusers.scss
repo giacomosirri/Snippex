@@ -50,6 +50,11 @@ main.search-users {
       max-width: 86px;
     }
   }
+  button.request, button.terminate {
+    @media screen and (min-width: $smartphones) and (max-width: $tablet) {
+      font-size: 14px;
+    }
+  }
 }
 
 .selected-users-profile-pics {

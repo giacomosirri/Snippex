@@ -221,7 +221,7 @@ function createRejectFriendshipButton(id, rejected_user) {
 
 function createRequestFriendshipButton(requesting_user, requested_user) {
     const button = document.createElement("button");
-    button.className = "btn btn-primary";
+    button.className = "btn btn-primary request";
     button.innerText = "Request friendship";
     button.addEventListener("click", () => friendshipRequest(requesting_user, requested_user));
     return button;
@@ -229,7 +229,7 @@ function createRequestFriendshipButton(requesting_user, requested_user) {
 
 function createTerminateFriendshipButton(id, terminated_user) {
     const button = document.createElement("button");
-    button.className = "btn btn-danger";
+    button.className = "btn btn-danger terminate";
     button.innerText = "End friendship";
     button.addEventListener("click", () => friendshipTermination(id, terminated_user));
     return button;
@@ -302,7 +302,8 @@ function setUpModal() {
                     </div>
                 </div>
             </div>
-         </div>`;
+        </div>
+    `;
     document.body.appendChild(modal);
     modal.innerHTML = `
         <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -323,5 +324,6 @@ function setUpModal() {
                     </div>
                 </div>
             </div>
-         </div>`;
+         </div>
+    `;
 }
