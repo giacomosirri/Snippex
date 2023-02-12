@@ -3,6 +3,9 @@
 
 main.friend {
   margin-top: 40px;
+  h3 {
+    text-align: left;
+  }
   div#friends {
     @media screen and (min-width: $smartphones) and (max-width: $desktop) {
       margin-bottom: 57px;

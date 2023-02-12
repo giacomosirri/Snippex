@@ -61,7 +61,7 @@ function createPostFrame() {
     const postFrame = document.createElement("div");
     postFrame.className = "d-flex justify-content-between";
     postFrame.innerHTML = `
-        <h2>Most voted post</h2>
+        <h3>Most voted post</h3>
         <div class="forward-arrow">
             <a href="../php/posthistory.php?Username=${user}" class="d-flex justify-content-start">
                 <p>Browse history</p>

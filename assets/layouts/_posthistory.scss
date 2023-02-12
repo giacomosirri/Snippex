@@ -2,7 +2,7 @@
 @use "../abstract/mediaquery-breakpoints" as *;
 
 header.post-history, header.friend {
-  h1 {
+  h3 {
     padding-top: 4px;
     @media screen and (min-width: $smartphones) and (max-width: $desktop) {
       font-size: 22px;
@@ -25,7 +25,7 @@ main.post-history {
       @media screen and (min-width: $smartphones) and (max-width: $tablet) {
         padding-left: 0;
       }
-      img#edit-post, img#delete-post {
+      img.edit-post, img.delete-post {
         @media screen and (min-width: $smartphones) and (max-width: $tablet) {
           width: 26px;
         }
