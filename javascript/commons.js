@@ -67,9 +67,6 @@ export function createNewPost(data) {
                 response.data.forEach(elem => favorites_id.push(elem["PostID"]));
                 if (favorites_id.includes(data["PostID"])) {
                     star.src = "../icons/starred_icon.png";
-                    if (page.includes("explore")) {
-                        showUsername(post);
-                    }
                 }
             }
         });

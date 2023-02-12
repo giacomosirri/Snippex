@@ -53,7 +53,6 @@ function starPost(post) {
         axios.post("../php/favorites-api.php", {star: true, post: postId.innerText});
         star.src = "../icons/starred_icon.png";
         if (window.location.href.includes("explore")) {
-            showUsername(post);
         }
     }
 }
