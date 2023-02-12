@@ -190,7 +190,10 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         div.appendChild(terminate);
     } else {
         let request = createRequestFriendshipButton(session_user, requested_user);
-        request.addEventListener("click", () => saveAndRefresh());
+        request.addEventListener("click", () => {
+            saveAndRefresh()
+            location.reload();
+        });
         div.appendChild(request);
     }
     return div;
@@ -198,7 +201,6 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
 
 function saveAndRefresh() {
     window.sessionStorage.setItem("username", document.getElementById("username").value);
-    location.reload();
 }
 
 function appendUsers(users) {
