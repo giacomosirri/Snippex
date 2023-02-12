@@ -5,8 +5,11 @@
   padding-top: 0 !important;
   margin: 0 !important;
 }
-.first-half, .second-half {
+.second-half {
   margin: 10px;
+}
+.first-half{
+  margin-top: 62px;
 }
 
 .img-container{
@@ -31,14 +34,13 @@
   }
 }
 .img-world {
-  height: 45%;
-  width: 50%;
+  width: 98%;
 }
 
 div.contain {
   margin: 0 2% 0 2%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
   grid-gap: 20px;
   height: 100vh;
   .first-half,.second-half {
@@ -64,25 +66,3 @@ div.contain {
   padding: 10px;
 }
 
-//create a media query for mobile devices to make the login square smaller
-@media screen and (min-width: $smartphones) and (max-width: $tablet) {
-  body{
-    background: red;
-  }
-}
-@media screen and (min-width: $smartphones) and (max-width: $tablet) {
-  .first-half {
-    display: none;
-  }
-  .contain {
-    display: block;
-  }
-  .second-half {
-    margin: auto;
-    width: 80%;
-    padding: 10px;
-  }
-  .img-container{
-    display: none;
-  }
-}
