@@ -5,10 +5,11 @@
   header {
     position: relative;
   }
-  body{
-    padding-top:70px;
+  body {
+    padding-top: 70px;
   }
 }
+
 main.search-users {
   h3 {
     font-size: 24px;
@@ -28,6 +29,11 @@ main.search-users {
     color: gray;
     font-size: 16px;
     margin-right: 10px;
+  }
+  button {
+    @media screen and (min-width: $smartphones) and (max-width: $tablet) {
+      max-width: 86px;
+    }
   }
 }
 
