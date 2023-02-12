@@ -40,7 +40,7 @@ function createNewComment(data) {
                         ${data["Content"]}
                     </p>
                 </label>
-                <p class="post-date col-12">${data["DateAndTime"]}</p>
+                <p class="post-date col-12">${calculateTimeElapsed(data["DateAndTime"])}</p>
             </div>
             <div class="comment-interactions d-flex justify-content-between flex-column">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"><img class="modify" style="padding: 5px; border-radius: 20px; display:none;" src="../icons/edit_icon.png" alt="modify"/></a>
@@ -61,8 +61,10 @@ function createHeaderPost(data) {
     const post = document.createElement("article");
     post.className = "post-comment";
     post.id = "post";
-    post.innerHTML = `<h3 class="post-title col-10">${data["Title"]} ~ ${data["Writer"]}</h3>
-                        <div class="user-username d-none"> ${data["Writer"]} </div>`;
+    post.innerHTML = `
+        <h3 class="post-title col-10">${data["Title"]} ~ ${data["Writer"]}</h3>
+        <div class="user-username d-none"> ${data["Writer"]} </div>
+    `;
     post.innerHTML += `
         <div class="post-id d-none"> ${data["PostID"]} </div>
         <div class="d-flex justify-content-between">
@@ -72,9 +74,10 @@ function createHeaderPost(data) {
                         ${data["Content"]}
                     </p>
                 </label>
-                <p class="post-date col-12">${data["DateAndTime"]}</p>
+                <p class="post-date col-12">${calculateTimeElapsed(data["DateAndTime"])}</p>
             </div>
-        </div>`;
+        </div>
+    `;
     post.getElementsByClassName("change-text-button")[0]
         .addEventListener("click", () => changeText(post));
     return post;

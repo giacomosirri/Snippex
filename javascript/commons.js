@@ -35,7 +35,7 @@ export function createNewPost(data) {
                         ${data["Content"]}
                     </p>
                 </label>
-                <p class="post-date position-absolute bottom-0">${data["DateAndTime"]}</p>
+                <p class="post-date position-absolute bottom-0">${calculateTimeElapsed(data["DateAndTime"])}</p>
             </div>
             <div class="post-interactions d-flex justify-content-between flex-column">
                 <img class="rate-post"

@@ -9,6 +9,41 @@ window.onload = function() {
 
 }
 
+function calculateTimeElapsed(date) {
+    const ONE_MINUTE = 60 * 1000;
+    const ONE_HOUR = 60 * ONE_MINUTE;
+    const ONE_DAY = 24 * ONE_HOUR;
+    const ONE_MONTH = 30 * ONE_DAY;
+    const now = Date.now();
+    date = new Date(date);
+    const elapsed = now - date;
+    if (elapsed < ONE_MINUTE) {
+        return "just now";
+    } else if (elapsed < 2 * ONE_MINUTE) {
+        return "one minute ago";
+    } else if (elapsed < ONE_HOUR) {
+        const minutes = Math.floor(elapsed / ONE_MINUTE);
+        return minutes + " minutes ago";
+    } else if (elapsed < 2 * ONE_HOUR) {
+        return "one hour ago";
+    } else if (elapsed < ONE_DAY) {
+        const hours = Math.floor(elapsed / ONE_HOUR);
+        return hours + " hours ago"
+    } else if (elapsed < 2 * ONE_DAY) {
+        return "yesterday";
+    } else if (elapsed < ONE_MONTH) {
+        const days = Math.floor(elapsed / ONE_DAY);
+        return days + " days ago";
+    } else if (elapsed < 2 * ONE_MONTH) {
+        return "one month ago";
+    } else if (elapsed < 7 * ONE_MONTH) {
+        const months = Math.floor(elapsed / ONE_MONTH);
+        return months + " months ago";
+    } else {
+        return "long time ago";
+    }
+}
+
 function createPost() {
     let title = document.querySelector("#recipient-title").value;
     let content = document.querySelector("#message-text").value;
