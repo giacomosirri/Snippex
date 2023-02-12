@@ -30,7 +30,7 @@
     position: relative;
   }
 }
-img {
+.img-world {
   height: 45%;
   width: 50%;
 }
@@ -66,20 +66,23 @@ div.contain {
 
 //create a media query for mobile devices to make the login square smaller
 @media screen and (min-width: $smartphones) and (max-width: $tablet) {
-  .login-square {
-    width: 90%
+  body{
+    background: red;
   }
 }
 @media screen and (min-width: $smartphones) and (max-width: $tablet) {
-  .second-half {
+  .first-half {
     display: none;
   }
   .contain {
     display: block;
   }
-  .first-half {
+  .second-half {
     margin: auto;
     width: 80%;
     padding: 10px;
+  }
+  .img-container{
+    display: none;
   }
 }
