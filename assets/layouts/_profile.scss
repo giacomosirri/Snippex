@@ -12,7 +12,10 @@ nav#options-menu {
     width: 20%;
     div.collapse {
       position: fixed;
-      margin-top: 200px;
+      margin-top: 168px;
+      li {
+        padding-left: 10px;
+      }
     }
   }
 }
