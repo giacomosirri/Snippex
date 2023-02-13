@@ -165,7 +165,7 @@ alter table ratings add constraint FKrelated
 
 alter table favorites add constraint FKR
      foreign key (User)
-     references posts (Writer);
+     references users (Username);
 -- Index Section
 -- _____________ 
 
