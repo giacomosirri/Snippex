@@ -10,7 +10,7 @@ window.addEventListener("load", function() {
         e.preventDefault();
         const formData = new FormData(form);
         axios.post("../php/login-api.php", formData)
-            .then(x => window.location.replace("../php/feed.php"))
+            .then(x => window.location.replace("../php/index.php"))
             .catch(x => {
                 let errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
                 document.getElementById("error-message").innerText = "Invalid username or password";
