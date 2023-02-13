@@ -78,7 +78,6 @@ nav#main-menu ul li {
   list-style-type: none;
 }
 nav#main-menu ul li a img {
-  border-radius: 8px;
   max-width: 46px;
   max-height: 46px;
 }
@@ -87,6 +86,9 @@ nav#main-menu ul li a img {
     max-width: 38px;
     max-height: 38px;
   }
+}
+nav#main-menu ul li a img#menu-profile-pic {
+  border-radius: 8px;
 }
 
 button.accept, button.reject {
@@ -200,7 +202,7 @@ header.comment, header.notification, header.post-history, header.friend {
     max-height: 50px;
   }
 }
-header.comment h1, header.notification h1, header.post-history h1, header.friend h1 {
+header.comment h2, header.notification h2, header.post-history h2, header.friend h2 {
   padding-top: 6px;
   text-align: left;
 }
@@ -296,6 +298,9 @@ main.explore, main.search-users {
 main.friend {
   margin-top: 40px;
 }
+main.friend h3 {
+  text-align: left;
+}
 @media screen and (min-width: 320px) and (max-width: 1025px) {
   main.friend div#friends {
     margin-bottom: 57px;
@@ -337,47 +342,65 @@ main.friend button {
   }
 }
 
-.first-half, .second-half {
+#login-body .contain {
+  height: 98vh;
+}
+
+#login-body {
+  padding-top: 0 !important;
+  margin: 0 !important;
+  height: 98vh;
+}
+
+.second-half {
   margin: 10px;
 }
 
-div.contain {
-  margin: 2%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  width: 100%;
-  height: 100vh;
+.first-half {
+  margin: 15px 0 5px 0;
 }
-div.contain div.first-half {
-  position: relative;
+.first-half article {
+  height: 68%;
 }
-div.contain div.first-half div.login-square {
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-square {
   background-color: white;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
+  width: 100%;
   height: 500px;
   padding: 4px;
   border-radius: 15px;
   border: solid 1px #000;
 }
-div.contain div.first-half div.login-square div.login-content {
+.login-square div.login-content {
   height: 100%;
   position: relative;
 }
 
-div.second-half {
-  position: relative;
+.img-world {
+  width: 100%;
+  border-radius: 15px;
 }
-div.second-half img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  max-width: 90%;
+
+div.contain {
+  margin: 0 2% 0 2%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 20px;
+  height: 100vh;
+}
+div.contain .first-half, div.contain .second-half {
+  position: relative;
+  height: 91vh;
 }
 
 .form-row {
@@ -398,21 +421,40 @@ div.second-half img {
 }
 
 @media screen and (min-width: 320px) and (max-width: 600px) {
-  .login-square {
-    width: 90%;
-  }
-}
-@media screen and (min-width: 320px) and (max-width: 600px) {
-  .second-half {
-    display: none;
-  }
   .contain {
-    display: block;
+    display: block !important;
+    grid-template-columns: none !important;
+  }
+  .login-square {
+    width: 100%;
   }
   .first-half {
-    margin: auto;
-    width: 80%;
-    padding: 10px;
+    display: none;
+  }
+}
+@media screen and (min-width: 600px) {
+  .img-container {
+    display: none;
+  }
+  .first-half article {
+    height: 100%;
+  }
+  .first-half article h1 {
+    font-size: 20px;
+  }
+  .first-half article ul, .first-half article p {
+    font-size: 13px;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .first-half article {
+    height: 68%;
+  }
+  .first-half article ul {
+    font-size: 15px;
+  }
+  .img-container {
+    display: block;
   }
 }
 header.notification {
@@ -429,12 +471,12 @@ header.notification {
   }
 }
 @media screen and (min-width: 600px) {
-  header.notification h1 {
+  header.notification h3 {
     font-size: 18px;
   }
 }
 @media screen and (min-width: 320px) and (max-width: 600px) {
-  header.notification h1 {
+  header.notification h3 {
     font-size: 16px;
   }
 }
@@ -493,11 +535,11 @@ main.notification div.notification a.comment:hover, main.notification div.notifi
   color: #226fbd;
 }
 
-header.post-history h1, header.friend h1 {
+header.post-history h3, header.friend h3 {
   padding-top: 4px;
 }
 @media screen and (min-width: 320px) and (max-width: 1025px) {
-  header.post-history h1, header.friend h1 {
+  header.post-history h3, header.friend h3 {
     font-size: 22px;
   }
 }
@@ -519,12 +561,12 @@ main.post-history nav.explore {
   }
 }
 @media screen and (min-width: 320px) and (max-width: 600px) {
-  main.post-history div.post-with-buttons div.buttons img#edit-post, main.post-history div.post-with-buttons div.buttons img#delete-post {
+  main.post-history div.post-with-buttons div.buttons img.edit-post, main.post-history div.post-with-buttons div.buttons img.delete-post {
     width: 26px;
   }
 }
 @media screen and (min-width: 320px) {
-  main.post-history div.post-with-buttons div.buttons img#edit-post, main.post-history div.post-with-buttons div.buttons img#delete-post {
+  main.post-history div.post-with-buttons div.buttons img.edit-post, main.post-history div.post-with-buttons div.buttons img.delete-post {
     width: 20px;
   }
 }
@@ -741,3 +783,5 @@ main.search-users img {
   border-radius: 10px;
   cursor: pointer;
 }
+
+/*# sourceMappingURL=style.css.map */
