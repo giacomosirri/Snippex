@@ -273,7 +273,7 @@ function friendshipAcceptance(id, passive_user) {
 
 function friendshipRejection(id, passive_user) {
     let alertModal = new bootstrap.Modal(document.getElementById("alertModal"));
-    document.getElementById("error-message").innerText = "Are you sure? This action is definitive.";
+    document.getElementById("alert-message").innerText = "Are you sure? This action is definitive.";
     document.getElementById("alert-proceed").eventListeners = [];
     document.getElementById("alert-proceed").addEventListener("click", () => {
         axios.put('../php/friends-api.php', {ID: id, Type: "rejection", External_user: passive_user});
@@ -285,7 +285,7 @@ function friendshipRejection(id, passive_user) {
 
 function friendshipTermination(id, passive_user) {
     let alertModal = new bootstrap.Modal(document.getElementById("alertModal"));
-    document.getElementById("error-message").innerText = "Are you sure? This action is definitive.";
+    document.getElementById("alert-message").innerText = "Are you sure? This action is definitive.";
     document.getElementById("alert-proceed").eventListeners = [];
     document.getElementById("alert-proceed").addEventListener("click", () => {
         axios.put('../php/friends-api.php', {ID: id, Type: "termination", External_user: passive_user});
@@ -390,7 +390,7 @@ function setUpModal() {
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label class="col-form-label" id="error-message"></label>
+                            <label class="col-form-label" id="alert-message"></label>
                         </div>
                     </div>
                     <div class="modal-footer">

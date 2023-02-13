@@ -12,17 +12,17 @@ setInterval(() => {
     }
 }, 200);
 
-window.onload = () => {
-    document.getElementById("username").onkeydown = () => {
-        last_keydown = Date.now();
-        typing = true;
-    }
-    if (sessionStorage["username"]) {
-        document.getElementById("username").value = window.sessionStorage.getItem("username");
-    }
-    addProposal(document.getElementById("username").value);
-    sessionStorage.removeItem("username");
-};
+
+document.getElementById("username").onkeydown = () => {
+    last_keydown = Date.now();
+    typing = true;
+}
+if (sessionStorage["username"]) {
+    document.getElementById("username").value = window.sessionStorage.getItem("username");
+}
+addProposal(document.getElementById("username").value);
+sessionStorage.removeItem("username");
+
 window.onresize = () => {
     adaptFriendsSizeToDisplay();
     adaptButtonsSizeToDisplay();
