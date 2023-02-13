@@ -6,3 +6,4 @@ $templateParams["title"] = "Comments";
 $templateParams["page"] = "../template/comments.html";
 
 require "./base.php";
+?>

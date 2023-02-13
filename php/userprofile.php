@@ -7,5 +7,6 @@ if (isset($_GET["Username"])) {
     throw new Error("You have to specify the user whose profile you want to look at.");
 }
 $templateParams["page"] = "../template/userprofile.html";
+
 require "./base.php";
 ?>
