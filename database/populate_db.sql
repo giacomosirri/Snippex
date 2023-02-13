@@ -49,6 +49,17 @@ INSERT INTO `ratings` (`RatingID`, `DateAndTime`, `Category`, `Rater`, `Post`) V
 (51, '2023-02-12 23:50:02', 'thoughtfulness', 'marcomengo', 12),
 (52, '2023-02-13 00:02:52', 'advice', 'cugini', 10);
 
+INSERT INTO `comments` (`CommentID`, `Content`, `DateAndTime`, `User`, `Post`) VALUES
+(21, 'bravo ragazzo!!', '2023-02-13 01:39:15', 'fotodianna', 16),
+(22, 'tranquilla cara, bella canzoneee', '2023-02-13 01:40:20', 'madame', 12),
+(23, 'dai non ti lamentare, almeno noi sei arrivato ultimo ahhahahah', '2023-02-13 06:10:15', 'marcomengo', 14),
+(24, 'ragazzo mio hai fatto un disastro', '2023-02-13 01:50:43', 'amadeus', 15),
+(25, 'ma allora sei sano! meno male...', '2023-02-13 02:36:02', 'amadeus', 16),
+(26, 'bravo tananai, anche ad anna piaci', '2023-02-13 02:11:05', 'fotodianna', 10),
+(27, 'stai calmino, ci siamo ancora noi davanti', '2023-02-13 02:18:58', 'cugini', 11),
+(28, 'non mi sembra che ci sia nessuno che te lo vieti...', '2023-02-12 22:46:44', 'ultimo', 9),
+(29, 'sei proprio strano', '2023-02-12 23:15:24', 'ultimo', 16);
+
 INSERT INTO `points` (`User`, `Category`, `Points`) VALUES
 ('cantodellanima', 'ideas', 1),
 ('cantodellanima', 'thoughtfulness', 1),
