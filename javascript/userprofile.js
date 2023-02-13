@@ -114,7 +114,7 @@ function adaptFriendsSizeToDisplay() {
     for (let i=0; i<all_friends.length; i++) {
         const img = all_friends[i].querySelector("img");
         img.style.maxWidth = calculateImageMaxWidth() + "px";
-        img.onload = () => adaptFriendsNamePosition();
+        img.addEventListener("load", () => adaptFriendsNamePosition());
     }
 }
 
@@ -150,7 +150,6 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         accept.addEventListener('click', () => reload());
         div.appendChild(accept);
         const reject = createRejectFriendshipButton(friendshipID, user);
-        reject.addEventListener('click', () => reload());
         div.appendChild(reject);
     } else if (status === "SENT") {
         p.innerText = "Your have asked " + user + " to become friends! Now you just need to wait for his approval.";
