@@ -4,8 +4,12 @@ window.addEventListener("load", function() {
     if (goBackButton !== null) {
         goBackButton.addEventListener("click", goBack);
     }
-    document.getElementById("post-button").addEventListener("click", createPost);
-    document.getElementById("nav-logo").addEventListener("click", ()=>window.location.href = "../php/profile.php");
+    if (document.getElementById("post-button") !== null) {
+        document.getElementById("post-button").addEventListener("click", createPost);
+    }
+    if (document.getElementById("nav-logo") !== null) {
+        document.getElementById("nav-logo").addEventListener("click", () => window.location.href = "../php/profile.php");
+    }
     setUpModal();
 });
 
