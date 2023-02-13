@@ -13,14 +13,14 @@ INSERT INTO `users` (`Username`, `Password`, `Name`, `Surname`, `ProfilePic`, `B
 ('ziocolla', '$2y$10$EhxwC0BXo86yF0sWRq1p/eFUzKnJMq7lBjOMILXhGpm099kx1bTbe', 'Colla', 'Zio', 'ziocolla.jpeg', '2019-01-01', '2023-02-12', 0, 1);
 
 INSERT INTO `posts` (`PostID`, `Title`, `Content`, `DateAndTime`, `NumberOfComments`, `Writer`) VALUES
-(9, 'Made In Italy', 'Voglio morire da italiano!', '2023-02-12 23:20:34', 0, 'polka'),
-(10, 'Quinto a sanremo yeeee', 'Piaccio alle mamme', '2023-02-12 23:28:32', 0, 'tananai'),
-(11, 'Secondo lesgo', 'Domino la scena italiana', '2023-02-12 23:31:14', 0, 'lazza'),
-(12, 'bicchiere gate', 'non ho tirato nessun bicchiere a madame!', '2023-02-12 23:32:36', 0, 'cantodellanima'),
+(9, 'Made In Italy', 'Voglio morire da italiano!', '2023-02-12 23:20:34', 1, 'polka'),
+(10, 'Quinto a sanremo yeeee', 'Piaccio alle mamme', '2023-02-12 23:28:32', 1, 'tananai'),
+(11, 'Secondo lets go', 'Domino la scena italiana', '2023-02-12 23:31:14', 1, 'lazza'),
+(12, 'bicchiere gate', 'non ho tirato nessun bicchiere a madame!', '2023-02-12 23:32:36', 1, 'cantodellanima'),
 (13, 'sanremo 2022', 'stai andando forte, apri tutte le porte o vai incontro alla morte?', '2023-02-12 23:39:52', 0, 'fotodianna'),
-(14, 'quarto uffi', 'gli ultimi non vincono mai :(', '2023-02-12 23:47:29', 0, 'ultimo'),
-(15, 'sono pazzo', 'non mi potete dire cosa devo fare, non sentivo e ho spaccato tutto', '2023-02-13 00:05:23', 0, 'blanchitobebe'),
-(16, 'Mi scuso...', 'Chiedo scusa al festival e anche ad Ama', '2023-02-13 00:05:50', 0, 'blanchitobebe');
+(14, 'quarto uffi', 'gli ultimi non vincono mai :(', '2023-02-12 23:47:29', 1, 'ultimo'),
+(15, 'sono pazzo', 'non mi potete dire cosa devo fare, non sentivo e ho spaccato tutto', '2023-02-13 00:05:23', 1, 'blanchitobebe'),
+(16, 'Mi scuso...', 'Chiedo scusa al festival e anche ad Ama', '2023-02-13 00:05:50', 3, 'blanchitobebe');
 
 INSERT INTO `favorites` (`User`, `Post`, `DateAndTime`) VALUES
 ('amadeus', 9, '2023-02-12 23:34:06'),
@@ -89,4 +89,13 @@ INSERT INTO `notifications` (`NotificationID`, `Comment`, `Rating`, `Read`, `Not
 (69, NULL, 49, 0, 'polka'),
 (70, NULL, 50, 1, 'fotodianna'),
 (71, NULL, 51, 1, 'cantodellanima'),
-(72, NULL, 52, 0, 'tananai');
+(72, NULL, 52, 0, 'tananai'),
+(73, 21, NULL, 0, 'blanchitobebe'),
+(74, 22, NULL, 0, 'cantodellanima'),
+(75, 23, NULL, 0, 'ultimo'),
+(76, 24, NULL, 0, 'blanchitobebe'),
+(77, 25, NULL, 1, 'blanchitobebe'),
+(78, 26, NULL, 0, 'tananai'),
+(79, 27, NULL, 1, 'lazza'),
+(80, 28, NULL, 0, 'polka'),
+(81, 29, NULL, 1, 'blanchitobebe');
