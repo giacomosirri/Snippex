@@ -78,6 +78,9 @@ main.profile {
         font-size: 13px;
       }
     }
+    button.accept, button.reject {
+      max-width: 86px;
+    }
     margin-top: 8px;
     margin-bottom: 8px;
     max-height: 40px;

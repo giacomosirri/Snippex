@@ -668,6 +668,9 @@ main.profile div#friendship-status p#status {
     font-size: 13px;
   }
 }
+main.profile div#friendship-status button.accept, main.profile div#friendship-status button.reject {
+  max-width: 86px;
+}
 main.profile section#post img.go-arrow, main.profile section#friends-list img.go-arrow {
   height: auto;
   width: auto;
