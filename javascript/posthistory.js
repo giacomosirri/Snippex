@@ -32,14 +32,18 @@ function displaySinglePost(data) {
     post_div.className = "col-10";
     post_div.appendChild(createNewPost(data));
     div.appendChild(post_div);
-    const ops_div = document.createElement("div");
-    ops_div.className = "buttons col-1 d-flex justify-content-center flex-column";
-    ops_div.innerHTML = `
+    if (user === session_user) {
+        const ops_div = document.createElement("div");
+        ops_div.className = "buttons col-1 d-flex justify-content-center flex-column";
+        ops_div.innerHTML = `
                 <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"><img src="../icons/edit_icon.png" alt="edit post" class="edit-post"/></a>
                 <br /><br /><br /><br />
                 <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><img src="../icons/bin_icon.png" alt="delete post" class="delete-post"/></a>
             `;
-    div.appendChild(ops_div);
+        div.appendChild(ops_div);
+    } else {
+        post_div.className = "col-12";
+    }
     return div;
 }
 
