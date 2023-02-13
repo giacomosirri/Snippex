@@ -279,7 +279,7 @@ function friendshipRejection(id, passive_user) {
         axios.put('../php/friends-api.php', {ID: id, Type: "rejection", External_user: passive_user});
         alertModal.hide();
         window.location.reload();
-    }  );
+    });
     alertModal.show();
 }
 
@@ -288,6 +288,7 @@ function friendshipTermination(id, passive_user) {
     document.getElementById("error-message").innerText = "Are you sure? This action is definitive.";
     document.getElementById("alert-proceed").eventListeners = [];
     document.getElementById("alert-proceed").addEventListener("click", () => {
+        console.log("ciao");
         axios.put('../php/friends-api.php', {ID: id, Type: "termination", External_user: passive_user});
         alertModal.hide();
         window.location.reload();

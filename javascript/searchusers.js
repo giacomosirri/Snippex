@@ -169,7 +169,10 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         if (window.innerWidth < tabletSize) {
             accept.innerText = "OK";
         }
-        accept.addEventListener("click", () => saveAndRefresh());
+        accept.addEventListener("click", () => {
+            saveInput();
+            location.reload();
+        });
         div.appendChild(accept);
         const reject = createRejectFriendshipButton(friendshipID, requested_user);
         if (window.innerWidth < 410) {
@@ -177,7 +180,7 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         } else if (window.innerWidth < tabletSize) {
             reject.innerText = "Deny";
         }
-        reject.addEventListener("click", () => saveAndRefresh());
+        reject.addEventListener("click", () => saveInput());
         div.appendChild(reject);
     } else if (status === "SENT") {
         p.innerText = "You have asked " + requested_user + " to become friends! Now you just need to wait for his approval.";
@@ -186,12 +189,12 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         p.innerText = "You are friend with " + requested_user;
         div.appendChild(p);
         const terminate = createTerminateFriendshipButton(friendshipID, requested_user);
-        terminate.addEventListener("click", () => saveAndRefresh());
+        terminate.addEventListener("click", () => saveInput());
         div.appendChild(terminate);
     } else {
         let request = createRequestFriendshipButton(session_user, requested_user);
         request.addEventListener("click", () => {
-            saveAndRefresh()
+            saveInput()
             location.reload();
         });
         div.appendChild(request);
@@ -199,7 +202,7 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
     return div;
 }
 
-function saveAndRefresh() {
+function saveInput() {
     window.sessionStorage.setItem("username", document.getElementById("username").value);
 }
 

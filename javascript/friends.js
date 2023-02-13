@@ -8,10 +8,6 @@ function timeOfFriendship(date) {
     return Math.floor((utc2 - utc1) / MS_PER_DAY);
 }
 
-function reload() {
-    location.reload();
-}
-
 function adaptButtonsSizeToDisplay() {
     const buttons = document.querySelector("main button");
     for (let i=0; i<buttons.length; i++) {

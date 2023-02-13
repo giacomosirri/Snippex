@@ -82,6 +82,7 @@ function createNotification(data, type) {
         const div = document.createElement("div");
         div.className = "col-6";
         const accept = createAcceptFriendshipButton(data["FriendshipID"], data["Username"]);
+        accept.addEventListener("click", () => reload());
         div.appendChild(accept);
         const reject = createRejectFriendshipButton(data["FriendshipID"], data["Username"]);
         div.appendChild(reject);
