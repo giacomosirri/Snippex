@@ -2,7 +2,7 @@ INSERT INTO `users` (`Username`, `Password`, `Name`, `Surname`, `ProfilePic`, `B
 ('amadeus', '$2y$10$N.RAoMTC/sWahoyzl35DquQYX9xp/f0KwsqunEqT1OgmXVV6AW/ve', 'Amedeo', 'Sebastiani', 'amadeus.jpeg', '1962-09-04', '2023-02-12', 0, 5),
 ('blanchitobebe', '$2y$10$1FYUSFEqKCjZqdpDR9IwLO8wIE7mLzhXoHiFZGtF5PeL1Zlhjnu5C', 'Blanco', 'Michelangelo', 'blanchitobebe.jpeg', '2003-02-10', '2023-02-12', 2, 1),
 ('cantodellanima', '$2y$10$NtdwmYVNLY2hO8kmTS6ng.wnDOALLkZj917ks6N8H2cpf5shAe3GK', 'Anna', 'Oxa', 'cantodellanima.jpeg', '1961-04-28', '2023-02-12', 1, 1),
-('cugini', '$2y$10$CNJK3Fjr7OzrhYYLvXunXu57x1Ao6A/Rb5pvsvE9wXSJ8kVGaaBlW', 'Cugini', 'Campagna', 'cugini.jpeg', '1970-05-15', '2023-02-13', 0, 2),
+('cugini', '$2y$10$CNJK3Fjr7OzrhYYLvXunXu57x1Ao6A/Rb5pvsvE9wXSJ8kVGaaBlW', 'Cugini', 'Campagna', NULL, '1970-05-15', '2023-02-13', 0, 2),
 ('fotodianna', '$2y$10$D7VAy16skzk0lqZuABtxk.5ozkRlsD0.HmhH7cjFL0sw4QqxtMtJ2', 'Gianni', 'Morandi', 'fotodianna.jpeg', '1944-12-11', '2023-02-12', 1, 2),
 ('lazza', '$2y$10$kDfThbI1d./9p9vuaDfPrOdRPMZNOEr2UHZ.i22pItKuBgWux6RB.', 'Jacopo', 'Lazzarini', 'lazza.jpeg', '1994-08-22', '2023-02-12', 1, 0),
 ('madame', '$2y$10$Ytx.IiYOXqK03ctx8T9KnOHzEujdQMiEd/IvIWKeZPCaqE8cOUukS', 'Francesca', 'Calearo', 'madame.jpeg', '2002-01-16', '2023-02-12', 0, 2),
