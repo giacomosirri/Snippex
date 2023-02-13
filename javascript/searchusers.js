@@ -12,7 +12,6 @@ setInterval(() => {
     }
 }, 200);
 
-
 document.getElementById("username").onkeydown = () => {
     last_keydown = Date.now();
     typing = true;
@@ -130,7 +129,7 @@ function simpleAppendUser(user, numberOfPosts, numberOfFriend, ratingStats, cate
             window.location.replace("./userprofile.php?Username=" + user);
         })
         col1.appendChild(img);
-        img.onload = () => img.style.maxWidth = calculateImageMaxWidth() + "px";
+        img.addEventListener("load", () => img.style.maxWidth = calculateImageMaxWidth() + "px");
     });
     col2.innerHTML += `
         <div class="username"><strong>~${user}</strong></div>
@@ -171,7 +170,7 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         }
         accept.addEventListener("click", () => {
             saveInput();
-            location.reload();
+            window.location.reload();
         });
         div.appendChild(accept);
         const reject = createRejectFriendshipButton(friendshipID, requested_user);
@@ -195,7 +194,7 @@ function manageFriendshipStatus(status, friendshipID, requested_user) {
         let request = createRequestFriendshipButton(session_user, requested_user);
         request.addEventListener("click", () => {
             saveInput()
-            location.reload();
+            window.location.reload();
         });
         div.appendChild(request);
     }

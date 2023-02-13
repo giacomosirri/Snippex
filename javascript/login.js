@@ -1,4 +1,4 @@
-window.onload = () => {
+window.addEventListener("load", function() {
     setUpModal();
     let loginTab =  document.getElementById("login-tab");
     let registrationTab = document.getElementById("registration-tab");
@@ -9,7 +9,6 @@ window.onload = () => {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         const formData = new FormData(form);
-        console.log([...formData]);
         axios.post("../php/login-api.php", formData)
             .then(x => window.location.replace("../php/feed.php"))
             .catch(x => {
@@ -18,7 +17,7 @@ window.onload = () => {
                 errorModal.show();
             });
     });
-}
+});
 
 function activeLogin(link) {
     const links = document.querySelectorAll("nav .nav-link");

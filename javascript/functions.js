@@ -1,4 +1,4 @@
-window.onload = function() {
+window.addEventListener("load", function() {
     document.querySelectorAll("article label").forEach(label => changeText(label));
     let goBackButton = document.getElementById("go-back");
     if (goBackButton !== null) {
@@ -7,7 +7,7 @@ window.onload = function() {
     document.getElementById("post-button").addEventListener("click", createPost);
     document.getElementById("nav-logo").addEventListener("click", ()=>window.location.href = "../php/profile.php");
     setUpModal();
-}
+});
 
 // creates a post - the writer of the post is shown if knownUser parameter is false, otherwise it is not displayed
 function createNewPost(data) {
@@ -69,7 +69,6 @@ function createNewPost(data) {
     } else {
         let star = post.getElementsByClassName("star-post")[0];
         star.addEventListener('click', () => {
-            console.log("ciao")
             starPost(post)
         });
         axios.get("../php/favorites-api.php").then((response) => {
@@ -189,13 +188,11 @@ function starPost(post) {
         axios.post("../php/favorites-api.php", {unstar: true, post: postId.innerText});
         star.src = "../icons/star_icon.png";
         if (window.location.href.includes("favorites")) {
-            location.reload();
+            window.location.reload();
         }
     } else {
         axios.post("../php/favorites-api.php", {star: true, post: postId.innerText});
         star.src = "../icons/starred_icon.png";
-        if (window.location.href.includes("explore")) {
-        }
     }
 }
 
@@ -237,11 +234,11 @@ function changeIcon(post, rating) {
 function showComments(post) {
     const postId = post.getElementsByClassName("post-id")[0];
     window.open("comments.php?PostID=" + postId.innerText, "_self");
-    console.log(postId.innerText);
 }
 
 function goBack() {
-    window.history.back();
+    window.history.go(-1);
+    return false;
 }
 
 function showUsername(post) {

@@ -7,7 +7,6 @@ window.addEventListener("resize", () => desktopVisualization());
 desktopVisualization();
 
 async function getNotificationIcon() {
-    console.log("ciao");
     return axios.get('../php/notifications-api.php').then(response => {
         if (response.data.length === 0) {
             return "../icons/notification_icon.png";

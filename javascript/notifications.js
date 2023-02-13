@@ -48,7 +48,7 @@ function createDeleteNotificationButton(id) {
     bin.className = "col-1 d-flex justify-content-start";
     const button = document.createElement("button");
     button.className = "btn btn-outline-danger delete-one";
-    button.addEventListener("click", () => markNotificationAsRead(id).then(() => location.reload()));
+    button.addEventListener("click", () => markNotificationAsRead(id).then(() => reload()));
     bin.appendChild(button);
     const icon = document.createElement("img");
     icon.className = "delete-notification";
@@ -66,8 +66,8 @@ function createDeleteAllNotificationsButton(notifications) {
     button.className = "btn btn-outline-danger";
     button.innerText = "Delete all";
     button.addEventListener("click", () => {
-        notifications.forEach(notification => markNotificationAsRead(notification.id.split("-")[1]))
-        location.reload();
+        notifications.forEach(notification => markNotificationAsRead(notification.id.split("-")[1]));
+        reload();
     });
     div.appendChild(button);
     header.appendChild(div);
@@ -95,7 +95,7 @@ function createNotification(data, type) {
 }
 
 function reload() {
-    location.reload();
+    window.location.reload();
 }
 
 axios.get('../php/notifications-api.php').then(response => {

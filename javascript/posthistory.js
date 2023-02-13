@@ -1,7 +1,6 @@
 let editModal = document.getElementById("editModal");
 editModal.addEventListener("show.bs.modal", (event) => {
     let post = event.relatedTarget.closest(".post-with-buttons");
-    console.log(post);
     let id = post.getElementsByClassName("post-id")[0].innerText;
     let text = post.getElementsByClassName("post-text")[0].innerText;
     let title = post.getElementsByClassName("post-title")[0].innerText;
