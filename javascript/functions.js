@@ -28,7 +28,7 @@ function createNewPost(data) {
     } else if (page.includes("profile") || page.includes("history")) {
         post.innerHTML = `<h3 class="post-title col-10">${data["Title"]}</h3>
                             <div class="user-username d-none"> ${data["Writer"]} </div>`;
-    } else if (page.includes("feed") || page.includes("favorites")) {
+    } else if (page.includes("index") || page.includes("favorites")) {
         post.innerHTML = `<div class="d-flex justify-content-start">
                             <img class="star-post" src="../icons/star_icon.png" alt="star post"/>
                             <h3 class="post-title">${data["Title"]} ~ <a href="../php/userprofile.php?Username=${data['Writer']}">${data["Writer"]}</a></h3>
